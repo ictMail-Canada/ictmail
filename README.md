@@ -2,7 +2,9 @@
 
 # ictMail
 
-<img src="assets/app-icon/hicolor/128x128/apps/io.github.billsecond.mailcraft.png" width="96" alt="The ictMail icon: a blue envelope mark on a navy tile">
+
+<img src="assets/branding/ictmail-icon.png" width="96" alt="The ictMail icon: a blue envelope mark on a navy tile">
+
 
 **A branded mail, calendar and contacts desktop app for ictMail mailboxes, built on [MailCraft](https://github.com/UCS-Care-Group/mailcraft).**
 
@@ -27,7 +29,7 @@ ictMail is developed by ictTech as the desktop client for [ictMail](https://ictm
 - **Files:** `.eml` and `.mbox` messages, `.ics` calendars, `.vcf` contacts, in and out; an Outlook `.pst` file's mail, contacts, calendar, tasks, notes and journal come in through File › Open & Export › Import a .pst File; the mailbox as a `.mailcraft` file with its message content in a folder beside it, saved in the background, or as one self-contained file.
 - **Reading mail safely:** HTML mail is laid out with its tables, colours, lists and the pictures attached to it, readable in light and dark, without running anything in it; pictures on the web are downloaded only when you ask (for one message, always for a sender, or for all mail if you switch that on), and the request tells the sender's server nothing but the picture's address; links show where they go.
 - **Look:** Outlook's layout: the rail, the folder pane, a one-row ribbon (or the classic three-row one, your choice, which folds its groups to fit a narrower window), ictMail's own look with four accent colours and high contrast, and the ictMail icon, light and dark following the system's setting unless you choose (on Linux and the BSDs, the desktop's light or dark preference through its portal); the system's own interface font on Windows. The window comes in English and, as previews no native speaker has reviewed yet, French, German, Spanish, Italian and Dutch (File › Options).
-- **Installing:** the Windows build is an `.msi` installer (Program Files\ictMail, Start menu entry, optional desktop shortcut and launch on finish) and a portable zip; macOS, Linux, FreeBSD and web packages follow the upstream packaging in `packaging/`. The builds are not signed yet, so Windows and macOS ask before running them. One window per mailbox: starting ictMail again, or opening a message file or a `mailto:` link, goes to the window that is already open. See [docs/releasing.md](docs/releasing.md) for what has been built and tested so far.
+- **Installing:** the Windows build is an `.msi` installer (Program Files\ictMail, Start menu entry, optional desktop shortcut and launch on finish) and a portable zip; macOS, Linux, FreeBSD and web packages follow the upstream packaging in `packaging/`. The `.msi` offers "ictMail ActiveSync" as a feature of its own: untick it for an IMAP-only install, or change it later through Programs and Features > Change; the portable zip has everything. The builds are not signed yet, so Windows and macOS ask before running them. One window per mailbox: starting ictMail again, or opening a message file or a `mailto:` link, goes to the window that is already open. See [docs/releasing.md](docs/releasing.md) for what has been built and tested so far.
 - **Agents:** a CLI, a JSON control channel and an MCP server expose every command; the same registry drives the ribbon and the keyboard.
 
 ## Google accounts on the desktop
@@ -130,7 +132,7 @@ A crate may only depend on lower layers, and nothing below L6 knows about the UI
 
 ## Contributing
 
-ictMail-specific changes (branding, the ictMail/SOGo integration, installer packaging) happen in this tree on the `ictmail` branch. Improvements that belong upstream are welcome at [UCS-Care-Group/mailcraft](https://github.com/UCS-Care-Group/mailcraft): read its [CONTRIBUTING.md](https://github.com/UCS-Care-Group/mailcraft/blob/main/CONTRIBUTING.md) and [AGENTS.md](https://github.com/UCS-Care-Group/mailcraft/blob/main/AGENTS.md) first (they are for people as much as for agents): the never-crash rules, the asset policy and the quality gates are short and not negotiable.
+ictMail-specific changes (branding, the ictMail/SOGo integration, installer packaging) happen in this tree on `main`, which is also published at [ictMail-Canada/ictmail](https://github.com/ictMail-Canada/ictmail); upstream MailCraft stays reachable as the `upstream` remote. Improvements that belong upstream are welcome at [UCS-Care-Group/mailcraft](https://github.com/UCS-Care-Group/mailcraft): read its [CONTRIBUTING.md](https://github.com/UCS-Care-Group/mailcraft/blob/main/CONTRIBUTING.md) and [AGENTS.md](https://github.com/UCS-Care-Group/mailcraft/blob/main/AGENTS.md) first (they are for people as much as for agents): the never-crash rules, the asset policy and the quality gates are short and not negotiable.
 
 ## License
 

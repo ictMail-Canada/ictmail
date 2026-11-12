@@ -2135,6 +2135,9 @@ fn main() -> eframe::Result {
             None => logger.no_file(),
         }
     }
+    // Whether this install has calendar/contact server sync (the .msi's "ictMail
+    // ActiveSync" feature): the first thing to check when sync doesn't happen.
+    log::info!("ictMail ActiveSync (DAV): {}", if install::dav_sync() { "on" } else { "off" });
     let mut options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_title("ictMail")

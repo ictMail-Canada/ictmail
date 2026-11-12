@@ -143,6 +143,33 @@ pub fn windows(exe: &Path, registered: Option<&Path>) -> Install {
     }
 }
 
+/// Whether this copy was installed with calendar and contact syncing (the `.msi`'s "ictMail
+/// ActiveSync" feature, CalDAV/CardDAV underneath). The
+/// `.msi` offers it as a feature of its own whose component writes `DavSync` = 1 under the
+/// key below; unticking it — at install, or later through Programs and Features > Change —
+/// removes the value again, and the app goes back to IMAP-only. A copy no installer manages
+/// (the portable `.zip`, a build from source) is the whole program, and the other platforms'
+/// packages have no such choice, so they have it. Asked each time it is needed: a repair or
+/// a change of features can turn it on or off while the program runs.
+#[cfg(target_os = "windows")]
+pub fn dav_sync() -> bool {
+    const KEY: &str = r"Software\ictMail";
+    const VALUE: &str = "DavSync";
+    if found() != Install::Msi {
+        return true;
+    }
+    winreg::RegKey::predef(winreg::enums::HKEY_LOCAL_MACHINE)
+        .open_subkey_with_flags(KEY, winreg::enums::KEY_READ)
+        .and_then(|key| key.get_value::<u32, _>(VALUE))
+        .is_ok_and(|value| value != 0)
+}
+
+/// Platforms whose packages have no DAV feature choice: every copy has it.
+#[cfg(not(target_os = "windows"))]
+pub fn dav_sync() -> bool {
+    true
+}
+
 /// A macOS app: the program is `<something>.app/Contents/MacOS/<program>`, run from a place
 /// the owner keeps it, not from a disk image (`/Volumes/…`) nor from the copy macOS makes of an
 /// app it hasn't been moved yet (App Translocation).

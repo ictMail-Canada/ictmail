@@ -201,7 +201,7 @@ impl Server {
                     "capabilities": {"tools": {}, "resources": {}},
                     "serverInfo": {"name": "ictmail", "title": "ictMail", "version": env!("CARGO_PKG_VERSION"), "websiteUrl": "https://ictmail.ca"},
                     "instructions": format!(
-                        "{INSTRUCTIONS} Backend: {}. Project: https://github.com/UCS-Care-Group/mailcraft",
+                        "{INSTRUCTIONS} Backend: {}. Project: https://github.com/ictMail-Canada/ictmail",
                         self.backend.describe()
                     ),
                 }))

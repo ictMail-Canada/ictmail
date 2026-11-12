@@ -845,8 +845,8 @@ fn time_zones(app: &mut MailApp, ui: &mut Ui, prefs: &mailcraft_engine::Prefs) {
     });
 }
 
-/// Everyone who has worked on MailCraft, on GitHub.
-pub(crate) const CONTRIBUTORS_LINK: &str = "https://github.com/UCS-Care-Group/mailcraft/graphs/contributors";
+/// Everyone who has worked on ictMail, on GitHub.
+pub(crate) const CONTRIBUTORS_LINK: &str = "https://github.com/ictMail-Canada/ictmail/graphs/contributors";
 
 /// The line of About that credits the people who made the program: a link to the project's
 /// contributors, shown as where it leads, in one piece.
@@ -864,6 +864,11 @@ pub(crate) fn contributors(ui: &mut Ui) {
 
 fn about(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
     heading(ui, tl!("About ictMail"), t);
+    // The wordmark, as in the About dialog; nothing when its picture can't be read.
+    if let Some(logo) = crate::opening::wordmark(ui.ctx()) {
+        ui.image(egui::load::SizedTexture::new(logo.id(), egui::vec2(220.0, 88.0)));
+        ui.add_space(4.0);
+    }
     ui.label(egui::RichText::new(crate::i18n::fmt(tl!("Version {version}"), &[("version", env!("CARGO_PKG_VERSION"))])).color(t.text_dim));
     ui.label(tl!(
         "Mail, calendar, people and tasks, written from scratch in Rust. It runs natively on macOS, Windows, Linux and BSD, and in the browser."
