@@ -82,7 +82,7 @@ pub fn specs() -> Vec<CommandSpec> {
         CommandSpec::new("mail.openAttachment", "Open Attachment", "Attachments › Actions", open_attachment)
             .pure()
             .params(
-                r#"{"index": number, "id"?: number} — opens the file with the computer's own program for it, in the MailCraft window only (never for an agent). Programs, scripts, shortcuts, installers and disk images are refused: save them instead. Anywhere else answers why it opened nothing"#,
+                r#"{"index": number, "id"?: number} — opens the file with the computer's own program for it, in the ictMail window only (never for an agent). Programs, scripts, shortcuts, installers and disk images are refused: save them instead. Anywhere else answers why it opened nothing"#,
             )
             .selection(needs_message),
         CommandSpec::new("mail.saveAttachment", "Save Attachment", "Attachments › Actions", save_attachment)
@@ -985,7 +985,7 @@ fn open_attachment(s: &mut Session, v: &Value) -> CmdResult {
     let name = s.mailbox.message(id).and_then(|m| m.attachments.get(index)).map(|a| a.name.clone()).ok_or_else(|| fail("no such attachment"))?;
     Err(match crate::opening::verdict(&name) {
         crate::opening::Verdict::Blocked => fail(crate::opening::blocked_message(&name)),
-        _ => crate::CmdError::Disabled("attachments are opened in the MailCraft window; `mail.saveAttachment` gives the file".into()),
+        _ => crate::CmdError::Disabled("attachments are opened in the ictMail window; `mail.saveAttachment` gives the file".into()),
     })
 }
 

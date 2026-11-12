@@ -57,7 +57,7 @@ pub(crate) fn diagnostics(app: &MailApp) -> String {
     let mut text = match &app.services.diagnostics {
         Some(report) => report(),
         None => format!(
-            "### MailCraft diagnostics\n\n- Version: {}\n- Platform: {} {}\n\nNo log is kept here.\n",
+            "### ictMail diagnostics\n\n- Version: {}\n- Platform: {} {}\n\nNo log is kept here.\n",
             env!("CARGO_PKG_VERSION"),
             std::env::consts::OS,
             std::env::consts::ARCH
@@ -116,7 +116,7 @@ impl Typed {
 }
 
 /// The line put in the issue's Diagnostics box when a file was saved to attach there.
-const ATTACH_HERE: &str = "Drag the diagnostics file MailCraft saved for this report (mailcraft-diagnostics-….txt) into this box to attach it. Read it first: it is what the Report a Problem window showed.";
+const ATTACH_HERE: &str = "Drag the diagnostics file ictMail saved for this report (mailcraft-diagnostics-….txt) into this box to attach it. Read it first: it is what the Report a Problem window showed.";
 
 /// `text` for a query string: everything but letters, digits and `-._*` as `%XX`, a space as `%20`.
 fn encode(text: &str) -> String {
@@ -257,9 +257,9 @@ fn on_github(app: &mut MailApp, typed: &Typed, with_diagnostics: bool, path: Opt
     if let (true, Some(ctx)) = (open, ctx) {
         ctx.open_url(egui::OpenUrl::new_tab(url));
         app.status(if with_diagnostics {
-            tl!("GitHub's page is open: attach the diagnostics file there, then submit. MailCraft sent nothing.")
+            tl!("GitHub's page is open: attach the diagnostics file there, then submit. ictMail sent nothing.")
         } else {
-            tl!("GitHub's page is open: check it, then submit. MailCraft sent nothing.")
+            tl!("GitHub's page is open: check it, then submit. ictMail sent nothing.")
         });
     }
     Ok(answer)
@@ -337,9 +337,7 @@ pub(crate) fn why_not_sent(why: NotSent) -> &'static str {
         NotSent::Unreachable => tl!("The report service couldn't be reached. Check that you're online and try again, or open it on GitHub."),
         NotSent::TooSlow => tl!("The report service didn't answer in time, so the report may have arrived. Try again later, or open it on GitHub."),
         NotSent::Garbled => {
-            tl!(
-                "The report service's answer wasn't one MailCraft understands, so the report may have arrived. Try again later, or open it on GitHub."
-            )
+            tl!("The report service's answer wasn't one ictMail understands, so the report may have arrived. Try again later, or open it on GitHub.")
         }
     }
 }
@@ -437,7 +435,7 @@ impl Draft {
             if can_send {
                 ui.label(tl!("Say what went wrong. Nothing is sent until you press Send report, and then only what this window shows."));
             } else {
-                ui.label(tl!("Say what went wrong. MailCraft sends nothing by itself: you check the report and send it."));
+                ui.label(tl!("Say what went wrong. ictMail sends nothing by itself: you check the report and send it."));
                 ui.label(
                     egui::RichText::new(tl!(
                         "GitHub issues are public: don't put email addresses, names or anything from your messages in them. Describe what happened in your own words."
@@ -498,7 +496,7 @@ impl Draft {
         if can_send {
             ui.add_space(2.0);
             ui.label(tl!(
-                "Sent to the MailCraft team privately. If it's a real problem we may make it public on GitHub, with what you wrote and the diagnostics, so we can track it. Leave out anything private."
+                "Sent to the ictMail team privately. If it's a real problem we may make it public on GitHub, with what you wrote and the diagnostics, so we can track it. Leave out anything private."
             ));
         } else {
             ui.label(dim(tl!("GitHub is public and needs a GitHub account.")));
@@ -534,7 +532,7 @@ impl Draft {
             let github_tip = tl!("Opens GitHub's page in your browser, filled in: you check it and submit it there.");
             if can_send {
                 let label = if self.not_sent.is_some() { tl!("Try again") } else { tl!("Send report") };
-                let pressed = primary_button(ui, label, ready).on_hover_text(tl!("Sends the report to the MailCraft team, as this window shows it."));
+                let pressed = primary_button(ui, label, ready).on_hover_text(tl!("Sends the report to the ictMail team, as this window shows it."));
                 // Only the owner's own click sends: never a click a script or an agent made.
                 send = pressed.clicked() && ready && !app.driven;
                 let open = ui.add_enabled(ready, egui::Button::new(tl!("Open on GitHub")).min_size(vec2(72.0, 26.0))).on_hover_text(github_tip);
@@ -586,7 +584,7 @@ fn show_sent(ui: &mut Ui, reference: u64) -> bool {
     let sent = crate::i18n::fmt(tl!("Sent, reference R-{reference}."), &[("reference", &reference.to_string())]);
     ui.label(egui::RichText::new(sent).size(15.0).strong());
     ui.add_space(4.0);
-    ui.label(tl!("Thank you. The MailCraft team has it under this reference."));
+    ui.label(tl!("Thank you. The ictMail team has it under this reference."));
     ui.label(egui::RichText::new(tl!("What you wrote has been cleared from this window.")).color(t.text_dim).size(11.5));
     ui.add_space(8.0);
     let mut close = false;

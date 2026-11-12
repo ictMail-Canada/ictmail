@@ -9,10 +9,9 @@ fn from(error: Error) -> std::io::Error {
     std::io::Error::new(ErrorKind::InvalidData, error)
 }
 
-const PLAIN: &str =
-    "the server offers only older encryption (CBC suites) that MailCraft doesn't use; its administrator can turn on the AES-GCM suites";
+const PLAIN: &str = "the server offers only older encryption (CBC suites) that ictMail doesn't use; its administrator can turn on the AES-GCM suites";
 
-const LIKELY: &str = "the server and MailCraft found no encryption in common; often the server offers only older encryption (CBC suites) that MailCraft doesn't use, and its administrator can turn on the AES-GCM suites";
+const LIKELY: &str = "the server and ictMail found no encryption in common; often the server offers only older encryption (CBC suites) that ictMail doesn't use, and its administrator can turn on the AES-GCM suites";
 
 #[test]
 fn no_suite_in_common_is_said_as_fact() {

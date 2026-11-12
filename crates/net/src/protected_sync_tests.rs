@@ -52,7 +52,7 @@ fn a_signed_message_comes_down_whole_and_its_body_goes_up_byte_for_byte() {
     let world = other.world();
     let put = world.mailboxes.iter().find(|m| m.raw == "Projects").unwrap().messages.last().unwrap().body.clone();
     drop(world);
-    assert!(put.starts_with(b"X-MailCraft-Place: m4rk-3r\r\n"));
+    assert!(put.starts_with(b"X-ictMail-Place: m4rk-3r\r\n"));
     assert_eq!(body(&put), body(SIGNED));
     // Come down from there, it has the same body again.
     assert_eq!(mailcraft_mime::parse_fetched(&put).original_bytes().map(body), Some(body(SIGNED)));

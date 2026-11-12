@@ -826,7 +826,7 @@ impl AccountSetup {
         }
         if !incoming.host.trim().is_empty() && mailcraft_model::pop::looks_like_pop(&incoming.host, incoming.port().unwrap_or(0)) {
             return Some(
-                tl!("MailCraft doesn't support POP yet. Use your provider's IMAP server instead (usually imap.<your domain>, port 993).").to_string(),
+                tl!("ictMail doesn't support POP yet. Use your provider's IMAP server instead (usually imap.<your domain>, port 993).").to_string(),
             );
         }
         if self.edit.is_some() {
@@ -1722,7 +1722,7 @@ impl AccountSetup {
         let t = pass.t;
         page(ui, &t, |ui| {
             heading(ui, tl!("Add an account"), &t);
-            note(ui, tl!("Type your address. MailCraft finds your mail servers and how you sign in."), t.text_dim);
+            note(ui, tl!("Type your address. ictMail finds your mail servers and how you sign in."), t.text_dim);
             if field(ui, pass, "email", tl!("Email address"), &mut self.email, tl!("you@example.org"), LINE).changed() {
                 self.error.clear();
             }
@@ -1781,7 +1781,7 @@ impl AccountSetup {
             note(
                 ui,
                 tl!(
-                    "Microsoft only lets a registered application show its sign-in page, and this build of MailCraft has no registration of its own yet."
+                    "Microsoft only lets a registered application show its sign-in page, and this build of ictMail has no registration of its own yet."
                 ),
                 t.text,
             );
@@ -1796,7 +1796,7 @@ impl AccountSetup {
             {
                 self.error.clear();
             }
-            note(ui, tl!("It is an identifier, not a secret. MailCraft keeps it in its settings (File › Options)."), t.text_dim);
+            note(ui, tl!("It is an identifier, not a secret. ictMail keeps it in its settings (File › Options)."), t.text_dim);
             error(ui, &self.error);
         });
         let ready = !self.client_id.trim().is_empty();
@@ -1843,7 +1843,7 @@ impl AccountSetup {
                 note(
                     ui,
                     tl!(
-                        "MailCraft doesn't know the settings for this address. The servers below are only a guess made from its domain: check them with your provider or administrator before you connect."
+                        "ictMail doesn't know the settings for this address. The servers below are only a guess made from its domain: check them with your provider or administrator before you connect."
                     ),
                     t.orange,
                 );
@@ -1863,7 +1863,7 @@ impl AccountSetup {
                 note(ui, tl!(&self.note), t.text);
             }
             if oauth_first {
-                note(ui, tl!("Sign in securely with Google in your browser. Your Google password is never entered in MailCraft."), t.text);
+                note(ui, tl!("Sign in securely with Google in your browser. Your Google password is never entered in ictMail."), t.text);
                 if self.google_testers_only {
                     note(ui, google_testers_note(), t.orange);
                 } else {
@@ -2104,7 +2104,7 @@ impl AccountSetup {
                 } else if !unchanged {
                     note(ui, tl!("Save or discard changes here before switching sign-in methods."), t.orange);
                 } else if !configured {
-                    note(ui, tl!("MailCraft's Google Desktop registration is not yet configured for this build."), t.orange);
+                    note(ui, tl!("ictMail's Google Desktop registration is not yet configured for this build."), t.orange);
                 }
             }
             field(ui, pass, "name", tl!("Your name"), &mut self.name, tl!("As the people you write to see it"), LINE);
@@ -2189,7 +2189,7 @@ impl AccountSetup {
             note(
                 ui,
                 tl!(
-                    "This account was added by a newer version of MailCraft. This version keeps it as it is and doesn't send or receive with it: use the newer version for that, and to change its settings."
+                    "This account was added by a newer version of ictMail. This version keeps it as it is and doesn't send or receive with it: use the newer version for that, and to change its settings."
                 ),
                 t.text_dim,
             );
@@ -2227,7 +2227,7 @@ fn kept_where(app: &MailApp) -> &'static str {
     if app.ui.remember_sign_in && app.services.secrets.is_some() && app.secrets_trouble.is_none() {
         tl!("Once it has worked, your system's credential store keeps it for next time. It is never written to the mailbox.")
     } else {
-        tl!("MailCraft keeps it in memory until you close the app. It is never written to disk.")
+        tl!("ictMail keeps it in memory until you close the app. It is never written to disk.")
     }
 }
 
@@ -2261,7 +2261,7 @@ fn page(ui: &mut Ui, t: &Tokens, add: impl FnOnce(&mut Ui)) {
             let center = pos2(r.min.x + 18.0, r.center().y);
             ui.painter().circle_filled(center, 18.0, t.accent);
             icons::paint(ui.painter(), Rect::from_center_size(center, vec2(20.0, 20.0)), "mail", t.on_accent, t.on_accent);
-            ui.painter().text(pos2(r.min.x + 46.0, r.center().y), Align2::LEFT_CENTER, "MailCraft", semibold(17.0), t.text);
+            ui.painter().text(pos2(r.min.x + 46.0, r.center().y), Align2::LEFT_CENTER, "ictMail", semibold(17.0), t.text);
             ui.add_space(10.0);
             add(ui);
         });
@@ -2373,7 +2373,7 @@ fn indented(ui: &mut Ui, add: impl FnOnce(&mut Ui)) {
 const GOOGLE_APP_PASSWORDS: &str = "https://myaccount.google.com/apppasswords";
 
 fn google_testers_note() -> &'static str {
-    tl!("Google sign-in is open only to invited testers while Google reviews MailCraft. To join, email systems@ucscaregroup.co.uk.")
+    tl!("Google sign-in is open only to invited testers while Google reviews ictMail. To join, email systems@ucscaregroup.co.uk.")
 }
 
 /// Whether `host` is Google's mail server (Gmail, Google Workspace).
@@ -3725,7 +3725,7 @@ mod tests {
         let before = a.session.mailbox.accounts.clone();
         let mut h = open(a, json!({"id": id}));
         assert_eq!((page(&h), wizard(&h).map(|w| w.title())), (Some(Page::Settings), Some("Account Settings".to_string())));
-        assert!(says(&h, "This account was added by a newer version of MailCraft") && says(&h, "this version tells no mail server"));
+        assert!(says(&h, "This account was added by a newer version of ictMail") && says(&h, "this version tells no mail server"));
         assert!(!says(&h, "User name") && !says(&h, "Incoming mail (IMAP)") && h.query_by_role(Role::PasswordInput).is_none());
         assert!(wizard(&h).and_then(AccountSetup::edit_command).is_none());
         click(&mut h, "Close");

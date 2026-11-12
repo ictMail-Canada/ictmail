@@ -50,7 +50,7 @@ const DROPPED: [(&str, &str); 21] = [
     ("Envelope-To", "alias+budget@example.org"),
     ("Received-SPF", "pass (mail.example.org) receiver=alias+budget@example.org; client-ip=192.0.2.1"),
     ("Disposition-Notification-To", "avery@lumen.example"),
-    ("X-MailCraft-Meeting-Response", "accepted 1791993600 00ff"),
+    ("X-ictMail-Meeting-Response", "accepted 1791993600 00ff"),
     ("X-Mozilla-Status", "0001"),
     ("X-Gmail-Labels", "Important,Taxes 2025"),
     ("X-Forefront-Antispam-Report", "CIP:192.0.2.1;CTRY:;SFV:NSPM"),

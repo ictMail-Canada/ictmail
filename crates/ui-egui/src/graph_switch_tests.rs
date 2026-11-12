@@ -182,7 +182,7 @@ fn switch_sends_what_waits_first_waits_while_offline_and_then_switches() {
     assert_eq!(*runs.lock().unwrap(), 1);
     let a = h.state().session.mailbox.account(account).unwrap();
     assert_eq!((a.kind, a.graph_switch), (AccountKind::Imap, GraphSwitch::Switching));
-    assert!(status(&h).contains("waits until MailCraft can reach the server"), "{}", status(&h));
+    assert!(status(&h).contains("waits until ictMail can reach the server"), "{}", status(&h));
     assert_eq!(std::fs::read_dir(&dir).unwrap().count(), 0, "no backup yet");
     // And it offers to switch without what waits (the Outbox goes through Graph: nothing is left).
     assert_eq!(page(&h), Some("graphSwitch"));
@@ -338,7 +338,7 @@ fn after_signing_in_the_mail_run_goes_ahead() {
     // (The stand-in says no to every run.)
     assert_eq!(asked.lock().unwrap().len(), 1, "no second trip to Microsoft's page");
     assert!(!h.state().signing_in());
-    assert!(status(&h).starts_with("Signed in, but Microsoft still won't let MailCraft read the mail of owner@contoso.example"), "{}", status(&h));
+    assert!(status(&h).starts_with("Signed in, but Microsoft still won't let ictMail read the mail of owner@contoso.example"), "{}", status(&h));
     assert_ne!(h.state().session.sync_status, "Sending and receiving…");
     // The owner's own Send/Receive after that asks once more.
     h.state_mut().run("ui.sync", json!({})).unwrap();

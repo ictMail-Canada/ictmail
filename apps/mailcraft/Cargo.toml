@@ -4,8 +4,12 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 publish = false
-default-run = "mailcraft"
-description = "MailCraft desktop app"
+default-run = "ictmail"
+description = "ictMail desktop app"
+
+[[bin]]
+name = "ictmail"
+path = "src/main.rs"
 
 [lints]
 workspace = true
@@ -57,7 +61,7 @@ mailcraft-proto = { workspace = true }
 mailcraft-charset = { workspace = true }
 
 [build-dependencies]
-# Icon + VERSIONINFO for mailcraft.exe; build.rs only uses it when the target is Windows.
+# Icon + VERSIONINFO for ictmail.exe; build.rs only uses it when the target is Windows.
 winresource = "0.1.34"
 
 [target.'cfg(target_os = "macos")'.dependencies]

@@ -16,14 +16,14 @@ mod proof_tests;
 /// `$XDG_CONFIG_HOME/mailcraft` or `~/.config/mailcraft`.
 pub fn settings_dir() -> Option<PathBuf> {
     if cfg!(target_os = "macos") {
-        std::env::var_os("HOME").map(|h| PathBuf::from(h).join("Library/Application Support/MailCraft"))
+        std::env::var_os("HOME").map(|h| PathBuf::from(h).join("Library/Application Support/ictMail"))
     } else if cfg!(windows) {
-        std::env::var_os("APPDATA").map(|a| PathBuf::from(a).join("MailCraft"))
+        std::env::var_os("APPDATA").map(|a| PathBuf::from(a).join("ictMail"))
     } else {
         std::env::var_os("XDG_CONFIG_HOME")
             .map(PathBuf::from)
             .or_else(|| std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".config")))
-            .map(|c| c.join("mailcraft"))
+            .map(|c| c.join("ictmail"))
     }
 }
 
@@ -85,7 +85,7 @@ mod tests {
     fn settings_dir_is_the_apps_folder() {
         if let Some(d) = settings_dir() {
             let name = d.file_name().and_then(|n| n.to_str()).unwrap_or("");
-            assert!(name == "mailcraft" || name == "MailCraft", "{}", d.display());
+            assert!(name == "ictmail" || name == "ictMail", "{}", d.display());
         }
     }
 }

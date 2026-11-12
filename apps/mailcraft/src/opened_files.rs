@@ -55,7 +55,7 @@ pub fn base() -> Option<PathBuf> {
             .filter(|p| p.is_absolute())
             .or_else(|| std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".cache")))
     }?;
-    cache.is_absolute().then(|| cache.join("MailCraft").join("Attachments"))
+    cache.is_absolute().then(|| cache.join("ictMail").join("Attachments"))
 }
 
 /// The files opened in this run: where they go, and how many there have been.
@@ -242,7 +242,7 @@ mod tests {
     fn scratch(name: &str) -> PathBuf {
         let dir = std::env::temp_dir().join(format!("mailcraft-opened-{name}-{}", std::process::id()));
         let _ = fs::remove_dir_all(&dir);
-        dir.join("MailCraft").join("Attachments")
+        dir.join("ictMail").join("Attachments")
     }
 
     #[test]

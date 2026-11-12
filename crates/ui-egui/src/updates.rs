@@ -67,7 +67,7 @@ pub const GO_BACK: &str = "ui.goBackVersion";
 /// The refusal of either by an agent or a script.
 pub const OWNERS_CLICK: &str = "Restart to update is the owner's click.";
 /// Said once, the first time a new version is ready to install.
-pub const INSTALLS_ITSELF: &str = "MailCraft now installs its updates itself. Turn this off in File › About.";
+pub const INSTALLS_ITSELF: &str = "ictMail now installs its updates itself. Turn this off in File › About.";
 
 /// What the host found at this start about the last update it installed (versions as text,
 /// `0.5.1`; the host's own record, made safe here).
@@ -183,7 +183,7 @@ fn page_of(version: &Version) -> String {
 /// What is said of a newer release, in the status bar and in About.
 fn notice(release: &Release) -> String {
     let text =
-        if release.security { tl!("MailCraft {version} is available and fixes a security problem") } else { tl!("MailCraft {version} is available") };
+        if release.security { tl!("ictMail {version} is available and fixes a security problem") } else { tl!("ictMail {version} is available") };
     crate::i18n::fmt(text, &[("version", &release.version.to_string())])
 }
 
@@ -229,11 +229,11 @@ impl MailApp {
         if !std::mem::replace(&mut self.updates.start_said, true) {
             let start = &self.services.update_start;
             let said = if let Some(version) = start.not_installed.as_deref().and_then(version_of) {
-                Some(crate::i18n::fmt(tl!("MailCraft {version} wasn't installed: this version is still the one here."), &[("version", &version)]))
+                Some(crate::i18n::fmt(tl!("ictMail {version} wasn't installed: this version is still the one here."), &[("version", &version)]))
             } else {
                 start.not_gone_back.as_deref().and_then(version_of).map(|version| {
                     crate::i18n::fmt(
-                        tl!("Going back to MailCraft {version} didn't happen: this version is still the one here."),
+                        tl!("Going back to ictMail {version} didn't happen: this version is still the one here."),
                         &[("version", &version)],
                     )
                 })
@@ -377,10 +377,10 @@ impl MailApp {
         // the notice and nothing more.
         match answer {
             Ok(_) => {
-                log::info!("MailCraft {version} is downloaded and checked by its release signature");
+                log::info!("ictMail {version} is downloaded and checked by its release signature");
                 self.updates.downloaded = Some(version);
             }
-            Err(why) => log::info!("MailCraft {version} wasn't downloaded: {why}"),
+            Err(why) => log::info!("ictMail {version} wasn't downloaded: {why}"),
         }
     }
 
@@ -414,7 +414,7 @@ impl MailApp {
                 } else {
                     self.updates.newer = None;
                     if pressed {
-                        let said = crate::i18n::fmt(tl!("MailCraft is up to date ({version})."), &[("version", env!("CARGO_PKG_VERSION"))]);
+                        let said = crate::i18n::fmt(tl!("ictMail is up to date ({version})."), &[("version", env!("CARGO_PKG_VERSION"))]);
                         self.status(said.clone());
                         self.updates.said = Some(said);
                     }
@@ -422,7 +422,7 @@ impl MailApp {
             }
             Err(why) => {
                 // (The host's words name no address.)
-                log::info!("couldn't find out whether a new version of MailCraft is out: {why}");
+                log::info!("couldn't find out whether a new version of ictMail is out: {why}");
                 self.updates.retry_at = now.saturating_add(AFTER_A_FAILURE);
                 if pressed {
                     let said = crate::i18n::fmt(tl!("Couldn't find out whether a new version is out: {why}."), &[("why", &why)]);
@@ -465,7 +465,7 @@ impl MailApp {
             return Err(tl!(TURNED_OFF).to_string());
         }
         if self.services.update_download.is_none() {
-            return Err(tl!("This copy of MailCraft doesn't update itself.").to_string());
+            return Err(tl!("This copy of ictMail doesn't update itself.").to_string());
         }
         let on = match p.get("value") {
             None | Some(Value::Null) => !self.ui.update_install,
@@ -522,7 +522,7 @@ fn update_state(app: &MailApp) -> Value {
 /// question about checking for new versions.
 pub(crate) fn question(app: &mut MailApp, ui: &mut Ui) {
     if let Some((this, kept)) = app.go_back_offer() {
-        let said = crate::i18n::fmt(tl!("MailCraft {version} didn't start."), &[("version", &this)]);
+        let said = crate::i18n::fmt(tl!("ictMail {version} didn't start."), &[("version", &this)]);
         let back = crate::i18n::fmt(tl!("Go back to version {version}"), &[("version", &kept)]);
         bar(app, ui, "update_go_back", &said, &[("goBack", &back, true), ("keepVersion", tl!("Keep this version"), false)], |app, which| {
             let _ = if which == "goBack" { app.run(GO_BACK, json!({})) } else { app.run("ui.dismissUpdateNotice", json!({"notice": "didntStart"})) };
@@ -533,7 +533,7 @@ pub(crate) fn question(app: &mut MailApp, ui: &mut Ui) {
         });
     } else if app.updates.asking {
         let said = tl!(
-            "Check daily for new versions of MailCraft, and download and install them when you quit? Only GitHub is asked; nothing about you or your mail is sent."
+            "Check daily for new versions of ictMail, and download and install them when you quit? Only GitHub is asked; nothing about you or your mail is sent."
         );
         bar(app, ui, "update_question", said, &[("updateYes", tl!("Yes"), true), ("updateNo", tl!("No"), false)], |app, which| {
             let _ = app.run("ui.updateCheck", json!({"value": which == "updateYes"}));
@@ -616,7 +616,7 @@ pub(crate) fn status_item(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
     let size = crate::chrome::STATUS_TEXT;
     let link = ui.link(egui::RichText::new(tl!("Restart to update")).size(size).strong().color(t.accent_text));
     app.hit.add("restartToUpdate", 0, link.rect);
-    let link = link.on_hover_text(tl!("Close MailCraft, install the new version and start it again. Otherwise it is installed when you quit."));
+    let link = link.on_hover_text(tl!("Close ictMail, install the new version and start it again. Otherwise it is installed when you quit."));
     let said = ui.label(egui::RichText::new(ready_text(app, &version)).size(size).color(t.text_dim));
     app.hit.add("updateReady", 0, said.rect);
     ui.add_space(10.0);
@@ -650,7 +650,7 @@ pub(crate) fn about(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
                     let _ = app.run(RESTART, json!({}));
                 }
             });
-            ui.label(egui::RichText::new(tl!("Not now: it is installed when you quit MailCraft.")).color(t.text_dim));
+            ui.label(egui::RichText::new(tl!("Not now: it is installed when you quit ictMail.")).color(t.text_dim));
         }
     }
     if let Some(said) = app.updates.start_notice.clone() {
@@ -699,7 +699,7 @@ pub(crate) fn about(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
         "needsCheck" => (tl!("Needs Check for new versions."), t.text_dim),
         _ => (
             tl!(
-                "A new version is downloaded in the background, kept only when MailCraft's own release signature says it is ours, and installed when you restart to update or quit."
+                "A new version is downloaded in the background, kept only when ictMail's own release signature says it is ours, and installed when you restart to update or quit."
             ),
             t.text_dim,
         ),
@@ -839,7 +839,7 @@ mod tests {
         frame(&mut app);
         frame(&mut app);
         assert_eq!(host.asked.load(Ordering::Relaxed), 1);
-        assert_eq!(said(&app), Some(format!("MailCraft {} is available", newer())));
+        assert_eq!(said(&app), Some(format!("ictMail {} is available", newer())));
         assert_eq!(app.ui.update_told, newer());
         assert_eq!(app.ui.update_checked, NOW);
         assert_eq!(app.newer_release().unwrap().page, format!("https://github.com/UCS-Care-Group/mailcraft/releases/tag/v{}", newer()));
@@ -868,7 +868,7 @@ mod tests {
         app.ui.update_checked = 0;
         frame(&mut app);
         frame(&mut app);
-        assert_eq!(said(&app), Some(format!("MailCraft {next} is available and fixes a security problem")));
+        assert_eq!(said(&app), Some(format!("ictMail {next} is available and fixes a security problem")));
     }
 
     #[test]
@@ -885,7 +885,7 @@ mod tests {
         // Pressed: said.
         assert_eq!(app.run(CHECK, json!({})).unwrap()["pending"], "updateCheck");
         frame(&mut app);
-        assert_eq!(said(&app), Some(format!("MailCraft is up to date ({here}).")));
+        assert_eq!(said(&app), Some(format!("ictMail is up to date ({here}).")));
 
         // Failures: by itself, a line in the log and another try in an hour; pressed, said.
         *host.answer.lock().unwrap() = Err("GitHub couldn't be reached".into());
@@ -904,7 +904,7 @@ mod tests {
         *host.answer.lock().unwrap() = Ok(release("0.0.1", false));
         app.run(CHECK, json!({})).unwrap();
         frame(&mut app);
-        assert_eq!(said(&app), Some(format!("MailCraft is up to date ({here}).")));
+        assert_eq!(said(&app), Some(format!("ictMail is up to date ({here}).")));
         // What was told in an earlier run doesn't outlast an answer that has nothing newer.
         app.ui.update_told = newer();
         assert!(app.newer_release().is_none());
@@ -925,7 +925,7 @@ mod tests {
         app.run(CHECK, json!({})).unwrap();
         frame(&mut app);
         assert_eq!(host.asked.load(Ordering::Relaxed), 1);
-        assert_eq!(said(&app), Some(format!("MailCraft {} is available", newer())));
+        assert_eq!(said(&app), Some(format!("ictMail {} is available", newer())));
     }
 
     #[test]
@@ -1006,7 +1006,7 @@ mod tests {
         assert_eq!(*asked.lock().unwrap(), [newer()]);
         assert_eq!(app.updates.downloaded.as_ref().map(ToString::to_string), Some(newer()));
         // The owner is told the notice, as before.
-        assert_eq!(said(&app), Some(format!("MailCraft {} is available", newer())));
+        assert_eq!(said(&app), Some(format!("ictMail {} is available", newer())));
         // Not twice in a run.
         app.run(CHECK, json!({})).unwrap();
         frame(&mut app);
@@ -1277,13 +1277,13 @@ mod tests {
     #[test]
     fn an_update_that_wasnt_installed_is_said_at_the_next_start() {
         let mut app = ready_app(false, UpdateStart { not_installed: Some("9.0.0".into()), ..Default::default() });
-        let text = "MailCraft 9.0.0 wasn't installed: this version is still the one here.";
+        let text = "ictMail 9.0.0 wasn't installed: this version is still the one here.";
         assert_eq!(app.updates.start_notice.as_deref(), Some(text));
         app.status_msg = None;
         frame(&mut app);
         assert!(said(&app).is_none(), "once");
         let gone = ready_app(false, UpdateStart { not_gone_back: Some("0.1.0".into()), ..Default::default() });
-        assert!(gone.updates.start_notice.as_deref().is_some_and(|s| s.starts_with("Going back to MailCraft 0.1.0 didn't happen")));
+        assert!(gone.updates.start_notice.as_deref().is_some_and(|s| s.starts_with("Going back to ictMail 0.1.0 didn't happen")));
     }
 
     #[test]

@@ -154,13 +154,13 @@ pub(crate) fn refresh() {
     let spawned = std::thread::Builder::new().name("desktop-icons".into()).spawn(move || match refresh_in(&data) {
         Ok(0) => {}
         Ok(n) => {
-            log::info!("brought {n} of the desktop's icons of MailCraft up to this version's");
+            log::info!("brought {n} of the desktop's icons of ictMail up to this version's");
             nudge(&data);
         }
-        Err(e) => log::warn!("the desktop's icons of MailCraft couldn't be brought up to date: {}", e.kind()),
+        Err(e) => log::warn!("the desktop's icons of ictMail couldn't be brought up to date: {}", e.kind()),
     });
     if let Err(e) = spawned {
-        log::warn!("the desktop's icons of MailCraft weren't looked at: {}", e.kind());
+        log::warn!("the desktop's icons of ictMail weren't looked at: {}", e.kind());
     }
 }
 

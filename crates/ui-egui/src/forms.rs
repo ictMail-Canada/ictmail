@@ -4667,7 +4667,7 @@ pub(crate) mod rules {
             let words = if r.known() {
                 shown(&describe(mb, r), 600)
             } else {
-                tl!("Made in another program or on the web, with parts MailCraft can't show").to_string()
+                tl!("Made in another program or on the web, with parts ictMail can't show").to_string()
             };
             let shade = if r.enabled { t.text } else { t.text_disabled };
             paint_clipped(ui.painter(), pos2(rect.min.x, rect.min.y + 11.0), width, &shown(&r.name, 200), semibold(12.5), shade);
@@ -4689,7 +4689,7 @@ pub(crate) mod rules {
                 }
                 [(only, address)] => {
                     let tip = crate::i18n::fmt(
-                        tl!("Keep this rule on the server of {address}: it then runs there whether MailCraft is open or not, for that account's mail"),
+                        tl!("Keep this rule on the server of {address}: it then runs there whether ictMail is open or not, for that account's mail"),
                         &[("address", &shown(address, 80))],
                     );
                     if icon_button(ui, "server", &tip, 14.0, true).clicked() {
@@ -4697,7 +4697,7 @@ pub(crate) mod rules {
                     }
                 }
                 several => {
-                    let tip = tl!("Keep this rule on an account's server: choose which. It then runs there whether MailCraft is open or not, for that account's mail");
+                    let tip = tl!("Keep this rule on an account's server: choose which. It then runs there whether ictMail is open or not, for that account's mail");
                     let resp = icon_button(ui, "server", tip, 14.0, true);
                     egui::Popup::menu(&resp).show(|ui| {
                         for (id, address) in several {
@@ -4912,7 +4912,7 @@ pub(crate) mod rules {
                 }
                 let mark_of = |id: Id| marks.iter().find(|(m, _)| *m == id).map(|(_, m)| m.as_str()).unwrap_or("");
                 if on_server {
-                    heading(ui, t, tl!("On the server"), tl!("Run by the server as mail arrives, whether MailCraft is open or not"));
+                    heading(ui, t, tl!("On the server"), tl!("Run by the server as mail arrives, whether ictMail is open or not"));
                     for (i, r) in there.iter().enumerate() {
                         // A rule waiting to go stands after those the server has, and moves among them once it is there.
                         let up = i > 0 && there.get(i - 1).is_some_and(|p| p.on_server() == r.on_server());
@@ -4926,13 +4926,13 @@ pub(crate) mod rules {
                     if gone > 0 {
                         let said = tln!(
                             gone,
-                            "{n} rule deleted here is still on the server until MailCraft may change the server's rules (File › Info › Ask again).",
-                            "{n} rules deleted here are still on the server until MailCraft may change the server's rules (File › Info › Ask again)."
+                            "{n} rule deleted here is still on the server until ictMail may change the server's rules (File › Info › Ask again).",
+                            "{n} rules deleted here are still on the server until ictMail may change the server's rules (File › Info › Ask again)."
                         );
                         ui.label(egui::RichText::new(said).color(t.orange).size(11.5));
                     }
                     ui.add_space(6.0);
-                    heading(ui, t, tl!("On this computer"), tl!("Run by MailCraft as mail arrives, while it is open"));
+                    heading(ui, t, tl!("On this computer"), tl!("Run by ictMail as mail arrives, while it is open"));
                 }
                 for (i, r) in here.iter().enumerate() {
                     rule_row(ui, app, r, mark_of(r.id), (i > 0, i + 1 < here.len()), account, &servers, &mut run);
@@ -5132,24 +5132,24 @@ pub(crate) mod rules {
                 });
                 let (said, warn) = match cannot {
                     Some(NotOnServer::NoServer) => {
-                        (tl!("MailCraft keeps this account's rules on this computer: the rule runs while MailCraft is open.").to_string(), false)
+                        (tl!("ictMail keeps this account's rules on this computer: the rule runs while ictMail is open.").to_string(), false)
                     }
                     Some(why) => (
                         crate::i18n::fmt(
-                            tl!("This rule can't be kept on the server: {why}. It runs on this computer, while MailCraft is open."),
+                            tl!("This rule can't be kept on the server: {why}. It runs on this computer, while ictMail is open."),
                             &[("why", tl!(why.said()))],
                         ),
                         true,
                     ),
                     None if ticked && held => (
-                        tl!("It goes to the server once MailCraft may change the server's rules (File › Info › Ask again); until then it runs on this computer, while MailCraft is open.")
+                        tl!("It goes to the server once ictMail may change the server's rules (File › Info › Ask again); until then it runs on this computer, while ictMail is open.")
                             .to_string(),
                         true,
                     ),
                     None if ticked => {
-                        (tl!("It runs there whether MailCraft is open or not, and shows in Outlook on the web and on your phone.").to_string(), false)
+                        (tl!("It runs there whether ictMail is open or not, and shows in Outlook on the web and on your phone.").to_string(), false)
                     }
-                    None => (tl!("It runs on this computer, while MailCraft is open.").to_string(), false),
+                    None => (tl!("It runs on this computer, while ictMail is open.").to_string(), false),
                 };
                 // Wrapped within the dialog: a reason can be long.
                 tall_row(ui, "", |ui| {

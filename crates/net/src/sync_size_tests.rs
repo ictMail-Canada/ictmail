@@ -6,7 +6,7 @@
 use super::*;
 
 const HEADER: &[u8] = b"From: Bob <bob@example.org>\r\nTo: ada@example.org\r\nSubject: Big file\r\nMessage-ID: <big@example.org>\r\n\
-    X-MailCraft-Not-Downloaded: 1\r\n\r\n";
+    X-ictMail-Not-Downloaded: 1\r\n\r\n";
 
 #[test]
 fn a_message_too_large_has_its_size_on_the_server() {

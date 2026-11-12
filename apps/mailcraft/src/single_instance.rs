@@ -210,7 +210,7 @@ impl Guard {
             // Not asked for first: taken now if it can be (the window has it open already).
             None => {
                 let file = lock(&path).unwrap_or_else(|Taken| {
-                    log::warn!("another MailCraft holds the lock of the mailbox this window now has open");
+                    log::warn!("another ictMail holds the lock of the mailbox this window now has open");
                     None
                 });
                 (path, file)
@@ -224,7 +224,7 @@ impl Guard {
                 match write_key_file(&info, told) {
                     Ok(()) => Some(info),
                     Err(e) => {
-                        log::error!("a second MailCraft won't be able to reach this one: {e}");
+                        log::error!("a second ictMail won't be able to reach this one: {e}");
                         None
                     }
                 }
@@ -302,7 +302,7 @@ fn first(mailbox: &Path, lock: File, info_path: PathBuf) -> Guard {
     let (listener, port, key) = match listening.and_then(|(l, port)| random_key().map(|key| (l, port, key))) {
         Ok(ready) => ready,
         Err(e) => {
-            log::error!("a second MailCraft won't be able to reach this one: {e}");
+            log::error!("a second ictMail won't be able to reach this one: {e}");
             return guard;
         }
     };
@@ -310,7 +310,7 @@ fn first(mailbox: &Path, lock: File, info_path: PathBuf) -> Guard {
     // (Told again beside another mailbox the window opens later.)
     guard.held().told = Some(told.clone());
     if let Err(e) = write_key_file(&info_path, &told) {
-        log::error!("a second MailCraft won't be able to reach this one: {e}");
+        log::error!("a second ictMail won't be able to reach this one: {e}");
         return guard;
     }
     guard.held().info = Some(info_path);
@@ -346,7 +346,7 @@ fn serve(mut stream: TcpStream, tx: &Sender<Handed>, wake: &Mutex<Option<egui::C
     let handed = sorted(request.get("open"));
     if handed.refused > 0 {
         // (What was refused is not written down: a link can name people.)
-        log::warn!("a later start handed over {} things that aren't links or files MailCraft opens", handed.refused);
+        log::warn!("a later start handed over {} things that aren't links or files ictMail opens", handed.refused);
     }
     if tx.send(handed).is_err() {
         let _ = writeln!(stream, "{}", json!({"ok": false}));

@@ -31,7 +31,7 @@ fn a_message_written_from_a_jmap_account_isnt_left_in_its_outbox() {
     // (To the local account's address: a local account's mail is delivered there.)
     s.run("mail.new", &json!({"account": jmap, "to": "ada@example.org", "subject": "Lunch"})).unwrap();
     let why = s.run("compose.send", &json!({})).unwrap_err().to_string();
-    assert_eq!(why, "MailCraft doesn't send mail from a JMAP account yet: send this message from another account, or save it as a draft");
+    assert_eq!(why, "ictMail doesn't send mail from a JMAP account yet: send this message from another account, or save it as a draft");
     // Instead it stays as it is being written: nothing is queued, filed as sent or delivered.
     assert_eq!(s.compose.as_ref().map(|c| (c.account, c.to.as_str(), c.subject.as_str())), Some((jmap, "ada@example.org", "Lunch")));
     assert_eq!([FolderKind::Outbox, FolderKind::Sent].map(|kind| count(&s, jmap, kind)), [0, 0]);

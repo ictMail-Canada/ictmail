@@ -169,7 +169,7 @@ fn take(rx: &mut Option<Receiver<OwnKeysAnswer>>) -> Taken {
 
 /// What a job the host let go of is told.
 fn host_gone() -> String {
-    tl!("MailCraft's search for your keys stopped without an answer. Try again.").to_string()
+    tl!("ictMail's search for your keys stopped without an answer. Try again.").to_string()
 }
 
 /// Ask the host for the owner's keys.
@@ -270,7 +270,7 @@ fn imported(app: &mut MailApp, result: Result<Imported, String>) {
             }
             app.ui.imported_keys.retain(|k| k.store_key != key.store_key);
             app.ui.imported_keys.push(key);
-            let said = tl!("Imported: MailCraft keeps it in the system's credential store, still protected by its passphrase.").to_string();
+            let said = tl!("Imported: ictMail keeps it in the system's credential store, still protected by its passphrase.").to_string();
             app.status(said.clone());
             app.security.said = Some((true, said));
         }
@@ -293,7 +293,7 @@ fn imported(app: &mut MailApp, result: Result<Imported, String>) {
 /// What an import is told when the page lists as many imported keys as it keeps.
 fn full() -> String {
     crate::i18n::fmt(
-        tl!("MailCraft keeps at most {n} keys imported here, and has that many: remove one you don't use, then import this one."),
+        tl!("ictMail keeps at most {n} keys imported here, and has that many: remove one you don't use, then import this one."),
         &[("n", &crate::own_keys::MAX_IMPORTED.to_string())],
     )
 }
@@ -382,7 +382,7 @@ pub(crate) fn owners_press(app: &mut MailApp, id: &str, p: &Value) -> Option<Res
 
 fn no_host() -> &'static str {
     tl!(
-        "Your own certificates and keys are used by MailCraft's desktop program: here Digital signatures are checked, and nothing is signed or decrypted."
+        "Your own certificates and keys are used by ictMail's desktop program: here Digital signatures are checked, and nothing is signed or decrypted."
     )
 }
 
@@ -396,7 +396,7 @@ fn remove_private_key(app: &mut MailApp, p: &Value) -> Result<Value, String> {
         let who = key.addresses.first().cloned().unwrap_or_else(|| key.name.clone());
         let text = crate::i18n::fmt(
             tl!(
-                "Remove your {format} key for {who} from this computer? It is deleted from the system's credential store, and MailCraft can't sign with it any more. Keep a copy of the file if you may need it again."
+                "Remove your {format} key for {who} from this computer? It is deleted from the system's credential store, and ictMail can't sign with it any more. Keep a copy of the file if you may need it again."
             ),
             &[("format", format_name(key.format)), ("who", &crate::own_keys::clip(&who))],
         );
@@ -582,16 +582,16 @@ pub(crate) fn show_dialog(app: &mut MailApp, ctx: &egui::Context, dialog: &mut S
                 });
                 let note = match (d.format, place) {
                     (SignatureFormat::Smime, SmimePlace::WindowsStore) => {
-                        tl!("Windows keeps the certificate and its private key in your certificate store, and asks you before MailCraft uses it.")
+                        tl!("Windows keeps the certificate and its private key in your certificate store, and asks you before ictMail uses it.")
                     }
                     (SignatureFormat::Smime, SmimePlace::Keychain) => {
-                        tl!("Your keychain keeps the certificate and its private key, and macOS asks you before MailCraft uses it.")
+                        tl!("Your keychain keeps the certificate and its private key, and macOS asks you before ictMail uses it.")
                     }
                     (SignatureFormat::Smime, _) => tl!(
-                        "MailCraft keeps the file, still protected by its passphrase, in the system's credential store. Only an ECDSA certificate (P-256 or P-384) is kept this way: an RSA one belongs on a smartcard or token (PKCS#11)."
+                        "ictMail keeps the file, still protected by its passphrase, in the system's credential store. Only an ECDSA certificate (P-256 or P-384) is kept this way: an RSA one belongs on a smartcard or token (PKCS#11)."
                     ),
                     (SignatureFormat::OpenPgp, _) => tl!(
-                        "MailCraft reads the key without its passphrase and keeps the file, still protected by it, in the system's credential store. The key must have a passphrase and sign with Ed25519 or ECDSA; MailCraft asks for the passphrase when you sign."
+                        "ictMail reads the key without its passphrase and keeps the file, still protected by it, in the system's credential store. The key must have a passphrase and sign with Ed25519 or ECDSA; ictMail asks for the passphrase when you sign."
                     ),
                 };
                 ui.add(egui::Label::new(RichText::new(note).color(t.text_dim).size(11.5)).wrap());
@@ -771,7 +771,7 @@ fn own_keys(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
                 ui,
                 &crate::i18n::fmt(
                     tl!(
-                        "Which keys your GnuPG trusts fully, last read: {when}. It is read again when MailCraft comes back to the front, and by Refresh."
+                        "Which keys your GnuPG trusts fully, last read: {when}. It is read again when ictMail comes back to the front, and by Refresh."
                     ),
                     &[("when", &when)],
                 ),
@@ -779,7 +779,7 @@ fn own_keys(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
             );
         }
         if listing.smime == SmimePlace::None {
-            dim(ui, tl!("This system has no place MailCraft knows for S/MIME certificates with a private key."), t);
+            dim(ui, tl!("This system has no place ictMail knows for S/MIME certificates with a private key."), t);
         }
         for line in listing.trouble.iter().take(8) {
             dim(ui, line, t);
@@ -929,7 +929,7 @@ pub(crate) fn card_key_line(app: &MailApp, ui: &mut Ui, key: &ContactKey, t: &To
             KeyKind::Uri => {
                 badge(ui, tl!("Link"), t);
                 ui.add(egui::Label::new(RichText::new(crate::own_keys::clip(&key.uri)).color(t.text).size(12.0)).truncate())
-                    .on_hover_text(tl!("Where the card says the key is: MailCraft doesn't fetch it."));
+                    .on_hover_text(tl!("Where the card says the key is: ictMail doesn't fetch it."));
                 return;
             }
             KeyKind::X509 => badge(ui, "S/MIME", t),

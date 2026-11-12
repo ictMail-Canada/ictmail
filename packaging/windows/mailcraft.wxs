@@ -1,75 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  MailCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus its UI and Util extensions:
+  ictMail MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus its UI and Util extensions:
   `wix extension add -g WixToolset.UI.wixext/5.0.2` and the same for WixToolset.Util.wixext).
   Built by package.ps1:
 
     wix build mailcraft.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
-      -d Version=1.2.3 -d BinDir=... -d IconPath=... -d LicenseRtf=... -o out.msi
+      -d Version=1.2.3 -d BinDir=... -d IconPath=... -d LicenseRtf=... -d BannerBmp=... -d DialogBmp=... -o out.msi
 
   Per-machine install into Program Files with a Start Menu shortcut. The installer shows the
-  standard WiX dialogs: welcome + license, progress, and a finish page.
+  standard WiX dialogs: welcome + license, progress, and a finish page. The dialog set is
+  WiX's WixUI_Minimal replicated below (the UI extension's own ExitDialog cannot be changed,
+  and the finish page needs a second checkbox), with ictMail's banner and side bitmaps
+  (WixUIBannerBmp/WixUIDialogBmp, made by packaging/windows/make-bmps.py) and a finish page
+  that offers to launch ictMail and to put a shortcut on the desktop (both ticked by
+  default). The desktop shortcut is made by a custom action after the install finishes —
+  the finish page runs once the files are already in place, so it cannot be an installed
+  component. Silent installs (/qn) never show the page and make no desktop shortcut.
+  package.ps1 builds the license RTF from LICENSE-MIT and LICENSE-APACHE.
 
-  UpgradeCode and the component GUIDs below belong to MailCraft alone. Never copy them from (or
+  UpgradeCode and the component GUIDs below belong to ictMail alone. Never copy them from (or
   into) a sibling Craft app: Windows Installer treats every package sharing an UpgradeCode as one
   product, so a shared code makes one app's installer refuse to install ("a newer version is
   already installed") or silently uninstall the other. packaging-lint.yml checks this.
 -->
-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Package
-      Name="MailCraft"
-      Manufacturer="MailCraft contributors"
+      Name="ictMail"
+      Manufacturer="ictTech"
       Version="$(var.Version)"
       UpgradeCode="647FB3CC-7876-4DC8-84D9-CE2DD295D1C7"
       Scope="perMachine"
       Compressed="yes"
       Language="1033">
-    <SummaryInformation Description="MailCraft mail and calendar" Manufacturer="MailCraft contributors" />
+    <SummaryInformation Description="ictMail mail and calendar" Manufacturer="ictTech" />
     <!-- Any other version replaces the one installed: a newer one, the same X.Y.Z (successive
          pre-releases of one X.Y.Z replace each other; MSI versions are numeric, so 1.2.3-rc.1 and
          1.2.3-rc.2 are both 1.2.3; AllowDowngrades takes in AllowSameVersionUpgrades) and an
-         older one. Downgrades are allowed so that MailCraft can go back to the version an update replaced, when the
+         older one. Downgrades are allowed so that ictMail can go back to the version an update replaced, when the
          new one doesn't start (apps/mailcraft/src/self_update.rs): installing this package over
-         a newer MailCraft replaces it. The mailbox is in the user's own folder either way. -->
+         a newer ictMail replaces it. The mailbox is in the user's own folder either way. -->
     <MajorUpgrade AllowDowngrades="yes" />
     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
-    <Icon Id="MailcraftIcon.ico" SourceFile="$(var.IconPath)" />
-    <Property Id="ARPPRODUCTICON" Value="MailcraftIcon.ico" />
-    <Property Id="ARPURLINFOABOUT" Value="https://github.com/UCS-Care-Group/mailcraft" />
-    <Property Id="ARPURLUPDATEINFO" Value="https://github.com/UCS-Care-Group/mailcraft" />
-    <Property Id="ARPHELPLINK" Value="https://github.com/UCS-Care-Group/mailcraft/issues" />
+    <Icon Id="IctMailIcon.ico" SourceFile="$(var.IconPath)" />
+    <Property Id="ARPPRODUCTICON" Value="IctMailIcon.ico" />
+    <Property Id="ARPURLINFOABOUT" Value="https://ictmail.ca" />
+    <Property Id="ARPURLUPDATEINFO" Value="https://ictmail.ca" />
+    <Property Id="ARPHELPLINK" Value="https://ictmail.ca" />
 
-    <!-- Installer UI (#198): WixUI_Minimal is welcome + license, progress, then a finish page so
-         people can see the install worked. Its dialogs and bitmaps are WiX's own
-         (WixToolset.UI.wixext); package.ps1 builds the license RTF from LICENSE-MIT and
-         LICENSE-APACHE. The finish page offers to launch MailCraft (ticked by default) through
-         WixShellExec (WixToolset.Util.wixext); silent installs (/qn) never show it. -->
+    <!-- Installer UI: the WixUI_Minimal dialog set, copied from the UI extension's own
+         WixUI_Minimal.wxs (TextStyles, DialogRefs and Publishes are its, verbatim where they
+         can be) with two changes: the finish page is ours (ExitDialog below) so it can carry
+         the desktop-shortcut checkbox, and the banner/side bitmaps are ictMail's. The
+         launch-on-finish action is WixShellExec (WixToolset.Util.wixext); the desktop
+         shortcut is WixQuietExec running PowerShell's WScript.Shell, since the .lnk must be
+         made after the install and Windows Installer has no post-install shortcut table.
+         Both are immediate, impersonated custom actions: they run as the person who clicked
+         Finish, so [DesktopFolder] is their desktop. Return="ignore": a shortcut that can't
+         be made never fails the install. The finish page only shows for a fresh install or
+         upgrade (NOT Installed keeps it — and both actions — off repairs and uninstalls). -->
     <WixVariable Id="WixUILicenseRtf" Value="$(var.LicenseRtf)" />
-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch MailCraft" />
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.BannerBmp)" />
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch ictMail" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+    <Property Id="DESKTOPSHORTCUT" Value="1" />
     <Property Id="WixShellExecTarget" Value="[#MailcraftExe]" />
+    <!-- The whole command line of the shortcut maker. It must begin with a quoted program
+         name (WixQuietExec's rule); [SystemFolder] is the Windows folder of the package's own
+         bitness, where PowerShell always lives. Join-Path takes [DesktopFolder] with or
+         without its trailing backslash. -->
+    <Property Id="WixQuietExecCmdLine" Value="&quot;[SystemFolder]WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -Command &quot;$ws=New-Object -ComObject WScript.Shell;$lnk=Join-Path '[DesktopFolder]' 'ictMail.lnk';$s=$ws.CreateShortcut($lnk);$s.TargetPath='[#MailcraftExe]';$s.WorkingDirectory='[INSTALLFOLDER]';$s.IconLocation='[#MailcraftExe],0';$s.Description='ictMail mail and calendar';$s.Save()&quot;" />
     <CustomAction Id="LaunchMailcraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec"
         Impersonate="yes" Return="ignore" />
+    <CustomAction Id="CreateDesktopShortcut" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixQuietExec"
+        Impersonate="yes" Return="ignore" />
     <UI>
-      <ui:WixUI Id="WixUI_Minimal" />
-      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchMailcraft"
-          Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
+      <!-- Everything below that is not ours is WixUI_Minimal's, kept so the dialogs, their
+           wiring (maintenance, patch and error flows) and the common texts and bitmaps behave
+           exactly as the stock set does. -->
+      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
+      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
+      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+      <Property Id="ARPNOMODIFY" Value="1" />
+
+      <DialogRef Id="ErrorDlg" />
+      <DialogRef Id="FatalError" />
+      <DialogRef Id="FilesInUse" />
+      <DialogRef Id="MsiRMFilesInUse" />
+      <DialogRef Id="PrepareDlg" />
+      <DialogRef Id="ProgressDlg" />
+      <DialogRef Id="ResumeDlg" />
+      <DialogRef Id="UserExit" />
+      <DialogRef Id="WelcomeDlg" />
+      <DialogRef Id="WelcomeEulaDlg" />
+
+      <!-- The finish page: the extension's ExitDialog plus a desktop-shortcut checkbox. It has
+           its own Id (IctMailExitDialog) so the UI extension's ExitDialog fragment is never
+           pulled in — WiX links a library fragment for every symbol a package references, and
+           a second "ExitDialog" would be a duplicate. The optional launch checkbox keeps its
+           WIXUI_EXITDIALOGOPTIONAL* wiring. -->
+      <Dialog Id="IctMailExitDialog" Width="370" Height="270" Title="!(loc.ExitDialog_Title)">
+        <Control Id="Finish" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Cancel="yes" Text="!(loc.WixUIFinish)" />
+        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Disabled="yes" Text="!(loc.WixUICancel)" />
+        <Control Id="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" TabSkip="no" Text="!(loc.ExitDialogBitmap)" />
+        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Disabled="yes" Text="!(loc.WixUIBack)" />
+        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+        <Control Id="Description" Type="Text" X="135" Y="70" Width="220" Height="34" Transparent="yes" NoPrefix="yes" Text="!(loc.ExitDialogDescription)" />
+        <Control Id="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Transparent="yes" NoPrefix="yes" Text="!(loc.ExitDialogTitle)" />
+        <Control Id="OptionalText" Type="Text" X="135" Y="106" Width="220" Height="22" Transparent="yes" NoPrefix="yes" Hidden="yes" Text="[WIXUI_EXITDIALOGOPTIONALTEXT]" ShowCondition="WIXUI_EXITDIALOGOPTIONALTEXT AND NOT Installed" />
+        <Control Id="OptionalCheckBox" Type="CheckBox" X="135" Y="132" Width="220" Height="20" Hidden="yes" Property="WIXUI_EXITDIALOGOPTIONALCHECKBOX" CheckBoxValue="1" Text="[WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT]" ShowCondition="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT AND NOT Installed" />
+        <Control Id="DesktopCheckBox" Type="CheckBox" X="135" Y="160" Width="220" Height="20" Hidden="yes" Property="DESKTOPSHORTCUT" CheckBoxValue="1" Text="Create a desktop shortcut" ShowCondition="NOT Installed" />
+      </Dialog>
+
+      <InstallUISequence>
+        <Show Dialog="IctMailExitDialog" OnExit="success" />
+      </InstallUISequence>
+      <AdminUISequence>
+        <Show Dialog="IctMailExitDialog" OnExit="success" />
+      </AdminUISequence>
+
+      <Publish Dialog="IctMailExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999" />
+      <Publish Dialog="IctMailExitDialog" Control="Finish" Event="DoAction" Value="LaunchMailcraft" Order="1" Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
+      <Publish Dialog="IctMailExitDialog" Control="Finish" Event="DoAction" Value="CreateDesktopShortcut" Order="2" Condition="DESKTOPSHORTCUT = 1 AND NOT Installed" />
+
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" />
+      <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg" />
+      <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg" />
+      <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg" />
+      <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Condition="Installed AND PATCH" />
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" Condition="Installed AND PATCH" />
+
+      <!-- The Print button on the license page runs the UI extension's per-architecture
+           WixUIPrintEula custom action (the arch fragments' whole content). -->
+      <?if $(sys.BUILDARCH) = x86 ?>
+      <Publish Dialog="WelcomeEulaDlg" Control="Print" Event="DoAction" Value="WixUIPrintEula_X86" />
+      <?elseif $(sys.BUILDARCH) = x64 ?>
+      <Publish Dialog="WelcomeEulaDlg" Control="Print" Event="DoAction" Value="WixUIPrintEula_X64" />
+      <?elseif $(sys.BUILDARCH) = arm64 ?>
+      <Publish Dialog="WelcomeEulaDlg" Control="Print" Event="DoAction" Value="WixUIPrintEula_A64" />
+      <?endif?>
+
+      <InstallUISequence>
+        <Show Dialog="override WelcomeDlg" Before="WelcomeEulaDlg" Condition="Installed AND PATCH" />
+      </InstallUISequence>
+
+      <UIRef Id="WixUI_Common" />
     </UI>
 
-    <!-- An organisation turns MailCraft's updating by itself off for every user of the computer
+    <!-- An organisation turns ictMail's updating by itself off for every user of the computer
          by installing with DISABLEAUTOMATICUPDATES=1
-         (`msiexec /i mailcraft-….msi DISABLEAUTOMATICUPDATES=1`): the policy value the program
-         reads (HKLM\Software\Policies\MailCraft, DisableAutomaticUpdates = 1) is written, and
+         (`msiexec /i ictmail-….msi DISABLEAUTOMATICUPDATES=1`): the policy value the program
+         reads (HKLM\Software\Policies\ictMail, DisableAutomaticUpdates = 1) is written, and
          removed again with the program. A Group Policy can set the same value instead. -->
     <Property Id="DISABLEAUTOMATICUPDATES" Secure="yes" />
 
     <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="INSTALLFOLDER" Name="MailCraft" />
+      <Directory Id="INSTALLFOLDER" Name="ictMail" />
     </StandardDirectory>
     <StandardDirectory Id="ProgramMenuFolder" />
 
-    <Feature Id="Main" Title="MailCraft" Level="1">
+    <Feature Id="Main" Title="ictMail" Level="1">
       <ComponentGroupRef Id="MailcraftFiles" />
     </Feature>
   </Package>
@@ -77,78 +170,78 @@
   <Fragment>
     <ComponentGroup Id="MailcraftFiles" Directory="INSTALLFOLDER">
       <Component Id="MailcraftApp" Guid="6883EF8E-7160-4B89-85C5-0DB6E7264E61">
-        <File Id="MailcraftExe" Source="$(var.BinDir)\mailcraft.exe" KeyPath="yes">
-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="MailCraft"
-              Description="MailCraft mail and calendar" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
-              Icon="MailcraftIcon.ico" IconIndex="0">
-            <!-- The AppUserModelID Windows knows MailCraft by: it shows the program's desktop
+        <File Id="MailcraftExe" Source="$(var.BinDir)\ictmail.exe" KeyPath="yes">
+          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="ictMail"
+              Description="ictMail mail and calendar" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
+              Icon="IctMailIcon.ico" IconIndex="0">
+            <!-- The AppUserModelID Windows knows ictMail by: it shows the program's desktop
                  alerts (toasts) only for a program it knows by such a shortcut
                  (apps/mailcraft/src/alerts.rs). -->
-            <ShortcutProperty Key="System.AppUserModel.ID" Value="MailCraft.MailCraft" />
+            <ShortcutProperty Key="System.AppUserModel.ID" Value="ictMail.ictMail" />
           </Shortcut>
         </File>
 
-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\mailcraft.exe" Value="[#MailcraftExe]" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\ictmail.exe" Value="[#MailcraftExe]" Type="string" />
       </Component>
 
-      <!-- What MailCraft opens. Each file type gets a MailCraft ProgId (name, icon, open command)
-           and is listed under the extension's OpenWithProgids, so MailCraft shows in Explorer's "Open
-           with"; messages, calendar files and contact cards are also MailCraft's Capabilities
-           (RegisteredApplications), as is the mailto: link type, so MailCraft appears in Settings ›
+      <!-- What ictMail opens. Each file type gets a ictMail ProgId (name, icon, open command)
+           and is listed under the extension's OpenWithProgids, so ictMail shows in Explorer's "Open
+           with"; messages, calendar files and contact cards are also ictMail's Capabilities
+           (RegisteredApplications), as is the mailto: link type, so ictMail appears in Settings ›
            Default apps, where the owner makes it the mail program. Nothing here sets a default for a
            type another program may own: the installer never takes over .eml, .ics, .vcf or mailto:.
-           A mailbox file (.mailcraft) is MailCraft's own and opens with it. A second start hands the
+           A mailbox file (.mailcraft) is ictMail's own and opens with it. A second start hands the
            file or link to the window that is already open (apps/mailcraft/src/single_instance.rs).
            Removed again on uninstall. -->
       <Component Id="MailcraftFileTypes" Guid="D5E14B14-1BE0-4E96-A849-E5F04AC4D6BB">
-        <RegistryValue Root="HKLM" Key="Software\RegisteredApplications" Name="MailCraft" Value="Software\MailCraft\Capabilities" Type="string" KeyPath="yes" />
-        <RegistryValue Root="HKLM" Key="Software\MailCraft\Capabilities" Name="ApplicationName" Value="MailCraft" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\MailCraft\Capabilities" Name="ApplicationDescription" Value="Mail, calendar, contacts and tasks; opens messages, calendar files and contact cards." Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\MailCraft\Capabilities" Name="ApplicationIcon" Value="&quot;[#MailcraftExe]&quot;,0" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\mailcraft.exe" Name="FriendlyAppName" Value="MailCraft" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\mailcraft.exe\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\RegisteredApplications" Name="ictMail" Value="Software\ictMail\Capabilities" Type="string" KeyPath="yes" />
+        <RegistryValue Root="HKLM" Key="Software\ictMail\Capabilities" Name="ApplicationName" Value="ictMail" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\ictMail\Capabilities" Name="ApplicationDescription" Value="Mail, calendar, contacts and tasks; opens messages, calendar files and contact cards." Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\ictMail\Capabilities" Name="ApplicationIcon" Value="&quot;[#MailcraftExe]&quot;,0" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\ictmail.exe" Name="FriendlyAppName" Value="ictMail" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\ictmail.exe\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
 
-        <ProgId Id="MailCraft.Message" Description="Email Message" Icon="MailcraftExe" IconIndex="0" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\MailCraft.Message\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\.eml\OpenWithProgids" Name="MailCraft.Message" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\mailcraft.exe\SupportedTypes" Name=".eml" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\MailCraft\Capabilities\FileAssociations" Name=".eml" Value="MailCraft.Message" Type="string" />
+        <ProgId Id="ictMail.Message" Description="Email Message" Icon="MailcraftExe" IconIndex="0" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\ictMail.Message\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\.eml\OpenWithProgids" Name="ictMail.Message" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\ictmail.exe\SupportedTypes" Name=".eml" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\ictMail\Capabilities\FileAssociations" Name=".eml" Value="ictMail.Message" Type="string" />
 
-        <ProgId Id="MailCraft.Calendar" Description="iCalendar File" Icon="MailcraftExe" IconIndex="0" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\MailCraft.Calendar\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\.ics\OpenWithProgids" Name="MailCraft.Calendar" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\mailcraft.exe\SupportedTypes" Name=".ics" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\MailCraft\Capabilities\FileAssociations" Name=".ics" Value="MailCraft.Calendar" Type="string" />
+        <ProgId Id="ictMail.Calendar" Description="iCalendar File" Icon="MailcraftExe" IconIndex="0" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\ictMail.Calendar\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\.ics\OpenWithProgids" Name="ictMail.Calendar" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\ictmail.exe\SupportedTypes" Name=".ics" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\ictMail\Capabilities\FileAssociations" Name=".ics" Value="ictMail.Calendar" Type="string" />
 
-        <ProgId Id="MailCraft.Contact" Description="vCard File" Icon="MailcraftExe" IconIndex="0" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\MailCraft.Contact\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\.vcf\OpenWithProgids" Name="MailCraft.Contact" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\mailcraft.exe\SupportedTypes" Name=".vcf" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\MailCraft\Capabilities\FileAssociations" Name=".vcf" Value="MailCraft.Contact" Type="string" />
+        <ProgId Id="ictMail.Contact" Description="vCard File" Icon="MailcraftExe" IconIndex="0" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\ictMail.Contact\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\.vcf\OpenWithProgids" Name="ictMail.Contact" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\ictmail.exe\SupportedTypes" Name=".vcf" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\ictMail\Capabilities\FileAssociations" Name=".vcf" Value="ictMail.Contact" Type="string" />
 
-        <ProgId Id="MailCraft.MailFolder" Description="Mail Folder File" Icon="MailcraftExe" IconIndex="0" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\MailCraft.MailFolder\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\.mbox\OpenWithProgids" Name="MailCraft.MailFolder" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\mailcraft.exe\SupportedTypes" Name=".mbox" Value="" Type="string" />
+        <ProgId Id="ictMail.MailFolder" Description="Mail Folder File" Icon="MailcraftExe" IconIndex="0" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\ictMail.MailFolder\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\.mbox\OpenWithProgids" Name="ictMail.MailFolder" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\ictmail.exe\SupportedTypes" Name=".mbox" Value="" Type="string" />
 
-        <ProgId Id="MailCraft.Mailbox" Description="MailCraft Mailbox" Icon="MailcraftExe" IconIndex="0" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\MailCraft.Mailbox\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\.mailcraft\OpenWithProgids" Name="MailCraft.Mailbox" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\mailcraft.exe\SupportedTypes" Name=".mailcraft" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\MailCraft\Capabilities\FileAssociations" Name=".mailcraft" Value="MailCraft.Mailbox" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\.mailcraft" Value="MailCraft.Mailbox" Type="string" />
+        <ProgId Id="ictMail.Mailbox" Description="ictMail Mailbox" Icon="MailcraftExe" IconIndex="0" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\ictMail.Mailbox\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\.mailcraft\OpenWithProgids" Name="ictMail.Mailbox" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\ictmail.exe\SupportedTypes" Name=".mailcraft" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\ictMail\Capabilities\FileAssociations" Name=".mailcraft" Value="ictMail.Mailbox" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\.mailcraft" Value="ictMail.Mailbox" Type="string" />
 
         <!-- mailto: links. `URL Protocol` marks the ProgId as a link handler. -->
-        <ProgId Id="MailCraft.Url.mailto" Description="MailCraft Mail Link" Icon="MailcraftExe" IconIndex="0" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\MailCraft.Url.mailto" Name="URL Protocol" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\MailCraft.Url.mailto\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\MailCraft\Capabilities\URLAssociations" Name="mailto" Value="MailCraft.Url.mailto" Type="string" />
+        <ProgId Id="ictMail.Url.mailto" Description="ictMail Mail Link" Icon="MailcraftExe" IconIndex="0" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\ictMail.Url.mailto" Name="URL Protocol" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\ictMail.Url.mailto\shell\open\command" Value="&quot;[#MailcraftExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\ictMail\Capabilities\URLAssociations" Name="mailto" Value="ictMail.Url.mailto" Type="string" />
       </Component>
       <Component Id="MailcraftUpdatePolicy" Guid="3B0C9E57-5A2D-4F0B-9C0E-7D8E2F61A4C3" Condition="DISABLEAUTOMATICUPDATES = 1">
-        <RegistryValue Root="HKLM" Key="Software\Policies\MailCraft" Name="DisableAutomaticUpdates" Value="1" Type="integer" KeyPath="yes" />
+        <RegistryValue Root="HKLM" Key="Software\Policies\ictMail" Name="DisableAutomaticUpdates" Value="1" Type="integer" KeyPath="yes" />
       </Component>
       <Component Id="MailcraftCli">
-        <File Id="MailcraftCliExe" Source="$(var.BinDir)\mailcraft-cli.exe" KeyPath="yes" />
+        <File Id="MailcraftCliExe" Source="$(var.BinDir)\ictmail-cli.exe" KeyPath="yes" />
       </Component>
     </ComponentGroup>
   </Fragment>

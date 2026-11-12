@@ -2223,7 +2223,7 @@ fn the_only_account_can_be_removed_in_file_info() {
     h.get_by_label("Remove").click();
     h.run_steps(3);
     let Some(crate::dialogs::Dialog::Confirm { ask, .. }) = &h.state().dialog else { panic!("no question") };
-    assert!(ask.text.contains("MailCraft will have no account afterwards"), "{}", ask.text);
+    assert!(ask.text.contains("ictMail will have no account afterwards"), "{}", ask.text);
     assert!(h.state().session.mailbox.account(only).is_some(), "only asked so far");
 
     // Not said for an account that isn't the last.
@@ -2287,7 +2287,7 @@ fn an_account_a_newer_version_added_is_said_to_be_one_and_left_out_of_send_recei
     let newer = mailcraft_model::Account { email: "ada@jmap.example".into(), kind: mailcraft_model::AccountKind::Unknown, ..Default::default() };
     let newer = a.session.mailbox.add_account(newer);
     let card = crate::backstage::account_detail(&a, a.session.mailbox.account(newer).unwrap());
-    assert_eq!(card, "Added by a newer version of MailCraft: send and receive with it there");
+    assert_eq!(card, "Added by a newer version of ictMail: send and receive with it there");
     assert_eq!(a.server_accounts(), vec![imap]);
     a.execute("ui.backstage", json!({"value": true, "page": "info"})).unwrap();
     let mut h = window(a);

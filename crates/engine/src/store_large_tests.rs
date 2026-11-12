@@ -76,7 +76,7 @@ fn a_one_file_mailbox_over_the_limit_that_is_not_a_mailbox_is_refused_and_left_a
     bytes.resize(usize::try_from(MAX_MAILBOX_JSON).unwrap() + 10, b'x');
     fs::write(&path, &bytes).unwrap();
     let e = open(&path).unwrap_err();
-    assert!(e.contains("isn't a MailCraft mailbox") || e.contains("too large"), "{e}");
+    assert!(e.contains("isn't a ictMail mailbox") || e.contains("too large"), "{e}");
     assert_eq!(fs::read(&path).unwrap(), bytes);
 }
 
@@ -87,7 +87,7 @@ fn a_big_file_that_is_not_a_mailbox_is_not_called_too_large() {
     // What a system leaves when it is cut off in the middle of a write: zeros.
     fs::write(&path, vec![0u8; usize::try_from(MAX_MAILBOX_JSON).unwrap() + 10]).unwrap();
     let e = open(&path).unwrap_err();
-    assert!(e.contains("isn't a MailCraft mailbox"), "{e}");
+    assert!(e.contains("isn't a ictMail mailbox"), "{e}");
     assert!(!e.contains("larger than"), "{e}");
 }
 
@@ -119,7 +119,7 @@ fn the_log_form_refuses_to_grow_past_what_it_opens_and_keeps_the_file_readable()
         mb.add_message(m).unwrap();
     }
     let e = save(&path, &mb).unwrap_err();
-    assert!(e.contains("more than MailCraft opens"), "{e}");
+    assert!(e.contains("more than ictMail opens"), "{e}");
     assert_eq!(fs::read(&path).unwrap(), before);
     assert_eq!(open(&path).unwrap().mailbox.messages.len(), 2_000);
 }

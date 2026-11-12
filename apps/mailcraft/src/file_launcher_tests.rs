@@ -26,7 +26,7 @@ fn not_found() -> std::io::Error {
 
 #[test]
 fn the_desktop_openers_are_tried_in_turn_each_with_the_path_alone() {
-    let p = "/home/u/.cache/MailCraft/Attachments/1/a b.pdf";
+    let p = "/home/u/.cache/ictMail/Attachments/1/a b.pdf";
     let commands = commands_for(Opener::XdgOpen, Path::new(p));
     assert_eq!(programs(&commands), ["xdg-open", "gio", "kde-open"]);
     let all: Vec<Vec<String>> = commands.iter().map(args).collect();

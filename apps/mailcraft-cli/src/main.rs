@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: MailCraft contributors
 // SPDX-License-Identifier: MIT OR Apache-2.0
-//! `mailcraft-cli`: MailCraft from the command line.
+//! `ictmail-cli`: MailCraft from the command line.
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
 
 use std::fmt;
@@ -12,18 +12,18 @@ use mailcraft_model::Mailbox;
 use serde_json::{Value, json};
 
 const USAGE: &str = "\
-mailcraft-cli — MailCraft from the command line
+ictmail-cli — ictMail from the command line
 
 USAGE:
-  mailcraft-cli info <mailbox>                  accounts and counts (JSON)
-  mailcraft-cli folders <mailbox>               the folder tree with counts (JSON)
-  mailcraft-cli list <mailbox> [--folder PATH] [--query Q] [--limit N]
+  ictmail-cli info <mailbox>                  accounts and counts (JSON)
+  ictmail-cli folders <mailbox>               the folder tree with counts (JSON)
+  ictmail-cli list <mailbox> [--folder PATH] [--query Q] [--limit N]
                                                 messages, newest first (JSON)
-  mailcraft-cli show <mailbox> <id>             one message in full (JSON)
-  mailcraft-cli import <mailbox> <file>... [--folder PATH]
+  ictmail-cli show <mailbox> <id>             one message in full (JSON)
+  ictmail-cli import <mailbox> <file>... [--folder PATH]
                                                 bring .eml, .mbox, .ics and .vcf files into a
                                                 mailbox (made if it doesn't exist) and save it
-  mailcraft-cli import-pst <mailbox> <file.pst> [--dry-run] [--under PATH]
+  ictmail-cli import-pst <mailbox> <file.pst> [--dry-run] [--under PATH]
                                                 the mail, contacts, calendar, tasks, notes and
                                                 journal of a .pst file;
                                                 mail into a new folder named after the file on this
@@ -34,26 +34,26 @@ USAGE:
                                                 MAILCRAFT_PST_PASSWORD. Prints the import report
                                                 (JSON) and saves the mailbox (not with --dry-run);
                                                 a second import skips what is already there
-  mailcraft-cli export <mailbox> <out> [--folder PATH] [--id N]
+  ictmail-cli export <mailbox> <out> [--folder PATH] [--id N]
                                                 by extension: .mbox (a folder), .eml (message --id),
                                                 .ics (the calendar), .vcf (the contacts),
                                                 .mailcraft (everything, in one file)
-  mailcraft-cli convert <in> <out>              between .mailcraft, .eml, .mbox, .ics and .vcf
-  mailcraft-cli run [--file F | --sample] --cmd 'id={json}' [--cmd ...] [--save OUT] [--print]
+  ictmail-cli convert <in> <out>              between .mailcraft, .eml, .mbox, .ics and .vcf
+  ictmail-cli run [--file F | --sample] --cmd 'id={json}' [--cmd ...] [--save OUT] [--print]
                                                 run commands headlessly, then save
-  mailcraft-cli sync <mailbox> [--account EMAIL]
+  ictmail-cli sync <mailbox> [--account EMAIL]
                                                 Send/Receive with the account's mail server; the
                                                 password is read from MAILCRAFT_PASSWORD. An account
                                                 that signs in on its provider's page prints the
                                                 page to open (application id: MAILCRAFT_MS_CLIENT_ID),
                                                 or takes a token from MAILCRAFT_ACCESS_TOKEN
-  mailcraft-cli detect <address> [--offline]    the mail servers and sign-in an address usually
+  ictmail-cli detect <address> [--offline]    the mail servers and sign-in an address usually
                                                 takes; for a domain it doesn't know it asks the
                                                 DNS who takes the domain's mail (only the domain
                                                 is sent)
-  mailcraft-cli commands [--json]               list every command
-  mailcraft-cli parity [--markdown]             feature-catalog parity
-  mailcraft-cli mcp [--connect HOST:PORT | --file F | --sample] [--files DIR] [--allow CLASS,...]
+  ictmail-cli commands [--json]               list every command
+  ictmail-cli parity [--markdown]             feature-catalog parity
+  ictmail-cli mcp [--connect HOST:PORT | --file F | --sample] [--files DIR] [--allow CLASS,...]
                                                 MCP server on stdio (headless, or bridged to the app).
                                                 Agents get only what the owner allows: files only
                                                 inside --files DIR; sending, deleting permanently,
@@ -64,7 +64,7 @@ USAGE:
                                                 Leaving or throwing away what the owner is writing
                                                 or changing is asked about in the app every time
                                                 (with input, the agent clicks as the owner does)
-  mailcraft-cli --version
+  ictmail-cli --version
 ";
 
 /// A session on the mailbox file at `path`: one self-contained file, or a mailbox as the app
@@ -170,7 +170,7 @@ fn positionals(command: &str, args: &[String], specs: &[OptionSpec]) -> Result<V
 enum Failure {
     /// A real error, reported on stderr with a failing exit status.
     Error(String),
-    /// Whoever read stdout closed it (`mailcraft-cli commands --json | head`): there is nobody left
+    /// Whoever read stdout closed it (`ictmail-cli commands --json | head`): there is nobody left
     /// to write to, so stop quietly and exit 0 like other command-line tools.
     StdoutClosed,
 }
@@ -301,7 +301,7 @@ fn export_command(out: &str, id: Option<u64>) -> Result<(&'static str, Value), S
         "mbox" | "mbx" => ("file.exportFolder", json!({"path": out})),
         "eml" => match id {
             Some(id) => ("file.exportMessage", json!({"path": out, "id": id})),
-            None => return Err(format!("{out}: which message? pass --id N (see `mailcraft-cli list`)")),
+            None => return Err(format!("{out}: which message? pass --id N (see `ictmail-cli list`)")),
         },
         "ics" | "ical" => ("file.exportCalendar", json!({"path": out})),
         "vcf" | "vcard" => ("file.exportContacts", json!({"path": out})),
@@ -606,7 +606,7 @@ fn run(args: &[String]) -> Result<(), Failure> {
             let backend: Box<dyn mailcraft_mcp::Backend> = match arg_value(&rest, "--connect") {
                 Some(addr) => Box::new(
                     mailcraft_mcp::Remote::connect(&addr)
-                        .map_err(|e| format!("mcp: can't reach the MailCraft app at {addr}: {e}"))?
+                        .map_err(|e| format!("mcp: can't reach the ictMail app at {addr}: {e}"))?
                         .with_allow(allow.clone()),
                 ),
                 None => {
@@ -623,7 +623,7 @@ fn run(args: &[String]) -> Result<(), Failure> {
             mailcraft_mcp::Server::with_policy(backend, policy).serve(std::io::stdin().lock(), std::io::stdout().lock())?;
             Ok(())
         }
-        "--version" | "-V" => write_stdout(|o| writeln!(o, "mailcraft-cli {}", env!("CARGO_PKG_VERSION"))),
+        "--version" | "-V" => write_stdout(|o| writeln!(o, "ictmail-cli {}", env!("CARGO_PKG_VERSION"))),
         "" | "-h" | "--help" | "help" => write_stdout(|o| write!(o, "{USAGE}")),
         other => Err(Failure::Error(format!("unknown command `{other}`\n\n{USAGE}"))),
     }
@@ -683,7 +683,7 @@ mod tests {
 
     #[test]
     fn a_scripted_run_changes_the_sample() {
-        let dir = std::env::temp_dir().join(format!("mailcraft-cli-test-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("ictmail-cli-test-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         let out = dir.join("out.mailcraft").to_string_lossy().to_string();
         run(&strings(&[
@@ -712,7 +712,7 @@ mod tests {
 
     #[test]
     fn a_mailbox_kept_with_its_content_folder_opens_exports_and_converts() {
-        let dir = std::env::temp_dir().join(format!("mailcraft-cli-store-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("ictmail-cli-store-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&dir);
         std::fs::create_dir_all(&dir).unwrap();
         let file = |name: &str| dir.join(name).to_string_lossy().to_string();
@@ -755,7 +755,7 @@ mod tests {
     /// file is left as it was.
     #[test]
     fn sync_makes_no_run_of_a_jmap_account_yet() {
-        let dir = std::env::temp_dir().join(format!("mailcraft-cli-jmap-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("ictmail-cli-jmap-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&dir);
         std::fs::create_dir_all(&dir).unwrap();
         let path = dir.join("jmap.mailcraft").to_string_lossy().to_string();

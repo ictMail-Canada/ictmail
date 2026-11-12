@@ -51,7 +51,7 @@ use crate::http;
 
 /// MailCraft's marker: a named string property of a property set of MailCraft's own, which
 /// nothing but MailCraft reads.
-pub(crate) const MARKER: &str = "String {6d1c4e3a-8f2b-4c5d-9e0a-1b2c3d4e5f60} Name MailCraftMarker";
+pub(crate) const MARKER: &str = "String {6d1c4e3a-8f2b-4c5d-9e0a-1b2c3d4e5f60} Name ictMailMarker";
 /// Most categories taken from the server's answer, and longest name.
 const MAX_CATEGORIES: usize = 25;
 const MAX_CATEGORY: usize = 255;

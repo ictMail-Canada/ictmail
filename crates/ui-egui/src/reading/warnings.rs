@@ -89,7 +89,7 @@ fn said(w: &Warning, m: &Message, links: usize) -> (String, String) {
             tl!("Not every layout checked.").to_string(),
             format!(
                 "{} {}",
-                tl!("This message lays itself out in more ways than MailCraft could check, so a link in one of them may go somewhere other than its text says."),
+                tl!("This message lays itself out in more ways than ictMail could check, so a link in one of them may go somewhere other than its text says."),
                 tl!("Point at a link to see where it goes.")
             ),
         ),

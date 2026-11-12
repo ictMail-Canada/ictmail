@@ -45,7 +45,7 @@ pub fn write_in(events: &[&Event], tasks: &[&Task], opts: &WriteOptions, zone: O
     let mut out = String::new();
     fold(&mut out, "BEGIN:VCALENDAR");
     fold(&mut out, "VERSION:2.0");
-    fold(&mut out, "PRODID:-//MailCraft//MailCraft//EN");
+    fold(&mut out, "PRODID:-//ictMail//ictMail//EN");
     let method: String = opts.method.chars().filter(|c| c.is_ascii_alphanumeric() || *c == '-').map(|c| c.to_ascii_uppercase()).collect();
     if !method.is_empty() {
         fold(&mut out, &format!("METHOD:{method}"));
@@ -386,7 +386,7 @@ mod tests {
             [
                 "BEGIN:VCALENDAR",
                 "VERSION:2.0",
-                "PRODID:-//MailCraft//MailCraft//EN",
+                "PRODID:-//ictMail//ictMail//EN",
                 "BEGIN:VEVENT",
                 "UID:planning-2026@example.org",
                 "DTSTAMP:20261011T120000Z",
@@ -501,7 +501,7 @@ mod tests {
     #[test]
     fn the_method_is_a_clean_token() {
         let with = |method: &str| write(&[], &[], &WriteOptions { method: method.into(), now: 0 });
-        assert_eq!(with("request"), "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//MailCraft//MailCraft//EN\r\nMETHOD:REQUEST\r\nEND:VCALENDAR\r\n");
+        assert_eq!(with("request"), "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//ictMail//ictMail//EN\r\nMETHOD:REQUEST\r\nEND:VCALENDAR\r\n");
         assert!(with(" REPLY\r\nBEGIN:VEVENT ").contains("METHOD:REPLYBEGINVEVENT\r\n"));
         assert!(!with("").contains("METHOD"));
         assert!(!with(" \r\n:;").contains("METHOD"));

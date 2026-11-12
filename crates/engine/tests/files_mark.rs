@@ -155,7 +155,7 @@ fn assert_marked(path: &std::path::Path) {
         let out = std::process::Command::new("/usr/bin/xattr").arg("-p").arg("com.apple.quarantine").arg(path).output().unwrap();
         assert!(out.status.success(), "{} isn't quarantined", path.display());
         let value = String::from_utf8_lossy(&out.stdout);
-        assert!(value.starts_with("0083;") && value.trim_end().ends_with(";MailCraft;"), "quarantine value: {value}");
+        assert!(value.starts_with("0083;") && value.trim_end().ends_with(";ictMail;"), "quarantine value: {value}");
     }
     #[cfg(not(any(windows, target_os = "macos")))]
     let _ = path;

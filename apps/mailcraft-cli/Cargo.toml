@@ -4,10 +4,10 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 publish = false
-description = "MailCraft command line: inspect, import, export, convert, run commands, Send/Receive, MCP server"
+description = "ictMail command line: inspect, import, export, convert, run commands, Send/Receive, MCP server"
 
 [[bin]]
-name = "mailcraft-cli"
+name = "ictmail-cli"
 path = "src/main.rs"
 
 [lints]

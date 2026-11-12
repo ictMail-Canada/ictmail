@@ -15,7 +15,7 @@ fn a_pop_server_gets_a_plain_message_and_no_account() {
     for (host, port) in [("pop.example.org", "995"), ("POP3.example.org", ""), ("mail.example.org", "110")] {
         let w = with_incoming(host, port);
         let why = w.settings_problem(true).unwrap_or_default();
-        assert!(why.starts_with("MailCraft doesn't support POP yet"), "{host}:{port}");
+        assert!(why.starts_with("ictMail doesn't support POP yet"), "{host}:{port}");
         assert!(w.account().is_none(), "{host}:{port} would have been tried as IMAP");
     }
 }

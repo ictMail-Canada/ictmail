@@ -459,7 +459,7 @@ impl MailApp {
         let Some(address) = self.session.mailbox.account(account).map(|a| a.email.trim().to_string()) else { return false };
         let text = crate::i18n::fmt(
             tl!(
-                "To keep the tasks of {address} in step with Microsoft To Do, MailCraft needs your permission to read and change your To Do lists and tasks. Microsoft's page opens in your browser to ask you, once.\n\nUntil you allow it, tasks stay on this computer and nothing of them is sent to Microsoft."
+                "To keep the tasks of {address} in step with Microsoft To Do, ictMail needs your permission to read and change your To Do lists and tasks. Microsoft's page opens in your browser to ask you, once.\n\nUntil you allow it, tasks stay on this computer and nothing of them is sent to Microsoft."
             ),
             &[("address", &address)],
         );
@@ -499,7 +499,7 @@ impl MailApp {
         }
         self.tasks.perm.insert(account, Permission::Asking);
         self.session.sync_status =
-            tl!("Allow MailCraft to keep your tasks in step with Microsoft To Do on the page that opened in your browser…").to_string();
+            tl!("Allow ictMail to keep your tasks in step with Microsoft To Do on the page that opened in your browser…").to_string();
         Ok(json!({"pending": "signIn", "account": owner.id}))
     }
 
@@ -535,7 +535,7 @@ impl MailApp {
                 let _ = self.run("ui.approvalHelp", json!({"account": account}));
             }
             Err(e) if e == REFUSED_BY_ORGANISATION || e == REFUSED_FOR_ACCOUNT => {
-                let said = tl!("Your organisation doesn't allow MailCraft to keep tasks in step with Microsoft To Do");
+                let said = tl!("Your organisation doesn't allow ictMail to keep tasks in step with Microsoft To Do");
                 self.tasks.perm.insert(account, Permission::Refused(said.to_string()));
                 self.status(said);
             }

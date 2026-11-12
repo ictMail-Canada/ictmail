@@ -5,20 +5,20 @@
   <id>io.github.billsecond.mailcraft</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT OR Apache-2.0</project_license>
-  <name>MailCraft</name>
+  <name>ictMail</name>
   <summary>Read and write mail, keep a calendar, contacts and tasks</summary>
-  <developer id="io.github.billsecond">
-    <name>MailCraft contributors</name>
+  <developer id="ca.ictmail">
+    <name>ictTech</name>
   </developer>
   <description>
     <p>
-      MailCraft is a fast, open-source mail program with a familiar ribbon: mail with folders, rules, flags and categories, a calendar with recurring events, contacts and tasks. It talks to IMAP and SMTP servers, reads and writes .eml, .mbox, .ics and .vcf files, and can be driven by AI agents over MCP.
+      ictMail is a fast, open-source mail program with a familiar ribbon: mail with folders, rules, flags and categories, a calendar with recurring events, contacts and tasks. It talks to IMAP and SMTP servers, reads and writes .eml, .mbox, .ics and .vcf files, and can be driven by AI agents over MCP.
     </p>
   </description>
   <launchable type="desktop-id">io.github.billsecond.mailcraft.desktop</launchable>
   <icon type="stock">io.github.billsecond.mailcraft</icon>
   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
-  <url type="homepage">https://github.com/UCS-Care-Group/mailcraft</url>
+  <url type="homepage">https://ictmail.ca</url>
   <url type="bugtracker">https://github.com/UCS-Care-Group/mailcraft/issues</url>
   <url type="help">https://github.com/UCS-Care-Group/mailcraft</url>
   <url type="contact">https://github.com/UCS-Care-Group/mailcraft/issues</url>

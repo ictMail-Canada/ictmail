@@ -131,7 +131,7 @@ fn scratch(name: &str) -> PathBuf {
 #[test]
 fn a_signed_newer_release_is_downloaded_and_kept() {
     let pair = key();
-    let file = b"the next version of MailCraft".repeat(100);
+    let file = b"the next version of ictMail".repeat(100);
     let (found, name, asked) = release(&pair, &file);
     let dir = scratch("signed");
     let mut app = window(found, pair.public_key().as_ref().try_into().unwrap(), &dir);

@@ -768,7 +768,7 @@ fn what_stands_in_the_way_is_a_sentence_under_the_heading_with_a_row_for_each_th
     // What to do next: the page about an approval, for this account; closed, nothing has changed.
     click(&mut harness, help.center());
     assert_eq!(harness.state().dialog.as_ref().map(|dialog| dialog.name()), Some("account"));
-    assert!(harness.query_all_by_label_contains("Your organisation has to approve MailCraft first").next().is_some());
+    assert!(harness.query_all_by_label_contains("Your organisation has to approve ictMail first").next().is_some());
     harness.get_by_label("Not now").click();
     harness.run_steps(4);
     assert!(harness.state().dialog.is_none());

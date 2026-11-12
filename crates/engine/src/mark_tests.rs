@@ -14,7 +14,7 @@ fn the_zone_stream_is_the_files_own_stream_in_zone_three() {
 
 #[test]
 fn the_quarantine_value_has_flags_a_hex_time_and_our_name() {
-    assert_eq!(quarantine_value(255), "0083;ff;MailCraft;");
+    assert_eq!(quarantine_value(255), "0083;ff;ictMail;");
 }
 
 #[test]

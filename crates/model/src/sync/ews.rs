@@ -439,7 +439,7 @@ impl EwsMailResult {
             return Err("has a certificate fingerprint that can't be one");
         }
         if !matches!(self.signed_in_with.as_str(), "" | "basic" | "ntlm") {
-            return Err("has a way of signing in that MailCraft doesn't speak");
+            return Err("has a way of signing in that ictMail doesn't speak");
         }
         if self.pages.iter().map(|p| p.state.len().saturating_add(p.from.len())).fold(0usize, usize::saturating_add) > MAX_EWS_STATE_BYTES {
             return Err(TOO_MANY);

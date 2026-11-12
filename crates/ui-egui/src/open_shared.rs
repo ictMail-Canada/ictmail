@@ -49,7 +49,7 @@ pub(crate) fn why_words(why: OpenedWhy, address: &str) -> String {
             tl!("You don't have access to the calendar of {address}. They need to share it with you; if they just did, try again in an hour.")
         }
         OpenedWhy::NoSuchPerson => tl!("There's no mailbox at {address}, or its calendar can't be reached through Microsoft."),
-        OpenedWhy::NoPermission => tl!("MailCraft isn't allowed to read other people's calendars yet."),
+        OpenedWhy::NoPermission => tl!("ictMail isn't allowed to read other people's calendars yet."),
         OpenedWhy::Unreachable => tl!("Couldn't reach Microsoft to open the calendar of {address}. Try again in a moment."),
     };
     crate::i18n::fmt(words, &[("address", address)])
@@ -172,7 +172,7 @@ impl MailApp {
         }
         if self.open_shared.waiting.as_ref().is_some_and(|(owner, _)| *owner == account) && self.signing_in.is_none() {
             let text = tl!(
-                "To open other people's calendars, MailCraft needs your permission to read the calendars people share with you. Microsoft's page opens in your browser to ask you, once.\n\nWhat you open is kept on this computer only: it doesn't appear in Outlook or on your other devices."
+                "To open other people's calendars, ictMail needs your permission to read the calendars people share with you. Microsoft's page opens in your browser to ask you, once.\n\nWhat you open is kept on this computer only: it doesn't appear in Outlook or on your other devices."
             );
             let ask = Question::new(tl!("Open Shared Calendar"), text.to_string(), tl!("Continue"), Value::Null);
             self.dialog = Some(Dialog::Confirm { command: "ui.allowSharedCalendars".to_string(), params: json!({"account": account}), ask });
@@ -193,7 +193,7 @@ impl MailApp {
         let begun = self.begin_sign_in(owner.id, oauth, &owner.email, String::new(), false, true);
         self.shared_calendars_next = false;
         begun?;
-        self.session.sync_status = tl!("Allow MailCraft to read other people's calendars on the page that opened in your browser…").to_string();
+        self.session.sync_status = tl!("Allow ictMail to read other people's calendars on the page that opened in your browser…").to_string();
         Ok(json!({"pending": "signIn", "account": owner.id}))
     }
 

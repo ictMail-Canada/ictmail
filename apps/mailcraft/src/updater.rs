@@ -19,13 +19,13 @@ pub const FOLDER: &str = "updates";
 /// The file whose presence turns updating by itself off for every user of the computer, on
 /// macOS and on Linux and FreeBSD. What is in it doesn't matter.
 #[cfg(target_os = "macos")]
-pub const POLICY_FILE: &str = "/Library/Application Support/MailCraft/no-automatic-updates";
+pub const POLICY_FILE: &str = "/Library/Application Support/ictMail/no-automatic-updates";
 #[cfg(not(any(target_os = "macos", target_os = "windows")))]
 pub const POLICY_FILE: &str = "/etc/mailcraft/no-automatic-updates";
 
 /// On Windows: `DisableAutomaticUpdates`, a DWORD other than 0 under this key of the machine's.
 #[cfg(target_os = "windows")]
-pub const POLICY_KEY: &str = r"Software\Policies\MailCraft";
+pub const POLICY_KEY: &str = r"Software\Policies\ictMail";
 #[cfg(target_os = "windows")]
 pub const POLICY_VALUE: &str = "DisableAutomaticUpdates";
 

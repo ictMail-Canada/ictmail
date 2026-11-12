@@ -46,7 +46,7 @@ pub enum Install {
 
 impl Install {
     /// The name of this kind's file in release `version`, as the release workflow names it
-    /// (`mailcraft-<version>-<os>-<arch>.<ext>`), for a program built for `arch`
+    /// (`ictmail-<version>-<os>-<arch>.<ext>`), for a program built for `arch`
     /// (`std::env::consts::ARCH`). `None` where there is none to update from.
     pub fn file_name(self, version: &Version, arch: &str) -> Option<String> {
         let (os, arch, ext) = match (self, arch) {
@@ -59,7 +59,7 @@ impl Install {
             (Install::AppImage, "aarch64") => ("linux", "aarch64", "AppImage"),
             _ => return None,
         };
-        Some(format!("mailcraft-{version}-{os}-{arch}.{ext}"))
+        Some(format!("ictmail-{version}-{os}-{arch}.{ext}"))
     }
 }
 
@@ -119,14 +119,14 @@ pub fn found() -> Install {
     }
 }
 
-/// Where the `.msi` says it put `mailcraft.exe` (its App Paths entry); the portable `.zip`
+/// Where the `.msi` says it put `ictmail.exe` (its App Paths entry); the portable `.zip`
 /// registers nothing.
 #[cfg(target_os = "windows")]
 fn registered_path() -> Option<std::path::PathBuf> {
     use winreg::RegKey;
     use winreg::enums::{HKEY_LOCAL_MACHINE, KEY_READ};
     let key = RegKey::predef(HKEY_LOCAL_MACHINE)
-        .open_subkey_with_flags(r"Software\Microsoft\Windows\CurrentVersion\App Paths\mailcraft.exe", KEY_READ)
+        .open_subkey_with_flags(r"Software\Microsoft\Windows\CurrentVersion\App Paths\ictmail.exe", KEY_READ)
         .ok()?;
     let path: String = key.get_value("").ok()?;
     let path = path.trim().trim_matches('"');

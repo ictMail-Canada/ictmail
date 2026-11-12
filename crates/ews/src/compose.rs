@@ -22,7 +22,7 @@ use crate::soap::{Element, MESSAGES, TYPES};
 use crate::xml::Node;
 
 /// The name of the marker property.
-const MARKER: &str = "MailCraftMarker";
+const MARKER: &str = "ictMailMarker";
 /// The longest message sent as one MIME document (Exchange takes less by default).
 const MAX_MIME: usize = 64 * 1024 * 1024;
 

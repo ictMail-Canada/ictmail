@@ -948,8 +948,8 @@ fn undo_of_a_move_leaves_the_destinations_own_earlier_copy_alone() {
 /// The marker a message's copy on the server carries, when it carries one.
 fn marker_of(m: &FakeMessage) -> Option<String> {
     let body = String::from_utf8_lossy(&m.body).into_owned();
-    let line = body.lines().find(|l| l.starts_with("X-MailCraft-Place: "))?;
-    Some(line.trim_start_matches("X-MailCraft-Place: ").to_string())
+    let line = body.lines().find(|l| l.starts_with("X-ictMail-Place: "))?;
+    Some(line.trim_start_matches("X-ictMail-Place: ").to_string())
 }
 
 #[test]

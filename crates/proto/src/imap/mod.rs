@@ -1174,7 +1174,7 @@ impl<S: Read + Write> Imap<S> {
             };
             let size = usize::try_from(claimed).ok().filter(|n| literal_bytes.saturating_add(*n) <= MAX_LITERAL).ok_or_else(|| {
                 ProtoError::Protocol(said!(
-                    "the server sent {claimed} bytes in one piece, more than the {mb} MB MailCraft accepts",
+                    "the server sent {claimed} bytes in one piece, more than the {mb} MB ictMail accepts",
                     claimed,
                     mb = MAX_LITERAL >> 20
                 ))

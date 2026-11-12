@@ -3280,6 +3280,7 @@ dependencies = [
  "flate2",
  "log",
  "mailcraft-charset",
+ "mailcraft-dav",
  "mailcraft-i18n",
  "mailcraft-mime",
  "mailcraft-model",
@@ -5022,12 +5023,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1572844b6727a1bf842190e9947641a68ac44bed83f50afb4bd1407a2564bee8"
 dependencies = [
  "bytemuck",
+ "gif",
+ "image-webp",
  "log",
  "pico-args",
  "rgb",
  "svgtypes",
  "tiny-skia 0.12.0",
  "usvg",
+ "zune-jpeg",
 ]
 
 [[package]]

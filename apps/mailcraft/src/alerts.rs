@@ -209,7 +209,7 @@ mod freedesktop {
             if alert.kind == AlertKind::Mail {
                 hints.insert("category", Value::from("email.arrived"));
             }
-            let sent: zbus::Result<u32> = proxy.call("Notify", &("MailCraft", 0u32, "", alert.title.as_str(), body.as_str(), offered, hints, -1i32));
+            let sent: zbus::Result<u32> = proxy.call("Notify", &("ictMail", 0u32, "", alert.title.as_str(), body.as_str(), offered, hints, -1i32));
             match sent {
                 Ok(id) => {
                     if let Ok(mut shown) = shown.lock() {
@@ -300,7 +300,7 @@ mod toasts {
 
     /// What the `.msi`'s Start menu shortcut tells Windows the program is (its
     /// `System.AppUserModel.ID`, `packaging/windows/mailcraft.wxs`).
-    pub const APP_ID: &str = "MailCraft.MailCraft";
+    pub const APP_ID: &str = "ictMail.ictMail";
     /// How many toasts are kept, so that a click on one is still heard.
     const KEPT: usize = 50;
 

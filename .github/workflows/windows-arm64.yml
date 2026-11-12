@@ -29,5 +29,5 @@ jobs:
     # Pinned to a full commit SHA of the shared workflow's main branch; moved by hand, after reading the change.
     uses: storytold/craft-common-actions/.github/workflows/windows-arm64.yml@b24513e79507103b54ead46baa8ee76017f463e5 # main # zizmor: ignore[ref-version-mismatch]
     with:
-      app-name: mailcraft
-      app-dir: MailCraft
+      app-name: ictmail
+      app-dir: ictMail

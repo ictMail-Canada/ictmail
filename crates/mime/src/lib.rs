@@ -47,19 +47,19 @@ pub use mailto::{Mailto, is_mailto, parse_mailto};
 /// The header in which a message opened from a file keeps that file's SHA-256 (#505), so that
 /// opening the file again finds it. MailCraft's own: never read from a message (a sender could
 /// write one) and never written into one.
-pub const OPENED_FILE_HEADER: &str = "X-MailCraft-Opened-File-SHA256";
+pub const OPENED_FILE_HEADER: &str = "X-ictMail-Opened-File-SHA256";
 
 /// The header in which a message brought in from a .pst file keeps where in that file it was
 /// (#815): the file's identity and the item's node id, so that importing the same file again
 /// skips it. MailCraft's own: never read from a message (a sender could write one) and never
 /// written into one.
-pub const PST_ITEM_HEADER: &str = "X-MailCraft-Pst-Item";
+pub const PST_ITEM_HEADER: &str = "X-ictMail-Pst-Item";
 
 /// The header in which the copy that MailCraft puts on a mail server, of a message moved or
 /// copied there from elsewhere, carries that copy's marker (#451): what tells it that copy from
 /// the server's own messages, which may look the same. Written into that copy alone
 /// ([`write_placed`]), never from a message's kept headers into anything else.
-pub const PLACE_HEADER: &str = "X-MailCraft-Place";
+pub const PLACE_HEADER: &str = "X-ictMail-Place";
 
 /// `message` as [`write()`] writes it, for a copy put on a mail server, with [`PLACE_HEADER`]
 /// carrying `marker` first (none when it is empty): for a

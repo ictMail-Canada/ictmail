@@ -45,9 +45,11 @@ const BUILT: &[&str] = &[
     "target/",
     "target\\",
     "xtask",
+    // The cargo packages keep their `mailcraft` names; the binaries they build are `ictmail`.
     "mailcraft-cli",
-    "mailcraft.exe",
-    "/release/mailcraft",
+    "ictmail-cli",
+    "ictmail.exe",
+    "/release/ictmail",
     "MacOS/MailCraft",
     "xvfb-run",
     "actions/cache",

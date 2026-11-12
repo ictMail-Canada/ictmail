@@ -64,7 +64,7 @@ pub fn latest_at(api: &str, repository: &str, pre_releases: bool) -> Result<Rele
         .map_err(|e| without_address(&e))?;
     match reply.status {
         200 => release(&reply.body, owner, repo, pre_releases),
-        404 => Err(said("GitHub has no release of MailCraft")),
+        404 => Err(said("GitHub has no release of ictMail")),
         403 | 429 => Err(said("GitHub asked to be asked later")),
         status => Err(said(&format!("GitHub answered {status}"))),
     }
@@ -207,7 +207,7 @@ mod tests {
     fn release_of(tag: &str) -> Value {
         serde_json::json!({
             "tag_name": tag,
-            "name": format!("MailCraft {tag}"),
+            "name": format!("ictMail {tag}"),
             "prerelease": false,
             "draft": false,
             "html_url": format!("https://github.com/UCS-Care-Group/mailcraft/releases/tag/{tag}"),
@@ -245,7 +245,7 @@ mod tests {
         // Exactly these headers, and no body.
         let headers: Vec<&str> = lines.take_while(|l| !l.is_empty()).collect();
         let host = format!("Host: 127.0.0.1:{}", server.port);
-        assert_eq!(headers, [host.as_str(), "User-Agent: MailCraft", "Accept: application/vnd.github+json", "Connection: close"]);
+        assert_eq!(headers, [host.as_str(), "User-Agent: ictMail", "Accept: application/vnd.github+json", "Connection: close"]);
         assert!(sent.ends_with("\r\n\r\n"), "{sent:?}");
         // No version of this program, no query, nothing of an account.
         let version = env!("CARGO_PKG_VERSION");
@@ -290,7 +290,7 @@ mod tests {
         }
         // What isn't a 200 is no release either, and a redirect is not followed.
         for (status, why) in [
-            ("404 Not Found", "GitHub has no release of MailCraft"),
+            ("404 Not Found", "GitHub has no release of ictMail"),
             ("403 Forbidden", "GitHub asked to be asked later"),
             ("500 Oops", "GitHub answered 500"),
         ] {
@@ -369,9 +369,9 @@ mod tests {
         assert_eq!(ask(&server, false).unwrap().page, made);
         // The repository's name in another case is the same page.
         let mut release = release_of("v0.9.0");
-        release["html_url"] = Value::String("https://github.com/ucs-care-group/MailCraft/releases/tag/v0.9.0".into());
+        release["html_url"] = Value::String("https://github.com/ucs-care-group/ictMail/releases/tag/v0.9.0".into());
         let server = FakeHttp::answering(answer(&release));
-        assert_eq!(ask(&server, false).unwrap().page, "https://github.com/ucs-care-group/MailCraft/releases/tag/v0.9.0");
+        assert_eq!(ask(&server, false).unwrap().page, "https://github.com/ucs-care-group/ictMail/releases/tag/v0.9.0");
     }
 
     #[test]
@@ -413,7 +413,7 @@ mod tests {
             {"name": "SHA256SUMS.txt.sig", "size": 89, "browser_download_url": download("SHA256SUMS.txt.sig")},
             {"name": "mailcraft-0.9.0-linux-x86_64.AppImage", "size": 40_000_000u64, "browser_download_url": download("mailcraft-0.9.0-linux-x86_64.AppImage")},
             // Another case of the repository's name is the same repository.
-            {"name": "mailcraft-0.9.0-windows-x64.msi", "size": 9, "browser_download_url": "https://github.com/ucs-care-group/MailCraft/releases/download/v0.9.0/mailcraft-0.9.0-windows-x64.msi"},
+            {"name": "mailcraft-0.9.0-windows-x64.msi", "size": 9, "browser_download_url": "https://github.com/ucs-care-group/ictMail/releases/download/v0.9.0/mailcraft-0.9.0-windows-x64.msi"},
             // Left out: another host, another repository, another tag, another name, no size, a bad name.
             {"name": "evil.msi", "size": 9, "browser_download_url": "https://evil.example/UCS-Care-Group/mailcraft/releases/download/v0.9.0/evil.msi"},
             {"name": "other.msi", "size": 9, "browser_download_url": "https://github.com/someone/mailcraft/releases/download/v0.9.0/other.msi"},

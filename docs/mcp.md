@@ -8,11 +8,11 @@ agents can read, file and write mail and keep a calendar. Each message is one li
 served.
 
 ```sh
-mailcraft-cli mcp --file my.mailcraft      # headless session on a mailbox file (no window)
-mailcraft-cli mcp --sample                 # … or on the sample mailbox
-mailcraft --control 7991 &                 # or: drive the running app…
-mailcraft-cli mcp --connect 127.0.0.1:7991 # …(clicks and keys need --allow input)
-mailcraft-cli mcp --sample --files ~/agent-files --allow send   # what the owner allows, below
+ictmail-cli mcp --file my.mailcraft      # headless session on a mailbox file (no window)
+ictmail-cli mcp --sample                 # … or on the sample mailbox
+ictmail --control 7991 &                 # or: drive the running app…
+ictmail-cli mcp --connect 127.0.0.1:7991 # …(clicks and keys need --allow input)
+ictmail-cli mcp --sample --files ~/agent-files --allow send   # what the owner allows, below
 ```
 
 With `--connect`, the bridge sends the app's control key, which it reads from
@@ -159,12 +159,12 @@ no. While the question is up, no click or key from the control channel reaches t
 takes a request without the bridge's `agent` marking for the owner's own script, and runs it
 without asking. An agent that can run a shell or read files as the same user is outside the gate:
 it could read the control key in the settings folder, or the mailbox file itself, or run
-`mailcraft-cli`. Run such an agent as another user or in a sandbox, and don't start the app with
+`ictmail-cli`. Run such an agent as another user or in a sandbox, and don't start the app with
 `--control` while one is around. Starting it with `--control <port> --control-agents-only`
 narrows this: every request through the control channel is then an agent's, allowed nothing in
 advance (whatever it claims), so the window asks the owner before anything is sent or deleted
 and refuses clicks and keys. `--allow` then has no effect. It doesn't stop such an agent reading
-the mailbox file or running `mailcraft-cli` on it.
+the mailbox file or running `ictmail-cli` on it.
 
 **Message text is untrusted.** `read_message`, `list_messages`, `list_events`, `list_contacts`,
 `list_tasks` and the same commands through `execute` (`mail.get`, `mail.list`, `calendar.list`,
@@ -204,7 +204,7 @@ changes nothing. A person's name and address come from mail, so the answer is fr
 like the text above.
 
 A headless session works on the mailbox file only. It does not connect to mail servers: sending
-from an account with a server puts the message in its Outbox, and `mailcraft-cli sync` (or the
+from an account with a server puts the message in its Outbox, and `ictmail-cli sync` (or the
 app's Send/Receive) delivers it.
 
 ## Tools
@@ -232,8 +232,8 @@ parameters.
 
 ## Resources
 
-- `mailcraft://mailbox`: accounts and counts (JSON)
-- `mailcraft://commands`: every command (JSON)
+- `ictmail://mailbox`: accounts and counts (JSON)
+- `ictmail://commands`: every command (JSON)
 
 ## Revision history
 

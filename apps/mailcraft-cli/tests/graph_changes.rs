@@ -503,7 +503,7 @@ fn a_move_whose_answer_was_lost_is_looked_for_before_it_is_asked_again() {
 
 /// MailCraft's marker as the stand-in sees it written.
 fn mailcraft_net_marker() -> &'static str {
-    "String {6d1c4e3a-8f2b-4c5d-9e0a-1b2c3d4e5f60} Name MailCraftMarker"
+    "String {6d1c4e3a-8f2b-4c5d-9e0a-1b2c3d4e5f60} Name ictMailMarker"
 }
 
 #[test]

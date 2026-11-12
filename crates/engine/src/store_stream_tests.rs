@@ -284,7 +284,7 @@ fn deep_nesting_and_the_wrong_types_are_errors() {
     }
     // A newer format is said to be.
     fs::write(&path, r#"{"version":99,"messages":{}}"#).unwrap();
-    assert!(open(&path).err().unwrap().contains("newer MailCraft"));
+    assert!(open(&path).err().unwrap().contains("newer ictMail"));
 }
 
 #[test]

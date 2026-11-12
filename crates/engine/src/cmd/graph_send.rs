@@ -167,7 +167,7 @@ pub fn send_done(mb: &mut Mailbox, account: Id, done: &SendDone, lang: mailcraft
 }
 
 /// What a message held for having been handed to a server without an answer coming back says.
-pub const MAY_HAVE_GONE: &str = "It may have been sent: it was handed to the server, and the answer never came back (another mailbox was opened, or MailCraft stopped). Look in Sent Items before you send it again.";
+pub const MAY_HAVE_GONE: &str = "It may have been sent: it was handed to the server, and the answer never came back (another mailbox was opened, or ictMail stopped). Look in Sent Items before you send it again.";
 
 /// Mark the messages `ids` of `account`'s Outbox as being sent (AU3-26), before the run that
 /// sends them is handed to the host. Whether any mark is new (the mailbox is to be saved before
@@ -255,8 +255,8 @@ pub fn hold_lost(mb: &mut Mailbox, account: Id, ids: &[Id], server: &str, lang: 
 fn hold_reason(code: &str) -> Option<&'static str> {
     match code {
         "declined" => Some("sending from shared mailboxes wasn't allowed on Microsoft's page"),
-        "approval" => Some("your organisation's administrator has to approve MailCraft sending from shared mailboxes first"),
-        "organisation" => Some("your organisation doesn't let MailCraft send from shared mailboxes"),
+        "approval" => Some("your organisation's administrator has to approve ictMail sending from shared mailboxes first"),
+        "organisation" => Some("your organisation doesn't let ictMail send from shared mailboxes"),
         _ => None,
     }
 }

@@ -59,7 +59,7 @@ fn a_signed_message_moved_to_another_server_leaves_the_stamps_behind() {
     // The signed body, byte for byte, under its own Content-Type.
     assert_eq!(body(&put), body(STAMPED));
     assert!(text.contains("Content-Type: multipart/signed; protocol=\"application/pkcs7-signature\"; micalg=sha-256; boundary=\"b\"\r\n\r\n"));
-    assert!(text.starts_with("X-MailCraft-Place: "));
+    assert!(text.starts_with("X-ictMail-Place: "));
 }
 
 #[test]

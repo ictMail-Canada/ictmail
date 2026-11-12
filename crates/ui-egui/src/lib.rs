@@ -650,7 +650,7 @@ impl StoreTrouble {
             StoreTrouble::Unavailable => tl!("No credential store answered (on Linux, GNOME Keyring or KWallet provides one)"),
             StoreTrouble::Locked => tl!("The system's credential store is locked, or unlocking it was refused"),
         };
-        i18n::fmt(tl!("{why}, so sign-ins aren't remembered: MailCraft asks again each time it starts."), &[("why", why)])
+        i18n::fmt(tl!("{why}, so sign-ins aren't remembered: ictMail asks again each time it starts."), &[("why", why)])
     }
 }
 
@@ -1113,7 +1113,7 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
         "ui.dialog",
         "Open Dialog",
         "Window",
-        r#"{"name": "commands"|"event"|"meeting"|"editEvent"|"contact"|"editContact"|"task"|"editTask"|"folder"|"goToDate"|"openCalendar"|"link"|"dateTime"|"wordCount"|"account"|"categories"|"rules"|"junkOptions"|"about"|"contributors"|"testers"|"reportProblem"|"proposeTime"|"forwardMeeting"|"proposals", …} (account: "email"?: string to start with, or "id": number for that account's settings, and with "page": "approval" the page that says what to do when its organisation has to approve MailCraft first (as `ui.approvalHelp` opens it); proposeTime: "id"?: number (an item of the calendar) | "message": number (an invitation in the mail); forwardMeeting: "id"?: number; proposals: "id"?: number | "message": number; junkOptions: "list"?: "safe"|"blocked" (the page it opens on); categories: "account"?: number (whose list it opens on); rules: "folder"?: number, "id"?: number (the New rule filled in to move the mail of that message's sender, default the selected one's, to the folder: Always Move Messages From This Sender) — the first two write to other people only from their own Propose and Send buttons)"#,
+        r#"{"name": "commands"|"event"|"meeting"|"editEvent"|"contact"|"editContact"|"task"|"editTask"|"folder"|"goToDate"|"openCalendar"|"link"|"dateTime"|"wordCount"|"account"|"categories"|"rules"|"junkOptions"|"about"|"contributors"|"testers"|"reportProblem"|"proposeTime"|"forwardMeeting"|"proposals", …} (account: "email"?: string to start with, or "id": number for that account's settings, and with "page": "approval" the page that says what to do when its organisation has to approve ictMail first (as `ui.approvalHelp` opens it); proposeTime: "id"?: number (an item of the calendar) | "message": number (an invitation in the mail); forwardMeeting: "id"?: number; proposals: "id"?: number | "message": number; junkOptions: "list"?: "safe"|"blocked" (the page it opens on); categories: "account"?: number (whose list it opens on); rules: "folder"?: number, "id"?: number (the New rule filled in to move the mail of that message's sender, default the selected one's, to the folder: Always Move Messages From This Sender) — the first two write to other people only from their own Propose and Send buttons)"#,
     ),
     ("ui.closeDialog", "Close Dialog", "Window", "{}"),
     ("ui.theme", "Interface Theme", "File › Options", r#"{"value": "light"|"dark"|"system"}"#),
@@ -1148,15 +1148,15 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
     ),
     (
         "ui.removeAllData",
-        "Remove MailCraft's Data from This Computer",
+        "Remove ictMail's Data from This Computer",
         "File › Info",
-        "{} — removes everything MailCraft keeps on this computer, for an installed or a portable copy alike: every account's mail and the settings (the mailbox file and its content, the settings, the logs), the sign-ins remembered in the system's credential store, the downloaded pictures and the opened attachments; then quits. Mail on the servers is not touched. By hand it asks first; never for an agent",
+        "{} — removes everything ictMail keeps on this computer, for an installed or a portable copy alike: every account's mail and the settings (the mailbox file and its content, the settings, the logs), the sign-ins remembered in the system's credential store, the downloaded pictures and the opened attachments; then quits. Mail on the servers is not touched. By hand it asks first; never for an agent",
     ),
     (
         "ui.openDataFolder",
         "Open Data Folder",
         "File › Info",
-        "{} — shows, in the system's file manager, the folder of the mailbox open now when it is kept outside MailCraft's settings folder, else the settings folder (which holds the mailbox and the settings). Answers {\"opened\": \"mailbox\"|\"settings\"}. Not in the browser; never for an agent",
+        "{} — shows, in the system's file manager, the folder of the mailbox open now when it is kept outside ictMail's settings folder, else the settings folder (which holds the mailbox and the settings). Answers {\"opened\": \"mailbox\"|\"settings\"}. Not in the browser; never for an agent",
     ),
     (
         "ui.confirmServers",
@@ -1168,7 +1168,7 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
         "ui.sync",
         "Send/Receive All Folders",
         "Send / Receive",
-        r#"{"account"?: number, "password"?: string, "quiet"?: bool (nobody asked: no page of a provider's is put in front of the owner, and no dialog)} — an account without a password asks for it (the "password" dialog); one that signs in with Microsoft and is told there that an administrator of its organisation has to approve MailCraft first gets the page that says what to do next (the account dialog's "approval" page, as `ui.approvalHelp` opens it), unless "quiet""#,
+        r#"{"account"?: number, "password"?: string, "quiet"?: bool (nobody asked: no page of a provider's is put in front of the owner, and no dialog)} — an account without a password asks for it (the "password" dialog); one that signs in with Microsoft and is told there that an administrator of its organisation has to approve ictMail first gets the page that says what to do next (the account dialog's "approval" page, as `ui.approvalHelp` opens it), unless "quiet""#,
     ),
     (
         "ui.cancelSignIn",
@@ -1211,25 +1211,25 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
         "ui.allowSharedCalendars",
         "Allow Reading Other People's Calendars",
         "File › Info and File › Open & Export",
-        r#"{"account": number (a shared mailbox, or a Microsoft account that opens calendars by address), "confirmed": true} — asks the owner, on Microsoft's page in the browser, to let MailCraft read the calendars of the shared mailboxes he was given access to, and the calendars people share with him that he opens by address (Calendars.ReadWrite.Shared, one permission for both), by itself and never with a sign-in. The window asks first, when the owner ticks a shared mailbox's calendar for the first time, and File › Info and File › Open & Export has "Ask again". Allowed, the calendars of that shared mailbox are read with the next look at the calendar; refused, or when an administrator has to approve first, the window says what to do next. Answers {"pending": "signIn", "account": the account it is opened through}"#,
+        r#"{"account": number (a shared mailbox, or a Microsoft account that opens calendars by address), "confirmed": true} — asks the owner, on Microsoft's page in the browser, to let ictMail read the calendars of the shared mailboxes he was given access to, and the calendars people share with him that he opens by address (Calendars.ReadWrite.Shared, one permission for both), by itself and never with a sign-in. The window asks first, when the owner ticks a shared mailbox's calendar for the first time, and File › Info and File › Open & Export has "Ask again". Allowed, the calendars of that shared mailbox are read with the next look at the calendar; refused, or when an administrator has to approve first, the window says what to do next. Answers {"pending": "signIn", "account": the account it is opened through}"#,
     ),
     (
         "ui.allowTasks",
         "Allow Keeping Tasks in Step with Microsoft To Do",
         "File › Info",
-        r#"{"account": number (a Microsoft account), "confirmed": true} — asks the owner, on Microsoft's page in the browser, to let MailCraft read and change the To Do lists and tasks (Tasks.ReadWrite), by itself: an account that signed in before this was asked is not asked with a sign-in. The window asks first, when a tasks run finds the sign-in doesn't cover it, and File › Info has "Ask again". Allowed, the tasks are kept in step at the next look; refused, or when an administrator has to approve first, the window says what to do next. Answers {"pending": "signIn", "account": number}"#,
+        r#"{"account": number (a Microsoft account), "confirmed": true} — asks the owner, on Microsoft's page in the browser, to let ictMail read and change the To Do lists and tasks (Tasks.ReadWrite), by itself: an account that signed in before this was asked is not asked with a sign-in. The window asks first, when a tasks run finds the sign-in doesn't cover it, and File › Info has "Ask again". Allowed, the tasks are kept in step at the next look; refused, or when an administrator has to approve first, the window says what to do next. Answers {"pending": "signIn", "account": number}"#,
     ),
     (
         "ui.allowRules",
         "Allow Keeping Rules on the Server",
         "File › Info",
-        r#"{"account": number (a Microsoft account), "confirmed": true} — asks the owner, on Microsoft's page in the browser, to let MailCraft change the rules the account's server keeps (MailboxSettings.ReadWrite), by itself and never with a sign-in. The window asks first, the first time a rule is to go to the server and the sign-in doesn't cover it, and File › Info has "Ask again". Until it is allowed the account's rules stay on this computer and nothing of them is sent. Allowed, the rules waiting go at the next look; refused, or when an administrator has to approve first, the window says what to do next. Answers {"pending": "signIn", "account": number}"#,
+        r#"{"account": number (a Microsoft account), "confirmed": true} — asks the owner, on Microsoft's page in the browser, to let ictMail change the rules the account's server keeps (MailboxSettings.ReadWrite), by itself and never with a sign-in. The window asks first, the first time a rule is to go to the server and the sign-in doesn't cover it, and File › Info has "Ask again". Until it is allowed the account's rules stay on this computer and nothing of them is sent. Allowed, the rules waiting go at the next look; refused, or when an administrator has to approve first, the window says what to do next. Answers {"pending": "signIn", "account": number}"#,
     ),
     (
         "ui.allowSharedSend",
         "Allow Sending from Shared Mailboxes",
         "Send / Receive",
-        r#"{"account": number (a shared mailbox)} — asks the owner, on Microsoft's page in the browser, to let MailCraft send from the shared mailboxes he may send as or on behalf of (Mail.Send.Shared), by itself and never with a sign-in. The window asks first, at the first send from a shared mailbox. Allowed, what waits in its Outbox goes through its own address with the next Send/Receive; refused, it is held there with why, and nothing is sent from another address. Answers {"pending": "signIn", "account": the account it is opened through}"#,
+        r#"{"account": number (a shared mailbox)} — asks the owner, on Microsoft's page in the browser, to let ictMail send from the shared mailboxes he may send as or on behalf of (Mail.Send.Shared), by itself and never with a sign-in. The window asks first, at the first send from a shared mailbox. Allowed, what waits in its Outbox goes through its own address with the next Send/Receive; refused, it is held there with why, and nothing is sent from another address. Answers {"pending": "signIn", "account": the account it is opened through}"#,
     ),
     (
         "ui.keepOffline",
@@ -1253,13 +1253,13 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
         "ui.allowAutomaticReplies",
         "Allow Changing Automatic Replies",
         "File › Info",
-        r#"{"account": number (a Microsoft account), "confirmed": true} — asks the owner, on Microsoft's page in the browser, to let MailCraft change the mailbox's settings (MailboxSettings.ReadWrite) for its automatic replies, by itself: never with a sign-in. The window asks first, when a change finds the sign-in doesn't cover it, and File › Info has "Ask again". Allowed, the change that waited goes; refused, or when an administrator has to approve first, it is dropped and the window says what to do next. Answers {"pending": "signIn", "account": number}"#,
+        r#"{"account": number (a Microsoft account), "confirmed": true} — asks the owner, on Microsoft's page in the browser, to let ictMail change the mailbox's settings (MailboxSettings.ReadWrite) for its automatic replies, by itself: never with a sign-in. The window asks first, when a change finds the sign-in doesn't cover it, and File › Info has "Ask again". Allowed, the change that waited goes; refused, or when an administrator has to approve first, it is dropped and the window says what to do next. Answers {"pending": "signIn", "account": number}"#,
     ),
     (
         "ui.checkCalendar",
         "Check Calendar Connection",
         "File › Info",
-        r#"{"account"?: number, "confirmed": true} — on the account's real server: makes one appointment called "MailCraft connection check" a year from today in its main calendar, reads it back, changes its time (once as an instant, once said in this computer's time zone), reads it back each time, and deletes it; nothing else is read or changed and nobody is written to. Every step is reported with the server's status and words, in a report dialog ("calendarCheck") and in the log. It asks first; a script says "confirmed": true. Answers {"pending": "calendarCheck", "account"}"#,
+        r#"{"account"?: number, "confirmed": true} — on the account's real server: makes one appointment called "ictMail connection check" a year from today in its main calendar, reads it back, changes its time (once as an instant, once said in this computer's time zone), reads it back each time, and deletes it; nothing else is read or changed and nobody is written to. Every step is reported with the server's status and words, in a report dialog ("calendarCheck") and in the log. It asks first; a script says "confirmed": true. Answers {"pending": "calendarCheck", "account"}"#,
     ),
     (
         "ui.connectFavorites",
@@ -1281,7 +1281,7 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
     ),
     (
         "ui.approvalHelp",
-        "What to Do When Your Organisation Has to Approve MailCraft",
+        "What to Do When Your Organisation Has to Approve ictMail",
         "File › Info",
         r#"{"account"?: number} — opens the page that says what to do when an organisation lets only an administrator approve a new program: in Add Account, while it is at its sign-in with Microsoft, its own page for it (the sign-in that is waiting goes on waiting); for an account that exists (the one named, else the first that signs in with Microsoft), a dialog with the same page. Nothing is asked of anybody. Answers {"dialog": "account", "page": "approval", "account": number (0: the one being set up)}"#,
     ),
@@ -1289,11 +1289,11 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
         "ui.copyAdminMessage",
         "Copy a Message for My Administrator",
         "File › Info",
-        r#"{"account"?: number} — puts on the clipboard a short, plain message for an administrator of the organisation: what MailCraft is, that it needs their approval once for the organisation, the address of Microsoft's page for that (the one `ui.copyAdminConsentLink` copies), and that their browser may show a page that can't be reached afterwards. Nothing of the owner is in it, nothing is opened and nothing is sent; the status bar says it was copied. For the account named; else the one Add Account is signing in; else the first that signs in with Microsoft. Answers {"account", "url", "text"}"#,
+        r#"{"account"?: number} — puts on the clipboard a short, plain message for an administrator of the organisation: what ictMail is, that it needs their approval once for the organisation, the address of Microsoft's page for that (the one `ui.copyAdminConsentLink` copies), and that their browser may show a page that can't be reached afterwards. Nothing of the owner is in it, nothing is opened and nothing is sent; the status bar says it was copied. For the account named; else the one Add Account is signing in; else the first that signs in with Microsoft. Answers {"account", "url", "text"}"#,
     ),
     (
         "ui.adminConsent",
-        "I'm an Administrator: Approve MailCraft for My Organisation",
+        "I'm an Administrator: Approve ictMail for My Organisation",
         "File › Info",
         r#"{"account"?: number} — opens Microsoft's admin-consent page in the system's browser, for this application and everything it asks an owner for, for the organisation's directory when it is known, and waits for the page to come back to this computer with a yes or a no. Approved: Add Account says so and goes on to the sign-in by itself; an account that exists signs in again (`ui.signInAgain`). Refused: what Microsoft answered is said. A sign-in that Add Account was waiting for gives way to it. Answers {"pending": "adminConsent", "account": number (0: the one being set up)}; `ui.cancelSignIn` gives it up"#,
     ),
@@ -1442,20 +1442,20 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
         "ui.reportProblem",
         "Report a Problem",
         "Help",
-        r#"{"what": string, "title"?: string, "expected"?: string, "via"?: "github" (the default) | "send", "username"?: string (send), "diagnostics"?: bool, "path"?: string (github: where the diagnostics file is saved), "open"?: bool (default true)} — by hand without `what`: the Report a Problem window. send: the window, filled in with the title, what was typed and the GitHub username, for the owner to read and send with Send report; nothing is sent (only the owner's own click sends a report, never a script or an agent). Answers {"via": "send", "draft": true, "sent": false}. github: opens the repository's new-issue page in the system's browser, filled in with the title, what was typed, the version and the platform, and nothing else (never the diagnostics, never more than 8,000 characters: text that doesn't fit is refused); with `diagnostics`, the same text as `ui.copyDiagnostics` is saved to `path` (without one it is answered as `name` and `data`), to attach on the page. `open: false` only answers what would be opened. MailCraft posts nothing itself. Answers {"via", "url", "length", "saved"?, "name"?, "data"?}"#,
+        r#"{"what": string, "title"?: string, "expected"?: string, "via"?: "github" (the default) | "send", "username"?: string (send), "diagnostics"?: bool, "path"?: string (github: where the diagnostics file is saved), "open"?: bool (default true)} — by hand without `what`: the Report a Problem window. send: the window, filled in with the title, what was typed and the GitHub username, for the owner to read and send with Send report; nothing is sent (only the owner's own click sends a report, never a script or an agent). Answers {"via": "send", "draft": true, "sent": false}. github: opens the repository's new-issue page in the system's browser, filled in with the title, what was typed, the version and the platform, and nothing else (never the diagnostics, never more than 8,000 characters: text that doesn't fit is refused); with `diagnostics`, the same text as `ui.copyDiagnostics` is saved to `path` (without one it is answered as `name` and `data`), to attach on the page. `open: false` only answers what would be opened. ictMail posts nothing itself. Answers {"via", "url", "length", "saved"?, "name"?, "data"?}"#,
     ),
     ("ui.copyLinkAddress", "Copy Link Address", "Message", r#"{"url": string} — a link's address (http, https, mailto or tel) to the clipboard"#),
     (
         "ui.checkForUpdates",
         "Check for Updates",
         "File › About",
-        r#"{} — asks GitHub once which is the newest release of MailCraft (nothing about the owner or their mail is sent; nothing is downloaded or installed). A script or an agent may ask only while the owner has the daily check on (`ui.updateCheck`); otherwise refused: "The owner hasn't allowed update checks." Answers {"pending": "updateCheck", "version"}; a newer version is then said in the status bar and in File › About"#,
+        r#"{} — asks GitHub once which is the newest release of ictMail (nothing about the owner or their mail is sent; nothing is downloaded or installed). A script or an agent may ask only while the owner has the daily check on (`ui.updateCheck`); otherwise refused: "The owner hasn't allowed update checks." Answers {"pending": "updateCheck", "version"}; a newer version is then said in the status bar and in File › About"#,
     ),
     (
         "ui.updateCheck",
         "Check for New Versions",
         "File › About",
-        r#"{"value"?: bool (default: toggle)} — whether MailCraft asks GitHub once a day which is the newest release (off until the owner turns it on). Answers {"value", "setting": "notAsked"|"on"|"off", "asked": number, "version", "newer": {"version", "security", "page"}|null, "checking": bool, "install": {"value": bool, "setting": "on"|"off"|"needsCheck"|"organisation"|"notThisCopy", "downloading": bool, "downloaded": version|null}}"#,
+        r#"{"value"?: bool (default: toggle)} — whether ictMail asks GitHub once a day which is the newest release (off until the owner turns it on). Answers {"value", "setting": "notAsked"|"on"|"off", "asked": number, "version", "newer": {"version", "security", "page"}|null, "checking": bool, "install": {"value": bool, "setting": "on"|"off"|"needsCheck"|"organisation"|"notThisCopy", "downloading": bool, "downloaded": version|null}}"#,
     ),
     (
         "ui.updateInstall",
@@ -1467,7 +1467,7 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
         "ui.restartToUpdate",
         "Restart to Update",
         "Status bar · File › About",
-        r#"{} — once a newer version has been downloaded and checked by its release signature: closes the window as quitting does (what is being written is asked about, Send/Receive stops, the mailbox is saved), installs the new version and starts it. The owner's click only: refused for agents and the control channel ("Restart to update is the owner's click."). Not pressed, the new version is installed when MailCraft is quit. MailCraft never restarts by itself"#,
+        r#"{} — once a newer version has been downloaded and checked by its release signature: closes the window as quitting does (what is being written is asked about, Send/Receive stops, the mailbox is saved), installs the new version and starts it. The owner's click only: refused for agents and the control channel ("Restart to update is the owner's click."). Not pressed, the new version is installed when ictMail is quit. ictMail never restarts by itself"#,
     ),
     (
         "ui.goBackVersion",
@@ -1479,13 +1479,13 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
         "ui.dismissSettingsNotice",
         "Dismiss Settings Notice",
         "Above the status bar",
-        r#"{} — puts away the line that says the settings file couldn't be read at start, so MailCraft started with its own settings (for this run). Answers {"dismissed": bool}"#,
+        r#"{} — puts away the line that says the settings file couldn't be read at start, so ictMail started with its own settings (for this run). Answers {"dismissed": bool}"#,
     ),
     (
         "ui.dismissUpdateNotice",
         "Dismiss Update Notice",
         "Above the status bar",
-        r#"{"notice": "installsItself" | "didntStart"} — puts away the line that says MailCraft now installs its updates itself (said once), or the offer to go back to the previous version (kept for this run)"#,
+        r#"{"notice": "installsItself" | "didntStart"} — puts away the line that says ictMail now installs its updates itself (said once), or the offer to go back to the previous version (kept for this run)"#,
     ),
     (
         "ui.toggleCalendarGroup",
@@ -3297,7 +3297,7 @@ impl MailApp {
             return self.ask_to_confirm_servers();
         }
         if self.data_removed {
-            return Err(tl!("MailCraft's data has been removed: nothing is sent or received").to_string());
+            return Err(tl!("ictMail's data has been removed: nothing is sent or received").to_string());
         }
         // Work Offline: nothing goes to a server; what is sent waits in the Outbox.
         if self.offline() {
@@ -4030,7 +4030,7 @@ impl MailApp {
         if after_sign_in {
             log::warn!("graph mail, account {account}: {why} straight after signing in; not asking again");
             self.status(i18n::fmt(
-                tl!("Signed in, but Microsoft still won't let MailCraft read the mail of {account}. Try Send/Receive again later."),
+                tl!("Signed in, but Microsoft still won't let ictMail read the mail of {account}. Try Send/Receive again later."),
                 &[("account", &owner.email)],
             ));
             return;
@@ -4549,8 +4549,8 @@ impl MailApp {
         if n > 0 {
             self.status(tln!(
                 n,
-                "MailCraft was started with {n} thing that isn't a mail link or a file it opens: it was left alone",
-                "MailCraft was started with {n} things that aren't mail links or files it opens: they were left alone"
+                "ictMail was started with {n} thing that isn't a mail link or a file it opens: it was left alone",
+                "ictMail was started with {n} things that aren't mail links or files it opens: they were left alone"
             ));
         }
     }
@@ -5017,7 +5017,7 @@ impl MailApp {
             // The window closes once the save it waits for is done: closing wins, and nothing
             // else opens on the way out (#134).
             "file.new" | "file.open" if !self.running_after_save && (self.closing_after_save.is_some() || self.close_ready) => {
-                Some(Err(format!("{id} wasn't run: MailCraft closes once the mailbox is saved")))
+                Some(Err(format!("{id} wasn't run: ictMail closes once the mailbox is saved")))
             }
             "file.new" | "file.open" if !self.running_after_save => {
                 if rev != self.saved_rev {
@@ -5096,7 +5096,7 @@ impl MailApp {
             _ => tl!("Saving the mailbox…").to_string(),
         };
         Some(if self.closing_after_save.is_some() {
-            i18n::fmt(tl!("{saving} · MailCraft closes when it is done"), &[("saving", &text)])
+            i18n::fmt(tl!("{saving} · ictMail closes when it is done"), &[("saving", &text)])
         } else if self.after_save.is_some() {
             i18n::fmt(tl!("{saving} · the other mailbox opens when it is done"), &[("saving", &text)])
         } else {
@@ -5223,7 +5223,7 @@ impl MailApp {
         drag_pointer::apply(&ctx);
         self.by_hand = false;
         self.refusal();
-        let title = format!("{} - MailCraft", self.title_stem());
+        let title = format!("{} - ictMail", self.title_stem());
         if title != self.sent_title {
             ctx.send_viewport_cmd(egui::ViewportCommand::Title(title.clone()));
             self.sent_title = title;
@@ -5312,8 +5312,9 @@ impl MailApp {
             saver.flush();
             let failed = self.collect_saves();
             if unsaved && self.saved_rev < rev {
-                return Err(failed
-                    .unwrap_or_else(|| "it was still being written when MailCraft stopped waiting; the file is as the last save left it".into()));
+                return Err(
+                    failed.unwrap_or_else(|| "it was still being written when ictMail stopped waiting; the file is as the last save left it".into())
+                );
             }
             return Ok(());
         }

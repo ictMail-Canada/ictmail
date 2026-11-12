@@ -546,7 +546,7 @@ pub fn confirmation(app: &MailApp, id: &str, params: &Value) -> Option<Question>
                     "Its messages, attachments, settings and remembered sign-in go with it, and so do the calendar, contacts, tasks and working hours that came from its server."
                 ),
                 tl!(
-                    "Downloaded pictures and opened attachments can't be told apart by account: File › Info › Remove MailCraft's data from this computer clears them."
+                    "Downloaded pictures and opened attachments can't be told apart by account: File › Info › Remove ictMail's data from this computer clears them."
                 )
             );
             // (The shared mailboxes opened through it go with it, #70.)
@@ -573,7 +573,7 @@ pub fn confirmation(app: &MailApp, id: &str, params: &Value) -> Option<Question>
             };
             // The only account leaves an empty mailbox, as at a first start (#313).
             let text = if mb.accounts.iter().all(|x| x.id == a.id || x.shared_of == Some(a.id)) {
-                format!("{text} {}", tl!("MailCraft will have no account afterwards: File › Add Account sets one up again."))
+                format!("{text} {}", tl!("ictMail will have no account afterwards: File › Add Account sets one up again."))
             } else {
                 text
             };
@@ -640,7 +640,7 @@ pub fn confirmation(app: &MailApp, id: &str, params: &Value) -> Option<Question>
             let whose = if account.email.trim().is_empty() { account.name.as_str() } else { account.email.as_str() };
             let text = crate::i18n::fmt(
                 tl!(
-                    "MailCraft will make one appointment called \"MailCraft connection check\" in the calendar of {account}, a year from today. It reads it back, changes its time twice (the second time said in this computer's time zone), reads it back each time, and deletes it again. Nothing else in your calendar is read or changed, nobody is invited or written to, and no reminder is set. Afterwards you see what the server answered at each step, and whether what was sent is what the server has."
+                    "ictMail will make one appointment called \"ictMail connection check\" in the calendar of {account}, a year from today. It reads it back, changes its time twice (the second time said in this computer's time zone), reads it back each time, and deletes it again. Nothing else in your calendar is read or changed, nobody is invited or written to, and no reminder is set. Afterwards you see what the server answered at each step, and whether what was sent is what the server has."
                 ),
                 &[("account", whose)],
             );
@@ -1606,7 +1606,7 @@ pub fn show(app: &mut MailApp, ctx: &egui::Context) {
                 }
                 ui.label(
                     egui::RichText::new(crate::i18n::fmt(
-                        tl!("Opened with {owner}'s sign-in. It needs Full Access to the mailbox, which your organisation's administrator gives. Microsoft asks you once to let MailCraft read and change shared mailboxes. What you change in it goes to it. Mail you write in it is from its address, and sending as it needs Send As or Send on Behalf permission: Microsoft asks you once more at your first send."),
+                        tl!("Opened with {owner}'s sign-in. It needs Full Access to the mailbox, which your organisation's administrator gives. Microsoft asks you once to let ictMail read and change shared mailboxes. What you change in it goes to it. Mail you write in it is from its address, and sending as it needs Send As or Send on Behalf permission: Microsoft asks you once more at your first send."),
                         &[("owner", &owner)],
                     ))
                     .color(t.text_dim)
@@ -1664,7 +1664,7 @@ pub fn show(app: &mut MailApp, ctx: &egui::Context) {
                 }
                 ui.label(
                     egui::RichText::new(crate::i18n::fmt(
-                        tl!("Read with {owner}'s sign-in, for as long as you keep it: the person has to have shared their calendar with you. It is kept on this computer only: it won't appear in Outlook or on your other devices. Microsoft asks you once to let MailCraft read other people's calendars."),
+                        tl!("Read with {owner}'s sign-in, for as long as you keep it: the person has to have shared their calendar with you. It is kept on this computer only: it won't appear in Outlook or on your other devices. Microsoft asks you once to let ictMail read other people's calendars."),
                         &[("owner", &owner)],
                     ))
                     .color(t.text_dim)
@@ -1820,7 +1820,7 @@ pub fn show(app: &mut MailApp, ctx: &egui::Context) {
                 let resp = crate::secret_field::field(ui, password, shown, watch, room, |edit| edit);
                 crate::text_menu::hold(&resp);
                 ui.label(
-                    egui::RichText::new(tl!("MailCraft keeps it in memory until you close the app. It is never written to disk."))
+                    egui::RichText::new(tl!("ictMail keeps it in memory until you close the app. It is never written to disk."))
                         .color(t.text_dim)
                         .size(11.0),
                 );
@@ -1865,7 +1865,7 @@ pub fn show(app: &mut MailApp, ctx: &egui::Context) {
             close |= !open;
         }
         Dialog::Refused { text } => {
-            let open = window(ctx, "MailCraft", 420.0, |ui| {
+            let open = window(ctx, "ictMail", 420.0, |ui| {
                 ui.horizontal_top(|ui| {
                     // A warning mark drawn here: a round red dot with a white bar.
                     let (mark, _) = ui.allocate_exact_size(vec2(28.0, 28.0), egui::Sense::hover());
@@ -1985,7 +1985,7 @@ pub fn show(app: &mut MailApp, ctx: &egui::Context) {
                 AboutTab::Contributors => 720.0,
                 AboutTab::Testers => 520.0,
             };
-            let open = window(ctx, tl!("About MailCraft"), width, |ui| {
+            let open = window(ctx, tl!("About ictMail"), width, |ui| {
                 ui.horizontal(|ui| {
                     for (which, label) in [(AboutTab::About, "About"), (AboutTab::Contributors, "Contributors"), (AboutTab::Testers, "Testers")] {
                         if ui.selectable_label(*tab == which, tl!(label)).clicked() {
@@ -2008,7 +2008,15 @@ pub fn show(app: &mut MailApp, ctx: &egui::Context) {
                     });
                     return;
                 }
-                ui.label(egui::RichText::new("MailCraft").font(semibold(20.0)).color(t.accent_text));
+                match crate::opening::wordmark(ctx) {
+                    Some(logo) => {
+                        ui.image(egui::load::SizedTexture::new(logo.id(), egui::vec2(220.0, 88.0)));
+                        ui.add_space(4.0);
+                    }
+                    None => {
+                        ui.label(egui::RichText::new("ictMail").font(semibold(20.0)).color(t.accent_text));
+                    }
+                }
                 ui.label(
                     egui::RichText::new(crate::i18n::fmt(tl!("Version {version}"), &[("version", env!("CARGO_PKG_VERSION"))])).color(t.text_dim),
                 );

@@ -512,17 +512,17 @@ fn a_file_of_a_newer_form_is_said_to_be_from_a_newer_mailcraft() {
     let good = fs::read(&path).unwrap();
     // This form with a higher number, and another form of ours altogether.
     let higher = [&good[..16], &[4, 0, 0, 0][..], &good[20..]].concat();
-    for (bytes, says) in [(higher, "newer MailCraft (format 4)"), (b"MailCraft journal\n\x05\0\0\0".to_vec(), "newer MailCraft")] {
+    for (bytes, says) in [(higher, "newer ictMail (format 4)"), (b"ictMail journal\n\x05\0\0\0".to_vec(), "newer ictMail")] {
         fs::write(&path, &bytes).unwrap();
         let error = open(&path).unwrap_err();
         assert!(error.contains(says), "{error}");
         assert!(crate::io::read_mailbox(&bytes).is_err());
         assert!(sweep(&path, Duration::ZERO).is_err());
     }
-    assert!(crate::io::read_mailbox(b"MailCraft journal\n").unwrap_err().contains("newer MailCraft"));
+    assert!(crate::io::read_mailbox(b"ictMail journal\n").unwrap_err().contains("newer ictMail"));
     // JSON that isn't ours still isn't.
     fs::write(&path, b"{\"hello\": 1, \"version\": \"x\"}").unwrap();
-    assert!(open(&path).unwrap_err().contains("isn't a MailCraft mailbox"));
+    assert!(open(&path).unwrap_err().contains("isn't a ictMail mailbox"));
 }
 
 #[test]
@@ -863,7 +863,7 @@ fn a_hostile_file_of_this_form_is_refused_or_read_and_names_nothing_outside_its_
     for (n, bytes) in refused.iter().enumerate() {
         fs::write(&path, bytes).unwrap();
         let error = open(&path).unwrap_err();
-        assert!(error.contains("damaged") || error.contains("newer MailCraft"), "{n}: {error}");
+        assert!(error.contains("damaged") || error.contains("newer ictMail"), "{n}: {error}");
         assert!(sweep(&path, Duration::ZERO).is_err(), "{n}");
     }
     // Content names that are paths or lies cost that content and nothing else.

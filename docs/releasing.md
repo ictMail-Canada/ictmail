@@ -168,7 +168,7 @@ must pass `codesign --verify` when the running app is signed), and for an AppIma
 new file over the old. Windows Installer and `hdiutil` are given a copy of the file in a folder
 made for it alone, checked against the signed list's SHA-256 as it is opened, never the download
 itself. So a release's packages must keep their names
-(`mailcraft-<version>-<os>-<arch>.<ext>`), the `.dmg` must hold the app at its top, and the `.msi`
+(`ictmail-<version>-<os>-<arch>.<ext>`), the `.dmg` must hold the app at its top, and the `.msi`
 must keep its `UpgradeCode` and `AllowDowngrades` (going back installs the older `.msi` over the
 newer). An organisation installs the `.msi` with `DISABLEAUTOMATICUPDATES=1` to turn updating by
 itself off for every user of the computer.
@@ -253,7 +253,7 @@ the job that made it, and checks that OpenSSL and xtask sign alike with a throwa
 no environment, is given no secrets and publishes nothing.
 
 
-Each release also carries `mailcraft-<version>.intoto.jsonl`: the build provenance GitHub attests
+Each release also carries `ictmail-<version>.intoto.jsonl`: the build provenance GitHub attests
 (which workflow run, at which commit, made each file), as a file, so it can be checked without
 GitHub's command line (`gh attestation verify <file> -R UCS-Care-Group/mailcraft` does the same
 online).
@@ -275,9 +275,9 @@ MailCraft, and where each part stands:
   App Paths entry, and the registrations that let the owner choose MailCraft in Settings › Default
   apps for `mailto:` links and `.eml`, `.ics` and `.vcf` files ("Open with" for `.mbox`). It never
   takes a type over from another program; only MailCraft's own `.mailcraft` opens with it by
-  default. `mailcraft.exe` is a Windows program with no console window; `mailcraft-cli.exe` is the
+  default. `ictmail.exe` is a Windows program with no console window; `ictmail-cli.exe` is the
   console program. The portable `.zip` holds the same two files and registers nothing.
-- **Linux (`.deb`, `.rpm`, `.AppImage`, `.tar.gz`):** `/usr/bin/mailcraft` and `mailcraft-cli`, a
+- **Linux (`.deb`, `.rpm`, `.AppImage`, `.tar.gz`):** `/usr/bin/ictmail` and `ictmail-cli`, a
   desktop entry that offers MailCraft for `mailto:` links, messages, calendar files and contact
   cards, AppStream metadata and the icons. The binaries need glibc 2.35 or later.
 - **macOS (the app in a disk image):** `Info.plist` declares messages, calendar files and contact
@@ -345,7 +345,7 @@ the programs inside them that compare.
 
 Checked on 2026-10-12, on a Windows 11 machine and an Ubuntu 22.04 WSL distribution:
 
-- `package.ps1 -Arch x64` builds `mailcraft-<version>-windows-x64.msi` and the portable zip; the
+- `package.ps1 -Arch x64` builds `ictmail-<version>-windows-x64.msi` and the portable zip; the
   MSI was read back (identity, files, shortcut, registrations) and unpacked; the program in it is
   a GUI program and the CLI answers `--version`.
 - `package.sh` builds the AppImage (with `.zsync`), `.deb`, `.rpm` and `.tar.gz`; the `.deb` was

@@ -19,7 +19,7 @@ struct Scratch(PathBuf);
 
 impl Scratch {
     fn new() -> Scratch {
-        let dir = std::env::temp_dir().join(format!("mailcraft-cli-account-remove-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("ictmail-cli-account-remove-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&dir);
         std::fs::create_dir_all(&dir).unwrap();
         Scratch(dir)
@@ -64,7 +64,7 @@ fn the_cli_removes_what_came_from_the_accounts_server() {
     }
     s.run("file.saveAs", &json!({"path": before})).unwrap();
 
-    let out = Command::new(env!("CARGO_BIN_EXE_mailcraft-cli"))
+    let out = Command::new(env!("CARGO_BIN_EXE_ictmail-cli"))
         .arg("run")
         .arg("--file")
         .arg(&before)

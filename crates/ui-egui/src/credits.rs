@@ -323,7 +323,7 @@ pub fn contributors_ui(ui: &mut egui::Ui, t: &Tokens) {
 /// built in (the earliest tester first). Nothing to sort and no numbers.
 pub fn testers_ui(ui: &mut egui::Ui, t: &Tokens) {
     ui.label(
-        RichText::new(tl!("MailCraft is tested on real mail, by people who use it every day and tell us what goes wrong. Thank you.")).color(t.text),
+        RichText::new(tl!("ictMail is tested on real mail, by people who use it every day and tell us what goes wrong. Thank you.")).color(t.text),
     );
     ui.separator();
     egui::ScrollArea::vertical().auto_shrink([false, true]).max_height(340.0).show(ui, |ui| {

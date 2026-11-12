@@ -129,7 +129,7 @@ pub(crate) fn account_detail(app: &MailApp, a: &mailcraft_model::Account) -> Str
         // An Exchange server account names its server, and says why it isn't kept in step.
         AccountKind::Exchange => ews_line(app, a),
         // Kept as its file has it: this version neither sends nor receives with it.
-        AccountKind::Unknown => tl!("Added by a newer version of MailCraft: send and receive with it there").to_string(),
+        AccountKind::Unknown => tl!("Added by a newer version of ictMail: send and receive with it there").to_string(),
         AccountKind::Imap => {
             let servers = format!(
                 "{} · {}",
@@ -198,11 +198,11 @@ fn info(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
             // An account kept in step through Graph gets its mail that way too: without it, none.
             let link = if a.kind == AccountKind::Microsoft {
                 ui.link(tl!("Connect to Microsoft (mail, calendar and contacts)")).on_hover_text(tl!(
-                    "Sign in once more to let MailCraft read and change your mail, send, and show your calendar and contacts through Microsoft."
+                    "Sign in once more to let ictMail read and change your mail, send, and show your calendar and contacts through Microsoft."
                 ))
             } else {
                 ui.link(tl!("Connect calendar and contacts")).on_hover_text(tl!(
-                    "Sign in once more to let MailCraft send through Microsoft and show your calendar and contacts. Mail works without it."
+                    "Sign in once more to let ictMail send through Microsoft and show your calendar and contacts. Mail works without it."
                 ))
             };
             if link.clicked() {
@@ -359,7 +359,7 @@ fn info(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
         "account",
         tl!("Add Account"),
         tl!(
-            "Type your e-mail address and MailCraft finds the rest: Microsoft 365, Outlook.com, Google and other providers, or a mailbox on this device only"
+            "Type your e-mail address and ictMail finds the rest: Microsoft 365, Outlook.com, Google and other providers, or a mailbox on this device only"
         ),
         t,
     ) {
@@ -681,7 +681,7 @@ fn options(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
     if ui
         .checkbox(&mut remember, tl!("Remember passwords and sign-ins on this computer"))
         .on_hover_text(tl!(
-            "Kept in the system's credential store, never in the mailbox or its settings. Without it you sign in again each time MailCraft starts."
+            "Kept in the system's credential store, never in the mailbox or its settings. Without it you sign in again each time ictMail starts."
         ))
         .changed()
     {
@@ -705,7 +705,7 @@ fn options(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
     row(ui, tl!("Google Desktop application ID"), |ui| {
         let mut id = app.ui.google_client_id.clone();
         let hint = if app.services.google_client_id.is_empty() {
-            tl!("Waiting for MailCraft's Google registration")
+            tl!("Waiting for ictMail's Google registration")
         } else {
             tl!("The one this build came with")
         };
@@ -863,7 +863,7 @@ pub(crate) fn contributors(ui: &mut Ui) {
 }
 
 fn about(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
-    heading(ui, tl!("About MailCraft"), t);
+    heading(ui, tl!("About ictMail"), t);
     ui.label(egui::RichText::new(crate::i18n::fmt(tl!("Version {version}"), &[("version", env!("CARGO_PKG_VERSION"))])).color(t.text_dim));
     ui.label(tl!(
         "Mail, calendar, people and tasks, written from scratch in Rust. It runs natively on macOS, Windows, Linux and BSD, and in the browser."

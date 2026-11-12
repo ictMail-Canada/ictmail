@@ -133,7 +133,7 @@ fn build(app: &MailApp) -> Result<Built, Box<dyn std::error::Error + Send + Sync
     let menu = Menu::new();
 
     // MailCraft: About, Settings, the system's, and Quit (which asks first).
-    let app_menu = Submenu::new("MailCraft", true);
+    let app_menu = Submenu::new("ictMail", true);
     app_menu.append(&PredefinedMenuItem::about(Some(&words.about), None))?;
     app_menu.append(&PredefinedMenuItem::separator())?;
     for it in menubar::app_items() {

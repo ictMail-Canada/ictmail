@@ -237,7 +237,7 @@ pub fn at_start(folders: &Folders, running: &str) -> UpdateStart {
                 out.didnt_start = Some((running.to_string(), record.from.clone()));
             }
             if let Err(e) = write_json(&folders.starts(), &json!({"version": running, "unfinished": unfinished.saturating_add(1).min(1_000)})) {
-                log::warn!("couldn't note this start of a newly installed MailCraft: {}", e.kind());
+                log::warn!("couldn't note this start of a newly installed ictMail: {}", e.kind());
             }
         }
     } else {
@@ -248,7 +248,7 @@ pub fn at_start(folders: &Folders, running: &str) -> UpdateStart {
             } else {
                 out.not_installed = Some(record.to.clone());
             }
-            log::warn!("MailCraft {} was to be installed and wasn't; {running} is still the one here", record.to);
+            log::warn!("ictMail {} was to be installed and wasn't; {running} is still the one here", record.to);
         }
         let _ = fs::remove_file(folders.record());
         let _ = fs::remove_file(folders.starts());
@@ -401,7 +401,7 @@ pub fn open_app(app: &Path) -> Run {
     Run::new("/usr/bin/open", &[OsStr::new("-n"), app.as_os_str(), OsStr::new("--args"), OsStr::new(AFTER_UPDATE)])
 }
 
-/// The program (an AppImage, `mailcraft.exe`) started again.
+/// The program (an AppImage, `ictmail.exe`) started again.
 pub fn start_program(program: &Path) -> Run {
     Run::new(program, &[OsStr::new(AFTER_UPDATE)])
 }
@@ -839,7 +839,7 @@ fn put_back(running: &Path, aside: &Path, staged: &Path, cause: io::Error) -> io
 /// beside it is kept until the owner has put it right. Best effort.
 fn mark_unfinished(running: &Path) {
     if let Ok(marker) = beside(running, "unfinished")
-        && let Err(e) = fs::write(&marker, b"An update of MailCraft didn't finish: see the log.\n")
+        && let Err(e) = fs::write(&marker, b"An update of ictMail didn't finish: see the log.\n")
     {
         log::warn!("the unfinished update couldn't be marked: {}", e.kind());
     }
@@ -853,7 +853,7 @@ fn mark_unfinished(running: &Path) {
 pub fn clear_leftovers(folders: &Folders, target: &Path) -> bool {
     let Ok(lock) = open_lock(folders) else { return false };
     if lock.try_lock().is_err() {
-        log::info!("an update is being installed; what is beside MailCraft is left for now");
+        log::info!("an update is being installed; what is beside ictMail is left for now");
         return false;
     }
     let (Ok(marker), Ok(new), Ok(old)) = (beside(target, "unfinished"), beside(target, "new"), beside(target, "old")) else {
@@ -870,8 +870,8 @@ pub fn clear_leftovers(folders: &Folders, target: &Path) -> bool {
             continue;
         }
         match remove_stubborn(path) {
-            Ok(()) => log::info!("removed what an earlier update left beside MailCraft (.{what})"),
-            Err(e) => log::warn!("what an earlier update left beside MailCraft (.{what}) couldn't be removed: {}", e.kind()),
+            Ok(()) => log::info!("removed what an earlier update left beside ictMail (.{what})"),
+            Err(e) => log::warn!("what an earlier update left beside ictMail (.{what}) couldn't be removed: {}", e.kind()),
         }
     }
     let _ = lock.unlock();
@@ -905,7 +905,7 @@ pub fn clear_mac_data(folders: &Folders) {
     let _ = lock.unlock();
 }
 
-/// What this copy is installed as: the AppImage file, the `.app` folder, or `mailcraft.exe`.
+/// What this copy is installed as: the AppImage file, the `.app` folder, or `ictmail.exe`.
 pub fn target(install: Install) -> Option<PathBuf> {
     let exe = std::env::current_exe().ok()?;
     match install {
@@ -926,7 +926,7 @@ pub fn on_exit(folders: &Folders, install: Install, what: OnExit, verified: Opti
     // Held from here until this program has gone: another start leaves what is beside the app
     // alone meanwhile ([`clear_leftovers`]), and a new version waits for it.
     if !hold_lock(folders) {
-        log::warn!("the update lock couldn't be taken; another start may tidy beside MailCraft meanwhile");
+        log::warn!("the update lock couldn't be taken; another start may tidy beside ictMail meanwhile");
     }
     match what {
         OnExit::Install { version, restart } => {
@@ -963,7 +963,7 @@ pub fn on_exit(folders: &Folders, install: Install, what: OnExit, verified: Opti
             let kept = read_kept(&previous).filter(|k| k.version == to).ok_or("the version to go back to isn't kept")?;
             if let Some(mailbox) = mailbox {
                 match mailcraft_engine::store_before::put_back(mailbox, running) {
-                    Ok(true) => log::info!("the mailbox file from before MailCraft {running} changed its format is put back"),
+                    Ok(true) => log::info!("the mailbox file from before ictMail {running} changed its format is put back"),
                     Ok(false) => {}
                     Err(e) => return Err(format!("the mailbox file from before couldn't be put back ({})", e.kind())),
                 }
@@ -1014,7 +1014,7 @@ fn install_appimage(folders: &Folders, image: &Path, new: &Path, sha256: [u8; 32
     let previous = folders.previous();
     let _ = remove_stubborn(&previous);
     fs::create_dir_all(&previous).map_err(|e| e.to_string())?;
-    let name = image.file_name().and_then(OsStr::to_str).filter(|n| plain_name(n)).unwrap_or("MailCraft.AppImage").to_string();
+    let name = image.file_name().and_then(OsStr::to_str).filter(|n| plain_name(n)).unwrap_or("ictMail.AppImage").to_string();
     let keep = previous.join(&name);
     let replaced = replace(image, new, Some(&keep), Some(sha256), &mut |_| true).map_err(|e| format!("the AppImage couldn't be replaced: {e}"))?;
     // Only a version that was kept is offered to go back to.
@@ -1076,7 +1076,7 @@ fn mac_swap(folders: &Folders, app: &Path, mount: &Path, running: &str, run: &mu
     let previous = folders.previous();
     let _ = remove_stubborn(&previous);
     fs::create_dir_all(&previous).map_err(|e| e.to_string())?;
-    let name = app.file_name().and_then(OsStr::to_str).filter(|n| plain_name(n)).unwrap_or("MailCraft.app").to_string();
+    let name = app.file_name().and_then(OsStr::to_str).filter(|n| plain_name(n)).unwrap_or("ictMail.app").to_string();
     let mut holds = |placed: &Path| !signed || run(&codesign_verify(placed)) == Some(0);
     let replaced = replace(app, &new, Some(&previous.join(&name)), None, &mut holds).map_err(|e| format!("the app couldn't be replaced: {e}"))?;
     // Only a version that was kept is offered to go back to.
@@ -1103,10 +1103,10 @@ fn windows_helper(folders: &Folders, job: &Job) -> Result<(), String> {
     let dir = folders.helper().join("program");
     let _ = fs::remove_dir_all(&dir);
     fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
-    let copy = dir.join("mailcraft-update.exe");
+    let copy = dir.join("ictmail-update.exe");
     fs::copy(&exe, &copy).map_err(|e| format!("the installer's helper couldn't be made: {}", e.kind()))?;
     if !hold_lock(folders) {
-        log::warn!("the installer may start before MailCraft has gone");
+        log::warn!("the installer may start before ictMail has gone");
     }
     Run { program: copy, args: job.args() }.spawn_detached().map_err(|e| format!("the installer couldn't be started: {}", e.kind()))
 }

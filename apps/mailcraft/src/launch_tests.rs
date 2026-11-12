@@ -106,7 +106,7 @@ fn a_file_that_isnt_a_mailbox_says_why_and_is_kept_nowhere() {
     std::fs::write(&file, b"{ this is not a mailbox").unwrap();
     let arrival = first_mailbox(false, Some(file.clone()), &OpenProgress::default());
     match &arrival.trouble {
-        Some(Trouble::Unreadable(why)) => assert!(why.contains("isn't a MailCraft mailbox"), "{why}"),
+        Some(Trouble::Unreadable(why)) => assert!(why.contains("isn't a ictMail mailbox"), "{why}"),
         other => panic!("{other:?}"),
     }
     assert!(arrival.path.is_none());

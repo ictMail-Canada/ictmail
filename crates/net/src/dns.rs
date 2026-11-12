@@ -166,7 +166,7 @@ mod tests {
         }
         // A question and nothing else: no body, and nothing about who is asking.
         assert!(request.ends_with("\r\n\r\n") && !request.to_lowercase().contains("content-length"), "{request}");
-        assert!(request.contains("User-Agent: MailCraft\r\n") && !request.to_lowercase().contains("cookie"), "{request}");
+        assert!(request.contains("User-Agent: ictMail\r\n") && !request.to_lowercase().contains("cookie"), "{request}");
 
         // A name server whose address has a question of its own.
         lookup_mx_at(&[&server.url("/resolve?ct=application/dns-json")], "example.org").unwrap();

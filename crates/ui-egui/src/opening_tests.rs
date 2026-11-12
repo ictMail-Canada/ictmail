@@ -302,7 +302,7 @@ fn a_reading_thread_that_ends_without_a_word_is_a_mailbox_that_couldnt_be_read()
     let (app, tx, _progress, built, _control) = waiting();
     drop(tx);
     let mut h = harness(app);
-    assert!(h.query_by_label("MailCraft stopped reading it before it was done.").is_some());
+    assert!(h.query_by_label("ictMail stopped reading it before it was done.").is_some());
     h.get_by_label("Continue").click();
     h.run_steps(3);
     assert_eq!(*built.borrow(), Some((0, None, false)));

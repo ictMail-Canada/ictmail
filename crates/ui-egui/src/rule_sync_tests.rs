@@ -397,7 +397,7 @@ fn changes_held_back_from_the_server_say_the_server_still_has_the_rule_as_it_was
     app.execute("ui.dialog", json!({"name": "rules"})).unwrap();
     app.auto_sync = false;
     let h = shown(app);
-    let said = "1 rule deleted here is still on the server until MailCraft may change the server's rules (File › Info › Ask again).";
+    let said = "1 rule deleted here is still on the server until ictMail may change the server's rules (File › Info › Ask again).";
     assert!(h.query_by_label(said).is_some());
 }
 

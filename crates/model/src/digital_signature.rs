@@ -169,7 +169,7 @@ impl Why {
             Why::PartlySigned => "only part of the message was signed; the rest could say anything",
             Why::Altered => "the message was changed after it was signed",
             Why::WeakAlgorithm => "it uses an algorithm that's no longer safe",
-            Why::UnknownAlgorithm => "it uses an algorithm MailCraft doesn't know",
+            Why::UnknownAlgorithm => "it uses an algorithm ictMail doesn't know",
             Why::NoPublicKey => "the signer's Public key (certificate) isn't in the message or kept on this computer",
             Why::KeyRevoked => "the signer's key was revoked by its owner",
             Why::KeyExpired => "the signer's key had expired when the message was signed",

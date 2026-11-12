@@ -16,10 +16,10 @@ fn message() -> Message {
         subject: "Notes".into(),
         flag: FlagStatus::Complete,
         headers: vec![
-            ("X-MailCraft-Meeting-Response".into(), "accepted 1791993600 9f2c0000aaaa1111".into()),
+            ("X-ictMail-Meeting-Response".into(), "accepted 1791993600 9f2c0000aaaa1111".into()),
             (OPENED_FILE_HEADER.into(), "ab".repeat(32)),
             ("x-mailcraft-anything-else".into(), "kept here".into()),
-            ("X-MailCraft-Not-Downloaded".into(), "123456789".into()),
+            ("X-ictMail-Not-Downloaded".into(), "123456789".into()),
             ("X-Other".into(), "kept".into()),
         ],
         ..Default::default()
@@ -36,8 +36,8 @@ fn mailcrafts_own_notes_are_never_written_out() {
     ] {
         let lower = out.to_ascii_lowercase();
         assert!(!lower.contains("meeting-response") && !lower.contains("opened-file") && !lower.contains("anything-else"), "{out}");
-        assert!(out.contains("X-MailCraft-Not-Downloaded: 123456789\r\n"), "{out}");
-        assert!(out.contains("X-MailCraft-Flag: complete\r\n") && out.contains("X-Other: kept\r\n"), "{out}");
+        assert!(out.contains("X-ictMail-Not-Downloaded: 123456789\r\n"), "{out}");
+        assert!(out.contains("X-ictMail-Flag: complete\r\n") && out.contains("X-Other: kept\r\n"), "{out}");
     }
 }
 
@@ -76,15 +76,15 @@ fn a_copys_marker_is_written_into_that_copy_alone() {
         assert!(!out.to_ascii_lowercase().contains("x-mailcraft-place"), "{out}");
     }
     let placed = String::from_utf8(write_placed(&m, &WriteOptions::default(), "mailcraft-place-4-5-0000000000000006")).unwrap();
-    assert!(placed.starts_with("X-MailCraft-Place: mailcraft-place-4-5-0000000000000006\r\n"), "{placed}");
-    assert_eq!(placed.matches("X-MailCraft-Place").count(), 1, "{placed}");
+    assert!(placed.starts_with("X-ictMail-Place: mailcraft-place-4-5-0000000000000006\r\n"), "{placed}");
+    assert_eq!(placed.matches("X-ictMail-Place").count(), 1, "{placed}");
     assert!(!placed.contains("0000000000000003"), "{placed}");
     assert!(carries_place(placed.as_bytes(), "mailcraft-place-4-5-0000000000000006"));
 }
 
 #[test]
 fn a_copy_is_known_by_its_own_marker_alone() {
-    let header = b"From: a@lumen.example\r\nx-mailcraft-place:  m-1 \r\nSubject: Hi\r\n\r\nX-MailCraft-Place: m-2\r\n";
+    let header = b"From: a@lumen.example\r\nx-mailcraft-place:  m-1 \r\nSubject: Hi\r\n\r\nX-ictMail-Place: m-2\r\n";
     assert!(carries_place(header, "m-1"));
     // Another marker, one in the body, or none: not this copy.
     for marker in ["m-2", "m-", "M-1", ""] {

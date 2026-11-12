@@ -17,7 +17,7 @@ struct Scratch(PathBuf);
 
 impl Scratch {
     fn new(name: &str) -> Scratch {
-        let dir = std::env::temp_dir().join(format!("mailcraft-cli-import-pst-{name}-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("ictmail-cli-import-pst-{name}-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&dir);
         std::fs::create_dir_all(&dir).unwrap();
         Scratch(dir)
@@ -68,7 +68,7 @@ fn file(password: Option<&str>) -> Vec<u8> {
 }
 
 fn cli(args: &[&str], password: Option<&str>) -> (bool, Value, String) {
-    let mut cmd = Command::new(env!("CARGO_BIN_EXE_mailcraft-cli"));
+    let mut cmd = Command::new(env!("CARGO_BIN_EXE_ictmail-cli"));
     cmd.args(args).env_remove("MAILCRAFT_PST_PASSWORD");
     if let Some(p) = password {
         cmd.env("MAILCRAFT_PST_PASSWORD", p);

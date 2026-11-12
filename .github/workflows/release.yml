@@ -292,7 +292,7 @@ jobs:
         env:
           BUNDLE: ${{ steps.attest.outputs.bundle-path }}
           VERSION: ${{ needs.version.outputs.version }}
-        run: cp -- "$BUNDLE" "artifacts/mailcraft-$VERSION.intoto.jsonl"
+        run: cp -- "$BUNDLE" "artifacts/ictmail-$VERSION.intoto.jsonl"
       # Always a draft: a maintainer checks it and publishes it by hand. A re-run replaces the files
       # of the draft; a release that is already published is never changed here.
       - name: Create the draft release, or replace the files of the draft a re-run made
@@ -304,7 +304,7 @@ jobs:
           PRERELEASE: ${{ needs.version.outputs.prerelease }}
         run: |
           tag="v$VERSION"
-          title="MailCraft v$VERSION"
+          title="ictMail v$VERSION"
           pre=()
           if [ "$PRERELEASE" = "true" ]; then pre=(--prerelease); fi
           # The notes name the repository they are published in (a fork's point at the fork).

@@ -919,7 +919,7 @@ fn too_large(header: Fetched, size: u64, largest: u64) -> Message {
     message.original = None;
     message.body = Body {
         text: format!(
-            "{NOT_DOWNLOADED_NOTE} it is {} on the server, and MailCraft takes messages of up to {}.\n\n\
+            "{NOT_DOWNLOADED_NOTE} it is {} on the server, and ictMail takes messages of up to {}.\n\n\
              What is here comes from its header alone: who sent it, when, and what it is about. The message itself, \
              with anything attached to it, is still on the server. Read it there with another mail program or on the web.\n",
             megabytes(size),
@@ -1539,7 +1539,7 @@ mod tests {
     fn of_a_message_too_large_the_header_is_kept_and_a_note_says_so() {
         let header = b"From: Bob <bob@example.org>\r\nTo: ada@example.org\r\nSubject: =?utf-8?q?Gro=C3=9Fe_Datei?=\r\nDate: Tue, 01 Jul 2003 10:52:37 +0200\r\n\
             Message-ID: <big@example.org>\r\nMIME-Version: 1.0\r\nContent-Type: multipart/mixed; boundary=\"b\"\r\n\
-            X-MailCraft-Not-Downloaded: 1\r\nX-Other: kept\r\n\r\n";
+            X-ictMail-Not-Downloaded: 1\r\nX-Other: kept\r\n\r\n";
         let fetched = Fetched {
             uid: 7,
             flags: vec!["\\Seen".into(), "\\Flagged".into()],
@@ -1554,7 +1554,7 @@ mod tests {
         );
         assert_eq!((m.read, m.flag, m.date, m.received), (true, FlagStatus::Flagged, 1_057_049_557, 1_057_053_157));
         assert!(
-            m.body.text.starts_with("This message is too large to download: it is 61 MB on the server, and MailCraft takes messages of up to 25 MB.")
+            m.body.text.starts_with("This message is too large to download: it is 61 MB on the server, and ictMail takes messages of up to 25 MB.")
         );
         assert!(m.body.html.is_none() && m.attachments.is_empty());
         // Its mark says how large it is, once: a sender can't plant another.

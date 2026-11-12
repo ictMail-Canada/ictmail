@@ -18,7 +18,7 @@ const REFRESH: &str = "M.R3_BAY.refresh-token";
 const LOG_LINE: &str = "sync: 42 messages in 3 folders";
 
 fn host_report() -> String {
-    format!("### MailCraft diagnostics\n\n- Version: 9.8.7\n- Platform: testos testarch\n\n```\n{LOG_LINE}\n```\n")
+    format!("### ictMail diagnostics\n\n- Version: 9.8.7\n- Platform: testos testarch\n\n```\n{LOG_LINE}\n```\n")
 }
 
 /// The sample mailbox with an account that sends, whose password and tokens are in memory.
@@ -115,7 +115,7 @@ fn the_file_holds_exactly_what_copy_diagnostics_copies() {
     let r = report(&mut a, json!({"what": "x", "diagnostics": true, "path": path.to_string_lossy()})).unwrap();
     assert_eq!(r["saved"].as_str().unwrap(), path.to_string_lossy());
     assert_eq!(std::fs::read_to_string(&path).unwrap(), copied);
-    assert!(a.status_msg.as_ref().unwrap().0.contains("MailCraft sent nothing"));
+    assert!(a.status_msg.as_ref().unwrap().0.contains("ictMail sent nothing"));
     let _ = std::fs::remove_dir_all(&dir);
     assert!(saves_file(&json!({"diagnostics": true})));
 }
@@ -279,7 +279,7 @@ fn send_report_sends_what_the_window_shows_once_and_says_the_reference() {
     draft(&mut h).username = "@octocat".into();
     h.run_steps(1);
     // The privacy line is above Send.
-    assert!(h.query_by_label_contains("Sent to the MailCraft team privately").is_some());
+    assert!(h.query_by_label_contains("Sent to the ictMail team privately").is_some());
     h.get_by_label("Send report").click();
     h.run_steps(3);
     let asked = asked.lock().unwrap().clone();
@@ -592,7 +592,7 @@ fn without_a_relay_the_window_offers_open_on_github_alone() {
     let h = open_window(app());
     assert!(h.query_by_label("Send report").is_none());
     assert!(h.query_by_label("Open on GitHub").is_some());
-    assert!(h.query_by_label_contains("Sent to the MailCraft team privately").is_none());
+    assert!(h.query_by_label_contains("Sent to the ictMail team privately").is_none());
     assert!(h.query_by_label_contains("GitHub issues are public").is_some());
 }
 

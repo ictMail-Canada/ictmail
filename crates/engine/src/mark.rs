@@ -24,7 +24,7 @@ pub fn zone_stream(path: &Path) -> PathBuf {
 /// The value of `com.apple.quarantine`: flags (downloaded, not yet opened), the time in hex
 /// seconds, the name of the program that wrote the file.
 pub fn quarantine_value(unix_seconds: u64) -> String {
-    format!("0083;{unix_seconds:x};MailCraft;")
+    format!("0083;{unix_seconds:x};ictMail;")
 }
 
 /// Mark `path` as from the Internet where the system has such a mark.

@@ -28,7 +28,7 @@ fn addresses() -> (String, String) {
     (format!("imogen{n}@example.org"), format!("reception{n}@example.org"))
 }
 /// MailCraft's marker, as the stand-in keeps extended properties.
-const MARKER: &str = "String {6d1c4e3a-8f2b-4c5d-9e0a-1b2c3d4e5f60} Name MailCraftMarker";
+const MARKER: &str = "String {6d1c4e3a-8f2b-4c5d-9e0a-1b2c3d4e5f60} Name ictMailMarker";
 
 /// One whole run of `account`, each piece taken in as it comes; the requests it made, as
 /// `METHOD path body`, are checked to be at the right mailbox's address and no other.

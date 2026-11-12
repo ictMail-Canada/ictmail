@@ -18,7 +18,7 @@ pub fn start(job: impl FnOnce() -> Arrival + Send + 'static, wake: impl Fn() + S
     let (tx, rx) = channel();
     let spawned = std::thread::Builder::new().name("opening the mailbox".into()).spawn(move || {
         let arrival = std::panic::catch_unwind(AssertUnwindSafe(job)).unwrap_or_else(|_| {
-            log::error!("opening the mailbox stopped unexpectedly; MailCraft starts with an empty mailbox and leaves the file as it is");
+            log::error!("opening the mailbox stopped unexpectedly; ictMail starts with an empty mailbox and leaves the file as it is");
             Arrival::unreadable(Trouble::Stopped)
         });
         let _ = tx.send(arrival);

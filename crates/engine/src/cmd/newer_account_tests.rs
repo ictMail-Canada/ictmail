@@ -80,7 +80,7 @@ fn it_takes_no_part_in_a_send_receive() {
     // Send/Receive with no account named is the IMAP account's, never the newer one's.
     assert_eq!(s.run("sync.request", &json!({})).unwrap()["account"]["id"].as_u64(), Some(imap));
     let why = refusal(&mut s, "sync.request", json!({"account": newer}));
-    assert!(why.contains("was added by a newer version of MailCraft, which sends and receives its mail"), "{why}");
+    assert!(why.contains("was added by a newer version of ictMail, which sends and receives its mail"), "{why}");
     assert!(crate::cmd::account::sync_request(&s, newer).is_err());
     // An answer for it is refused: no run here asks its server anything.
     let before = s.mailbox.clone();
@@ -138,7 +138,7 @@ fn its_settings_cant_be_changed_here_and_it_can_be_removed() {
         ("signature.set", json!({"name": "Home", "text": "Ada", "default": true, "account": newer})),
     ] {
         let why = refusal(&mut s, id, params);
-        assert!(why.contains("was added by a newer version of MailCraft"), "{id}: {why}");
+        assert!(why.contains("was added by a newer version of ictMail"), "{id}: {why}");
     }
     assert_eq!(as_saved(&s, newer), kept);
     // Nor does what is done to the signatures reach it, though its file names one by that name.

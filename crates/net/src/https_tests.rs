@@ -116,7 +116,7 @@ fn problem(result: Result<Response, NetError>) -> CertificateProblem {
 
 #[test]
 fn a_certificate_the_system_trusts_needs_no_fingerprint() {
-    let authority = Authority::new("MailCraft Test Authority");
+    let authority = Authority::new("ictMail Test Authority");
     let server = Server::start(authority.server(&["localhost"]));
     trusting(vec![authority.root()], || {
         let answer = get(&server.url(), "").unwrap();
@@ -206,7 +206,7 @@ fn certificates_out_of_date_or_for_another_server_are_never_accepted_by_fingerpr
 
 #[test]
 fn a_certificate_the_system_trusts_for_another_name_is_not_offered_either() {
-    let authority = Authority::new("MailCraft Test Authority");
+    let authority = Authority::new("ictMail Test Authority");
     let server = Server::start(authority.server(&["mail.example.org"]));
     let found = trusting(vec![authority.root()], || problem(get(&server.url(), "")));
     assert!(matches!(found, CertificateProblem::Unacceptable(CertificateFault::WrongName, _)), "{found:?}");
@@ -310,7 +310,7 @@ fn a_server_that_shows_the_chosen_certificate_but_cannot_sign_with_its_key_is_re
 #[cfg(all(unix, not(target_vendor = "apple")))]
 #[test]
 fn a_certificate_that_is_not_for_servers_is_refused_even_when_pinned() {
-    let authority = Authority::new("MailCraft Test Authority");
+    let authority = Authority::new("ictMail Test Authority");
     let (config, der) = authority.server_for(&["localhost"], vec![ExtendedKeyUsagePurpose::ClientAuth]);
     let server = Server::start(config);
     let fingerprint = cert::fingerprint(&der);

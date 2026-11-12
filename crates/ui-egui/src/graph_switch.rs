@@ -51,13 +51,13 @@ pub(crate) fn wording(account: &str) -> Vec<String> {
     let with = |text: &str| fmt(text, &[("account", account)]);
     vec![
         with(tl!(
-            "MailCraft can now keep {account} in step with Microsoft through Microsoft Graph, the way Outlook on the web does, instead of IMAP. Your folders, flags, categories and drafts then match what you see in Outlook, and your mail keeps coming even where your organisation has turned IMAP off."
+            "ictMail can now keep {account} in step with Microsoft through Microsoft Graph, the way Outlook on the web does, instead of IMAP. Your folders, flags, categories and drafts then match what you see in Outlook, and your mail keeps coming even where your organisation has turned IMAP off."
         )),
         tl!("When you switch:").to_string(),
         format!(
             "•  {}",
             tl!(
-                "Anything still waiting to go to the server goes first: mail in the Outbox, and flags and moves made while you were offline. If MailCraft can't reach the server, the switch waits until it can."
+                "Anything still waiting to go to the server goes first: mail in the Outbox, and flags and moves made while you were offline. If ictMail can't reach the server, the switch waits until it can."
             )
         ),
         format!("•  {}", tl!("Before anything changes, a copy of your whole mailbox is saved next to it, with today's date in its name.")),
@@ -73,7 +73,7 @@ pub(crate) fn wording(account: &str) -> Vec<String> {
                 "Drafts you haven't sent go to your Drafts on the server. Folders and messages that are only on this computer stay on this computer, in a folder called \"Kept from {account}\". Your folders in Favorites stay there."
             ))
         ),
-        format!("•  {}", tl!("You may be asked to sign in with Microsoft again, to let MailCraft read and change your mail there.")),
+        format!("•  {}", tl!("You may be asked to sign in with Microsoft again, to let ictMail read and change your mail there.")),
         tl!("Later keeps this account on IMAP for now. You can switch whenever you like: search the commands for \"Switch to Microsoft Graph\".")
             .to_string(),
     ]
@@ -92,8 +92,8 @@ pub(crate) fn waiting_wording(account: &str, n: usize) -> Vec<String> {
         )
     };
     vec![
-        fmt(tl!("{account} is switching to Microsoft Graph, but MailCraft can't reach its IMAP server to send what is waiting there first."), &[("account", account)]),
-        tl!("Keep waiting, and the switch goes ahead by itself once MailCraft can reach the server. Or switch without them, if the server can't be reached any more (for example, your organisation has turned IMAP off):").to_string(),
+        fmt(tl!("{account} is switching to Microsoft Graph, but ictMail can't reach its IMAP server to send what is waiting there first."), &[("account", account)]),
+        tl!("Keep waiting, and the switch goes ahead by itself once ictMail can reach the server. Or switch without them, if the server can't be reached any more (for example, your organisation has turned IMAP off):").to_string(),
         left,
         tl!("A copy of your whole mailbox is saved next to it first, as always. Mail in the Outbox isn't left behind: it is sent through Microsoft Graph.").to_string(),
     ]
@@ -313,7 +313,7 @@ impl MailApp {
         self.graph_switch_tried.remove(&account);
         if !ok {
             let whose = address(self, account);
-            self.status(fmt(tl!("The switch of {account} to Microsoft Graph waits until MailCraft can reach the server."), &[("account", &whose)]));
+            self.status(fmt(tl!("The switch of {account} to Microsoft Graph waits until ictMail can reach the server."), &[("account", &whose)]));
             // Once a run of the program, the owner is offered to switch without what waits.
             if self.offer_graph_switch && self.dialog.is_none() && self.graph_switch_waiting_shown.insert(account) {
                 self.dialog = Some(Dialog::GraphSwitch { account });

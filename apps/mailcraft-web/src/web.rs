@@ -92,7 +92,7 @@ pub fn start() {
         if let Some(el) = document.get_element_by_id(LOADING_ID) {
             match result {
                 Ok(()) => el.remove(),
-                Err(e) => el.set_inner_html(&format!("<p>MailCraft failed to start: {e:?}</p><p>A browser with WebGPU or WebGL2 is required.</p>")),
+                Err(e) => el.set_inner_html(&format!("<p>ictMail failed to start: {e:?}</p><p>A browser with WebGPU or WebGL2 is required.</p>")),
             }
         }
     });
@@ -243,7 +243,7 @@ fn services(inbox: Inbox, ctx: egui::Context) -> Services {
             let pick = picks.get().wrapping_add(1);
             picks.set(pick);
             let dialog = match purpose {
-                "mailbox" => rfd::AsyncFileDialog::new().add_filter("MailCraft mailbox", MAILBOX_EXTS),
+                "mailbox" => rfd::AsyncFileDialog::new().add_filter("ictMail mailbox", MAILBOX_EXTS),
                 "import" => rfd::AsyncFileDialog::new().add_filter("Mail, calendar and contact files", IMPORT_EXTS),
                 // Anything can be attached.
                 _ => rfd::AsyncFileDialog::new(),

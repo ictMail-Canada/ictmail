@@ -18,10 +18,10 @@ pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 pub fn specs() -> Vec<CommandSpec> {
     vec![
         CommandSpec::new("help.help", "Help", "Help › Help", help).pure().params(
-            r#"{} — answers {"url"}: MailCraft's own help pages (the project's read-me). The window opens it in the system's browser; nothing about the owner is in the address"#,
+            r#"{} — answers {"url"}: ictMail's own help pages (the project's read-me). The window opens it in the system's browser; nothing about the owner is in the address"#,
         ),
         CommandSpec::new("help.training", "Show Training", "Help › Help", training).pure().params(
-            r#"{} — answers {"url"}: MailCraft's documentation (the `docs` folder of the project's repository: how it is put together, the parity checklists, driving it from scripts and agents). The window opens it in the system's browser; nothing about the owner is in the address"#,
+            r#"{} — answers {"url"}: ictMail's documentation (the `docs` folder of the project's repository: how it is put together, the parity checklists, driving it from scripts and agents). The window opens it in the system's browser; nothing about the owner is in the address"#,
         ),
         CommandSpec::new("help.support", "Get Support", "Help › Help", support).pure().params(
             r#"{} — answers {"url"}: the project's list of issues, where questions are asked and answered in public. The window opens it in the system's browser; nothing about the owner is in the address"#,
@@ -33,7 +33,7 @@ pub fn specs() -> Vec<CommandSpec> {
             r#"{} — answers {"url", "version"}: the release notes of this version, on the project's releases page. The window opens it in the system's browser"#,
         ),
         CommandSpec::new("file.account", "Account", "File", account).pure().params(
-            r#"{} — answers {"version", "accounts": [{"id", "name", "email", "kind"}], "offline": bool}: this copy of MailCraft and the accounts it has. The window shows File › About"#,
+            r#"{} — answers {"version", "accounts": [{"id", "name", "email", "kind"}], "offline": bool}: this copy of ictMail and the accounts it has. The window shows File › About"#,
         ),
     ]
 }

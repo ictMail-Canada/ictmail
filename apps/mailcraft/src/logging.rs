@@ -5,8 +5,8 @@
 //! Without a logger every `log::warn!`/`log::error!` in the workspace (an unreadable part of a
 //! message, a server that answered oddly, a mailbox that would not save) vanished. A
 //! launch from a desktop menu has no terminal, so the file is what a bug report can attach:
-//! `<settings dir>/logs/mailcraft.log`, next to the preferences (`prefs_path` in `main.rs`). Each
-//! start moves the previous log to `mailcraft.1.log` (and that one to `.2`), so the log of a run
+//! `<settings dir>/logs/ictmail.log`, next to the preferences (`prefs_path` in `main.rs`). Each
+//! start moves the previous log to `ictmail.1.log` (and that one to `.2`), so the log of a run
 //! that crashed survives the next launch. Runs without preferences (`MAILCRAFT_NO_PREFS`) log to
 //! standard error only.
 //!
@@ -33,8 +33,8 @@ use log::LevelFilter;
 use mailcraft_engine::store::{create_private_dir_all, create_private_replacing, make_private};
 
 /// The current log file's name inside the log directory.
-pub const LOG_FILE: &str = "mailcraft.log";
-/// How many previous logs are kept (`mailcraft.1.log` … `mailcraft.<KEEP>.log`).
+pub const LOG_FILE: &str = "ictmail.log";
+/// How many previous logs are kept (`ictmail.1.log` … `ictmail.<KEEP>.log`).
 pub const KEEP: usize = 2;
 /// The log file stops growing past this size (a runaway warning can't fill the disk).
 pub const MAX_FILE_BYTES: u64 = 16 * 1024 * 1024;
@@ -123,7 +123,7 @@ fn civil_from_days(days: u64) -> (u64, u64, u64) {
 }
 
 fn numbered(dir: &Path, n: usize) -> PathBuf {
-    if n == 0 { dir.join(LOG_FILE) } else { dir.join(format!("mailcraft.{n}.log")) }
+    if n == 0 { dir.join(LOG_FILE) } else { dir.join(format!("ictmail.{n}.log")) }
 }
 
 /// Shift the previous logs up one (`.log` → `.1.log` → … → `.<KEEP>.log`, the oldest dropped)
@@ -370,7 +370,7 @@ mod tests {
 
     fn temp_dir(tag: &str) -> PathBuf {
         static N: AtomicUsize = AtomicUsize::new(0);
-        let d = std::env::temp_dir().join(format!("mailcraft-logging-{tag}-{}-{}", std::process::id(), N.fetch_add(1, Ordering::Relaxed)));
+        let d = std::env::temp_dir().join(format!("ictmail-logging-{tag}-{}-{}", std::process::id(), N.fetch_add(1, Ordering::Relaxed)));
         let _ = std::fs::remove_dir_all(&d);
         d
     }
@@ -484,9 +484,9 @@ mod tests {
             std::fs::write(&path, format!("run {run}")).expect("write");
         }
         assert_eq!(read(&dir.join(LOG_FILE)), "run 4");
-        assert_eq!(read(&dir.join("mailcraft.1.log")), "run 3");
-        assert_eq!(read(&dir.join("mailcraft.2.log")), "run 2");
-        assert!(!dir.join("mailcraft.3.log").exists(), "only {KEEP} old logs are kept");
+        assert_eq!(read(&dir.join("ictmail.1.log")), "run 3");
+        assert_eq!(read(&dir.join("ictmail.2.log")), "run 2");
+        assert!(!dir.join("ictmail.3.log").exists(), "only {KEEP} old logs are kept");
         let _ = std::fs::remove_dir_all(&dir);
     }
 
@@ -611,7 +611,7 @@ mod tests {
         assert!(!logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("naga").build()));
         // Attaching again rotates: the first log becomes `.1`.
         logger.attach_dir(&dir).expect("attach again");
-        assert_eq!(read(&dir.join("mailcraft.1.log")), text);
+        assert_eq!(read(&dir.join("ictmail.1.log")), text);
         let _ = std::fs::remove_dir_all(&dir);
     }
 

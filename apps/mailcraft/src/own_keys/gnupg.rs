@@ -231,7 +231,7 @@ pub fn run_within(program: &Path, args: &[&str], timeout: Duration, max: usize) 
             return Err(format!("{name}'s output couldn't be read"));
         }
     }
-    let too_much = || format!("{name} listed more than MailCraft reads");
+    let too_much = || format!("{name} listed more than ictMail reads");
     let started = Instant::now();
     let mut read: Option<std::io::Result<Vec<u8>>> = None;
     let status = loop {

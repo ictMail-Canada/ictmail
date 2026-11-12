@@ -16,7 +16,7 @@ runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
-command: mailcraft
+command: ictmail
 finish-args:
   # Display: Wayland first; X11 only when no Wayland compositor is running.
   - --socket=wayland
@@ -44,7 +44,7 @@ finish-args:
 build-options:
   append-path: /usr/lib/sdk/rust-stable/bin
 modules:
-  - name: mailcraft
+  - name: ictmail
     buildsystem: simple
     build-options:
       env:
@@ -52,8 +52,8 @@ modules:
         CARGO_NET_OFFLINE: 'true'
     build-commands:
       - cargo --offline build --release --locked -p mailcraft -p mailcraft-cli
-      - install -Dm755 target/release/mailcraft /app/bin/mailcraft
-      - install -Dm755 target/release/mailcraft-cli /app/bin/mailcraft-cli
+      - install -Dm755 target/release/ictmail /app/bin/ictmail
+      - install -Dm755 target/release/ictmail-cli /app/bin/ictmail-cli
       - install -Dm644 packaging/linux/io.github.billsecond.mailcraft.desktop /app/share/applications/io.github.billsecond.mailcraft.desktop
       - install -Dm644 packaging/linux/io.github.billsecond.mailcraft.mime.xml /app/share/mime/packages/io.github.billsecond.mailcraft.xml
       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/

@@ -113,7 +113,7 @@ fn read(v: &Value) -> Result<(Mailbox, Left), crate::CmdError> {
     match Format::detect(&name, &bytes) {
         Some(Format::Mailbox) => {}
         Some(_) => return Err(failed!("{name} isn't a mailbox; bring it in with File › Import", name)),
-        None => return Err(failed!("{name} isn't a MailCraft mailbox", name)),
+        None => return Err(failed!("{name} isn't a ictMail mailbox", name)),
     }
     Ok((crate::io::read_mailbox(&bytes).map_err(fail)?, Left::default()))
 }

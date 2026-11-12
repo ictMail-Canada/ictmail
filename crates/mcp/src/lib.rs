@@ -4,7 +4,7 @@
 //!
 //! Two backends: [`Headless`] runs an in-process session on a mailbox (no window);
 //! [`backend::Remote`] talks to a running MailCraft app through its control channel
-//! (`mailcraft --control PORT`), so agents can also click, type and screenshot the real UI.
+//! (`ictmail --control PORT`), so agents can also click, type and screenshot the real UI.
 //!
 //! Agents get only what the owner allows (`mailcraft_engine::agent`): every command has a class,
 //! no file is named by an agent unless the owner gave a folder for it ([`files`]), and what needs
@@ -25,7 +25,7 @@ use mailcraft_engine::agent::{self, Verdict};
 use serde_json::{Value, json};
 
 /// Methods that need the desktop app.
-pub const NEEDS_APP: &str = "needs the desktop app: start `mailcraft --control 7991` and run `mailcraft-cli mcp --connect 127.0.0.1:7991`";
+pub const NEEDS_APP: &str = "needs the desktop app: start `ictmail --control 7991` and run `ictmail-cli mcp --connect 127.0.0.1:7991`";
 
 /// An in-process session, driven by an agent: every command goes through the gate, and what
 /// needs the owner runs only when it is in `allow` (`--allow`).

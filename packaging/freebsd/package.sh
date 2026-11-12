@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build and package MailCraft for FreeBSD:
 #
-#   $DIST/mailcraft-<version>-freebsd-<arch>.tar.gz   bin/ (mailcraft, mailcraft-cli) and share/
+#   $DIST/ictmail-<version>-freebsd-<arch>.tar.gz   bin/ (ictmail, ictmail-cli) and share/
 #                                                      (desktop entry, metainfo, icons, docs)
 #
 # Usage: packaging/freebsd/package.sh [--skip-build]
@@ -29,7 +29,7 @@ case "$ARCH" in
   arm64 | aarch64) ARCH=aarch64 ;;
   *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
 esac
-BASENAME="mailcraft-$VERSION-freebsd-$ARCH"
+BASENAME="ictmail-$VERSION-freebsd-$ARCH"
 
 echo "==> MailCraft $VERSION for FreeBSD $ARCH"
 
@@ -44,9 +44,9 @@ rm -rf "$WORK"
 # BSD install has no -D: make the directories first.
 mkdir -p "$STAGE/bin" "$STAGE/share/applications" "$STAGE/share/mime/packages" "$STAGE/share/metainfo" \
   "$STAGE/share/icons" "$STAGE/share/doc/mailcraft"
-install -m 755 "$BIN/mailcraft" "$STAGE/bin/mailcraft"
-install -m 755 "$BIN/mailcraft-cli" "$STAGE/bin/mailcraft-cli"
-strip "$STAGE/bin/mailcraft" "$STAGE/bin/mailcraft-cli" 2>/dev/null || true
+install -m 755 "$BIN/ictmail" "$STAGE/bin/ictmail"
+install -m 755 "$BIN/ictmail-cli" "$STAGE/bin/ictmail-cli"
+strip "$STAGE/bin/ictmail" "$STAGE/bin/ictmail-cli" 2>/dev/null || true
 install -m 644 "$LINUX/$APP_ID.desktop" "$STAGE/share/applications/$APP_ID.desktop"
 install -m 644 "$LINUX/$APP_ID.mime.xml" "$STAGE/share/mime/packages/$APP_ID.xml"
 sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$MAILCRAFT_BUILD_DATE/g" \
@@ -56,5 +56,5 @@ copy_docs "$STAGE/share/doc/mailcraft"
 
 tar -C "$WORK" -czf "$DIST/$BASENAME.tar.gz" "$BASENAME"
 echo "wrote $DIST/$BASENAME.tar.gz"
-"$STAGE/bin/mailcraft-cli" --version
+"$STAGE/bin/ictmail-cli" --version
 echo "==> done"

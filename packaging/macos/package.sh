@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Build, sign and (optionally) notarize the macOS release artifacts:
 #
-#   $DIST/mailcraft-<version>-macos-<arch>.dmg          MailCraft.app on a drag-to-Applications DMG
-#   $DIST/mailcraft-cli-<version>-macos-<arch>.zip      the headless CLI
+#   $DIST/ictmail-<version>-macos-<arch>.dmg          MailCraft.app on a drag-to-Applications DMG
+#   $DIST/ictmail-cli-<version>-macos-<arch>.zip      the headless CLI
 #
 # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build | --build-only] [--no-run]
 #
@@ -50,8 +50,8 @@ IDENTITY="${MACOS_SIGN_IDENTITY:--}"
 SHORT_VERSION="${VERSION%%-*}"
 WORK="$CARGO_TARGET_DIR/macos-package"
 APP="$WORK/MailCraft.app"
-DMG="$DIST/mailcraft-$VERSION-macos-$ARCH.dmg"
-CLI_ZIP="$DIST/mailcraft-cli-$VERSION-macos-$ARCH.zip"
+DMG="$DIST/ictmail-$VERSION-macos-$ARCH.dmg"
+CLI_ZIP="$DIST/ictmail-cli-$VERSION-macos-$ARCH.zip"
 
 NOTARIZE=0
 if [[ $IDENTITY == "-" ]]; then
@@ -81,7 +81,7 @@ fi
 
 rm -rf "$WORK"
 mkdir -p "$WORK/bin"
-for bin in mailcraft mailcraft-cli; do
+for bin in ictmail ictmail-cli; do
   inputs=()
   for t in "${TARGETS[@]}"; do inputs+=("$CARGO_TARGET_DIR/$t/release/$bin"); done
   lipo -create -output "$WORK/bin/$bin" "${inputs[@]}"
@@ -119,8 +119,8 @@ notarize() {
 echo "==> assembling $APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 # Executable and icon carry the display name (CFBundleExecutable / CFBundleIconFile).
-cp "$WORK/bin/mailcraft" "$APP/Contents/MacOS/MailCraft"
-cp "$ROOT/assets/app-icon/mailcraft.icns" "$APP/Contents/Resources/MailCraft.icns"
+cp "$WORK/bin/ictmail" "$APP/Contents/MacOS/MailCraft"
+cp "$ROOT/assets/app-icon/mailcraft.icns" "$APP/Contents/Resources/ictMail.icns"
 # Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
 copy_font_licences "$APP/Contents/Resources"
 sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
@@ -188,21 +188,21 @@ fi
 
 # ---- CLI ---------------------------------------------------------------------------------------
 echo "==> building $CLI_ZIP"
-CLI_DIR="$WORK/mailcraft-cli-$VERSION-macos-$ARCH"
+CLI_DIR="$WORK/ictmail-cli-$VERSION-macos-$ARCH"
 mkdir -p "$CLI_DIR"
-cp "$WORK/bin/mailcraft-cli" "$CLI_DIR/"
+cp "$WORK/bin/ictmail-cli" "$CLI_DIR/"
 copy_docs "$CLI_DIR"
-sign --options runtime "$CLI_DIR/mailcraft-cli"
-codesign --verify --strict --verbose=2 "$CLI_DIR/mailcraft-cli"
+sign --options runtime "$CLI_DIR/ictmail-cli"
+codesign --verify --strict --verbose=2 "$CLI_DIR/ictmail-cli"
 rm -f "$CLI_ZIP"
 ditto -c -k --norsrc --noextattr --keepParent "$CLI_DIR" "$CLI_ZIP"
 # A bare Mach-O can't carry a stapled ticket; Gatekeeper looks the notarization up online.
 if [[ $NOTARIZE == 1 ]]; then notarize "$CLI_ZIP"; fi
 
 if [[ $NO_RUN == 1 ]]; then
-  echo "==> skipping mailcraft-cli --version (--no-run): a job without the signing secrets runs it"
+  echo "==> skipping ictmail-cli --version (--no-run): a job without the signing secrets runs it"
 else
-  "$WORK/bin/mailcraft-cli" --version
+  "$WORK/bin/ictmail-cli" --version
 fi
 echo "==> done"
 ls -lh "$DMG" "$CLI_ZIP"

@@ -1510,7 +1510,7 @@ fn what_it_does(s: &Session, id: &str, params: &Value) -> String {
                     None => format!("make a rule that always moves mail from {from} to {to}"),
                 };
                 match s.mailbox.account(r.account).filter(|_| r.keep == mailcraft_model::Keep::Server) {
-                    Some(a) => format!("{made}, kept on the server of {} where it runs whether MailCraft is open or not", quoted(&plain(&a.email))),
+                    Some(a) => format!("{made}, kept on the server of {} where it runs whether ictMail is open or not", quoted(&plain(&a.email))),
                     None => made,
                 }
             }
@@ -1545,7 +1545,7 @@ fn what_it_does(s: &Session, id: &str, params: &Value) -> String {
             let to = account.map(|a| quoted(&plain(&a.email))).unwrap_or_else(|| "a Microsoft account".to_string());
             match r {
                 Some(r) => format!(
-                    "keep the rule {} on the server of {to}, where it runs whether MailCraft is open or not: {}",
+                    "keep the rule {} on the server of {to}, where it runs whether ictMail is open or not: {}",
                     quoted(&r.name),
                     rule_words(s, r)
                 ),
@@ -1831,7 +1831,7 @@ fn rule_words(s: &Session, r: &mailcraft_model::Rule) -> String {
         })
         .collect();
     if let Some(server) = r.server.as_ref().filter(|s| !s.unknown.is_empty()) {
-        then.push(format!("and more that MailCraft can't show ({})", some(&server.unknown, 6)));
+        then.push(format!("and more that ictMail can't show ({})", some(&server.unknown, 6)));
     }
     format!("when {when}: {}", then.join(", "))
 }
@@ -1841,7 +1841,7 @@ fn rule_text(s: &Session, params: &Value) -> String {
         Ok(r) if r.keep == mailcraft_model::Keep::Server => {
             let on = s.mailbox.account(r.account).map(|a| quoted(&plain(&a.email))).unwrap_or_default();
             format!(
-                "create the rule {}, kept on the server of {on} where it runs whether MailCraft is open or not: {}",
+                "create the rule {}, kept on the server of {on} where it runs whether ictMail is open or not: {}",
                 quoted(&r.name),
                 rule_words(s, &r)
             )

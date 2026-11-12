@@ -86,7 +86,7 @@ fn google_denial_timeout_browser_failure_and_workspace_block_have_specific_recov
         (GOOGLE_SIGN_IN_DECLINED, "Google sign-in was declined", "was not changed"),
         (GOOGLE_SIGN_IN_TIMED_OUT, "Google sign-in did not finish", "Error 403"),
         (NO_BROWSER, "Could not open Google sign-in", "system browser"),
-        (GOOGLE_SIGN_IN_BLOCKED, "Google blocked access to MailCraft", "Test users"),
+        (GOOGLE_SIGN_IN_BLOCKED, "Google blocked access to ictMail", "Test users"),
     ] {
         let mut a = google_app();
         let requested = sign_ins(&mut a, Some(Err(why.into())));
@@ -277,7 +277,7 @@ fn google_wizard_hides_microsoft_approval_and_returns_to_app_password_without_da
     h.run_steps(4);
     assert_eq!(page(&h), Some(Page::SignIn));
     assert!(says(&h, "Google sign-in was declined"));
-    assert!(!says(&h, "My organisation has to approve MailCraft"));
+    assert!(!says(&h, "My organisation has to approve ictMail"));
     click(&mut h, "Use an app password");
     assert_eq!(page(&h), Some(Page::Password));
     assert_eq!(wizard(&h).unwrap().email, "one@gmail.com");

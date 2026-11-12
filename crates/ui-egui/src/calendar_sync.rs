@@ -787,7 +787,7 @@ impl MailApp {
                 tl!("The test appointment is gone again. Nothing else in the calendar was read or changed.").to_string()
             } else {
                 tl!(
-                    "The test appointment (\"MailCraft connection check\", a year from today) could not be deleted: please delete it in the calendar. Nothing else was read or changed."
+                    "The test appointment (\"ictMail connection check\", a year from today) could not be deleted: please delete it in the calendar. Nothing else was read or changed."
                 )
                 .to_string()
             });
@@ -1872,7 +1872,7 @@ mod tests {
         let Some(Dialog::Confirm { ask, .. }) = &app.dialog else { panic!("no question is being asked") };
         assert_eq!((ask.title.as_str(), ask.action.as_str(), ask.more.len()), ("Check Calendar Connection", "Check Now", 0));
         for said in [
-            "\"MailCraft connection check\"",
+            "\"ictMail connection check\"",
             "avery@mail.example",
             "a year from today",
             "deletes it again",

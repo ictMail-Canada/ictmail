@@ -23,7 +23,7 @@ use super::{ASK_TIMEOUT, EVENT_PREFERENCES, EVENTS, Graph, MAX_ECHO, MAX_WRITTEN
 use crate::{NetError, http};
 
 /// What the appointment of the check is called.
-pub const CHECK_TITLE: &str = "MailCraft connection check";
+pub const CHECK_TITLE: &str = "ictMail connection check";
 /// How far ahead of today it is made (days), and how long it is (seconds).
 const AHEAD_DAYS: i64 = 365;
 const LENGTH: i64 = 1_800;
@@ -170,7 +170,7 @@ pub(super) fn check_calendar_at(base: &str, token: &str, now: Timestamp, zone: &
         made.insert("subject".into(), json!(CHECK_TITLE));
         made.insert(
             "body".into(),
-            json!({"contentType": "text", "content": "Made by MailCraft to check that changes reach your calendar. It deletes itself."}),
+            json!({"contentType": "text", "content": "Made by ictMail to check that changes reach your calendar. It deletes itself."}),
         );
         made.insert("showAs".into(), json!("free"));
         made.insert("isReminderOn".into(), json!(false));

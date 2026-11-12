@@ -66,7 +66,7 @@ const MAX_LOOKED_UP: usize = 16;
 /// What every request says of its sender: nothing about this machine or its owner. In the
 /// browsers' form, because web firewalls (ModSecurity's rules among them) refuse a request whose
 /// sender doesn't read like one, most often with 406 (#46).
-const USER_AGENT: &str = "Mozilla/5.0 (compatible; MailCraft)";
+const USER_AGENT: &str = "Mozilla/5.0 (compatible; ictMail)";
 /// The kinds of picture asked for. Servers that keep a picture in several kinds send a newer
 /// one (WebP, AVIF) only to those who name it, so naming none of them gets the plain kinds.
 /// Anything else is taken last rather than refused with 406 (#46): what comes is checked to be
@@ -884,7 +884,7 @@ mod tests {
             headers,
             [
                 ("host", format!("127.0.0.1:{}", server.port).as_str()),
-                ("user-agent", "Mozilla/5.0 (compatible; MailCraft)"),
+                ("user-agent", "Mozilla/5.0 (compatible; ictMail)"),
                 ("accept", "image/png, image/jpeg, image/gif, image/*;q=0.5, */*;q=0.1"),
                 ("accept-encoding", "identity"),
                 ("connection", "close"),

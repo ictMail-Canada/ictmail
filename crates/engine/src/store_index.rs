@@ -415,11 +415,11 @@ pub fn replay_within(mut r: impl Read, file_len: u64, max_records: usize, budget
     let head = head.get(..got).unwrap_or(&[]);
     if !head.starts_with(&MAGIC[..]) {
         // Another form of ours (a newer program's) is said to be that, not something else.
-        return Err(if is_ours(head) { "this mailbox was written by a newer MailCraft".into() } else { "this isn't a MailCraft mailbox".into() });
+        return Err(if is_ours(head) { "this mailbox was written by a newer ictMail".into() } else { "this isn't a ictMail mailbox".into() });
     }
     let version = head.get(16..20).and_then(|b| b.try_into().ok()).map(u32::from_le_bytes);
     if let Some(version) = version.filter(|v| *v > VERSION) {
-        return Err(format!("this mailbox was written by a newer MailCraft (format {version})"));
+        return Err(format!("this mailbox was written by a newer ictMail (format {version})"));
     }
     if version != Some(VERSION) || head.get(20..24) != Some(&[0u8; 4][..]) {
         return Err("this mailbox file is damaged (its header)".into());

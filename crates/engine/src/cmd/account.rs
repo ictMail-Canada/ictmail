@@ -483,7 +483,7 @@ fn add(s: &mut Session, v: &Value) -> CmdResult {
 /// kind this version doesn't know ([`AccountKind::Unknown`]), kept as its file has it. `then` says
 /// what happens instead, or what to do.
 pub(crate) fn added_by_newer(a: &Account, then: &'static str) -> CmdError {
-    failed!("{who} was added by a newer version of MailCraft, {then}", who = super::remote::who(a), then = mailcraft_i18n::Arg::words(then))
+    failed!("{who} was added by a newer version of ictMail, {then}", who = super::remote::who(a), then = mailcraft_i18n::Arg::words(then))
 }
 
 fn edit(s: &mut Session, v: &Value) -> CmdResult {

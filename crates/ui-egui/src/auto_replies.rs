@@ -186,12 +186,12 @@ impl Unchanged {
         let reason = match self {
             Unchanged::Offline => tlc!("why automatic replies weren't changed", "you are working offline."),
             Unchanged::NeedsPermission => {
-                tlc!("why automatic replies weren't changed", "MailCraft needs your permission first (File › Info › Ask again).")
+                tlc!("why automatic replies weren't changed", "ictMail needs your permission first (File › Info › Ask again).")
             }
-            Unchanged::Denied => tlc!("why automatic replies weren't changed", "your organisation doesn't let MailCraft change them."),
-            Unchanged::NotAllowed => tlc!("why automatic replies weren't changed", "MailCraft wasn't allowed to change them."),
+            Unchanged::Denied => tlc!("why automatic replies weren't changed", "your organisation doesn't let ictMail change them."),
+            Unchanged::NotAllowed => tlc!("why automatic replies weren't changed", "ictMail wasn't allowed to change them."),
             Unchanged::SignInToRead => {
-                tlc!("why automatic replies weren't changed", "sign in again to let MailCraft read them (File › Info).")
+                tlc!("why automatic replies weren't changed", "sign in again to let ictMail read them (File › Info).")
             }
             Unchanged::SignInOver => tlc!("why automatic replies weren't changed", "Microsoft no longer takes your sign-in."),
             Unchanged::Failed(why) => why.as_str(),
@@ -388,7 +388,7 @@ impl MailApp {
         }
         if matches!(self.auto_replies.perm.get(&account), Some(Permission::Needed | Permission::Declined | Permission::Refused(_))) {
             if self.dialog.is_some() || self.signing_in.is_some() || !self.ask_replies(account) {
-                return Err(tl!("MailCraft needs your permission to change your automatic replies first: File › Info › Ask again.").to_string());
+                return Err(tl!("ictMail needs your permission to change your automatic replies first: File › Info › Ask again.").to_string());
             }
             self.auto_replies.held.insert(account, change);
             return Ok(());
@@ -507,7 +507,7 @@ impl MailApp {
         let Some(address) = self.session.mailbox.account(account).map(|a| a.email.trim().to_string()) else { return false };
         let text = crate::i18n::fmt(
             tl!(
-                "To change the automatic replies of {address}, MailCraft needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n\nMailCraft changes only your automatic replies and the rules of your Inbox with it, never your categories or working hours. Reading your automatic replies doesn't need it."
+                "To change the automatic replies of {address}, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n\nictMail changes only your automatic replies and the rules of your Inbox with it, never your categories or working hours. Reading your automatic replies doesn't need it."
             ),
             &[("address", &address)],
         );
@@ -599,7 +599,7 @@ impl MailApp {
             return Err(e);
         }
         self.auto_replies.perm.insert(account, Permission::Asking);
-        self.session.sync_status = tl!("Allow MailCraft to change your automatic replies on the page that opened in your browser…").to_string();
+        self.session.sync_status = tl!("Allow ictMail to change your automatic replies on the page that opened in your browser…").to_string();
         Ok(json!({"pending": "signIn", "account": owner.id}))
     }
 
@@ -633,12 +633,12 @@ impl MailApp {
                 None
             }
             Err(e) if e == NEEDS_APPROVAL => {
-                let said = tl!("Your organisation's administrator has to approve MailCraft changing automatic replies once: File › Info");
+                let said = tl!("Your organisation's administrator has to approve ictMail changing automatic replies once: File › Info");
                 let _ = self.run("ui.approvalHelp", json!({"account": account}));
                 Some((Permission::Refused(said.to_string()), Some(said.to_string())))
             }
             Err(e) if e == REFUSED_BY_ORGANISATION || e == REFUSED_FOR_ACCOUNT => {
-                let said = tl!("Your organisation doesn't let MailCraft change automatic replies");
+                let said = tl!("Your organisation doesn't let ictMail change automatic replies");
                 Some((Permission::Refused(said.to_string()), Some(said.to_string())))
             }
             Err(e) if e == NO_BROWSER => Some((Permission::Declined, Some(e))),
@@ -673,7 +673,7 @@ impl MailApp {
         let shown = |why: &str| kit::shown(why, 90);
         Some(match self.auto_replies.trouble.get(&account) {
             Some(Trouble::SignInToRead) => {
-                (tl!("Automatic replies: MailCraft needs you to sign in again to read them").to_string(), Some(Again::SignIn))
+                (tl!("Automatic replies: ictMail needs you to sign in again to read them").to_string(), Some(Again::SignIn))
             }
             Some(Trouble::SignInOver(_)) => (tl!("Automatic replies: Microsoft no longer takes the sign-in").to_string(), Some(Again::SignIn)),
             Some(Trouble::Failed(why)) => {
@@ -684,7 +684,7 @@ impl MailApp {
                     (tl!("Automatic replies: changing them waits for your permission").to_string(), Some(Again::Ask))
                 }
                 Some(Permission::Asking) => (tl!("Automatic replies: asking for your permission to change them…").to_string(), None),
-                Some(Permission::Denied) => (tl!("Automatic replies: your organisation doesn't let MailCraft change them").to_string(), None),
+                Some(Permission::Denied) => (tl!("Automatic replies: your organisation doesn't let ictMail change them").to_string(), None),
                 Some(Permission::Refused(why)) => {
                     (crate::i18n::fmt(tl!("Automatic replies: changing them not allowed ({why})"), &[("why", shown(why).as_str())]), Some(Again::Ask))
                 }
@@ -695,7 +695,7 @@ impl MailApp {
                         None => tl!("Automatic replies: not read yet").to_string(),
                     };
                     if given.is_some() {
-                        (crate::i18n::fmt(tl!("{line} · MailCraft may change them"), &[("line", &line)]), None)
+                        (crate::i18n::fmt(tl!("{line} · ictMail may change them"), &[("line", &line)]), None)
                     } else {
                         (line, None)
                     }
@@ -887,7 +887,7 @@ impl Draft {
             let (text, sign_in) = match trouble {
                 Trouble::SignInToRead => (
                     tl!(
-                        "MailCraft needs you to sign in again to read your automatic replies: Microsoft's page opens in your browser. Mail and your calendar work as they are meanwhile."
+                        "ictMail needs you to sign in again to read your automatic replies: Microsoft's page opens in your browser. Mail and your calendar work as they are meanwhile."
                     )
                     .to_string(),
                     true,
@@ -907,7 +907,7 @@ impl Draft {
                 }
             });
         } else if perm == Some(Permission::Denied) {
-            notice(ui, &t, tl!("Your organisation doesn't let MailCraft change your automatic replies. Ask your administrator."), |_| {});
+            notice(ui, &t, tl!("Your organisation doesn't let ictMail change your automatic replies. Ask your administrator."), |_| {});
         } else if let Some(Permission::Needed | Permission::Declined | Permission::Refused(_)) = &perm {
             let text = match &perm {
                 Some(Permission::Refused(why)) => crate::i18n::fmt(

@@ -29,15 +29,15 @@ pub const MAILBOX_EXT: &str = "mailcraft";
 
 /// How a mailbox file in format 3 begins: the form a desktop program keeps it in, a log of
 /// records beside a folder of content (`crate::store`). One self-contained file is JSON.
-pub const INDEX_MAGIC: &[u8; 16] = b"MailCraft index\n";
+pub const INDEX_MAGIC: &[u8; 16] = b"ictMail index\n\0\0";
 
 /// How every mailbox file that isn't JSON begins, whatever its form: format 3's
 /// [`INDEX_MAGIC`], and whatever a newer MailCraft writes. A file that begins so but isn't a form
 /// this program reads was written by a newer one, and is said to be.
-pub const FAMILY: &[u8] = b"MailCraft ";
+pub const FAMILY: &[u8] = b"ictMail ";
 
 /// What the owner is told about a mailbox file of a form a newer MailCraft writes.
-pub const NEWER: &str = "this mailbox was written by a newer MailCraft";
+pub const NEWER: &str = "this mailbox was written by a newer ictMail";
 
 /// The message for a mailbox file that keeps its content in a folder beside it, read without it.
 const KEPT_BESIDE: &str = "this mailbox file keeps its messages' content in a folder beside it; open it where it is kept, or save it as one file first (File › Open & Export › Save Mailbox As)";
@@ -119,11 +119,11 @@ pub fn read_mailbox(bytes: &[u8]) -> Result<Mailbox, String> {
     // built, and a file that would cost more memory than it may is refused before it does.)
     let budget = mailbox_budget();
     let mut mb: Mailbox = mailcraft_model::load_limit::read_json(bytes, &budget)
-        .map_err(|e| if let Some(why) = budget.spent() { why.to_string() } else { format!("this isn't a MailCraft mailbox ({e})") })?;
+        .map_err(|e| if let Some(why) = budget.spent() { why.to_string() } else { format!("this isn't a ictMail mailbox ({e})") })?;
     match mb.version {
         0 | 1 => {}
         2 => return Err(KEPT_BESIDE.into()),
-        newer => return Err(format!("this mailbox was written by a newer MailCraft (format {newer})")),
+        newer => return Err(format!("this mailbox was written by a newer ictMail (format {newer})")),
     }
     for line in mb.repair() {
         log::warn!("mailbox repaired: {line}");
@@ -445,7 +445,7 @@ fn show_opened(s: &mut Session, id: Id) {
 /// Bring a file's contents into the mailbox: messages go to `folder` (default: the folder in
 /// view, or the Inbox), events to a calendar on this computer (#1050), contacts and to-dos to their lists.
 pub fn import(s: &mut Session, name: &str, bytes: &[u8], folder: Option<Id>) -> Result<Value, CmdError> {
-    let format = Format::detect(name, bytes).ok_or_else(|| failed!("{name}: not a message, calendar or contact file MailCraft reads", name))?;
+    let format = Format::detect(name, bytes).ok_or_else(|| failed!("{name}: not a message, calendar or contact file ictMail reads", name))?;
     let explicit = folder.is_some();
     let folder = match folder {
         Some(f) => s.mailbox.folder(f).map(|f| f.id).ok_or_else(|| failed!("no folder with id {id}", id = f))?,

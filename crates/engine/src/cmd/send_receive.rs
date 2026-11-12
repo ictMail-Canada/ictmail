@@ -39,7 +39,7 @@ pub fn specs() -> Vec<CommandSpec> {
             r#"{} — calls off the Send/Receive under way: the accounts waiting their turn are stopped and the one at work stops at its next safe place; what came in stays. Answers {"cancelling": bool (whether a run was under way), "stopped": [account ids]}"#,
         ),
         CommandSpec::new("sync.offline", "Work Offline", "Send / Receive › Preferences", offline).pure().params(
-            r#"{"value"?: bool} (default: the other way) — while on, MailCraft asks no server for anything: no Send/Receive, no message fetched, no pictures, no sender images, no look-ups; mail that is sent waits in the Outbox, and goes with the first Send/Receive after it is turned off. Kept between runs; not an undo step. Answers {"offline": bool, "outbox": number (messages waiting in the Outboxes)}"#,
+            r#"{"value"?: bool} (default: the other way) — while on, ictMail asks no server for anything: no Send/Receive, no message fetched, no pictures, no sender images, no look-ups; mail that is sent waits in the Outbox, and goes with the first Send/Receive after it is turned off. Kept between runs; not an undo step. Answers {"offline": bool, "outbox": number (messages waiting in the Outboxes)}"#,
         ),
     ]
 }

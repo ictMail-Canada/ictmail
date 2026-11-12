@@ -397,7 +397,7 @@ impl MailApp {
         let Some(address) = self.session.mailbox.account(account).map(|a| a.email.trim().to_string()) else { return false };
         let text = crate::i18n::fmt(
             tl!(
-                "To keep the rules of {address} on its server, where they run even while MailCraft is closed and show in Outlook on the web and on your phone, MailCraft needs your permission to change your mailbox settings, where Microsoft keeps the rules. Microsoft's page opens in your browser to ask you, once.\n\nUntil you allow it, your rules stay on this computer and nothing of them is sent to Microsoft."
+                "To keep the rules of {address} on its server, where they run even while ictMail is closed and show in Outlook on the web and on your phone, ictMail needs your permission to change your mailbox settings, where Microsoft keeps the rules. Microsoft's page opens in your browser to ask you, once.\n\nUntil you allow it, your rules stay on this computer and nothing of them is sent to Microsoft."
             ),
             &[("address", &address)],
         );
@@ -440,7 +440,7 @@ impl MailApp {
             return Err(e);
         }
         self.rules.perm.insert(account, Permission::Asking);
-        self.session.sync_status = tl!("Allow MailCraft to keep your rules on the server on the page that opened in your browser…").to_string();
+        self.session.sync_status = tl!("Allow ictMail to keep your rules on the server on the page that opened in your browser…").to_string();
         Ok(json!({"pending": "signIn", "account": owner.id}))
     }
 
@@ -473,7 +473,7 @@ impl MailApp {
                 let _ = self.run("ui.approvalHelp", json!({"account": account}));
             }
             Err(e) if e == REFUSED_BY_ORGANISATION || e == REFUSED_FOR_ACCOUNT => {
-                let said = tl!("Your organisation doesn't allow MailCraft to keep rules on the server");
+                let said = tl!("Your organisation doesn't allow ictMail to keep rules on the server");
                 self.rules.perm.insert(account, Permission::Refused(said.to_string()));
                 self.status(said);
             }

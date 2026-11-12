@@ -5,7 +5,7 @@
 use super::*;
 
 fn scratch(name: &str) -> PathBuf {
-    let dir = std::env::temp_dir().join(format!("mailcraft-self-update-{name}-{}", std::process::id()));
+    let dir = std::env::temp_dir().join(format!("ictmail-self-update-{name}-{}", std::process::id()));
     let _ = fs::remove_dir_all(&dir);
     fs::create_dir_all(&dir).unwrap();
     dir
@@ -17,27 +17,20 @@ fn sum(bytes: &[u8]) -> [u8; 32] {
 
 #[test]
 fn the_installer_is_run_with_fixed_arguments() {
-    let run = msiexec(Path::new(r"C:\Users\a\AppData\Roaming\MailCraft\updates\mailcraft-0.5.0-windows-x64.msi"), Path::new(r"C:\x\install.log"));
+    let run = msiexec(Path::new(r"C:\Users\a\AppData\Roaming\ictMail\updates\ictmail-0.5.0-windows-x64.msi"), Path::new(r"C:\x\install.log"));
     assert!(run.program.ends_with("msiexec.exe"));
     assert!(run.program.to_string_lossy().contains("System32"));
     let args: Vec<String> = run.args.iter().map(|a| a.to_string_lossy().into_owned()).collect();
     assert_eq!(
         args,
-        [
-            r"/i",
-            r"C:\Users\a\AppData\Roaming\MailCraft\updates\mailcraft-0.5.0-windows-x64.msi",
-            "/passive",
-            "/norestart",
-            "/log",
-            r"C:\x\install.log"
-        ]
+        [r"/i", r"C:\Users\a\AppData\Roaming\ictMail\updates\ictmail-0.5.0-windows-x64.msi", "/passive", "/norestart", "/log", r"C:\x\install.log"]
     );
     let attach = hdiutil_attach(Path::new("/d/m.dmg"), Path::new("/d/mount"));
     assert_eq!(attach.program, Path::new("/usr/bin/hdiutil"));
     assert_eq!(attach.args, ["attach", "-nobrowse", "-readonly", "-noautoopen", "-mountpoint", "/d/mount", "/d/m.dmg"]);
     assert_eq!(hdiutil_detach(Path::new("/d/mount")).args, ["detach", "/d/mount", "-force"]);
-    assert_eq!(codesign_verify(Path::new("/A/MailCraft.app")).args, ["--verify", "--deep", "--strict", "/A/MailCraft.app"]);
-    assert_eq!(open_app(Path::new("/A/MailCraft.app")).args, ["-n", "/A/MailCraft.app", "--args", AFTER_UPDATE]);
+    assert_eq!(codesign_verify(Path::new("/A/ictMail.app")).args, ["--verify", "--deep", "--strict", "/A/ictMail.app"]);
+    assert_eq!(open_app(Path::new("/A/ictMail.app")).args, ["-n", "/A/ictMail.app", "--args", AFTER_UPDATE]);
     assert_eq!(start_program(Path::new("/h/m.AppImage")).args, [AFTER_UPDATE]);
 }
 
@@ -45,12 +38,12 @@ fn the_installer_is_run_with_fixed_arguments() {
 fn the_helpers_job_goes_through_its_arguments_and_nothing_else_does() {
     let base = if cfg!(windows) { r"C:\data\updates" } else { "/data/updates" };
     let job = Job {
-        msi: Path::new(base).join("mailcraft-0.5.0-windows-x64.msi"),
+        msi: Path::new(base).join("ictmail-0.5.0-windows-x64.msi"),
         sha256: sum(b"x"),
         from: "0.4.3".into(),
         to: "0.5.0".into(),
         back: false,
-        start: Some(Path::new(base).join("mailcraft.exe")),
+        start: Some(Path::new(base).join("ictmail.exe")),
     };
     assert_eq!(Job::parse(&job.args()), Some(job.clone()));
     let back = Job { back: true, start: None, ..job.clone() };
@@ -164,7 +157,7 @@ fn left_handed(folders: &Folders) -> usize {
 fn the_installer_is_handed_a_checked_copy_and_never_the_download() {
     let dir = scratch("handed-msi");
     let folders = Folders::new(dir.join("data"));
-    let msi = folders.updates().join("mailcraft-0.5.0-windows-x64.msi");
+    let msi = folders.updates().join("ictmail-0.5.0-windows-x64.msi");
     fs::create_dir_all(folders.updates()).unwrap();
     fs::write(&msi, b"the checked installer").unwrap();
     let job = Job { msi: msi.clone(), sha256: sum(b"the checked installer"), from: "0.4.3".into(), to: "0.5.0".into(), back: false, start: None };
@@ -226,10 +219,10 @@ fn the_signed_digest_is_trusted_even_when_the_download_changes_afterwards() {
 fn the_disk_image_is_attached_from_a_checked_copy() {
     let dir = scratch("handed-dmg");
     let folders = Folders::new(dir.join("data"));
-    let dmg = folders.updates().join("mailcraft-0.5.0-macos-universal.dmg");
+    let dmg = folders.updates().join("ictmail-0.5.0-macos-universal.dmg");
     fs::create_dir_all(folders.updates()).unwrap();
     fs::write(&dmg, b"the checked image").unwrap();
-    let app = dir.join("Applications").join("MailCraft.app");
+    let app = dir.join("Applications").join("ictMail.app");
     let mut asked = Vec::new();
     let got = install_mac_app_with(&folders, &app, &dmg, sum(b"the checked image"), "0.4.3", &mut |run| {
         let given = PathBuf::from(run.args.last().unwrap());
@@ -272,10 +265,10 @@ fn the_lock_is_waited_for() {
 fn an_appimage_is_replaced_and_the_old_one_kept() {
     use std::os::unix::fs::PermissionsExt as _;
     let dir = scratch("appimage");
-    let image = dir.join("Apps").join("mailcraft-0.4.3-linux-x86_64.AppImage");
+    let image = dir.join("Apps").join("ictmail-0.4.3-linux-x86_64.AppImage");
     fs::create_dir_all(image.parent().unwrap()).unwrap();
     fs::write(&image, b"old").unwrap();
-    let new = dir.join("data").join("updates").join("mailcraft-0.5.0-linux-x86_64.AppImage");
+    let new = dir.join("data").join("updates").join("ictmail-0.5.0-linux-x86_64.AppImage");
     fs::create_dir_all(new.parent().unwrap()).unwrap();
     fs::write(&new, b"new").unwrap();
     let folders = Folders::new(dir.join("data"));
@@ -305,35 +298,35 @@ fn a_mac_app_is_swapped_by_renaming_and_the_old_one_kept() {
     let make = |root: &Path, text: &str| {
         let macos = root.join("Contents").join("MacOS");
         fs::create_dir_all(&macos).unwrap();
-        fs::write(macos.join("mailcraft"), text).unwrap();
+        fs::write(macos.join("ictmail"), text).unwrap();
         fs::create_dir_all(root.join("Contents").join("Resources")).unwrap();
-        std::os::unix::fs::symlink("../MacOS/mailcraft", root.join("Contents").join("Resources").join("link")).unwrap();
+        std::os::unix::fs::symlink("../MacOS/ictmail", root.join("Contents").join("Resources").join("link")).unwrap();
     };
-    let app = dir.join("Applications").join("MailCraft.app");
+    let app = dir.join("Applications").join("ictMail.app");
     make(&app, "old");
     let mount = dir.join("mount");
-    make(&mount.join("MailCraft.app"), "new");
+    make(&mount.join("ictMail.app"), "new");
     fs::create_dir_all(mount.join(".background")).unwrap();
-    assert_eq!(app_in(&mount), Some(mount.join("MailCraft.app")));
+    assert_eq!(app_in(&mount), Some(mount.join("ictMail.app")));
     assert_eq!(app_in(&dir.join("nothing")), None);
     let folders = Folders::new(dir.join("data"));
     // (Unsigned here: `codesign` is asked about neither, or isn't there.)
     mac_swap(&folders, &app, &mount, "0.4.3", &mut |_| None).unwrap();
-    assert_eq!(fs::read(app.join("Contents/MacOS/mailcraft")).unwrap(), b"new");
-    assert_eq!(fs::read_link(app.join("Contents/Resources/link")).unwrap(), Path::new("../MacOS/mailcraft"));
+    assert_eq!(fs::read(app.join("Contents/MacOS/ictmail")).unwrap(), b"new");
+    assert_eq!(fs::read_link(app.join("Contents/Resources/link")).unwrap(), Path::new("../MacOS/ictmail"));
     let kept = read_kept(&folders.previous()).unwrap();
-    assert_eq!((kept.version.as_str(), kept.file.as_str()), ("0.4.3", "MailCraft.app"));
-    assert_eq!(fs::read(folders.previous().join("MailCraft.app/Contents/MacOS/mailcraft")).unwrap(), b"old");
+    assert_eq!((kept.version.as_str(), kept.file.as_str()), ("0.4.3", "ictMail.app"));
+    assert_eq!(fs::read(folders.previous().join("ictMail.app/Contents/MacOS/ictmail")).unwrap(), b"old");
     // The disk image is left as it was.
-    assert_eq!(fs::read(mount.join("MailCraft.app/Contents/MacOS/mailcraft")).unwrap(), b"new");
+    assert_eq!(fs::read(mount.join("ictMail.app/Contents/MacOS/ictmail")).unwrap(), b"new");
     // Going back.
-    replace(&app, &folders.previous().join("MailCraft.app"), None, None, &mut |_| true).unwrap();
-    assert_eq!(fs::read(app.join("Contents/MacOS/mailcraft")).unwrap(), b"old");
+    replace(&app, &folders.previous().join("ictMail.app"), None, None, &mut |_| true).unwrap();
+    assert_eq!(fs::read(app.join("Contents/MacOS/ictmail")).unwrap(), b"old");
     assert_eq!(fs::read_dir(app.parent().unwrap()).unwrap().count(), 1, "nothing left beside it");
     // What can't be put in place leaves the running app as it was.
     let missing = dir.join("no-such.app");
     assert!(replace(&app, &missing, None, None, &mut |_| true).is_err());
-    assert_eq!(fs::read(app.join("Contents/MacOS/mailcraft")).unwrap(), b"old");
+    assert_eq!(fs::read(app.join("Contents/MacOS/ictmail")).unwrap(), b"old");
     let _ = fs::remove_dir_all(&dir);
 }
 
@@ -362,7 +355,7 @@ fn writes_anywhere(dir: &Path) -> bool {
 fn make_app(root: &Path, text: &str) {
     let macos = root.join("Contents").join("MacOS");
     fs::create_dir_all(&macos).unwrap();
-    fs::write(macos.join("mailcraft"), text).unwrap();
+    fs::write(macos.join("ictmail"), text).unwrap();
 }
 
 /// The names in `dir` that start with a dot.
@@ -381,25 +374,25 @@ fn a_keep_that_cant_be_written_still_replaces() {
         return;
     }
     let apps = dir.join("Applications");
-    let app = apps.join("MailCraft.app");
+    let app = apps.join("ictMail.app");
     make_app(&app, "old");
-    let new = dir.join("new").join("MailCraft.app");
+    let new = dir.join("new").join("ictMail.app");
     make_app(&new, "new");
     let locked = dir.join("previous");
     fs::create_dir_all(&locked).unwrap();
     chmod(&locked, 0o555);
-    let got = replace(&app, &new, Some(&locked.join("MailCraft.app")), None, &mut |_| true);
+    let got = replace(&app, &new, Some(&locked.join("ictMail.app")), None, &mut |_| true);
     chmod(&locked, 0o755);
     assert!(got.is_ok(), "{got:?}");
     assert_eq!(got.unwrap(), Replaced { kept: false });
-    assert_eq!(fs::read(app.join("Contents/MacOS/mailcraft")).unwrap(), b"new");
+    assert_eq!(fs::read(app.join("Contents/MacOS/ictmail")).unwrap(), b"new");
     assert_eq!(hidden_in(&apps), Vec::<String>::new());
     // Where it can be kept, it is.
-    let keep = dir.join("kept").join("MailCraft.app");
+    let keep = dir.join("kept").join("ictMail.app");
     fs::create_dir_all(keep.parent().unwrap()).unwrap();
     make_app(&new, "newer");
     assert_eq!(replace(&app, &new, Some(&keep), None, &mut |_| true).unwrap(), Replaced { kept: true });
-    assert_eq!(fs::read(keep.join("Contents/MacOS/mailcraft")).unwrap(), b"new");
+    assert_eq!(fs::read(keep.join("Contents/MacOS/ictmail")).unwrap(), b"new");
     assert_eq!(hidden_in(&apps), Vec::<String>::new());
     let _ = fs::remove_dir_all(&dir);
 }
@@ -411,10 +404,10 @@ fn a_keep_that_cant_be_written_still_replaces() {
 fn leftovers_beside_the_app_are_removed_at_start() {
     let dir = scratch("leftovers");
     let apps = dir.join("Applications");
-    let app = apps.join("MailCraft.app");
+    let app = apps.join("ictMail.app");
     make_app(&app, "app");
-    make_app(&apps.join(".MailCraft.app.new"), "new");
-    let old = apps.join(".MailCraft.app.old");
+    make_app(&apps.join(".ictMail.app.new"), "new");
+    let old = apps.join(".ictMail.app.old");
     make_app(&old, "old");
     chmod(&old.join("Contents").join("MacOS"), 0o555);
     chmod(&old.join("Contents"), 0o555);
@@ -428,7 +421,7 @@ fn leftovers_beside_the_app_are_removed_at_start() {
     drop(installing);
     assert!(clear_leftovers(&folders, &app));
     assert_eq!(hidden_in(&apps), vec![".Other.app.old".to_string()]);
-    assert_eq!(fs::read(app.join("Contents/MacOS/mailcraft")).unwrap(), b"app");
+    assert_eq!(fs::read(app.join("Contents/MacOS/ictmail")).unwrap(), b"app");
     // Nothing there: nothing done.
     assert!(clear_leftovers(&folders, &app));
     let _ = fs::remove_dir_all(&dir);
@@ -441,14 +434,14 @@ fn leftovers_beside_the_app_are_removed_at_start() {
 fn an_old_version_that_couldnt_be_put_back_is_kept() {
     let dir = scratch("put-back");
     let apps = dir.join("Applications");
-    let app = apps.join("MailCraft.app");
-    let (old, new, marker) = (apps.join(".MailCraft.app.old"), apps.join(".MailCraft.app.new"), apps.join(".MailCraft.app.unfinished"));
+    let app = apps.join("ictMail.app");
+    let (old, new, marker) = (apps.join(".ictMail.app.old"), apps.join(".ictMail.app.new"), apps.join(".ictMail.app.unfinished"));
     // It can be put back: it is, then the new one goes.
     make_app(&old, "old");
     make_app(&new, "new");
     let e = put_back(&app, &old, &new, io::Error::other("cause"));
     assert_eq!(e.to_string(), "cause");
-    assert_eq!(fs::read(app.join("Contents/MacOS/mailcraft")).unwrap(), b"old");
+    assert_eq!(fs::read(app.join("Contents/MacOS/ictmail")).unwrap(), b"old");
     assert_eq!(hidden_in(&apps), Vec::<String>::new());
     // It can't (here: something is in its place): the new one stays, and the error says where.
     make_app(&old, "older");
@@ -464,7 +457,7 @@ fn an_old_version_that_couldnt_be_put_back_is_kept() {
     make_app(&source, "newest");
     assert!(replace(&app, &source, None, None, &mut |_| true).is_err());
     assert!(old.is_dir());
-    assert!(!fs::read(app.join("Contents/MacOS/mailcraft")).unwrap().starts_with(b"newest"));
+    assert!(!fs::read(app.join("Contents/MacOS/ictmail")).unwrap().starts_with(b"newest"));
     // The app isn't there at all: what is beside it is kept too, marked or not.
     fs::remove_file(&marker).unwrap();
     fs::rename(&app, dir.join("elsewhere.app")).unwrap();
@@ -486,12 +479,12 @@ fn a_mac_copy_that_doesnt_update_clears_its_update_folders() {
     let dir = scratch("mac-data");
     let folders = Folders::new(dir.clone());
     fs::create_dir_all(folders.updates()).unwrap();
-    fs::write(folders.updates().join("mailcraft-0.8.1-macos-universal.dmg"), b"image").unwrap();
+    fs::write(folders.updates().join("ictmail-0.8.1-macos-universal.dmg"), b"image").unwrap();
     fs::write(folders.updates().join("other.txt"), b"other").unwrap();
     fs::create_dir_all(folders.mount()).unwrap();
     fs::create_dir_all(folders.handed().join("x")).unwrap();
-    make_app(&folders.previous().join("MailCraft.app"), "kept");
-    chmod(&folders.previous().join("MailCraft.app").join("Contents"), 0o555);
+    make_app(&folders.previous().join("ictMail.app"), "kept");
+    chmod(&folders.previous().join("ictMail.app").join("Contents"), 0o555);
     fs::write(dir.join("mailbox.mailcraft"), b"mail").unwrap();
     clear_mac_data(&folders);
     assert!(!folders.mount().exists() && !folders.handed().exists() && !folders.previous().exists());
@@ -508,10 +501,10 @@ fn a_mac_copy_that_doesnt_update_clears_its_update_folders() {
 fn a_new_app_that_fails_its_check_in_place_is_swapped_back() {
     let dir = scratch("check-in-place");
     let apps = dir.join("Applications");
-    let app = apps.join("MailCraft.app");
+    let app = apps.join("ictMail.app");
     make_app(&app, "old");
     let mount = dir.join("mount");
-    make_app(&mount.join("MailCraft.app"), "new");
+    make_app(&mount.join("ictMail.app"), "new");
     let folders = Folders::new(dir.join("data"));
     let mut asked = Vec::new();
     // Signed, and the new one holds in the disk image, but not once it is in place.
@@ -522,13 +515,13 @@ fn a_new_app_that_fails_its_check_in_place_is_swapped_back() {
         if asked.len() < 3 { Some(0) } else { Some(1) }
     });
     assert!(got.is_err(), "{got:?}");
-    assert_eq!(asked, vec![app.clone(), mount.join("MailCraft.app"), app.clone()]);
-    assert_eq!(fs::read(app.join("Contents/MacOS/mailcraft")).unwrap(), b"old");
+    assert_eq!(asked, vec![app.clone(), mount.join("ictMail.app"), app.clone()]);
+    assert_eq!(fs::read(app.join("Contents/MacOS/ictmail")).unwrap(), b"old");
     assert_eq!(hidden_in(&apps), Vec::<String>::new());
     assert!(read_kept(&folders.previous()).is_none(), "nothing kept, nothing offered");
     // One that holds in place stays.
     mac_swap(&folders, &app, &mount, "0.4.3", &mut |_| Some(0)).unwrap();
-    assert_eq!(fs::read(app.join("Contents/MacOS/mailcraft")).unwrap(), b"new");
+    assert_eq!(fs::read(app.join("Contents/MacOS/ictmail")).unwrap(), b"new");
     assert_eq!(hidden_in(&apps), Vec::<String>::new());
     assert_eq!(read_kept(&folders.previous()).map(|k| k.version), Some("0.4.3".to_string()));
     let _ = fs::remove_dir_all(&dir);
@@ -544,18 +537,18 @@ fn a_stuck_leftover_leaves_the_app_and_nothing_staged() {
         return;
     }
     let apps = dir.join("Applications");
-    let app = apps.join("MailCraft.app");
+    let app = apps.join("ictMail.app");
     make_app(&app, "old");
-    let new = dir.join("new").join("MailCraft.app");
+    let new = dir.join("new").join("ictMail.app");
     make_app(&new, "new");
-    let old = apps.join(".MailCraft.app.old");
+    let old = apps.join(".ictMail.app.old");
     make_app(&old, "older");
     chmod(&old.join("Contents"), 0o555);
     let got = replace(&app, &new, None, None, &mut |_| true);
     chmod(&old.join("Contents"), 0o755);
     assert!(got.is_err());
-    assert_eq!(fs::read(app.join("Contents/MacOS/mailcraft")).unwrap(), b"old");
-    assert!(!apps.join(".MailCraft.app.new").exists(), "the staged copy is removed");
+    assert_eq!(fs::read(app.join("Contents/MacOS/ictmail")).unwrap(), b"old");
+    assert!(!apps.join(".ictMail.app.new").exists(), "the staged copy is removed");
     let _ = fs::remove_dir_all(&dir);
 }
 
@@ -577,7 +570,7 @@ fn a_read_only_folder_is_copied_as_one_that_can_be_removed() {
     copy_tree(&from, &to).unwrap();
     chmod(&from.join("Contents"), 0o755);
     chmod(&from.join("Contents").join("MacOS"), 0o755);
-    assert_eq!(fs::read(to.join("Contents/MacOS/mailcraft")).unwrap(), b"app");
+    assert_eq!(fs::read(to.join("Contents/MacOS/ictmail")).unwrap(), b"app");
     let mode = fs::metadata(to.join("Contents")).unwrap().permissions().mode() & 0o777;
     assert_eq!(mode, 0o755);
     fs::remove_dir_all(&to).unwrap();

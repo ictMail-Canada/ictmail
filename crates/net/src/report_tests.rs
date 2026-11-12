@@ -14,7 +14,7 @@ use crate::fake::{FakeHttp, json_answer};
 use crate::report::*;
 
 fn report() -> ProblemReport {
-    ProblemReport::new("Search stops", "I searched and it stopped", "0.9.0", "testos testarch", "@octocat", Some("### MailCraft diagnostics\n"))
+    ProblemReport::new("Search stops", "I searched and it stopped", "0.9.0", "testos testarch", "@octocat", Some("### ictMail diagnostics\n"))
 }
 
 /// The stand-in relay, answering every request with `status` and `body`.
@@ -39,14 +39,14 @@ fn an_accepted_report_answers_its_reference_and_sends_the_report_alone() {
     for never in ["cookie:", "authorization:", "referer:", "x-forwarded"] {
         assert!(!head.to_ascii_lowercase().contains(never), "{never} in {head}");
     }
-    assert!(head.contains("User-Agent: MailCraft\r\n"), "{head}");
+    assert!(head.contains("User-Agent: ictMail\r\n"), "{head}");
     let json: Value = serde_json::from_str(body).unwrap();
     assert_eq!(json["title"], "Search stops");
     assert_eq!(json["text"], "I searched and it stopped");
     assert_eq!(json["version"], "0.9.0");
     assert_eq!(json["platform"], "testos testarch");
     assert_eq!(json["username"], "octocat");
-    assert_eq!(json["diagnostics"], "### MailCraft diagnostics\n");
+    assert_eq!(json["diagnostics"], "### ictMail diagnostics\n");
     assert_eq!(json["website"], "");
     assert_eq!(json.as_object().unwrap().len(), 7);
 }

@@ -55,7 +55,7 @@ mod os {
     /// service is `MailCraft` and account `<key>#0`, and in the Secret Service an item whose
     /// `service` and `username` attributes are the two. (keyring 3, which 0.4 used, filed them
     /// alike; the attributes it added in the Secret Service are not searched on.)
-    pub(super) const SERVICE: &str = "MailCraft";
+    pub(super) const SERVICE: &str = "ictMail";
 
     /// Opens the system's store.
     type Connect = Box<dyn Fn() -> keyring_core::Result<Arc<CredentialStore>> + Send + Sync>;
@@ -279,8 +279,8 @@ mod tests {
             let mock = mock.clone();
             os::OsStore::with(Box::new(move || Ok(mock.clone())))
         };
-        let entry = |user: &str| mock.build("MailCraft", user, None).unwrap();
-        assert_eq!(os::SERVICE, "MailCraft");
+        let entry = |user: &str| mock.build("ictMail", user, None).unwrap();
+        assert_eq!(os::SERVICE, "ictMail");
 
         // Kept by an earlier version, in two pieces: found and put back together.
         let key = "refresh:old@mailcraft.example";

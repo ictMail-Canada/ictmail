@@ -154,8 +154,8 @@ fn handoff_checks_digests_and_refuses_names_outside_the_folder() {
     let _ = std::fs::remove_dir_all(&base);
     let made = base.join("made");
     std::fs::create_dir_all(made.join("x86_64/release")).unwrap();
-    std::fs::write(made.join("x86_64/release/mailcraft.exe"), "one").unwrap();
-    std::fs::write(made.join("mailcraft-1.dmg"), "two").unwrap();
+    std::fs::write(made.join("x86_64/release/ictmail.exe"), "one").unwrap();
+    std::fs::write(made.join("ictmail-1.dmg"), "two").unwrap();
     let (ok, digest) = handoff(&base, &["seal", "made", "build-a"]);
     assert!(ok, "{digest}");
     let digest = digest.trim().to_string();
@@ -163,7 +163,7 @@ fn handoff_checks_digests_and_refuses_names_outside_the_folder() {
     let copy = |name: &str| {
         let to = base.join(name);
         std::fs::create_dir_all(to.join("x86_64/release")).unwrap();
-        for f in ["x86_64/release/mailcraft.exe", "mailcraft-1.dmg", "build-a.sha256"] {
+        for f in ["x86_64/release/ictmail.exe", "ictmail-1.dmg", "build-a.sha256"] {
             std::fs::copy(made.join(f), to.join(f)).unwrap();
         }
         to
@@ -267,7 +267,7 @@ fn a_build_tool_by_path_or_with_exe_counts() {
 fn trunk_cross_and_built_programs_count() {
     assert!(flagged("      - run: trunk build --release"));
     assert!(flagged("      - run: cross build --target aarch64-unknown-linux-gnu"));
-    assert!(flagged("      - run: ./dist/x86_64-pc-windows-msvc/release/mailcraft --version"));
+    assert!(flagged("      - run: ./dist/x86_64-pc-windows-msvc/release/ictmail --version"));
     assert!(!flagged("      - run: echo crossing trunks"));
 }
 

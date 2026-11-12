@@ -191,7 +191,7 @@ pub fn tool_definitions() -> Value {
         tool(
             "list_commands",
             "List commands",
-            "Every MailCraft command: id, label, ribbon location, shortcut and params. Filter with `query`.",
+            "Every ictMail command: id, label, ribbon location, shortcut and params. Filter with `query`.",
             obj(json!({"query": s("Case-insensitive filter on id/label/location")}), &[]),
             true
         ),
@@ -288,13 +288,13 @@ pub fn tool_definitions() -> Value {
         ),
         tool(
             "status",
-            "MailCraft status",
+            "ictMail status",
             "Whether the mailbox is open. While the window still opens it (a large mailbox takes a few seconds at launch), every other tool is answered \"the mailbox is still opening\"; ask again in a moment.",
             obj(json!({}), &[]),
             true
         ),
-        tool("parity", "Feature parity", "MailCraft's command coverage of the mail-client feature catalog.", obj(json!({}), &[]), true),
-        tool("screenshot", "Screenshot app", "Screenshot of the whole MailCraft window (desktop app only).", obj(json!({}), &[]), true),
+        tool("parity", "Feature parity", "ictMail's command coverage of the mail-client feature catalog.", obj(json!({}), &[]), true),
+        tool("screenshot", "Screenshot app", "Screenshot of the whole ictMail window (desktop app only).", obj(json!({}), &[]), true),
         tool(
             "click",
             "Click",
@@ -422,7 +422,7 @@ pub fn call_tool(b: &mut dyn Backend, pol: &Policy, name: &str, a: &Value) -> To
         }
         if !pol.allow.contains(&Class::Input) {
             return ToolResult::error(format!(
-                "clicking and typing in the window needs the owner: {}. Only the owner can let an agent do this, by starting the server with `mailcraft-cli mcp --allow input`",
+                "clicking and typing in the window needs the owner: {}. Only the owner can let an agent do this, by starting the server with `ictmail-cli mcp --allow input`",
                 Class::Input.what()
             ));
         }

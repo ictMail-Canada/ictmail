@@ -12,7 +12,7 @@ use serde_json::{Value, json};
 use crate::graph::standin::{StandIn, TOKEN};
 
 const NOW: i64 = 1_790_000_000;
-const MARKER: &str = "String {6d1c4e3a-8f2b-4c5d-9e0a-1b2c3d4e5f60} Name MailCraftMarker";
+const MARKER: &str = "String {6d1c4e3a-8f2b-4c5d-9e0a-1b2c3d4e5f60} Name ictMailMarker";
 
 /// One request: the status (0 when the connection closed without an answer), the headers (names
 /// in lower case) and the body. `auth` false sends no Authorization; `kind` is the body's type.

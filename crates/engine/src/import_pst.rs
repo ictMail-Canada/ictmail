@@ -234,7 +234,7 @@ pub fn read_path(path: &str, job: &Job, progress: &Progress, send: &mut dyn FnMu
         let mut sink = |batch: Batch| if send(Event::Batch(batch)) { Ok(()) } else { Err(fail("the import was stopped")) };
         open_path(path).and_then(|f| read(f, job, Limits::default(), progress, &mut sink))
     }))
-    .unwrap_or_else(|_| Err(fail("MailCraft stopped reading the .pst file before it was done: what came in is kept")));
+    .unwrap_or_else(|_| Err(fail("ictMail stopped reading the .pst file before it was done: what came in is kept")));
     let _ = send(Event::Done(done.map(Box::new)));
 }
 

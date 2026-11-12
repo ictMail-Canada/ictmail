@@ -314,24 +314,24 @@ fn why_alerts_cant_be_shown_is_one_heading_and_a_reason() {
         (
             Lang::English,
             [
-                "Desktop alerts can't be shown: this copy of MailCraft wasn't installed with its installer (.msi), so Windows doesn't know it.",
-                "Desktop alerts can't be shown: this copy doesn't run from the MailCraft app.",
+                "Desktop alerts can't be shown: this copy of ictMail wasn't installed with its installer (.msi), so Windows doesn't know it.",
+                "Desktop alerts can't be shown: this copy doesn't run from the ictMail app.",
                 "Desktop alerts can't be shown: no notification service answers on this desktop.",
             ],
         ),
         (
             Lang::German,
             [
-                "Desktopbenachrichtigungen können nicht angezeigt werden: Diese Kopie von MailCraft wurde nicht mit ihrem Installationsprogramm (.msi) installiert, daher kennt Windows sie nicht.",
-                "Desktopbenachrichtigungen können nicht angezeigt werden: Diese Kopie läuft nicht aus der MailCraft-App.",
+                "Desktopbenachrichtigungen können nicht angezeigt werden: Diese Kopie von ictMail wurde nicht mit ihrem Installationsprogramm (.msi) installiert, daher kennt Windows sie nicht.",
+                "Desktopbenachrichtigungen können nicht angezeigt werden: Diese Kopie läuft nicht aus der ictMail-App.",
                 "Desktopbenachrichtigungen können nicht angezeigt werden: Auf diesem Desktop antwortet kein Benachrichtigungsdienst.",
             ],
         ),
         (
             Lang::French,
             [
-                "Impossible d'afficher les alertes sur le bureau\u{202f}: cette copie de MailCraft n'a pas été installée avec son programme d'installation (.msi), Windows ne la connaît donc pas.",
-                "Impossible d'afficher les alertes sur le bureau\u{202f}: cette copie ne s'exécute pas depuis l'application MailCraft.",
+                "Impossible d'afficher les alertes sur le bureau\u{202f}: cette copie de ictMail n'a pas été installée avec son programme d'installation (.msi), Windows ne la connaît donc pas.",
+                "Impossible d'afficher les alertes sur le bureau\u{202f}: cette copie ne s'exécute pas depuis l'application ictMail.",
                 "Impossible d'afficher les alertes sur le bureau\u{202f}: aucun service de notification ne répond sur ce bureau.",
             ],
         ),
@@ -344,7 +344,7 @@ fn why_alerts_cant_be_shown_is_one_heading_and_a_reason() {
         }
     }
     set_current(Lang::English);
-    assert_eq!(AlertTrouble::TurnedOff.notice(), "Desktop alerts are turned off for MailCraft in System Settings.");
+    assert_eq!(AlertTrouble::TurnedOff.notice(), "Desktop alerts are turned off for ictMail in System Settings.");
 }
 
 #[test]

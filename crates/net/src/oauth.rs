@@ -1459,28 +1459,28 @@ struct Page {
     text: &'static str,
 }
 
-const DONE: Page = Page { status: "200 OK", title: "Back to MailCraft", text: "You can close this tab and return to MailCraft." };
+const DONE: Page = Page { status: "200 OK", title: "Back to ictMail", text: "You can close this tab and return to ictMail." };
 const FAILED: Page = Page {
     status: "200 OK",
     title: "The sign-in didn't go through",
-    text: "You can close this tab and return to MailCraft, which says what went wrong.",
+    text: "You can close this tab and return to ictMail, which says what went wrong.",
 };
 const NOT_OURS: Page = Page {
     status: "400 Bad Request",
-    title: "Not the sign-in MailCraft is waiting for",
-    text: "Close this tab and start the sign-in again from MailCraft.",
+    title: "Not the sign-in ictMail is waiting for",
+    text: "Close this tab and start the sign-in again from ictMail.",
 };
-const NOT_FOUND: Page = Page { status: "404 Not Found", title: "Nothing here", text: "This address only brings a sign-in back to MailCraft." };
+const NOT_FOUND: Page = Page { status: "404 Not Found", title: "Nothing here", text: "This address only brings a sign-in back to ictMail." };
 const NOT_ALLOWED: Page =
-    Page { status: "405 Method Not Allowed", title: "Nothing here", text: "This address only brings a sign-in back to MailCraft." };
+    Page { status: "405 Method Not Allowed", title: "Nothing here", text: "This address only brings a sign-in back to ictMail." };
 const TOO_LARGE: Page =
-    Page { status: "431 Request Header Fields Too Large", title: "Too much", text: "This address only brings a sign-in back to MailCraft." };
+    Page { status: "431 Request Header Fields Too Large", title: "Too much", text: "This address only brings a sign-in back to ictMail." };
 const APPROVED: Page =
-    Page { status: "200 OK", title: "MailCraft is approved for your organisation", text: "You can close this tab and return to MailCraft." };
+    Page { status: "200 OK", title: "ictMail is approved for your organisation", text: "You can close this tab and return to ictMail." };
 const NOT_APPROVED: Page = Page {
     status: "200 OK",
     title: "The approval didn't go through",
-    text: "You can close this tab and return to MailCraft, which says what went wrong.",
+    text: "You can close this tab and return to ictMail, which says what went wrong.",
 };
 
 impl Page {
@@ -1489,7 +1489,7 @@ impl Page {
         let body = format!(
             "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n\
              <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<meta name=\"color-scheme\" content=\"light dark\">\n\
-             <title>MailCraft</title>\n\
+             <title>ictMail</title>\n\
              <style>body{{font:1rem system-ui,sans-serif;max-width:30em;margin:20vh auto;padding:0 1.5em;text-align:center}}</style>\n\
              </head>\n<body>\n<h1>{}</h1>\n<p>{}</p>\n</body>\n</html>\n",
             self.title, self.text

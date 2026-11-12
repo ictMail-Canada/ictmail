@@ -8,7 +8,7 @@ use serde_json::Value;
 use crate::report::*;
 
 fn report() -> ProblemReport {
-    ProblemReport::new("Search stops", "I searched and it stopped", "0.9.0", "linux x86_64", "", Some("### MailCraft diagnostics\n"))
+    ProblemReport::new("Search stops", "I searched and it stopped", "0.9.0", "linux x86_64", "", Some("### ictMail diagnostics\n"))
 }
 
 #[test]
@@ -100,16 +100,16 @@ fn a_request_over_the_whole_cap_is_refused_and_the_fullest_window_fits() {
 
 #[test]
 fn diagnostics_that_fit_are_kept_whole_and_long_ones_keep_their_head_and_end() {
-    let short = "### MailCraft diagnostics\n\n- Version: 0.9.0\n";
+    let short = "### ictMail diagnostics\n\n- Version: 0.9.0\n";
     assert_eq!(fit_diagnostics(short), short);
-    let mut long = String::from("### MailCraft diagnostics\n\n- Version: 0.9.0\n- Platform: linux x86_64\n\n```\n");
+    let mut long = String::from("### ictMail diagnostics\n\n- Version: 0.9.0\n- Platform: linux x86_64\n\n```\n");
     for n in 0..2_000 {
         long.push_str(&format!("line {n}: {}\n", "x".repeat(60)));
     }
     long.push_str("```\nSend/Receive timings\n");
     let fitted = fit_diagnostics(&long);
     assert!(fitted.len() <= DIAGNOSTICS_ROOM, "{}", fitted.len());
-    assert!(fitted.starts_with("### MailCraft diagnostics\n\n- Version: 0.9.0\n- Platform: linux x86_64\n"));
+    assert!(fitted.starts_with("### ictMail diagnostics\n\n- Version: 0.9.0\n- Platform: linux x86_64\n"));
     assert!(fitted.ends_with("Send/Receive timings\n"));
     assert!(fitted.contains("earlier lines left out to fit the report"));
     // The oldest lines of the log go; the newest stay.
@@ -141,7 +141,7 @@ proptest! {
 
     #[test]
     fn long_diagnostics_fit_the_room_in_json_and_keep_their_head(lines in proptest::collection::vec("[^\n]{0,400}", 0..400)) {
-        let head = "### MailCraft diagnostics\n\n- Version: 0.9.0\n- Platform: linux x86_64\n";
+        let head = "### ictMail diagnostics\n\n- Version: 0.9.0\n- Platform: linux x86_64\n";
         let text = format!("{head}{}", lines.join("\n"));
         let fitted = fit_diagnostics(&text);
         // (Written in JSON, less its two quotes.)

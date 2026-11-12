@@ -86,7 +86,7 @@ pub const MAX_BATCH: usize = 1000;
 /// [`batch_modify`] against the API at `base`.
 fn batch_modify_at(base: &str, token: &str, ids: &[u64], category: GmailCategory) -> Result<(), NetError> {
     if !switched_on() {
-        return Err(NetError::Config("moving mail between Gmail's categories comes once Google has reviewed MailCraft".into()));
+        return Err(NetError::Config("moving mail between Gmail's categories comes once Google has reviewed ictMail".into()));
     }
     if ids.is_empty() {
         return Ok(());

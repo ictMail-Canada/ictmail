@@ -84,7 +84,7 @@ impl Own {
             Own::Edit(EditKey::SelectAll) => "Select All",
             Own::Info => "Info",
             Own::Options => "Options",
-            Own::About => "About MailCraft",
+            Own::About => "About ictMail",
             Own::HelpTab => "Help",
             Own::Settings => "Settings…",
         }
@@ -305,9 +305,9 @@ pub struct AppText {
 
 pub fn app_text() -> AppText {
     AppText {
-        about: tl!("About MailCraft").to_string(),
-        hide: tl!("Hide MailCraft").to_string(),
-        quit: tl!("Quit MailCraft").to_string(),
+        about: tl!("About ictMail").to_string(),
+        hide: tl!("Hide ictMail").to_string(),
+        quit: tl!("Quit ictMail").to_string(),
         minimize: tl!("Minimize").to_string(),
         zoom: tl!("Zoom").to_string(),
     }

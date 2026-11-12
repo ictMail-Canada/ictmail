@@ -1078,13 +1078,13 @@ fn help() -> Tab {
                 Item::big("notes", "Feedback", "help.feedback", no()).at(0, 4),
                 Item::big("favorite", "What's\nNew", "help.whatsNew", no()).at(0, 3),
                 Item::big("search", "Search\nCommands", "ui.dialog", json!({"name": "commands"})).key("help.commands").at(0, 1),
-                Item::big("about", "About\nMailCraft", "ui.dialog", json!({"name": "about"})).key("help.about").at(0, 2),
+                Item::big("about", "About\nictMail", "ui.dialog", json!({"name": "about"})).key("help.about").at(0, 2),
                 Item::big("copy", "Copy\nDiagnostics", "ui.copyDiagnostics", no()).at(0, 3),
                 Item::big("report", "Report a\nProblem", "ui.reportProblem", no()).at(0, 4),
             ],
         )],
         note: tl!(
-            "MailCraft is open source (MIT or Apache-2.0). Every button here runs a command that scripts and agents can run too: see Search Commands."
+            "ictMail is open source (MIT or Apache-2.0). Every button here runs a command that scripts and agents can run too: see Search Commands."
         ),
         note_width: 420.0,
     }

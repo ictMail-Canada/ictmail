@@ -34,7 +34,7 @@ fn the_message_for_an_administrator_says_what_it_is_for_and_nothing_of_the_owner
     // What the program is, in a sentence; that the approval is asked once, for the organisation;
     // the address; and what the administrator sees afterwards, with why that is as it should be.
     for said in [
-        "MailCraft is an open-source mail and calendar program",
+        "ictMail is an open-source mail and calendar program",
         "only an administrator",
         "approval once, for the whole organisation",
         link,

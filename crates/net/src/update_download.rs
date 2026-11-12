@@ -178,7 +178,7 @@ pub fn verify(sums: &[u8], signature: &[u8], keys: &[[u8; 32]]) -> Result<Sums, 
     let signature = parse_signature(signature).ok_or_else(|| refused("the release's signature isn't one"))?;
     let signed = keys.iter().any(|key| UnparsedPublicKey::new(&ED25519, key).verify(sums, &signature).is_ok());
     if !signed {
-        return Err(refused("the release isn't signed by MailCraft's release key"));
+        return Err(refused("the release isn't signed by ictMail's release key"));
     }
     parse_sums(sums).ok_or_else(|| refused("the release's list of checksums isn't one"))
 }
@@ -585,7 +585,7 @@ mod tests {
         for n in 0..r.server.asked() {
             let sent = r.server.request(n);
             let headers: Vec<&str> = sent.split("\r\n").skip(1).take_while(|l| !l.is_empty()).filter(|l| !l.starts_with("Host:")).collect();
-            assert_eq!(headers, ["User-Agent: MailCraft", "Accept: application/octet-stream", "Connection: close"], "{sent}");
+            assert_eq!(headers, ["User-Agent: ictMail", "Accept: application/octet-stream", "Connection: close"], "{sent}");
         }
         let _ = fs::remove_dir_all(&dir);
     }
@@ -602,7 +602,7 @@ mod tests {
         let dir = scratch("stranger");
         assert_eq!(
             download_with(&release(&r.server, 3), NAME, &dir, &keys, &reach()),
-            Err(refused("the release isn't signed by MailCraft's release key"))
+            Err(refused("the release isn't signed by ictMail's release key"))
         );
         assert!(!dir.join(NAME).exists() && !dir.join(format!("{NAME}{PART}")).exists());
         // No key at all: nothing is even asked.
@@ -621,9 +621,9 @@ mod tests {
         let dir = scratch("bad");
         // A signature over something else; one that isn't one; a list changed after signing.
         let cases: Vec<(Box<dyn FnOnce(&mut Stand)>, &str)> = vec![
-            (Box::new(|s: &mut Stand| s.signature = signature(&key(), b"else")), "the release isn't signed by MailCraft's release key"),
+            (Box::new(|s: &mut Stand| s.signature = signature(&key(), b"else")), "the release isn't signed by ictMail's release key"),
             (Box::new(|s: &mut Stand| s.signature = b"not a signature".to_vec()), "the release's signature isn't one"),
-            (Box::new(|s: &mut Stand| s.sums.extend_from_slice(b"00  evil\n")), "the release isn't signed by MailCraft's release key"),
+            (Box::new(|s: &mut Stand| s.sums.extend_from_slice(b"00  evil\n")), "the release isn't signed by ictMail's release key"),
             (Box::new(|s: &mut Stand| s.file = b"the evil version".to_vec()), "the file's checksum isn't the one the signed list gives"),
         ];
         for (adjust, why) in cases {

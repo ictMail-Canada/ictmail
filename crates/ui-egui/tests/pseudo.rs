@@ -20,7 +20,7 @@ const NOW: i64 = 1_791_993_600;
 /// interface takes its words out of here.
 const ALLOWED: &[&str] = &[
     // The program's name, and the names of products and providers.
-    "MailCraft",
+    "ictMail",
     "Microsoft",
     "Outlook",
     "Graph",

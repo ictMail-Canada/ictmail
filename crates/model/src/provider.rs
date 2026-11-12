@@ -56,7 +56,7 @@ pub fn google(consumer: bool) -> Preset {
         oauth: Some(OAuthProvider::Google),
         incoming: server("imap.gmail.com", 993, Security::Tls),
         outgoing: server("smtp.gmail.com", 465, Security::Tls),
-        note: "Google sign-in opens the provider's page; MailCraft does not ask for your Google password.",
+        note: "Google sign-in opens the provider's page; ictMail does not ask for your Google password.",
     }
 }
 

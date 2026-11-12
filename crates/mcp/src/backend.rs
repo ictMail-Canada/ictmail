@@ -242,7 +242,7 @@ impl Remote {
 
     fn not_proved(&self) -> String {
         format!(
-            "the program at {} did not prove it is the MailCraft app that wrote the control key, so neither the key nor any request was sent to it (an older MailCraft that cannot answer the challenge, or another program on that port)",
+            "the program at {} did not prove it is the ictMail app that wrote the control key, so neither the key nor any request was sent to it (an older ictMail that cannot answer the challenge, or another program on that port)",
             self.addr
         )
     }
@@ -286,7 +286,7 @@ impl Remote {
     /// answer is replaced before anything is written on it. Once the line is written, no answer
     /// is an error: the app may have run the request, so it is never sent twice.
     fn exchange(&mut self, id: u64, method: &str, params: &Value) -> Result<Value, String> {
-        let unreachable = |addr: &str, e: std::io::Error| format!("MailCraft app at {addr} is not reachable: {e}");
+        let unreachable = |addr: &str, e: std::io::Error| format!("ictMail app at {addr} is not reachable: {e}");
         let mut first = true;
         let reply = loop {
             if self.conn.as_ref().is_some_and(|(reader, stream)| !still_open(reader, stream)) {
@@ -321,13 +321,13 @@ impl Remote {
                 Err(Trip::Lost(e)) => {
                     self.conn = None;
                     return Err(format!(
-                        "the MailCraft app at {} did not answer ({e}): it may have run the request, so it was not sent again; look at the app before trying again",
+                        "the ictMail app at {} did not answer ({e}): it may have run the request, so it was not sent again; look at the app before trying again",
                         self.addr
                     ));
                 }
                 Err(Trip::TooLong) => {
                     self.conn = None;
-                    return Err(format!("the answer of the MailCraft app at {} was too long, so the connection was dropped", self.addr));
+                    return Err(format!("the answer of the ictMail app at {} was too long, so the connection was dropped", self.addr));
                 }
             }
         };
@@ -354,7 +354,7 @@ impl Backend for Remote {
             Err(self.key_warning().map_or_else(
                 || {
                     format!(
-                        "unauthorized: the MailCraft app at {} refused the control key (from MAILCRAFT_CONTROL_KEY or the app's key file)",
+                        "unauthorized: the ictMail app at {} refused the control key (from MAILCRAFT_CONTROL_KEY or the app's key file)",
                         self.addr
                     )
                 },
@@ -370,7 +370,7 @@ impl Backend for Remote {
     }
 
     fn describe(&self) -> String {
-        format!("connected to the MailCraft app at {}", self.addr)
+        format!("connected to the ictMail app at {}", self.addr)
     }
 }
 

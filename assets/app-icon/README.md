@@ -1,17 +1,19 @@
-# MailCraft app icon
+# ictMail app icon
 
-An **envelope that is also a calendar page**, with two ring tabs at its top, in front of two
-tilted sheets, on a rounded tile, in blue: mail, calendar and the rest of the program in one mark.
+The **ictMail envelope mark** — the orange-rimmed, blue-filled envelope of the ictMail logo —
+on transparency, the same mark the favicon uses.
 
-The design is Martin Ball's. The SVG was drawn by hand as vectors for MailCraft (not traced, and
-nothing in it comes from any other product's icon). It is original work of the MailCraft
-contributors, under the project's licence (MIT OR Apache-2.0).
+The mark is ictTech's own app-icon artwork (`assets/branding/app-Icon.png`), kept content-cropped
+as `source/ictmail-mark.png` and embedded in `source/mailcraft.svg` as a PNG image. It is
+ictTech's own work under the project's licence (MIT OR Apache-2.0). The `alternates/` drawings
+are the upstream MailCraft icon in other colour schemes, kept for reference and not used.
 
 ## Files
 
 | Path | What |
 |---|---|
 | `source/mailcraft.svg` | The source: everything else here is written from it |
+| `source/ictmail-mark.png` | The mark itself, content-cropped from `../branding/app-Icon.png` |
 | `alternates/calmail-{teal,violet,sunset,green,graphite}.svg` | The same drawing in other colour schemes, kept for the future and not used yet |
 | `alternates/gen.py` | Writes every scheme, blue included, from one template and a palette per scheme |
 | `hicolor/` | Linux: PNGs from 16 to 512 px, and the SVG as the scalable icon |
@@ -21,11 +23,11 @@ contributors, under the project's licence (MIT OR Apache-2.0).
 
 ## Geometry
 
-The tile is fitted to the canvas, whatever margin the SVG keeps round it (the bounding box of
-what it draws, made square about its centre); the scalable icon's `viewBox` is set to the same
-square. The macOS files keep Apple's margin (an 824 px body on a 1024 px canvas). The 16, 24, 32
-and 48 px files show the drawing a little closer inside the same rounded tile (1.14, 1.08, 1.08
-and 1.04 times), so the page and its envelope still read.
+The drawing is fitted to the canvas, whatever margin the SVG keeps round it (the bounding box
+of what it draws, made square about its centre); the scalable icon's `viewBox` is set to the
+same square. The macOS files keep Apple's margin (an 824 px body on a 1024 px canvas). The 16,
+24, 32 and 48 px files show the drawing a little closer inside the same bounds (1.14, 1.08,
+1.08 and 1.04 times), so the envelope still reads.
 
 ## Changing it
 

@@ -1519,8 +1519,7 @@ fn extras_line(app: &mut MailApp, ui: &mut Ui, account: Id) {
     if resp.hovered() {
         ui.ctx().set_cursor_icon(egui::CursorIcon::PointingHand);
     }
-    let tip =
-        tl!("Sign in once more, so that MailCraft may read the categories and the working hours your mailbox has. Your calendar works as it is.");
+    let tip = tl!("Sign in once more, so that ictMail may read the categories and the working hours your mailbox has. Your calendar works as it is.");
     if resp.on_hover_text(tip).clicked()
         && let Err(e) = app.run("ui.connectMicrosoft", json!({"account": account}))
     {
@@ -1599,7 +1598,7 @@ pub(crate) fn work_hours_option(app: &mut MailApp, ui: &mut Ui) {
     let t = Tokens::get(ui.ctx());
     let mut own = app.session.prefs.own_work_hours;
     let tip = tl!(
-        "Without this, the calendar uses the working hours your Microsoft 365 mailbox has, once MailCraft may read them. The ones above are used until then."
+        "Without this, the calendar uses the working hours your Microsoft 365 mailbox has, once ictMail may read them. The ones above are used until then."
     );
     if ui.checkbox(&mut own, tl!("Use my own working hours")).on_hover_text(tip).changed() {
         let _ = app.run("view.workHours", json!({"own": own}));
@@ -1652,7 +1651,7 @@ fn connect_notice(app: &mut MailApp, ui: &mut Ui) {
     );
     paint_clipped(&p, pos2(r.min.x + 12.0, r.center().y), button.min.x - r.min.x - 24.0, text, regular(12.0), t.text);
     app.hit.add("calendarConnect", account, button);
-    if resp.on_hover_text(tl!("Sign in once more, so that MailCraft may show and change your calendar")).clicked()
+    if resp.on_hover_text(tl!("Sign in once more, so that ictMail may show and change your calendar")).clicked()
         && let Err(e) = app.run("ui.connectMicrosoft", json!({"account": account}))
     {
         app.status(e);

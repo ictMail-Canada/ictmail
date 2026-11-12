@@ -31,9 +31,9 @@ use crate::{CmdError, CmdResult, CommandSpec, Session, p};
 
 /// Why an account has no automatic replies here (an IMAP, JMAP, Exchange server or local
 /// account).
-pub const NOT_MICROSOFT: &str = "Automatic replies are kept on the mail server, and MailCraft can set them only for accounts that sign in with Microsoft so far: IMAP has no standard way to set them (Sieve vacation replies may come later)";
+pub const NOT_MICROSOFT: &str = "Automatic replies are kept on the mail server, and ictMail can set them only for accounts that sign in with Microsoft so far: IMAP has no standard way to set them (Sieve vacation replies may come later)";
 /// Why a shared mailbox has none.
-pub const SHARED: &str = "A shared mailbox's automatic replies are set by whoever manages it; MailCraft sets only your own account's";
+pub const SHARED: &str = "A shared mailbox's automatic replies are set by whoever manages it; ictMail sets only your own account's";
 /// Why a change is refused before the server's setting has been read.
 pub const NOT_READ: &str =
     "the automatic replies haven't been read from the server yet: read them first, so that nothing of them is written over unseen";

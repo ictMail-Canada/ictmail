@@ -95,7 +95,7 @@ fn the_owners_own_marks_on_the_message_stay_here() {
     // address it was delivered to. And what the sender and the servers on the way wrote, which
     // goes (every header: `forward_attachment_headers_tests`).
     for (name, value) in [
-        ("X-MailCraft-Meeting-Response", "accepted 1791993600 00ff"),
+        ("X-ictMail-Meeting-Response", "accepted 1791993600 00ff"),
         ("X-Mozilla-Status", "0001"),
         ("X-Mozilla-Keys", "$label1"),
         ("X-Mozilla-Draft-Info", "internal/draft; vcard=0"),
@@ -148,7 +148,7 @@ fn the_owners_own_marks_on_the_message_stay_here() {
     s.mailbox.message_mut(id).unwrap().flag = FlagStatus::Complete;
     s.run("mail.forwardAsAttachment", &json!({"id": id})).unwrap();
     let (_, _, bytes) = attached(&s);
-    assert!(!String::from_utf8_lossy(&bytes).contains("X-MailCraft-Flag:"));
+    assert!(!String::from_utf8_lossy(&bytes).contains("X-ictMail-Flag:"));
     // And the message here keeps them.
     let m = s.mailbox.message(id).unwrap();
     assert!(m.read && m.answered && m.flag == FlagStatus::Complete && m.categories.len() == 2 && m.headers.len() >= 5);

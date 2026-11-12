@@ -88,7 +88,7 @@ impl MailApp {
         let Some(address) = self.session.mailbox.account(shared).filter(|a| a.is_shared()).map(|a| a.email.trim().to_string()) else { return false };
         let text = crate::i18n::fmt(
             tl!(
-                "To show the calendars of {address}, MailCraft needs your permission to read the calendars of shared mailboxes. Microsoft's page opens in your browser to ask you, once.\n\nWhat you may see of a calendar is for its owner and your organisation to decide: this changes nothing about that. Until you allow it, nothing of {address}'s calendars is read."
+                "To show the calendars of {address}, ictMail needs your permission to read the calendars of shared mailboxes. Microsoft's page opens in your browser to ask you, once.\n\nWhat you may see of a calendar is for its owner and your organisation to decide: this changes nothing about that. Until you allow it, nothing of {address}'s calendars is read."
             ),
             &[("address", &address)],
         );
@@ -131,7 +131,7 @@ impl MailApp {
             return Err(e);
         }
         self.shared_calendar_perm.insert(shared, Permission::Asking);
-        self.session.sync_status = tl!("Allow MailCraft to read shared mailboxes' calendars on the page that opened in your browser…").to_string();
+        self.session.sync_status = tl!("Allow ictMail to read shared mailboxes' calendars on the page that opened in your browser…").to_string();
         Ok(json!({"pending": "signIn", "account": owner.id}))
     }
 
@@ -164,7 +164,7 @@ impl MailApp {
                 let _ = self.run("ui.approvalHelp", json!({"account": owner}));
             }
             Err(e) if e == REFUSED_BY_ORGANISATION || e == REFUSED_FOR_ACCOUNT => {
-                let said = tl!("Your organisation doesn't allow MailCraft to read shared mailboxes' calendars");
+                let said = tl!("Your organisation doesn't allow ictMail to read shared mailboxes' calendars");
                 self.shared_calendar_perm.insert(shared, Permission::Refused(said.to_string()));
                 self.status(said);
             }

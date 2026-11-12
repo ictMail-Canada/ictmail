@@ -70,8 +70,8 @@ impl AuthProblem {
     /// The line the run ends with. Names neither the server nor the user.
     pub(crate) fn words(self) -> &'static str {
         match self {
-            Self::NegotiateOnly => "The server only signs in with Kerberos (Negotiate), which MailCraft does not speak yet",
-            Self::NothingSupported => "The server offers no way of signing in that MailCraft speaks (NTLM or Basic)",
+            Self::NegotiateOnly => "The server only signs in with Kerberos (Negotiate), which ictMail does not speak yet",
+            Self::NothingSupported => "The server offers no way of signing in that ictMail speaks (NTLM or Basic)",
             Self::NtlmFailed => "The NTLM sign-in with the server could not be completed",
         }
     }

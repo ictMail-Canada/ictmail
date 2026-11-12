@@ -214,7 +214,7 @@ fn the_waiting_page_says_what_to_do_about_an_approval_without_waiting() {
         (page(&h), wizard(&h).map(|w| (w.waiting, w.approval.said)), h.state().signing_in()),
         (Some(Page::Approval), Some((true, false)), true)
     );
-    assert!(says(&h, "Your organisation has to approve MailCraft first") && !says(&h, "Microsoft's page said so"));
+    assert!(says(&h, "Your organisation has to approve ictMail first") && !says(&h, "Microsoft's page said so"));
     assert_eq!((asked.lock().unwrap().len(), addresses(&h)), (1, vec![String::new()]));
     answer(&held, Ok(signed_in_at_work()));
     h.run_steps(6);
@@ -263,16 +263,16 @@ fn a_sign_in_refused_for_approval_shows_the_page_and_an_administrator_approves_f
     assert_eq!(addresses(&h), [""]);
     // Why, in plain words, and what to do next, as things to press.
     for said in [
-        "Your organisation has to approve MailCraft first",
+        "Your organisation has to approve ictMail first",
         "noor@example.org",
         "Microsoft's page said so.",
-        "lets only an administrator approve a new program, and none has approved MailCraft yet",
+        "lets only an administrator approve a new program, and none has approved ictMail yet",
         "Nothing is wrong with your account or your password.",
         "What to do next",
         ADMINISTRATOR,
         "Opens Microsoft's approval page in your browser",
         COPY,
-        "MailCraft sends nothing itself",
+        "ictMail sends nothing itself",
         "If you have an administrator account of your own, the first choice lets you sign in with it on Microsoft's page.",
         "Once an administrator has approved, try again",
     ] {
@@ -333,7 +333,7 @@ fn a_sign_in_refused_for_approval_shows_the_page_and_an_administrator_approves_f
     press_step(&mut h, ADMINISTRATOR);
     h.run_steps(4);
     assert_eq!((page(&h), wizard(&h).map(|w| (w.waiting, w.approved)), h.state().signing_in()), (Some(Page::SignIn), Some((true, true)), true));
-    assert!(says(&h, "Your organisation has approved MailCraft. Now sign in with your own account."));
+    assert!(says(&h, "Your organisation has approved ictMail. Now sign in with your own account."));
     assert!(says(&h, "Microsoft's sign-in page is open in your browser") && !h.state().approving());
     let asked_for: Vec<String> = signed.lock().unwrap().iter().map(|(address, ..)| address.clone()).collect();
     assert_eq!(asked_for, ["noor@example.org"]);
@@ -382,7 +382,7 @@ fn the_copied_message_has_the_link_and_no_address_of_the_owner() {
     // What the program is, that an approval is asked once for the organisation, the address on a
     // line of its own, and what the administrator will see afterwards.
     for said in [
-        "MailCraft is an open-source mail and calendar program",
+        "ictMail is an open-source mail and calendar program",
         "approval once, for the whole organisation",
         "a page that can't be reached",
         "That is expected",
@@ -552,7 +552,7 @@ fn a_closed_tab_a_timeout_a_no_and_a_missing_browser_each_say_so() {
             "The page was closed, or five minutes went by before the sign-in was finished.",
         ),
         (SIGN_IN_DECLINED, "Microsoft's page came back without signing you in", "You came back from Microsoft's page without having signed in"),
-        (NO_BROWSER, "MailCraft couldn't open your browser", "none could be started on this computer"),
+        (NO_BROWSER, "ictMail couldn't open your browser", "none could be started on this computer"),
     ] {
         let mut signed = None;
         let mut h = work_account(|a| signed = Some(sign_ins(a, Some(Err(how.into())))));
@@ -569,7 +569,7 @@ fn a_closed_tab_a_timeout_a_no_and_a_missing_browser_each_say_so() {
         assert_eq!(says(&h, "If that page said you need admin approval"), may_have_asked, "{how}");
         assert_eq!((says(&h, ADMINISTRATOR), says(&h, COPY)), (may_have_asked, may_have_asked), "{how}");
         assert_eq!(at(&h, "approvalAdministrator", 0).is_some(), may_have_asked, "{how}");
-        assert_eq!(says(&h, "My organisation has to approve MailCraft first: what to do"), !may_have_asked, "{how}");
+        assert_eq!(says(&h, "My organisation has to approve ictMail first: what to do"), !may_have_asked, "{how}");
         assert!(at(&h, "signInTryAgain", 0).is_some() && at(&h, "signInApprovalHelp", 0).is_some(), "{how}");
         if may_have_asked {
             // The message can be copied from here, and the page stays.
@@ -583,7 +583,7 @@ fn a_closed_tab_a_timeout_a_no_and_a_missing_browser_each_say_so() {
         // The way to the page about an approval, where Microsoft itself has said nothing of one.
         click_kind(&mut h, "signInApprovalHelp", 0);
         assert_eq!((page(&h), wizard(&h).map(|w| w.approval.said)), (Some(Page::Approval), Some(false)), "{how}");
-        assert!(says(&h, "Your organisation has to approve MailCraft first") && !says(&h, "Microsoft's page said so"), "{how}");
+        assert!(says(&h, "Your organisation has to approve ictMail first") && !says(&h, "Microsoft's page said so"), "{how}");
         // And from there the sign-in again, which this time goes through.
         sign_ins(h.state_mut(), Some(Ok(signed_in_at_work())));
         click(&mut h, "Try again");
@@ -701,7 +701,7 @@ fn an_account_that_exists_gets_the_same_page_when_its_sign_in_is_refused_for_app
     assert_eq!(h.state_mut().execute("ui.sync", json!({"account": work})).unwrap()["pending"], "signIn");
     h.run_steps(4);
     assert_eq!((page(&h), wizard(&h).map(|w| (w.existing, w.title()))), (Some(Page::Approval), Some((work, "Approval Needed".to_string()))));
-    for said in ["Your organisation has to approve MailCraft first", "ada@lumen.example", "What to do next", ADMINISTRATOR, COPY, "Not now"] {
+    for said in ["Your organisation has to approve ictMail first", "ada@lumen.example", "What to do next", ADMINISTRATOR, COPY, "Not now"] {
         assert!(says(&h, said), "{said}");
     }
     // (It is set up already: nothing is said of steps to come.)

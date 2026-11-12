@@ -226,7 +226,7 @@ impl Report {
             out.push_str(&s);
             out.push('\n');
         };
-        line(format!("MailCraft: import of the .pst file {} ", short(&self.file)));
+        line(format!("ictMail: import of the .pst file {} ", short(&self.file)));
         line(format!("When: {when}"));
         if self.name.is_empty() {
             line("Into: this computer".to_string());

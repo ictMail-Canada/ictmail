@@ -625,7 +625,7 @@ fn favorites_note(app: &mut MailApp, ui: &mut Ui, account: Id, note: &Note) {
         let r = quiet_lines(ui, tl!(note.text()));
         app.hit.add("favoritesNote", account, r);
         let about = tl!(
-            "Your organisation keeps this permission for its administrators to give. Once one of them has approved it, choose it again here. Until then the Favorites kept in MailCraft are shown."
+            "Your organisation keeps this permission for its administrators to give. Once one of them has approved it, choose it again here. Until then the Favorites kept in ictMail are shown."
         );
         ui.interact(r, ui.scope_id().with(("favorites_note", account)), Sense::hover()).on_hover_text(about);
         for step in app.favorites_steps(note) {
@@ -649,7 +649,7 @@ fn favorites_note(app: &mut MailApp, ui: &mut Ui, account: Id, note: &Note) {
             paint_clipped(ui.painter(), pos2(left, y), width, tl!("Show Outlook's Favorites"), font, t.accent_text);
             // Signing in with Microsoft once more, for that alone.
             let about = tl!(
-                "Sign in with Microsoft once more to let MailCraft read the folders you keep under Favorites in Outlook. They are only read, never changed, and everything else stays as it is."
+                "Sign in with Microsoft once more to let ictMail read the folders you keep under Favorites in Outlook. They are only read, never changed, and everything else stays as it is."
             );
             if resp.on_hover_text(about).clicked()
                 && let Err(e) = app.run("ui.connectFavorites", json!({"account": account}))
@@ -664,7 +664,7 @@ fn favorites_note(app: &mut MailApp, ui: &mut Ui, account: Id, note: &Note) {
             app.hit.add("favoritesNote", account, r);
             paint_clipped(ui.painter(), pos2(left, y), width, tl!(why), font, t.text_dim);
             resp.on_hover_text(tl!(
-                "Outlook's Favorites can't be shown for this account, so the ones kept in MailCraft are. File › Options can ask again."
+                "Outlook's Favorites can't be shown for this account, so the ones kept in ictMail are. File › Options can ask again."
             ));
         }
         // Why, in a few words, and the way to ask again right after it.

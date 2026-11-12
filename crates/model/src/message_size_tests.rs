@@ -71,7 +71,7 @@ fn the_size_of_a_message_too_large_is_written_and_read_back() {
     assert!(json.contains(r#""notDownloaded":62914560"#), "{json}");
     assert_eq!(serde_json::from_str::<Message>(&json).unwrap(), too_large);
     assert!(!serde_json::to_string(&whole()).unwrap().contains("notDownloaded"));
-    let before: Message = serde_json::from_str(r#"{"id": 9, "headers": [["X-MailCraft-Not-Downloaded", "62914560"]]}"#).unwrap();
+    let before: Message = serde_json::from_str(r#"{"id": 9, "headers": [["X-ictMail-Not-Downloaded", "62914560"]]}"#).unwrap();
     assert_eq!((before.not_downloaded, before.list_size()), (0, None));
 }
 
@@ -80,7 +80,7 @@ fn the_size_of_a_message_too_large_is_written_and_read_back() {
 #[test]
 fn a_size_on_the_server_that_isnt_one_reads_as_none() {
     for bad in ["-1", "1.5", "1e3", "true", r#""62914560""#, "null", "[]", "{}", "18446744073709551616"] {
-        let json = format!(r#"{{"id": 9, "notDownloaded": {bad}, "headers": [["X-MailCraft-Not-Downloaded", "62914560"]]}}"#);
+        let json = format!(r#"{{"id": 9, "notDownloaded": {bad}, "headers": [["X-ictMail-Not-Downloaded", "62914560"]]}}"#);
         let m: Message = serde_json::from_str(&json).unwrap_or_else(|e| panic!("{bad}: {e}"));
         assert_eq!((m.id, m.not_downloaded, m.list_size()), (9, 0, None), "{bad}");
         let json = serde_json::to_string(&whole()).unwrap();

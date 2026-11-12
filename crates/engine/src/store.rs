@@ -1735,7 +1735,7 @@ fn open_locked(st: &mut State, path: &Path, progress: &OpenProgress, launch: Lau
     // Only a file that starts like JSON is a mailbox of the forms before this one: anything else
     // (zeros left by a write the system cut short, another program's file) is not "too large".
     if !starts_like_json(&file).map_err(|e| format!("{show}: {e}"))? {
-        return Err(format!("{show} isn't a MailCraft mailbox (it doesn't start like one; it may be damaged, and it is left as it is)"));
+        return Err(format!("{show} isn't a ictMail mailbox (it doesn't start like one; it may be damaged, and it is left as it is)"));
     }
     // A file that would not fit in memory whole (or is more than is read whole) is read as a
     // stream, its content going to the content folder as it is read (#649).
@@ -1755,7 +1755,7 @@ fn open_locked(st: &mut State, path: &Path, progress: &OpenProgress, launch: Lau
             format!("{show} is too large for this computer's memory ({} MB)", len >> 20)
         } else {
             format!(
-                "{show} is {} MB, more than MailCraft opens as one file on a computer whose free memory it can't measure ({} MB)",
+                "{show} is {} MB, more than ictMail opens as one file on a computer whose free memory it can't measure ({} MB)",
                 len >> 20,
                 UNMEASURED_JSON_MAX >> 20
             )
@@ -1775,7 +1775,7 @@ fn open_locked(st: &mut State, path: &Path, progress: &OpenProgress, launch: Lau
     // (What parsing builds is charged while it is built, every list element at any depth: a file
     // that would cost more memory than it may is refused before it does, `load_limit`.)
     let budget = open_budget();
-    let mut mailbox: Mailbox = load_limit::read_json(&bytes, &budget).map_err(|e| refused(&show, "this isn't a MailCraft mailbox", &e, &budget))?;
+    let mut mailbox: Mailbox = load_limit::read_json(&bytes, &budget).map_err(|e| refused(&show, "this isn't a ictMail mailbox", &e, &budget))?;
     let version = mailbox.version;
     let (split, filled) = match version {
         0 | 1 => (false, Filled::default()),
@@ -1783,7 +1783,7 @@ fn open_locked(st: &mut State, path: &Path, progress: &OpenProgress, launch: Lau
             let head: Head = load_limit::read_json(&bytes, &budget).map_err(|e| refused(&show, "this mailbox file is damaged", &e, &budget))?;
             (true, fill(st, &blob_dir(&file), &mut mailbox, head, None, Launch::default()))
         }
-        newer => return Err(format!("{show}: this mailbox was written by a newer MailCraft (format {newer})")),
+        newer => return Err(format!("{show}: this mailbox was written by a newer ictMail (format {newer})")),
     };
     // In memory a mailbox is whole, whichever form it came from.
     mailbox.version = 1;
@@ -3449,7 +3449,7 @@ fn keep_aside(path: &Path, what: &str) -> std::io::Result<PathBuf> {
 
 /// Why a save wasn't written: the file would be one a later open refuses.
 fn too_big_to_open(len: u64) -> String {
-    format!("the mailbox file would be {} MB, more than MailCraft opens ({} GB); nothing was written", len >> 20, MAX_INDEX >> 30)
+    format!("the mailbox file would be {} MB, more than ictMail opens ({} GB); nothing was written", len >> 20, MAX_INDEX >> 30)
 }
 
 fn write_index(st: &mut State, path: &Path, mailbox: &Mailbox, progress: &Progress) -> Result<Saved, String> {

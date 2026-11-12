@@ -33,9 +33,7 @@ pub fn passphrase_rule(protected: bool) -> Result<(), CmdError> {
     if protected {
         Ok(())
     } else {
-        Err(fail(
-            "This key has no passphrase, so MailCraft doesn't keep it. Add one in GnuPG (gpg --edit-key <key>, then passwd) and import it again.",
-        ))
+        Err(fail("This key has no passphrase, so ictMail doesn't keep it. Add one in GnuPG (gpg --edit-key <key>, then passwd) and import it again."))
     }
 }
 
@@ -46,7 +44,7 @@ pub fn encrypted_key_rule(encrypted: bool) -> Result<(), CmdError> {
         Ok(())
     } else {
         Err(fail(
-            "The private key in this file isn't encrypted, so MailCraft doesn't keep it: export it again with its key encrypted (AES), protected by a passphrase.",
+            "The private key in this file isn't encrypted, so ictMail doesn't keep it: export it again with its key encrypted (AES), protected by a passphrase.",
         ))
     }
 }
@@ -55,19 +53,15 @@ pub fn encrypted_key_rule(encrypted: bool) -> Result<(), CmdError> {
 /// RSA part at all (`any_rsa`: a subkey for encryption too).
 pub fn in_process_openpgp(kind: Option<SigningKind>, any_rsa: bool) -> Result<(), CmdError> {
     let rsa = || {
-        fail(
-            "This is an RSA key, which MailCraft doesn't use by itself: keep it in GnuPG, whose agent MailCraft signs with, and leave it out of here.",
-        )
+        fail("This is an RSA key, which ictMail doesn't use by itself: keep it in GnuPG, whose agent ictMail signs with, and leave it out of here.")
     };
     match kind {
         Some(SigningKind::Rsa) => Err(rsa()),
         _ if any_rsa => Err(fail(
-            "A part of this key is RSA (a subkey for encryption, perhaps), which MailCraft doesn't use by itself: keep the key in GnuPG, whose agent MailCraft signs with, and leave it out of here.",
+            "A part of this key is RSA (a subkey for encryption, perhaps), which ictMail doesn't use by itself: keep the key in GnuPG, whose agent ictMail signs with, and leave it out of here.",
         )),
         Some(SigningKind::EdDsa | SigningKind::Ecdsa) => Ok(()),
-        Some(SigningKind::Other) => {
-            Err(fail("This key signs with an algorithm MailCraft doesn't use: only Ed25519 and ECDSA keys are imported here."))
-        }
+        Some(SigningKind::Other) => Err(fail("This key signs with an algorithm ictMail doesn't use: only Ed25519 and ECDSA keys are imported here.")),
         None => Err(fail("This key can't make Digital signatures: none of its keys may sign, or its secret parts aren't in the file.")),
     }
 }
@@ -78,9 +72,9 @@ pub fn in_process_smime(kind: KeyKind) -> Result<(), CmdError> {
     match kind {
         KeyKind::P256 | KeyKind::P384 => Ok(()),
         KeyKind::Rsa { .. } => Err(fail(
-            "This is an RSA certificate, which MailCraft doesn't use by itself on this system: put it on a smartcard or token (PKCS#11), where MailCraft finds it.",
+            "This is an RSA certificate, which ictMail doesn't use by itself on this system: put it on a smartcard or token (PKCS#11), where ictMail finds it.",
         )),
-        KeyKind::Other => Err(fail("This certificate's key is of a kind MailCraft doesn't use: only ECDSA on P-256 or P-384 is imported here.")),
+        KeyKind::Other => Err(fail("This certificate's key is of a kind ictMail doesn't use: only ECDSA on P-256 or P-384 is imported here.")),
     }
 }
 
@@ -116,7 +110,7 @@ pub fn smime_import(p12: &[u8], passphrase: &str) -> Result<Opened, CmdError> {
             pkcs12::Error::WeakEncryption => {
                 "The file is encrypted in a way that is no longer safe (RC2, RC4, DES or 40-bit keys): export it again with AES."
             }
-            pkcs12::Error::UnknownAlgorithm => "The file uses an algorithm MailCraft doesn't know.",
+            pkcs12::Error::UnknownAlgorithm => "The file uses an algorithm ictMail doesn't know.",
             pkcs12::Error::Unreasonable => "The file asks for more work than a certificate file needs.",
             pkcs12::Error::NoPrivateKey => "The file holds no private key, or more than one.",
             pkcs12::Error::NoCertificate => "The file holds no certificate for its private key.",

@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: MailCraft contributors
 // SPDX-License-Identifier: MIT OR Apache-2.0
-//! `mailcraft-cli mcp --files DIR`: the one folder an agent may name files in.
+//! `ictmail-cli mcp --files DIR`: the one folder an agent may name files in.
 //!
 //! Without it, a param that names a file is refused (`mailcraft_engine::agent::file_param`). With
 //! it, the server itself reads and writes inside DIR and hands the command `data`, so no command

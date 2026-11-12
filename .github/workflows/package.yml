@@ -6,10 +6,10 @@ name: Package
 # public repository, a fork included.
 #
 # File names follow the Craft apps' releases, which is what lets ArtCraft Launcher find them:
-#   mailcraft-<ver>-windows-{x64,x86,arm64}.msi, mailcraft-<ver>-windows-{x64,x86,arm64}-portable.zip
-#   mailcraft-<ver>-macos-universal.dmg, mailcraft-cli-<ver>-macos-universal.zip
-#   mailcraft-<ver>-linux-{x86_64,aarch64}.{AppImage,AppImage.zsync,deb,rpm,tar.gz,flatpak}
-#   mailcraft-<ver>-freebsd-x86_64.tar.gz, mailcraft-web-<ver>.zip
+#   ictmail-<ver>-windows-{x64,x86,arm64}.msi, ictmail-<ver>-windows-{x64,x86,arm64}-portable.zip
+#   ictmail-<ver>-macos-universal.dmg, ictmail-cli-<ver>-macos-universal.zip
+#   ictmail-<ver>-linux-{x86_64,aarch64}.{AppImage,AppImage.zsync,deb,rpm,tar.gz,flatpak}
+#   ictmail-<ver>-freebsd-x86_64.tar.gz, mailcraft-web-<ver>.zip
 #
 # Building and signing are separate jobs. A job that compiles (cargo, and every build script and
 # macro of every dependency) or runs what was compiled has no signing secret, no Azure sign-in, no
@@ -144,7 +144,7 @@ jobs:
           TARGET: ${{ matrix.target }}
         run: |
           mkdir -p "handoff/$TARGET/release"
-          cp "target/$TARGET/release/mailcraft.exe" "target/$TARGET/release/mailcraft-cli.exe" "handoff/$TARGET/release/"
+          cp "target/$TARGET/release/ictmail.exe" "target/$TARGET/release/ictmail-cli.exe" "handoff/$TARGET/release/"
           digest=$(bash packaging/ci/handoff.sh seal handoff "build-windows-$ARCH")
           echo "$ARCH=$digest" >>"$GITHUB_OUTPUT"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -287,10 +287,10 @@ jobs:
           $zip = (Get-Item dist/release/*-portable.zip).FullName
           $dir = Join-Path $env:RUNNER_TEMP 'portable'
           Expand-Archive -Path $zip -DestinationPath $dir -Force
-          $cli = (Get-ChildItem -Path $dir -Recurse -Filter mailcraft-cli.exe | Select-Object -First 1).FullName
-          if (-not $cli) { throw 'no mailcraft-cli.exe in the portable zip' }
+          $cli = (Get-ChildItem -Path $dir -Recurse -Filter ictmail-cli.exe | Select-Object -First 1).FullName
+          if (-not $cli) { throw 'no ictmail-cli.exe in the portable zip' }
           & $cli --version
-          if ($LASTEXITCODE -ne 0) { throw "mailcraft-cli --version failed ($LASTEXITCODE)" }
+          if ($LASTEXITCODE -ne 0) { throw "ictmail-cli --version failed ($LASTEXITCODE)" }
       - name: Install, check and uninstall the MSI
         if: matrix.arch == 'x64'
         shell: pwsh
@@ -298,16 +298,16 @@ jobs:
           $msi = (Get-Item dist/release/*.msi).FullName
           $p = Start-Process msiexec.exe -ArgumentList @('/i', "`"$msi`"", '/qn', '/norestart', '/l*v', "$env:RUNNER_TEMP\install.log") -Wait -PassThru
           if ($p.ExitCode -ne 0) { Get-Content "$env:RUNNER_TEMP\install.log" -Tail 60; throw "install failed ($($p.ExitCode))" }
-          $dir = Join-Path $env:ProgramFiles 'MailCraft'
-          foreach ($f in 'mailcraft.exe', 'mailcraft-cli.exe') { if (-not (Test-Path (Join-Path $dir $f))) { throw "$f missing in $dir" } }
-          & (Join-Path $dir 'mailcraft-cli.exe') --version
-          $entry = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*' | Where-Object { $_.DisplayName -eq 'MailCraft' }
-          if (-not $entry) { throw 'no installed-programs entry named MailCraft' }
+          $dir = Join-Path $env:ProgramFiles 'ictMail'
+          foreach ($f in 'ictmail.exe', 'ictmail-cli.exe') { if (-not (Test-Path (Join-Path $dir $f))) { throw "$f missing in $dir" } }
+          & (Join-Path $dir 'ictmail-cli.exe') --version
+          $entry = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*' | Where-Object { $_.DisplayName -eq 'ictMail' }
+          if (-not $entry) { throw 'no installed-programs entry named ictMail' }
           $entry | Format-List DisplayName, DisplayVersion, Publisher, PSChildName
-          if (-not (Get-ItemProperty 'HKLM:\SOFTWARE\RegisteredApplications').MailCraft) { throw 'MailCraft is not offered as a mail program' }
+          if (-not (Get-ItemProperty 'HKLM:\SOFTWARE\RegisteredApplications').ictMail) { throw 'ictMail is not offered as a mail program' }
           $p = Start-Process msiexec.exe -ArgumentList @('/x', $entry.PSChildName, '/qn', '/norestart') -Wait -PassThru
           if ($p.ExitCode -ne 0) { throw "uninstall failed ($($p.ExitCode))" }
-          if (Test-Path (Join-Path $dir 'mailcraft.exe')) { throw 'uninstall left mailcraft.exe behind' }
+          if (Test-Path (Join-Path $dir 'ictmail.exe')) { throw 'uninstall left ictmail.exe behind' }
 
   # Compiles the two macOS programs for both architectures. No signing secret, no environment.
   macos-build:
@@ -333,7 +333,7 @@ jobs:
         run: |
           for t in aarch64-apple-darwin x86_64-apple-darwin; do
             mkdir -p "handoff/$t/release"
-            cp "target/$t/release/mailcraft" "target/$t/release/mailcraft-cli" "handoff/$t/release/"
+            cp "target/$t/release/ictmail" "target/$t/release/ictmail-cli" "handoff/$t/release/"
           done
           digest=$(bash packaging/ci/handoff.sh seal handoff build-macos)
           echo "digest=$digest" >>"$GITHUB_OUTPUT"
@@ -441,8 +441,8 @@ jobs:
       - name: Run the CLI from its zip
         run: |
           dir=$(mktemp -d)
-          ditto -x -k dist/release/mailcraft-cli-*-macos-universal.zip "$dir"
-          cli=$(ls "$dir"/*/mailcraft-cli)
+          ditto -x -k dist/release/ictmail-cli-*-macos-universal.zip "$dir"
+          cli=$(ls "$dir"/*/ictmail-cli)
           codesign --verify --strict --verbose=2 "$cli"
           "$cli" --version
 
@@ -494,9 +494,9 @@ jobs:
         run: |
           dpkg-deb --info dist/release/*.deb
           sudo apt-get install -y ./dist/release/*.deb
-          mailcraft-cli --version
+          ictmail-cli --version
           desktop-file-validate /usr/share/applications/*mailcraft.desktop
-          MAILCRAFT_NO_PREFS=1 timeout 20 xvfb-run -a mailcraft --sample >"$RUNNER_TEMP/window.log" 2>&1 || code=$?
+          MAILCRAFT_NO_PREFS=1 timeout 20 xvfb-run -a ictmail --sample >"$RUNNER_TEMP/window.log" 2>&1 || code=$?
           # Still running when the time was up (124) is what a window that started looks like.
           if [ "${code:-0}" != 124 ]; then cat "$RUNNER_TEMP/window.log"; echo "::error::the window did not stay up (exit ${code:-0})"; exit 1; fi
           sudo apt-get remove -y mailcraft
@@ -545,7 +545,7 @@ jobs:
           ARCH: ${{ matrix.arch }}
           DIST: ${{ github.workspace }}/dist/flatpak
         run: |
-          set -- dist/linux/mailcraft-*-linux-"$ARCH".tar.gz
+          set -- dist/linux/ictmail-*-linux-"$ARCH".tar.gz
           if [ ! -f "$1" ]; then echo "::error::no tar.gz for $ARCH in dist/linux"; exit 1; fi
           bash packaging/linux/flatpak-bundle.sh "$1"
       - name: Hand the bundle on by digest

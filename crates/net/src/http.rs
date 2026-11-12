@@ -40,7 +40,7 @@ const UPLOAD_CHUNK: usize = 64 * 1024;
 /// Most name=value pairs read from a query or a form.
 const MAX_PAIRS: usize = 64;
 /// What every request says of its sender: nothing about this machine.
-const USER_AGENT: &str = "MailCraft";
+const USER_AGENT: &str = "ictMail";
 /// Reads and writes interrupted in a row before giving up.
 const MAX_INTERRUPTS: u32 = 1_000;
 /// Longest text taken from a server into an error message.
@@ -1114,7 +1114,7 @@ mod tests {
             "Authorization: Bearer token\r\n",
             "Content-Type: text/plain\r\n",
             "Content-Length: 8\r\n",
-            "User-Agent: MailCraft\r\n",
+            "User-Agent: ictMail\r\n",
             "Connection: close\r\n",
         ] {
             assert!(sent.contains(header), "{header:?}: {sent}");

@@ -32,6 +32,8 @@ ring = { workspace = true }
 # The Favorites of Outlook come inside an XML document (`graph::favorites`): read by a reader
 # that takes no DTD and expands no entity.
 quick-xml = { workspace = true }
+# CalDAV/CardDAV (`dav`): the multistatus documents and the safe .ics/.vcf patching.
+mailcraft-dav = { workspace = true }
 
 # The authorities Windows trusts for secure mail (#30, `anchors`): its certificate store, through
 # the safe wrapper rustls already brings there. MIT.

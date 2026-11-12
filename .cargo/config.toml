@@ -18,4 +18,5 @@ MAILCRAFT_GOOGLE_CLIENT_SECRET = ""
 # Issue #956: where Help › Report a Problem › Send report sends a report the owner wrote, on their
 # click alone: the project's report relay, which files it in a private repository for the
 # maintainers. A fork that sets it empty offers Open on GitHub alone. An address, not a secret.
-MAILCRAFT_REPORT_URL = "https://mailcraft.work/api/report"
+# ictMail fork: empty on purpose, reports stay local (Open on GitHub is the only offered path).
+MAILCRAFT_REPORT_URL = ""

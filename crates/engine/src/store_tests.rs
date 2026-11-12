@@ -176,7 +176,7 @@ fn the_split_form_round_trips() {
     // The mailbox file is format 3 and holds no content; each content file is named by the
     // SHA-256 of what is in it, in the folder of its first two digits.
     let head = fs::read(&path).unwrap();
-    assert_eq!((&head[..16], &head[16..24]), (&b"MailCraft index\n"[..], &[3u8, 0, 0, 0, 0, 0, 0, 0][..]));
+    assert_eq!((&head[..16], &head[16..24]), (&b"ictMail index\n\0\0"[..], &[3u8, 0, 0, 0, 0, 0, 0, 0][..]));
     assert!(saved.compacted && saved.bytes == head.len() as u64);
     let content: u64 = mb.messages.values().map(|m| m.size()).sum();
     assert!(saved.bytes < content / 4, "{} of {content}", saved.bytes);
@@ -358,8 +358,8 @@ fn an_old_single_file_opens_and_becomes_the_split_form_on_the_next_save() {
     assert_eq!(crate::io::Format::detect("whatever", &fs::read(&path).unwrap()), Some(crate::io::Format::Mailbox));
     // A format from the future is refused in both.
     fs::write(&path, br#"{"version":3}"#).unwrap();
-    assert!(open(&path).unwrap_err().contains("newer MailCraft"));
-    assert!(crate::io::read_mailbox(br#"{"version":3}"#).unwrap_err().contains("newer MailCraft"));
+    assert!(open(&path).unwrap_err().contains("newer ictMail"));
+    assert!(crate::io::read_mailbox(br#"{"version":3}"#).unwrap_err().contains("newer ictMail"));
 }
 
 /// #649: Save As onto the file the mailbox is kept in (the dialog suggests its name) must be a
@@ -546,7 +546,7 @@ fn a_crash_leaves_the_old_state_or_the_new() {
     // The same of one self-contained file.
     let single = crate::io::write_mailbox(&old).unwrap();
     fs::write(&path, &single[..single.len() / 2]).unwrap();
-    assert!(open(&path).unwrap_err().contains("isn't a MailCraft mailbox"));
+    assert!(open(&path).unwrap_err().contains("isn't a ictMail mailbox"));
     fs::write(&path, &old_file).unwrap();
     assert!(whole(&path) == old);
 }

@@ -17,7 +17,7 @@ use mailcraft_model::{Attachment, FolderKind, Id, Message};
 use serde_json::json;
 
 fn cli() -> Command {
-    Command::new(env!("CARGO_BIN_EXE_mailcraft-cli"))
+    Command::new(env!("CARGO_BIN_EXE_ictmail-cli"))
 }
 
 /// A Microsoft account whose server lists an Inbox ("in").

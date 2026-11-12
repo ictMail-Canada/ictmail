@@ -158,7 +158,7 @@ fn google_timeout_recovery_is_keyboard_usable_in_both_themes_at_compact_widths()
             h.run_steps(5);
             assert!(says(&h, "Google sign-in did not finish"));
             assert!(says(&h, "Error 403"));
-            assert!(!says(&h, "My organisation has to approve MailCraft first"));
+            assert!(!says(&h, "My organisation has to approve ictMail first"));
             assert!(says(&h, "Try again"));
             assert!(says(&h, "Use an app password"));
 

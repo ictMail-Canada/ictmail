@@ -284,7 +284,7 @@ impl MailApp {
         // (A sign-in that couldn't start doesn't leave the question for another one.)
         self.shared_next = None;
         begun?;
-        self.session.sync_status = tl!("Allow MailCraft to read shared mailboxes on the page that opened in your browser…").to_string();
+        self.session.sync_status = tl!("Allow ictMail to read shared mailboxes on the page that opened in your browser…").to_string();
         Ok(())
     }
 
@@ -333,14 +333,14 @@ impl MailApp {
         let text = if meeting {
             crate::i18n::fmt(
                 tl!(
-                    "To answer or send meetings from {address}, MailCraft needs your permission to send from shared mailboxes. Microsoft's page opens in your browser to ask you, once.\n\nWhether the answer goes as {address} or on its behalf is your organisation's choice. Until you allow it, the answer waits on this computer, and nothing is sent from your own address."
+                    "To answer or send meetings from {address}, ictMail needs your permission to send from shared mailboxes. Microsoft's page opens in your browser to ask you, once.\n\nWhether the answer goes as {address} or on its behalf is your organisation's choice. Until you allow it, the answer waits on this computer, and nothing is sent from your own address."
                 ),
                 &[("address", &address)],
             )
         } else {
             crate::i18n::fmt(
                 tl!(
-                    "To send from {address}, MailCraft needs your permission to send from shared mailboxes. Microsoft's page opens in your browser to ask you, once.\n\nWhether your mail goes as {address} or on its behalf is your organisation's choice. Until you allow it, the mail waits in its Outbox, and nothing is sent from your own address."
+                    "To send from {address}, ictMail needs your permission to send from shared mailboxes. Microsoft's page opens in your browser to ask you, once.\n\nWhether your mail goes as {address} or on its behalf is your organisation's choice. Until you allow it, the mail waits in its Outbox, and nothing is sent from your own address."
                 ),
                 &[("address", &address)],
             )
@@ -371,7 +371,7 @@ impl MailApp {
         let begun = self.begin_sign_in(owner.id, oauth, &owner.email, String::new(), false, true);
         (self.shared_next, self.shared_send_next) = (None, false);
         begun?;
-        self.session.sync_status = tl!("Allow MailCraft to send from shared mailboxes on the page that opened in your browser…").to_string();
+        self.session.sync_status = tl!("Allow ictMail to send from shared mailboxes on the page that opened in your browser…").to_string();
         Ok(json!({"pending": "signIn", "account": owner.id}))
     }
 

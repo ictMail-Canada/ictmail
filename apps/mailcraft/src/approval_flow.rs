@@ -323,7 +323,7 @@ fn an_account_refused_for_approval_is_told_what_to_do_and_signs_in_once_an_admin
     let sent = asked(link);
     assert_eq!((sent.len(), sent["client_id"].as_str(), sent["redirect_uri"].as_str()), (3, APPLICATION, "http://localhost"));
     assert!(sent["scope"].contains("IMAP.AccessAsUser.All") && sent["scope"].contains("MailboxConfigItem.Read") && !sent["scope"].contains("EWS"));
-    assert!(text.lines().any(|line| line == link) && text.contains("MailCraft is an open-source mail and calendar program"));
+    assert!(text.lines().any(|line| line == link) && text.contains("ictMail is an open-source mail and calendar program"));
     for never in ["avery", "Avery", "lumen", "@"] {
         assert!(!text.contains(never), "{never}: {text}");
     }

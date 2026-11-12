@@ -52,9 +52,9 @@ pub const GOOGLE_SIGN_IN_TIMED_OUT: &str = "Google sign-in did not complete";
 /// credential so the next owner-initiated Send/Receive starts a clean browser sign-in.
 pub const GOOGLE_REAUTH_REQUIRED: &str = "Google sign-in expired or was revoked. Use Send/Receive to sign in again.";
 /// A Google or Workspace policy prevented authorization, not Microsoft's approval flow.
-pub const GOOGLE_SIGN_IN_BLOCKED: &str = "Google blocked MailCraft sign-in for this account";
+pub const GOOGLE_SIGN_IN_BLOCKED: &str = "Google blocked ictMail sign-in for this account";
 /// No browser could be started for the page.
-pub const NO_BROWSER: &str = "MailCraft couldn't open your browser";
+pub const NO_BROWSER: &str = "ictMail couldn't open your browser";
 
 /// How a sign-in ended without tokens, as the window tells the ways apart.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -151,7 +151,7 @@ impl AdminConsentAnswer {
         match self {
             AdminConsentAnswer::Approved | AdminConsentAnswer::Cancelled => (String::new(), String::new()),
             AdminConsentAnswer::NotAdministrator(theirs) => (
-                tl!("The account that signed in on Microsoft's page is not an administrator of your organisation, so it could not approve MailCraft. Copy the message for an administrator instead.").to_string(),
+                tl!("The account that signed in on Microsoft's page is not an administrator of your organisation, so it could not approve ictMail. Copy the message for an administrator instead.").to_string(),
                 words(theirs),
             ),
             AdminConsentAnswer::Declined(theirs) => {
@@ -162,7 +162,7 @@ impl AdminConsentAnswer {
                 String::new(),
             ),
             AdminConsentAnswer::NoBrowser => (
-                tl!("MailCraft couldn't open your browser for Microsoft's approval page. Copy the message instead: the link in it opens the same page.").to_string(),
+                tl!("ictMail couldn't open your browser for Microsoft's approval page. Copy the message instead: the link in it opens the same page.").to_string(),
                 String::new(),
             ),
             AdminConsentAnswer::Failed(theirs) => (tl!("The approval didn't go through.").to_string(), words(theirs)),
@@ -173,7 +173,7 @@ impl AdminConsentAnswer {
 /// The message an owner passes on to an administrator, around the address of Microsoft's page
 /// (`{link}`): what the program is, what is asked of them, and what they will see afterwards.
 /// Nothing of the owner is in it.
-const MESSAGE: &str = "Hello,\n\nI would like to use MailCraft with my work account. MailCraft is an open-source mail and calendar program that runs on my own computer. Our organisation lets only an administrator approve a new program, so it needs your approval once, for the whole organisation. Microsoft's page for that is here:\n\n{link}\n\nAfter you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n\nThank you";
+const MESSAGE: &str = "Hello,\n\nI would like to use ictMail with my work account. ictMail is an open-source mail and calendar program that runs on my own computer. Our organisation lets only an administrator approve a new program, so it needs your approval once, for the whole organisation. Microsoft's page for that is here:\n\n{link}\n\nAfter you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n\nThank you";
 
 /// [`MESSAGE`] with `link` in it, in the interface language.
 pub(crate) fn message(link: &str) -> String {
@@ -376,7 +376,7 @@ impl MailApp {
         if account != 0 {
             match &answer {
                 AdminConsentAnswer::Approved => {
-                    self.status(tl!("Your organisation has approved MailCraft"));
+                    self.status(tl!("Your organisation has approved ictMail"));
                     if let Err(e) = self.sign_in_again_for(account) {
                         self.status(e);
                     }

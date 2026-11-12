@@ -69,10 +69,10 @@ pub(crate) fn redirect_line(error: &Error, downloading: bool) -> Option<&'static
         return None;
     }
     Some(if downloading {
-        "Couldn't download the messages from the server: it sent the request on to another address, which MailCraft in a browser can't follow. \
+        "Couldn't download the messages from the server: it sent the request on to another address, which ictMail in a browser can't follow. \
          Give the address of the JMAP session itself, not the server's name or its /.well-known/jmap."
     } else {
-        "Couldn't reach the server: it sent the request on to another address, which MailCraft in a browser can't follow. \
+        "Couldn't reach the server: it sent the request on to another address, which ictMail in a browser can't follow. \
          Give the address of the JMAP session itself, not the server's name or its /.well-known/jmap."
     })
 }

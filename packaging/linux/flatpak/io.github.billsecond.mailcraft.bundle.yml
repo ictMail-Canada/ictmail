@@ -1,7 +1,7 @@
 # Flatpak manifest for the single-file bundle attached to every GitHub release
-# (mailcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+# (ictmail-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
 #
-# It repackages the release's own Linux tarball (mailcraft-<version>-linux-<arch>.tar.gz,
+# It repackages the release's own Linux tarball (ictmail-<version>-linux-<arch>.tar.gz,
 # built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
 # network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
 # and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
@@ -15,7 +15,7 @@ id: io.github.billsecond.mailcraft
 runtime: org.freedesktop.Platform
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
-command: mailcraft
+command: ictmail
 finish-args:
   # Display: Wayland first; X11 only when no Wayland compositor is running.
   - --socket=wayland
@@ -44,8 +44,8 @@ modules:
   - name: mailcraft
     buildsystem: simple
     build-commands:
-      - install -Dm755 bin/mailcraft /app/bin/mailcraft
-      - install -Dm755 bin/mailcraft-cli /app/bin/mailcraft-cli
+      - install -Dm755 bin/ictmail /app/bin/ictmail
+      - install -Dm755 bin/ictmail-cli /app/bin/ictmail-cli
       - install -Dm644 share/applications/io.github.billsecond.mailcraft.desktop /app/share/applications/io.github.billsecond.mailcraft.desktop
       - install -Dm644 share/mime/packages/io.github.billsecond.mailcraft.xml /app/share/mime/packages/io.github.billsecond.mailcraft.xml
       # Already has the release's version and date substituted by package.sh.

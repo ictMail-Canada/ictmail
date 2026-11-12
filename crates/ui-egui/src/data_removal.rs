@@ -70,14 +70,12 @@ impl Why {
         match self {
             Why::Io(e) => e.clone(),
             Why::IsLink => tl!("is a link: not followed, and nothing in it was removed").to_string(),
-            Why::NotOurs => tl!("isn't a folder MailCraft keeps its data in: left alone").to_string(),
+            Why::NotOurs => tl!("isn't a folder ictMail keeps its data in: left alone").to_string(),
             Why::NotFolder => tl!("isn't a folder: left alone").to_string(),
             Why::TooDeep => tl!("is nested too deep: left alone").to_string(),
             Why::TooMany => tl!("has too many files: the rest was not removed").to_string(),
             Why::Outside => tl!("is outside the folder being cleared: left alone").to_string(),
-            Why::KeptByOwner => {
-                tl!("is part of a mailbox you opened from outside MailCraft's own folder: it is yours and was not touched").to_string()
-            }
+            Why::KeptByOwner => tl!("is part of a mailbox you opened from outside ictMail's own folder: it is yours and was not touched").to_string(),
             Why::MailboxStays => tl!("was kept because the mailbox file beside it could not be removed: remove them together").to_string(),
         }
     }
@@ -149,10 +147,10 @@ impl MailApp {
     /// `ui.removeAllData`: remove all of MailCraft's data from this computer, then quit.
     pub(crate) fn remove_all_data(&mut self) -> Result<Value, String> {
         if self.data_removed {
-            return Err(tl!("MailCraft's data has been removed already").to_string());
+            return Err(tl!("ictMail's data has been removed already").to_string());
         }
         if self.services.data_wipe.is_none() {
-            return Err(tl!("Removing MailCraft's data isn't available here").to_string());
+            return Err(tl!("Removing ictMail's data isn't available here").to_string());
         }
         // A save still running would write the mailbox back after (or while) it is removed: the
         // saver is waited for, and when it is not idle by then nothing has been touched.
@@ -192,7 +190,7 @@ impl MailApp {
             report.failed.push((tl!("The system's credential store").to_string(), Why::Io(trouble.notice())));
         }
         if !report.failed.is_empty() || !report.left.is_empty() {
-            self.dialog = Some(Dialog::Report { name: "dataRemoval", title: tl!("Remove MailCraft's Data").to_string(), lines: lines(&report) });
+            self.dialog = Some(Dialog::Report { name: "dataRemoval", title: tl!("Remove ictMail's Data").to_string(), lines: lines(&report) });
         }
         let said = |list: &[(String, Why)]| list.iter().map(line).collect::<Vec<_>>();
         Ok(json!({"removed": report.removed, "failed": said(&report.failed), "left": said(&report.left)}))
@@ -229,7 +227,7 @@ impl MailApp {
     /// `ui.openDataFolder`: show the folder MailCraft keeps its data in, in the file manager.
     pub(crate) fn open_data_folder(&mut self) -> Result<Value, String> {
         if self.data_removed {
-            return Err(tl!("MailCraft's data has been removed already").to_string());
+            return Err(tl!("ictMail's data has been removed already").to_string());
         }
         let (Some(folder), Some(shown)) = (&self.services.data_folder, self.data_folder_shown(true)) else {
             return Err(tl!("There is no data folder to open here").to_string());
@@ -264,9 +262,9 @@ fn lines(report: &WipeReport) -> Vec<String> {
     }
     // By outcome: a folder that was left (a link, a locked file) is still there.
     if report.failed.is_empty() {
-        lines.push(tl!("Everything else is gone. MailCraft quits when you close this.").to_string());
+        lines.push(tl!("Everything else is gone. ictMail quits when you close this.").to_string());
     } else {
-        lines.push(tl!("Some of it is still there, as listed above. MailCraft quits when you close this.").to_string());
+        lines.push(tl!("Some of it is still there, as listed above. ictMail quits when you close this.").to_string());
     }
     lines
 }
@@ -274,13 +272,13 @@ fn lines(report: &WipeReport) -> Vec<String> {
 /// What the owner is asked before the data goes.
 pub(crate) fn question() -> Question {
     Question::new(
-        tl!("Remove MailCraft's Data"),
+        tl!("Remove ictMail's Data"),
         format!(
             "{}\n\n{}\n\n{}",
             tl!(
-                "This removes everything MailCraft keeps on this computer: every account's mail, attachments, contacts, calendar and settings, the sign-ins remembered in the system's credential store, downloaded pictures, opened attachments and logs."
+                "This removes everything ictMail keeps on this computer: every account's mail, attachments, contacts, calendar and settings, the sign-ins remembered in the system's credential store, downloaded pictures, opened attachments and logs."
             ),
-            tl!("It is the same for an installed and a portable copy. MailCraft quits afterwards."),
+            tl!("It is the same for an installed and a portable copy. ictMail quits afterwards."),
             tl!("Mail on the servers is not touched. This can't be undone."),
         ),
         tl!("Remove Everything"),
@@ -297,7 +295,7 @@ pub(crate) fn section(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
     ui.label(egui::RichText::new(tl!("Data on this computer")).font(crate::theme::semibold(14.0)).color(t.accent_text));
     ui.label(
         egui::RichText::new(tl!(
-            "Take everything MailCraft keeps here with you when you are done: for a shared or work computer, or before deleting a portable copy."
+            "Take everything ictMail keeps here with you when you are done: for a shared or work computer, or before deleting a portable copy."
         ))
         .color(t.text_dim),
     );
@@ -306,15 +304,13 @@ pub(crate) fn section(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
             let path = shown.path().to_string_lossy().to_string();
             let (label, tip) = match &shown {
                 Shown::Settings(_) => (
-                    tl!("Open MailCraft's data folder"),
+                    tl!("Open ictMail's data folder"),
                     crate::i18n::fmt(tl!("Shows {path}, which holds the mailbox and the settings, in your file manager."), &[("path", &path)]),
                 ),
                 Shown::Mailbox(_) => (
                     tl!("Open the mailbox's folder"),
                     crate::i18n::fmt(
-                        tl!(
-                            "Shows {path}, which holds the mailbox open now, in your file manager. MailCraft's settings are in a folder of their own."
-                        ),
+                        tl!("Shows {path}, which holds the mailbox open now, in your file manager. ictMail's settings are in a folder of their own."),
                         &[("path", &path)],
                     ),
                 ),
@@ -324,7 +320,7 @@ pub(crate) fn section(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
             }
         }
         if app.services.data_wipe.is_some()
-            && ui.button(tl!("Remove MailCraft's data from this computer…")).on_hover_text(tl!("Mail on the servers is not touched.")).clicked()
+            && ui.button(tl!("Remove ictMail's data from this computer…")).on_hover_text(tl!("Mail on the servers is not touched.")).clicked()
         {
             let _ = app.run("ui.removeAllData", json!({}));
         }

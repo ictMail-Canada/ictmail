@@ -17,10 +17,10 @@ const LINES_BEFORE: usize = 80;
 /// A redacted line longer than this is cut (a backtrace or a server's answer on one line).
 const MAX_LINE: usize = 400;
 
-/// The whole copy: header, then the redacted tails of `mailcraft.log` and `mailcraft.1.log` in
+/// The whole copy: header, then the redacted tails of the current and previous log files in
 /// `log_dir` (none without one: runs without preferences).
 pub fn report(version: &str, build: &str, log_dir: Option<&Path>) -> String {
-    let mut out = String::from("### MailCraft diagnostics\n\n");
+    let mut out = String::from("### ictMail diagnostics\n\n");
     out.push_str(&format!("- Version: {version} ({build})\n"));
     out.push_str(&format!("- Platform: {}\n", platform()));
     out.push_str("- Addresses, names, paths, hosts, links, ids and quoted text are taken out of the log.\n");
@@ -28,9 +28,11 @@ pub fn report(version: &str, build: &str, log_dir: Option<&Path>) -> String {
         out.push_str("\nNo log is kept for this run.\n");
         return out;
     };
-    for (file, title, lines) in [("mailcraft.log", "This run", LINES_NOW), ("mailcraft.1.log", "The run before", LINES_BEFORE)] {
+    let stem = crate::logging::LOG_FILE.strip_suffix(".log").unwrap_or(crate::logging::LOG_FILE);
+    for (n, title, lines) in [(0usize, "This run", LINES_NOW), (1usize, "The run before", LINES_BEFORE)] {
+        let file = if n == 0 { crate::logging::LOG_FILE.to_string() } else { format!("{stem}.{n}.log") };
         out.push_str(&format!("\n{title}:\n\n```text\n"));
-        match tail(&dir.join(file), lines) {
+        match tail(&dir.join(&file), lines) {
             Some(text) if !text.is_empty() => {
                 for line in text.lines() {
                     out.push_str(&cut(&redact_line(line)));
@@ -212,7 +214,7 @@ fn kind(core: &str) -> Option<&'static str> {
         return Some("link");
     }
     let drive = matches!(core.as_bytes(), [d, b':', b'\\' | b'/', ..] if d.is_ascii_alphabetic());
-    let source = !core.starts_with('/') && core.contains(".rs"); // a place in MailCraft's own code
+    let source = !core.starts_with('/') && core.contains(".rs"); // a place in ictMail's own code
     if drive
         || core.starts_with(['/', '~', '\\'])
         || core.contains('\\')
@@ -262,7 +264,7 @@ mod tests {
 
     fn log() -> String {
         [
-            "2026-10-15T10:00:00.000Z INFO  [main] mailcraft: MailCraft 0.3.0 (abcdef12), log file /home/owner/.config/mailcraft/logs/mailcraft.log",
+            "2026-10-15T10:00:00.000Z INFO  [main] mailcraft: ictMail 0.3.0 (abcdef12), log file /home/owner/.config/ictmail/logs/ictmail.log",
             "2026-10-15T10:00:01.000Z WARN  [send/receive] mailcraft_net::sync: send/receive, account 3: NO [TRYCREATE] \"Branding/Advertising\" doesn't exist",
             "2026-10-15T10:00:02.000Z WARN  [send/receive] mailcraft_net::smtp: 550 5.1.1 <someone@example.org>: recipient rejected",
             "2026-10-15T10:00:03.000Z INFO  [send/receive] mailcraft_net::transport: connecting to outlook.office365.com:993 (Imap, tls) from 192.0.2.7 and 2001:db8::1",
@@ -279,8 +281,8 @@ mod tests {
     fn nothing_private_reaches_the_copy() {
         let dir = std::env::temp_dir().join(format!("mailcraft-diagnostics-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
-        std::fs::write(dir.join("mailcraft.log"), log()).unwrap();
-        std::fs::write(dir.join("mailcraft.1.log"), log()).unwrap();
+        std::fs::write(dir.join("ictmail.log"), log()).unwrap();
+        std::fs::write(dir.join("ictmail.1.log"), log()).unwrap();
         let copy = report("0.3.0", "abcdef12", Some(&dir));
         std::fs::remove_dir_all(&dir).unwrap();
         for private in PRIVATE {
@@ -316,7 +318,7 @@ mod tests {
     #[test]
     fn the_log_file_keeps_hosts_paths_and_code_names_but_no_address() {
         assert_eq!(scrub("connecting to outlook.office365.com:993 (Imap, tls)"), "connecting to outlook.office365.com:993 (Imap, tls)");
-        assert_eq!(scrub("log file /home/owner/.config/mailcraft/logs/mailcraft.log"), "log file /home/owner/.config/mailcraft/logs/mailcraft.log");
+        assert_eq!(scrub("log file /home/owner/.config/ictmail/logs/ictmail.log"), "log file /home/owner/.config/ictmail/logs/ictmail.log");
         assert_eq!(scrub("command `mail.flag` panicked; InvalidAuthenticationToken"), "command `mail.flag` panicked; InvalidAuthenticationToken");
         assert_eq!(scrub("550 <bob@example.org>: no 'Ada Lovelace'"), "550 <<address>>: no \"…\"");
         for text in ["", "\"", "'", "`", "é@", "a\u{0}b", "[x] y: \"é", "::::"] {

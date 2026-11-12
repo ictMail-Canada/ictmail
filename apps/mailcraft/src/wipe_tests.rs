@@ -35,13 +35,13 @@ impl Drop for Scratch {
 
 fn roots(scratch: &Scratch) -> Roots {
     let settings = scratch.join("config/mailcraft");
-    let attachments = scratch.join("cache/MailCraft/Attachments");
+    let attachments = scratch.join("cache/ictMail/Attachments");
     Roots {
         list: vec![
             Root { path: settings.clone(), name: "mailcraft", itself: true },
             Root { path: attachments.clone(), name: "Attachments", itself: true },
         ],
-        parents: vec![Root { path: scratch.join("cache/MailCraft"), name: "MailCraft", itself: true }],
+        parents: vec![Root { path: scratch.join("cache/ictMail"), name: "ictMail", itself: true }],
         settings: Some(settings),
     }
 }
@@ -53,7 +53,7 @@ fn fill(scratch: &Scratch) {
     scratch.file("config/mailcraft/ui.json", "{}");
     scratch.file("config/mailcraft/logs/mailcraft.log", "log");
     scratch.file("config/mailcraft/pictures/ab/abcd", "png");
-    scratch.file("cache/MailCraft/Attachments/123-1-0/1/report.pdf", "pdf");
+    scratch.file("cache/ictMail/Attachments/123-1-0/1/report.pdf", "pdf");
 }
 
 #[test]
@@ -70,7 +70,7 @@ fn everything_in_the_known_folders_goes_and_nothing_outside_them() {
     assert!(report.failed.is_empty(), "{:?}", report.failed);
     assert!(report.left.is_empty());
     assert!(!scratch.join("config/mailcraft").exists());
-    assert!(!scratch.join("cache/MailCraft").exists());
+    assert!(!scratch.join("cache/ictMail").exists());
     assert!(other_config.exists() && other_cache.exists() && mine.exists());
     assert!(report.removed >= 7);
 }
@@ -89,11 +89,11 @@ fn a_second_run_finds_nothing_and_reports_nothing() {
 fn a_parent_that_holds_something_else_stays() {
     let scratch = Scratch::new("parent");
     fill(&scratch);
-    let other = scratch.file("cache/MailCraft/Other/keep", "x");
+    let other = scratch.file("cache/ictMail/Other/keep", "x");
     let report = erase(&roots(&scratch), None);
     assert!(report.failed.is_empty(), "{:?}", report.failed);
     assert!(other.exists());
-    assert!(!scratch.join("cache/MailCraft/Attachments").exists());
+    assert!(!scratch.join("cache/ictMail/Attachments").exists());
 }
 
 #[cfg(unix)]
@@ -189,7 +189,7 @@ fn what_cant_be_removed_is_reported_and_the_rest_still_goes() {
     }
     assert!(!scratch.join("config/mailcraft/mailbox.mailcraft").exists());
     assert!(!scratch.join("config/mailcraft/ui.json").exists());
-    assert!(!scratch.join("cache/MailCraft").exists());
+    assert!(!scratch.join("cache/ictMail").exists());
 }
 
 #[test]

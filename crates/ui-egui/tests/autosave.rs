@@ -212,7 +212,7 @@ fn a_long_save_shows_how_far_it_has_got_and_closing_waits_for_it_with_the_window
     assert!(!app.close_requested());
     assert!(!app.quit_requested);
     app.logic(&ctx);
-    assert!(!app.quit_requested && app.saving_text().unwrap().ends_with("MailCraft closes when it is done"));
+    assert!(!app.quit_requested && app.saving_text().unwrap().ends_with("ictMail closes when it is done"));
     assert!(!path.exists());
     // Written: the window closes.
     progress(None);
@@ -251,7 +251,7 @@ fn closing_again_while_it_waits_keeps_waiting_and_never_leaves_the_last_changes_
         app.logic(&ctx);
         assert!(!app.quit_requested);
     }
-    assert!(app.saving_text().unwrap().ends_with("MailCraft closes when it is done"));
+    assert!(app.saving_text().unwrap().ends_with("ictMail closes when it is done"));
     assert_eq!(app.saving_inspect()["closing"], json!(true));
     // Written: it closes, and the close request that follows goes through.
     *script.progress.lock().unwrap() = None;
@@ -548,7 +548,7 @@ fn closing_while_an_open_waits_for_the_saver_closes_and_opens_nothing_on_the_way
     assert_eq!((&saving["closing"], &saving["pending"]), (&json!(true), &json!(null)));
     // An agent answered `"pending": "save"` hears that the Open gave way.
     assert_eq!((&saving["last"]["command"], &saving["last"]["ok"]), (&json!("file.open"), &json!(false)));
-    assert!(app.saving_text().unwrap().ends_with("MailCraft closes when it is done"));
+    assert!(app.saving_text().unwrap().ends_with("ictMail closes when it is done"));
 
     // Written: the window closes on the mailbox it had, and the other one never opened.
     *script.progress.lock().unwrap() = None;

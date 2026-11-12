@@ -123,7 +123,7 @@ fn a_message_goes_to_graph_in_base64() {
         "Accept: application/json".into(),
         "Content-Type: text/plain".into(),
         format!("Content-Length: {}", body.len()),
-        "User-Agent: MailCraft".into(),
+        "User-Agent: ictMail".into(),
         // Graph's connections are kept open (#276); a send still has a new one of its own.
         "Connection: keep-alive".into(),
     ] {

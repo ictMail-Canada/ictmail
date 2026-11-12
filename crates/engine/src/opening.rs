@@ -337,7 +337,7 @@ pub fn verdict(name: &str) -> Verdict {
 pub fn blocked_message(name: &str) -> String {
     let shown: String = file_name(name).chars().take(60).collect();
     format!(
-        "MailCraft doesn't open {shown}: a program, a script or a file of no known kind sent in mail can harm the computer. If you trust it, save it with Save As."
+        "ictMail doesn't open {shown}: a program, a script or a file of no known kind sent in mail can harm the computer. If you trust it, save it with Save As."
     )
 }
 

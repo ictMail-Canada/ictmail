@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
-Name=MailCraft
+Name=ictMail
 GenericName=Mail Client
 Comment=Read and write mail, keep a calendar, contacts and tasks
-Exec=mailcraft %U
-TryExec=mailcraft
+Exec=ictmail %U
+TryExec=ictmail
 Icon=io.github.billsecond.mailcraft
 Terminal=false
 StartupNotify=true

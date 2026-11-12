@@ -21,13 +21,13 @@ fn registration<'a>(oauth: &'a OAuth, secret: &'a str) -> Result<(&'a str, &'a s
     // installation explicitly supplied an override (e.g. File > Options).
     let id = if oauth.client_id.trim().is_empty() && !GOOGLE_DESKTOP_ID.is_empty() { GOOGLE_DESKTOP_ID } else { client_id(oauth)? };
     if id.len() > 200 || !id.bytes().all(|b| b.is_ascii_graphic()) {
-        return Err(NetError::Config("MailCraft's Google Desktop OAuth client ID is invalid".into()));
+        return Err(NetError::Config("ictMail's Google Desktop OAuth client ID is invalid".into()));
     }
     if secret.is_empty() {
-        return Err(NetError::Config("MailCraft's Google Desktop OAuth client secret is not configured".into()));
+        return Err(NetError::Config("ictMail's Google Desktop OAuth client secret is not configured".into()));
     }
     if secret.len() > 512 || !secret.bytes().all(|b| b.is_ascii_graphic()) {
-        return Err(NetError::Config("MailCraft's Google Desktop OAuth client secret is invalid".into()));
+        return Err(NetError::Config("ictMail's Google Desktop OAuth client secret is invalid".into()));
     }
     Ok((id, secret))
 }

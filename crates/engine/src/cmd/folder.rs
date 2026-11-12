@@ -26,7 +26,7 @@ pub fn specs() -> Vec<CommandSpec> {
         CommandSpec::new("folder.move", "Move Folder", "Folder › Actions", move_folder).params(r#"{"parent": number | null, "id"?: number}"#).selection(can_move),
         CommandSpec::new("folder.delete", "Delete Folder", "Folder › Actions", delete).params(FOLDER).selection(can_delete),
         CommandSpec::new("folder.favorite", "Add to Favorites", "Folder › Favorites", favorite).params(
-            r#"{"value"?: bool (default: toggle), "id"?: number} — refused for a folder of an account whose Favorites come from its server (Outlook's list, which is changed in Outlook; `view.favorites` says which accounts those are). A shared mailbox's folders are favourites kept in MailCraft, whatever the account it is opened through has: nothing is written to any server for them"#,
+            r#"{"value"?: bool (default: toggle), "id"?: number} — refused for a folder of an account whose Favorites come from its server (Outlook's list, which is changed in Outlook; `view.favorites` says which accounts those are). A shared mailbox's folders are favourites kept in ictMail, whatever the account it is opened through has: nothing is written to any server for them"#,
         ),
         CommandSpec::new("view.favorites", "Favorites from Outlook", "File › Options", favorites_command).pure().params(
             r#"{"own"?: bool} — "own": true shows the Favorites that are marked here even for an account whose server has a list of its own, false the server's list where there is one (default: as it is). Answers what the folder pane lists under Favorites, in its order: {"own": bool, "favorites": [{"id", "name", "account", "path"}], "accounts": [{"account": number, "from": "server" | "mailbox", "listed": number}]}"#,
@@ -116,7 +116,7 @@ const FOLDER: &str = r#"{"id"?: number} (default: the folder in view). An `id` t
 
 /// Why `folder.favorite` refuses for an account whose Favorites are its server's.
 pub const FROM_OUTLOOK: &str =
-    "This account's Favorites come from Outlook and are changed there (File › Options can show the ones kept in MailCraft instead)";
+    "This account's Favorites come from Outlook and are changed there (File › Options can show the ones kept in ictMail instead)";
 
 fn can_empty(s: &Session) -> Option<&'static str> {
     if s.mailbox.count(s.view.folder) == 0 {

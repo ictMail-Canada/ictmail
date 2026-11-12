@@ -359,7 +359,7 @@ An `.eml`, `.mbox`, `.ics`, `.vcf` or `.mailcraft` file from somewhere else.
   `ui.copyLinkAddress` is; saving or sending an appointment in its window
   (`ui.eventWindow` `do`) runs later as the owner, so it asks `send` and the question names the
   people invited.
-- **The bridge checks the app.** The MCP bridge (`mailcraft-cli mcp --connect`) sends the control
+- **The bridge checks the app.** The MCP bridge (`ictmail-cli mcp --connect`) sends the control
   key only to a program that has proved it holds it: it sends a random nonce and the app answers
   HMAC-SHA256 over it keyed with the control key (`auth.challenge`,
   [control protocol](control-protocol.md#keys)). A program that only took the loopback port, before
@@ -494,10 +494,10 @@ An `.eml`, `.mbox`, `.ics`, `.vcf` or `.mailcraft` file from somewhere else.
   binds agents that reach MailCraft only through MCP. The control channel takes a request without
   the bridge's `agent` marking for the owner's own script, so an agent that can run a shell or read
   files as the owner (it could read the control key in the settings folder, or the mailbox file
-  itself, or run `mailcraft-cli`) is outside the gate. Run such an agent as another user or in a
+  itself, or run `ictmail-cli`) is outside the gate. Run such an agent as another user or in a
   sandbox, and don't start the app with `--control` while one is around. With
   `--control-agents-only` every control request is an agent's, allowed nothing in advance, so the
-  running window can't be driven past the owner's question; the mailbox file and `mailcraft-cli`
+  running window can't be driven past the owner's question; the mailbox file and `ictmail-cli`
   stay within such an agent's reach.
 
 ### A supply-chain compromise
@@ -660,7 +660,7 @@ settings files (`crates/engine/src/store.rs`); commands from the control channel
 | 2026-10-23 | minor | Counts bounded: recipients, categories and header bytes per message, mbox import, items while a mailbox file is read, accounts, folders and categories on load; repair linear (PR-e) |
 | 2026-10-23 | minor | An IMAP server's answer to one command is capped in text, responses, folders, messages and time; flags and mailbox names are cut short |
 | 2026-10-23 | minor | Always-download pictures need the server's `dmarc=pass`, ASCII addresses, and Junk subfolders count as Junk; an invitation changes a local meeting only for its organizer, whose address is shown; the update question names installing; the log keeps no subjects, addresses or folder names |
-| 2026-10-22 | minor | `--control-agents-only`: every control request is an agent's, allowed nothing in advance; the mailbox file and `mailcraft-cli` stay within reach of an agent running as the owner |
+| 2026-10-22 | minor | `--control-agents-only`: every control request is an agent's, allowed nothing in advance; the mailbox file and `ictmail-cli` stay within reach of an agent running as the owner |
 | 2026-10-21 | minor | The HTML whitelist adds padding and margins (0 to 64 px), lines (1 to 4 px, solid, dashed or dotted), `border-radius` (up to 24 px) and `line-height` (1 to 2.5 times), all clamped, functions refused (#71) |
 | 2026-10-21 | minor | The HTML whitelist adds `width` (tables, cells), `max-width` and centring by automatic margins, all clamped (#150) |
 | 2026-10-20 | minor | An assurance case: the claim, trust boundaries, secure design principles, common weaknesses countered, evidence; releases carry MailCraft's own signature |

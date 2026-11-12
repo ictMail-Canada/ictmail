@@ -101,10 +101,10 @@ impl AlertTrouble {
         let reason = match self {
             AlertTrouble::NotInstalled => tlc!(
                 "why desktop alerts can't be shown",
-                "this copy of MailCraft wasn't installed with its installer (.msi), so Windows doesn't know it."
+                "this copy of ictMail wasn't installed with its installer (.msi), so Windows doesn't know it."
             ),
-            AlertTrouble::OutsideApp => tlc!("why desktop alerts can't be shown", "this copy doesn't run from the MailCraft app."),
-            AlertTrouble::TurnedOff => return tl!("Desktop alerts are turned off for MailCraft in System Settings.").to_string(),
+            AlertTrouble::OutsideApp => tlc!("why desktop alerts can't be shown", "this copy doesn't run from the ictMail app."),
+            AlertTrouble::TurnedOff => return tl!("Desktop alerts are turned off for ictMail in System Settings.").to_string(),
             AlertTrouble::NoService => tlc!("why desktop alerts can't be shown", "no notification service answers on this desktop."),
         };
         crate::i18n::with_reason(tl!("Desktop alerts can't be shown"), reason)
@@ -333,7 +333,7 @@ pub(crate) fn options(app: &mut MailApp, ui: &mut egui::Ui, t: &crate::theme::To
     let mut mail = app.ui.alert_new_mail;
     if ui
         .checkbox(&mut mail, tl!("Show a desktop alert when new mail arrives"))
-        .on_hover_text(tl!("Only while MailCraft isn't the window in front, and only for the Inboxes of your own accounts."))
+        .on_hover_text(tl!("Only while ictMail isn't the window in front, and only for the Inboxes of your own accounts."))
         .changed()
     {
         let _ = app.run("ui.desktopAlerts", json!({"newMail": mail}));

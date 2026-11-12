@@ -841,8 +841,8 @@ fn of_a_message_too_large_to_take_the_header_is_kept_with_a_note() {
     assert!(two.body.text.contains("up to 25 MB") && two.body.text.contains("still on the server"), "{}", two.body.text);
     assert!(!two.body.text.contains("The body of Two") && two.body.html.is_none() && two.attachments.is_empty());
     // A program knows it by its header, which says how large the message is.
-    assert_eq!(two.headers.iter().find(|(name, _)| name == "X-MailCraft-Not-Downloaded").map(|(_, size)| size.as_str()), Some("62914560"));
-    assert!(result.folders[0].new[0].headers.iter().all(|(name, _)| name != "X-MailCraft-Not-Downloaded"));
+    assert_eq!(two.headers.iter().find(|(name, _)| name == "X-ictMail-Not-Downloaded").map(|(_, size)| size.as_str()), Some("62914560"));
+    assert!(result.folders[0].new[0].headers.iter().all(|(name, _)| name != "X-ictMail-Not-Downloaded"));
     // And by its size on the server, kept apart from the header for the list (#300).
     assert_eq!((two.not_downloaded, two.list_size()), (62_914_560, Some(62_914_560)));
     assert_eq!(result.folders[0].new[0].not_downloaded, 0);

@@ -1259,12 +1259,12 @@ pub const IMPORTED: &str = "Imported";
 /// Why nothing is sent from a JMAP account ([`AccountKind::sends_mail`]): its sending comes after
 /// its reading. Until then nothing goes into its Outbox, where it would wait for ever, and nothing
 /// is filed as sent that wasn't.
-pub const NOT_SENDING_YET: &str = "MailCraft doesn't send mail from a JMAP account yet";
+pub const NOT_SENDING_YET: &str = "ictMail doesn't send mail from a JMAP account yet";
 
 /// Why a JMAP account's mail stays where its server has it ([`Mailbox::stays_on_server`]): a move
 /// or a deletion reaches the server only once the engine sends changes, and until then the next
 /// run would bring the message back where it was.
-pub const NOT_MOVING_YET: &str = "MailCraft doesn't move or delete a JMAP account's mail yet: the next Send/Receive would bring it back";
+pub const NOT_MOVING_YET: &str = "ictMail doesn't move or delete a JMAP account's mail yet: the next Send/Receive would bring it back";
 
 /// What a message moved into an IMAP account's Outbox says of why it isn't sent
 /// ([`Message::held`]): only mail queued with Send leaves through the Outbox (#607).
@@ -1289,7 +1289,7 @@ fn hold_if_put_in_outbox(m: &mut Message, into_outbox: bool) {
 /// Why a JMAP account's folders keep their names and places ([`Mailbox::folder_stays_on_server`]):
 /// a rename or a move reaches the server only once the engine sends changes, and until then it
 /// would stay on this computer alone.
-pub const FOLDERS_STAY_YET: &str = "MailCraft doesn't rename or move a JMAP account's folders yet: its server wouldn't be told";
+pub const FOLDERS_STAY_YET: &str = "ictMail doesn't rename or move a JMAP account's folders yet: its server wouldn't be told";
 
 fn not_found(what: &'static str, id: Id) -> ModelError {
     ModelError::NotFound(what, id)

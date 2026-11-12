@@ -51,7 +51,7 @@ pub const REFUSED_FOR_ACCOUNT: &str = "Not available for this account";
 /// What the owner is told, once, of a mailbox whose file had them read another way
 /// (`Mailbox::take_retired_favorites_choices`): Exchange Web Services, or not at all.
 pub const FAVORITES_NOW_GRAPH: &str =
-    "Outlook's Favorites are now read through Microsoft Graph. To show MailCraft's own instead, turn them off in File › Options.";
+    "Outlook's Favorites are now read through Microsoft Graph. To show ictMail's own instead, turn them off in File › Options.";
 
 /// What the pane says under the Favorites heading, when there is something to say.
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -97,10 +97,10 @@ impl Step {
     pub(crate) fn about(self) -> &'static str {
         match self {
             Step::CopyMessage => {
-                "Copies a short message with the address of Microsoft's page where an administrator of your organisation approves MailCraft, once for everybody. Nothing is sent: paste it into mail or chat yourself."
+                "Copies a short message with the address of Microsoft's page where an administrator of your organisation approves ictMail, once for everybody. Nothing is sent: paste it into mail or chat yourself."
             }
             Step::Help => {
-                "Says what you and your organisation's administrator can do, and lets an administrator approve MailCraft on Microsoft's page from here."
+                "Says what you and your organisation's administrator can do, and lets an administrator approve ictMail on Microsoft's page from here."
             }
         }
     }
@@ -577,7 +577,7 @@ pub(crate) fn options(app: &mut MailApp, ui: &mut egui::Ui, t: &crate::theme::To
     }
     let mut outlook = !app.session.prefs.own_favorites;
     let about = tl!(
-        "For an account that signs in with Microsoft: the folders you keep under Favorites in Outlook, in the same order. They are read from the server and never changed there. Without this, the favourites you mark in MailCraft are shown."
+        "For an account that signs in with Microsoft: the folders you keep under Favorites in Outlook, in the same order. They are read from the server and never changed there. Without this, the favourites you mark in ictMail are shown."
     );
     let resp = ui.checkbox(&mut outlook, tl!("Show the Favorites from Outlook in the folder pane")).on_hover_text(about);
     app.hit.add("favoritesOption", 0, resp.rect);
@@ -596,7 +596,7 @@ pub(crate) fn options(app: &mut MailApp, ui: &mut egui::Ui, t: &crate::theme::To
         ui.horizontal(|ui| {
             ui.add_space(24.0);
             let link = ui.link(tl!("Connect Outlook's Favorites")).on_hover_text(tl!(
-                "Sign in with Microsoft once more to let MailCraft read the folders you keep under Favorites in Outlook. They are only read, never changed, and everything else stays as it is."
+                "Sign in with Microsoft once more to let ictMail read the folders you keep under Favorites in Outlook. They are only read, never changed, and everything else stays as it is."
             ));
             app.hit.add("favoritesConnect", account, link.rect);
             if link.clicked()

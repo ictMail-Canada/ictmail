@@ -4,7 +4,7 @@
 
 A JMAP account is one whose server speaks JMAP (RFC 8620 and RFC 8621) over HTTPS. MailCraft reads
 such an account in the browser build. The desktop app and the command line have no way to reach a
-JMAP server yet: the desktop app leaves such an account out of Send/Receive, and `mailcraft-cli
+JMAP server yet: the desktop app leaves such an account out of Send/Receive, and `ictmail-cli
 sync` refuses it.
 
 ## What works
@@ -46,7 +46,7 @@ There is no JMAP page in Add Account yet. An account comes into the browser buil
   (it takes the place of the mailbox kept in the browser) and confirm its servers:
 
   ```text
-  mailcraft-cli run --cmd 'account.add={"email": "you@example.org", "kind": "jmap", "jmap": {"session": "https://mail.example.org/jmap/session"}}' --save jmap.mailcraft
+  ictmail-cli run --cmd 'account.add={"email": "you@example.org", "kind": "jmap", "jmap": {"session": "https://mail.example.org/jmap/session"}}' --save jmap.mailcraft
   ```
 
   `"bearer": true` beside `"session"` when the server takes an access token rather than the

@@ -45,7 +45,7 @@ fn refused(peer: &Fake<ImapWorld>) -> String {
 
 #[test]
 fn a_certificate_the_verifier_trusts_connects() {
-    let authority = Authority::new("MailCraft Test Authority");
+    let authority = Authority::new("ictMail Test Authority");
     let peer = imap(authority.server(&["localhost", "127.0.0.1"]));
     trusting(vec![authority.root()], || {
         let result = crate::sync::open_imap(&account(peer.port), "invented");
@@ -56,7 +56,7 @@ fn a_certificate_the_verifier_trusts_connects() {
 
 #[test]
 fn a_certificate_from_an_authority_nobody_trusts_is_refused() {
-    let trusted = Authority::new("MailCraft Test Authority");
+    let trusted = Authority::new("ictMail Test Authority");
     let stranger = Authority::new("Unknown Test Authority");
     let peer = imap(stranger.server(&["localhost", "127.0.0.1"]));
     let reason = trusting(vec![trusted.root()], || refused(&peer));
@@ -70,7 +70,7 @@ fn a_certificate_from_an_authority_nobody_trusts_is_refused() {
 #[test]
 fn a_test_authority_is_not_trusted_by_the_system() {
     // Without a test's own roots, only what the system trusts is trusted.
-    let authority = Authority::new("MailCraft Test Authority");
+    let authority = Authority::new("ictMail Test Authority");
     let peer = imap(authority.server(&["localhost", "127.0.0.1"]));
     let reason = refused(&peer);
     assert!(reason.contains("certificate"), "{reason}");
@@ -78,7 +78,7 @@ fn a_test_authority_is_not_trusted_by_the_system() {
 
 #[test]
 fn a_certificate_for_another_name_is_refused() {
-    let authority = Authority::new("MailCraft Test Authority");
+    let authority = Authority::new("ictMail Test Authority");
     let peer = imap(authority.server(&["mail.example.org"]));
     let reason = trusting(vec![authority.root()], || refused(&peer));
     // webpki names the name it was given; the Windows and macOS verifiers only say it doesn't match.

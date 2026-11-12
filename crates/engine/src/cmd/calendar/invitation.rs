@@ -46,7 +46,7 @@ const AHEAD_DAYS: i64 = 3_660;
 /// The header a message keeps the owner's answer in, with when it was given and a mark of this
 /// mailbox's own: `accepted 1791993600 9f2c…`. It is noted here and read back here only. A
 /// sender can write the header into a message, and can't make the mark ([`answer_mark`]).
-const ANSWER_HEADER: &str = "X-MailCraft-Meeting-Response";
+const ANSWER_HEADER: &str = "X-ictMail-Meeting-Response";
 
 pub(super) fn specs() -> Vec<CommandSpec> {
     vec![
@@ -1239,7 +1239,7 @@ mod tests {
         assert_eq!((said["answerable"].as_bool(), said["canSend"].as_bool()), (Some(true), Some(false)));
         let events = s.mailbox.events.len();
         let why = refused(&mut s, "calendar.respond", json!({"message": request, "response": "accept", "send": true}));
-        assert!(why.contains("was added by a newer version of MailCraft, which sends its mail"), "{why}");
+        assert!(why.contains("was added by a newer version of ictMail, which sends its mail"), "{why}");
         assert_eq!((s.mailbox.events.len(), outbox(&s, account).len()), (events, 0));
         let answered = run(&mut s, "calendar.respond", json!({"message": request, "response": "accept"}));
         assert!(answered["event"].is_u64(), "{answered}");
@@ -1266,7 +1266,7 @@ mod tests {
         assert_eq!((said["answerable"].as_bool(), said["canSend"].as_bool()), (Some(true), Some(false)));
         let events = s.mailbox.events.len();
         let why = refused(&mut s, "calendar.respond", json!({"message": request, "response": "accept", "send": true}));
-        assert_eq!(why, "MailCraft doesn't send mail from a JMAP account yet: answer the invitation without sending an answer.");
+        assert_eq!(why, "ictMail doesn't send mail from a JMAP account yet: answer the invitation without sending an answer.");
         assert_eq!((s.mailbox.events.len(), outbox(&s, account).len()), (events, 0));
         let answered = run(&mut s, "calendar.respond", json!({"message": request, "response": "accept"}));
         let event = answered["event"].as_u64().unwrap();
@@ -1275,7 +1275,7 @@ mod tests {
         // account that sends its mail, never from its Outbox.
         let forward = json!({"id": event, "to": "dana@example.org", "send": true});
         let why = refused(&mut s, "calendar.forward", forward.clone());
-        assert_eq!(why, "MailCraft doesn't send mail from a JMAP account yet, and no other account here has a mail server to send this through.");
+        assert_eq!(why, "ictMail doesn't send mail from a JMAP account yet, and no other account here has a mail server to send this through.");
         let imap = run(&mut s, "account.add", json!({"email": "ada@imap.example", "incoming": {"host": "imap.example.org"}}))["id"].as_u64().unwrap();
         assert_eq!(run(&mut s, "calendar.forward", forward)["onServer"], false);
         assert_eq!((outbox(&s, account).len(), outbox(&s, imap).len()), (0, 1));

@@ -84,7 +84,7 @@ pub(crate) fn trusting<T>(roots: Vec<CertificateDer<'static>>, run: impl FnOnce(
 
 /// Runs `run` with a fresh authority trusted, handing it a server's settings for this machine.
 pub(crate) fn with_tls<T>(run: impl FnOnce(Arc<ServerConfig>) -> T) -> T {
-    let authority = Authority::new("MailCraft Test Authority");
+    let authority = Authority::new("ictMail Test Authority");
     let server = authority.server(&["localhost", "127.0.0.1"]);
     trusting(vec![authority.root()], || run(server))
 }

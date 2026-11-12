@@ -42,7 +42,7 @@ pub const STILL_OPENING: &str = "the mailbox is still opening";
 
 /// What opening (or saving to) a mailbox file that another MailCraft window has open is refused
 /// with (#517).
-pub const OPEN_ELSEWHERE: &str = "that mailbox is open in another MailCraft window; close it there first";
+pub const OPEN_ELSEWHERE: &str = "that mailbox is open in another ictMail window; close it there first";
 
 /// How long opening may take before the opening screen shows (a quick open never shows it).
 pub const SHOW_AFTER_MS: f64 = 300.0;
@@ -425,15 +425,13 @@ pub(crate) fn megabytes(bytes: u64, total: u64) -> String {
 /// What was wrong with the mailbox, and Continue: whether it was pressed.
 fn problem(ui: &mut Ui, t: &Tokens, trouble: Option<&Trouble>) -> bool {
     let (heading, why, then) = match trouble {
-        Some(Trouble::Unreadable(why)) => (
-            tl!("Your mailbox couldn't be opened"),
-            tl!(why).to_string(),
-            tl!("MailCraft starts with an empty mailbox and leaves the file as it is."),
-        ),
+        Some(Trouble::Unreadable(why)) => {
+            (tl!("Your mailbox couldn't be opened"), tl!(why).to_string(), tl!("ictMail starts with an empty mailbox and leaves the file as it is."))
+        }
         Some(Trouble::Stopped) | None => (
             tl!("Your mailbox couldn't be opened"),
-            tl!("MailCraft stopped reading it before it was done.").to_string(),
-            tl!("MailCraft starts with an empty mailbox and leaves the file as it is."),
+            tl!("ictMail stopped reading it before it was done.").to_string(),
+            tl!("ictMail starts with an empty mailbox and leaves the file as it is."),
         ),
         Some(Trouble::Damaged) => {
             (tl!("Part of your mailbox is damaged"), crate::damaged_mailbox_notice(), tl!("Everything else in it opens as usual."))
@@ -465,6 +463,22 @@ pub(crate) fn logo(ctx: &egui::Context) -> Option<egui::TextureHandle> {
     let rgba = image::load_from_memory_with_format(PNG, image::ImageFormat::Png).ok()?.into_rgba8();
     let size = [usize::try_from(rgba.width()).ok()?, usize::try_from(rgba.height()).ok()?];
     let texture = ctx.load_texture("mailcraft-logo", egui::ColorImage::from_rgba_unmultiplied(size, rgba.as_raw()), egui::TextureOptions::LINEAR);
+    ctx.data_mut(|d| d.insert_temp(id, texture.clone()));
+    Some(texture)
+}
+
+/// The ictMail wordmark, for About: the brand's own logo file, kept like [`logo`].
+/// `None` when the picture can't be read (the screen then shows no mark).
+pub(crate) fn wordmark(ctx: &egui::Context) -> Option<egui::TextureHandle> {
+    /// The 600×240 logo every build ships (`assets/branding`, attributed in `ATTRIBUTION.md`).
+    const PNG: &[u8] = include_bytes!("../../../assets/branding/ictmail-logo.png");
+    let id = egui::Id::unique("ictmail-wordmark");
+    if let Some(texture) = ctx.data(|d| d.get_temp::<egui::TextureHandle>(id)) {
+        return Some(texture);
+    }
+    let rgba = image::load_from_memory_with_format(PNG, image::ImageFormat::Png).ok()?.into_rgba8();
+    let size = [usize::try_from(rgba.width()).ok()?, usize::try_from(rgba.height()).ok()?];
+    let texture = ctx.load_texture("ictmail-wordmark", egui::ColorImage::from_rgba_unmultiplied(size, rgba.as_raw()), egui::TextureOptions::LINEAR);
     ctx.data_mut(|d| d.insert_temp(id, texture.clone()));
     Some(texture)
 }
@@ -559,7 +573,7 @@ pub(crate) fn poll_ahead(app: &mut MailApp, ctx: &egui::Context) {
             return;
         }
         Ok(read) => read,
-        Err(TryRecvError::Disconnected) => Err(tl!("MailCraft stopped reading it before it was done.").to_string()),
+        Err(TryRecvError::Disconnected) => Err(tl!("ictMail stopped reading it before it was done.").to_string()),
     };
     let Some(ahead) = app.reading_ahead.take() else { return };
     match read {

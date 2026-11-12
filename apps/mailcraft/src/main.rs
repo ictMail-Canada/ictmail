@@ -254,8 +254,8 @@ impl eframe::App for App {
             if let Some(what) = self.0.update_on_exit() {
                 let verified = updates.verified.lock().map(|v| v.clone()).unwrap_or_else(|e| e.into_inner().clone());
                 match self_update::on_exit(&updates.folders, updates.install, what, verified, self.0.session.path.as_deref()) {
-                    Ok(()) => log::info!("the new version of MailCraft is being installed"),
-                    Err(e) => log::error!("the new version of MailCraft couldn't be installed: {e}"),
+                    Ok(()) => log::info!("the new version of ictMail is being installed"),
+                    Err(e) => log::error!("the new version of ictMail couldn't be installed: {e}"),
                 }
             }
         }
@@ -374,7 +374,7 @@ fn read_prefs(path: &std::path::Path) -> (Option<UiState>, Option<SettingsUnread
     match set_aside(path) {
         Ok(aside) => {
             let name = aside.file_name().map(|n| n.to_string_lossy().into_owned()).unwrap_or_default();
-            log::warn!("the settings file couldn't be read ({at}); set aside as {name}, started with MailCraft's own settings");
+            log::warn!("the settings file couldn't be read ({at}); set aside as {name}, started with ictMail's own settings");
             (None, Some(SettingsUnread::SetAside(name)))
         }
         Err(_) => {
@@ -628,7 +628,7 @@ fn run_window(options: eframe::NativeOptions, creator: eframe::AppCreator<'_>) -
             seen.store(true, std::sync::atomic::Ordering::Relaxed);
             creator(cc)
         });
-        let mut app = WithTokens(eframe::create_native("MailCraft", options, creator, &event_loop));
+        let mut app = WithTokens(eframe::create_native("ictMail", options, creator, &event_loop));
         event_loop.run_app(&mut app)?;
         if started.load(std::sync::atomic::Ordering::Relaxed) {
             Ok(())
@@ -637,7 +637,7 @@ fn run_window(options: eframe::NativeOptions, creator: eframe::AppCreator<'_>) -
         }
     }
     #[cfg(not(any(target_os = "linux", target_os = "freebsd")))]
-    eframe::run_native("MailCraft", options, creator)
+    eframe::run_native("ictMail", options, creator)
 }
 
 /// Sign an account's owner in: quietly with what was kept from last time when there is any, on
@@ -1815,7 +1815,7 @@ fn services(
         read_ahead: Some(Box::new(move |path: PathBuf, progress: std::sync::Arc<mailcraft_engine::io::OpenProgress>| {
             background(&ahead_ctx, "opening a mailbox", move || {
                 std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| mailcraft_engine::store::open_ahead(&path, &progress)))
-                    .unwrap_or_else(|_| Err("MailCraft stopped reading it before it was done.".to_string()))
+                    .unwrap_or_else(|_| Err("ictMail stopped reading it before it was done.".to_string()))
             })
         })),
         // A picture a message keeps on the web, once the owner asked for that message's pictures.
@@ -1916,7 +1916,7 @@ fn update_download(
         let updates = updates.clone();
         background(&ctx, "update download", move || {
             if wipe::begun() {
-                return Err("MailCraft's data was removed from this computer".to_string());
+                return Err("ictMail's data was removed from this computer".to_string());
             }
             let dir = updates.folders.updates();
             // The SHA-256 noted is the signed list's, not the file's read back: what is
@@ -2012,8 +2012,8 @@ fn content_later(
 fn already_open() {
     let _ = rfd::MessageDialog::new()
         .set_level(rfd::MessageLevel::Warning)
-        .set_title("MailCraft")
-        .set_description("MailCraft already has this mailbox open, but it isn't answering. Close that window (or end MailCraft in the system's task list) and start MailCraft again.")
+        .set_title("ictMail")
+        .set_description("ictMail already has this mailbox open, but it isn't answering. Close that window (or end ictMail in the system's task list) and start ictMail again.")
         .show();
 }
 
@@ -2115,7 +2115,7 @@ fn main() -> eframe::Result {
             single_instance::Start::First(guard) => Some(guard),
             single_instance::Start::Handed => return Ok(()),
             single_instance::Start::Unreachable(why) => {
-                log::error!("MailCraft already has {} open and can't be reached: {why}", path.display());
+                log::error!("ictMail already has {} open and can't be reached: {why}", path.display());
                 already_open();
                 return Ok(());
             }
@@ -2129,7 +2129,7 @@ fn main() -> eframe::Result {
     if let Some(logger) = logger {
         match log_dir().filter(|_| prefs_enabled()) {
             Some(dir) => match logger.attach_dir(&dir) {
-                Ok(path) => log::info!("MailCraft {} ({}), log file {}", env!("CARGO_PKG_VERSION"), build_sha(), path.display()),
+                Ok(path) => log::info!("ictMail {} ({}), log file {}", env!("CARGO_PKG_VERSION"), build_sha(), path.display()),
                 Err(e) => log::warn!("no log file: {e}"),
             },
             None => logger.no_file(),
@@ -2137,7 +2137,7 @@ fn main() -> eframe::Result {
     }
     let mut options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
-            .with_title("MailCraft")
+            .with_title("ictMail")
             .with_app_id(APP_ID)
             .with_inner_size([1440.0, 920.0])
             .with_min_inner_size([760.0, 480.0])
@@ -2289,7 +2289,7 @@ fn main() -> eframe::Result {
                 Ok(bar) => Some(bar),
                 Err(e) => {
                     log::warn!("the menu bar couldn't be set up: {e}");
-                    if let Err(e) = quit_macos::install_app_menu(&cc.egui_ctx, "MailCraft") {
+                    if let Err(e) = quit_macos::install_app_menu(&cc.egui_ctx, "ictMail") {
                         log::warn!("the app menu couldn't be set up, so Quit won't ask about unsaved work: {e}");
                     }
                     None

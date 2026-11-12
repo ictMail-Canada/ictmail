@@ -30,7 +30,7 @@ fn qat_button(ui: &mut Ui, app: &mut MailApp, icon: &str, tip: &str, id: &str) -
 /// as Help › Copy Diagnostics.
 fn diagnostics_pill(ui: &mut Ui, app: &mut MailApp, h: f32) {
     let tip = tl!(
-        "Copy the version, the platform and the end of MailCraft's own record, to paste into a problem report. No message, address, password or token is in it, and nothing is sent."
+        "Copy the version, the platform and the end of ictMail's own record, to paste into a problem report. No message, address, password or token is in it, and nothing is sent."
     );
     pill(ui, app, h, "copy", tl!("Copy Diagnostics"), tip, "ui.copyDiagnostics");
 }
@@ -38,7 +38,7 @@ fn diagnostics_pill(ui: &mut Ui, app: &mut MailApp, h: f32) {
 /// "Report a Problem", beside Copy Diagnostics: the same command as Help › Report a Problem,
 /// which opens its window ([`crate::report_problem`]).
 fn report_pill(ui: &mut Ui, app: &mut MailApp, h: f32) {
-    let tip = tl!("Tell MailCraft's makers what went wrong, on GitHub or by email. You check the report and send it yourself.");
+    let tip = tl!("Tell ictMail's makers what went wrong, on GitHub or by email. You check the report and send it yourself.");
     pill(ui, app, h, "report", tl!("Report a Problem"), tip, "ui.reportProblem");
 }
 

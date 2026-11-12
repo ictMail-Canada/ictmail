@@ -76,7 +76,7 @@ pub fn specs() -> Vec<CommandSpec> {
             .when_writing(needs_compose),
         CommandSpec::new("compose.readReceipt", "Request a Read Receipt", "Options › Tracking", read_receipt)
             .pure()
-            .params(r#"{"value"?: bool} (default: the other way round) — whether the message being written asks for a read receipt: `Disposition-Notification-To` naming its sender, or Exchange's flag for one. Kept with its draft. MailCraft only ever asks for receipts: it never answers a request in mail that comes in"#)
+            .params(r#"{"value"?: bool} (default: the other way round) — whether the message being written asks for a read receipt: `Disposition-Notification-To` naming its sender, or Exchange's flag for one. Kept with its draft. ictMail only ever asks for receipts: it never answers a request in mail that comes in"#)
             .when_writing(needs_compose),
         CommandSpec::new("compose.highImportance", "High Importance", "Message › Tags", high_importance).pure().when_writing(needs_compose),
         CommandSpec::new("compose.lowImportance", "Low Importance", "Message › Tags", low_importance).pure().when_writing(needs_compose),

@@ -801,7 +801,7 @@ mod tests {
         assert_eq!(parse(b"X-Priority: 4\n\n").importance, Importance::Low);
         assert_eq!(parse(b"X-Priority: 1\nImportance: low\n\n").importance, Importance::Low);
         assert_eq!(parse(b"Importance: whatever\nX-Priority: 2\n\n").importance, Importance::High);
-        assert_eq!(parse(b"X-Status: F\nX-MailCraft-Flag: complete\n\n").flag, FlagStatus::Complete);
+        assert_eq!(parse(b"X-Status: F\nX-ictMail-Flag: complete\n\n").flag, FlagStatus::Complete);
     }
 
     #[test]

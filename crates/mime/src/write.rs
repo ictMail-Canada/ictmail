@@ -163,7 +163,7 @@ fn write_header(out: &mut Vec<u8>, message: &Message, opts: &WriteOptions) {
     }
     if message.flag == FlagStatus::Complete {
         // `X-Status` has no letter for a finished follow-up.
-        write_field(out, "X-MailCraft-Flag", "complete");
+        write_field(out, "X-ictMail-Flag", "complete");
     }
     for (name, value) in &message.headers {
         let lower = name.to_ascii_lowercase();
@@ -560,7 +560,7 @@ mod tests {
         let out = text(&m);
         assert!(out.contains("\r\nImportance: high\r\nX-Priority: 1\r\nKeywords: Work, =?UTF-8?B?Q2Fmw6k=?=, =?UTF-8?B?YSwgYg==?=\r\nStatus: RO\r\nX-Status: AF\r\n"), "{out}");
         let out = text(&Message { importance: Importance::Low, flag: FlagStatus::Complete, ..Message::default() });
-        assert!(out.contains("\r\nImportance: low\r\nX-Priority: 5\r\nX-MailCraft-Flag: complete\r\n"), "{out}");
+        assert!(out.contains("\r\nImportance: low\r\nX-Priority: 5\r\nX-ictMail-Flag: complete\r\n"), "{out}");
         assert!(!out.contains("Status:"));
     }
 

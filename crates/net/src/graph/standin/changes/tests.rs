@@ -13,7 +13,7 @@ use crate::graph::standin::{Fault, StandIn, TOKEN};
 const NOW: i64 = 1_790_000_000;
 const IMMUTABLE: &str = "Prefer: IdType=\"ImmutableId\"\r\n";
 /// MailCraft's marker, as R3.3.2 is to write it: a named string property of a set of our own.
-const MARKER: &str = "String {6d1c4e3a-8f2b-4c5d-9e0a-1b2c3d4e5f60} Name MailCraftMarker";
+const MARKER: &str = "String {6d1c4e3a-8f2b-4c5d-9e0a-1b2c3d4e5f60} Name ictMailMarker";
 
 /// One request: the status (0 when the connection closed without an answer), the headers
 /// (names in lower case) and the body.

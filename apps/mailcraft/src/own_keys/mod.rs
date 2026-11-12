@@ -161,7 +161,7 @@ fn keep(
     bytes: &[u8],
     half: Option<Vec<u8>>,
 ) -> Result<Imported, String> {
-    let store = store.ok_or("This computer has no credential store to keep a key in, so MailCraft can't keep it.")?;
+    let store = store.ok_or("This computer has no credential store to keep a key in, so ictMail can't keep it.")?;
     let facts = key_facts(format, public);
     let key = ImportedKey {
         format,

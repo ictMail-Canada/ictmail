@@ -109,7 +109,7 @@ pub(super) fn failure_words(failure: EwsSetupFailure) -> String {
         }
         EwsSetupFailure::Unreadable => tl!("The server's answer for automatic setup couldn't be read. Type the server's address in Server settings."),
         EwsSetupFailure::InsecureRedirect => {
-            tl!("The server sent the setup somewhere that isn't encrypted, which MailCraft never follows. Type the server's address in Server settings.")
+            tl!("The server sent the setup somewhere that isn't encrypted, which ictMail never follows. Type the server's address in Server settings.")
         }
         EwsSetupFailure::ServerRefused => {
             tl!("The server or the organisation wouldn't give its settings. Ask your administrator for the server's address and type it in Server settings.")
@@ -118,9 +118,9 @@ pub(super) fn failure_words(failure: EwsSetupFailure) -> String {
             tl!("The server answered without the address of Exchange Web Services. Ask your administrator for it and type it in Server settings.")
         }
         EwsSetupFailure::SignInNotSupported => {
-            tl!("MailCraft can't sign in to this server this way yet (it wants Kerberos). Ask your administrator whether it can take a user name and password over an encrypted connection.")
+            tl!("ictMail can't sign in to this server this way yet (it wants Kerberos). Ask your administrator whether it can take a user name and password over an encrypted connection.")
         }
-        EwsSetupFailure::SignInNtlm => tl!("Automatic setup can't sign in to this server. Type its address in Server settings and MailCraft will sign in with NTLM."),
+        EwsSetupFailure::SignInNtlm => tl!("Automatic setup can't sign in to this server. Type its address in Server settings and ictMail will sign in with NTLM."),
         EwsSetupFailure::Declined => tl!("You didn't agree to send your sign-in to the server the setup led to. Type the server's address in Server settings."),
         EwsSetupFailure::SignInRefused => {
             tl!("The server didn't accept the user name and password. Check them, or type your user name in Server settings (DOMAIN\\user or you@example.org).")
@@ -134,13 +134,13 @@ pub(super) fn failure_words(failure: EwsSetupFailure) -> String {
         }
         EwsSetupFailure::BadSettings => tl!("The server's address or the user name can't be used. Check them in Server settings."),
         EwsSetupFailure::Certificate(EwsCertificateFault::Expired) => {
-            tl!("The server's certificate has expired, so MailCraft won't connect to it. Ask your administrator to renew it.")
+            tl!("The server's certificate has expired, so ictMail won't connect to it. Ask your administrator to renew it.")
         }
         EwsSetupFailure::Certificate(EwsCertificateFault::NotYetValid) => {
-            tl!("The server's certificate isn't valid yet, so MailCraft won't connect to it. Check this computer's date and time, or ask your administrator.")
+            tl!("The server's certificate isn't valid yet, so ictMail won't connect to it. Check this computer's date and time, or ask your administrator.")
         }
         EwsSetupFailure::Certificate(EwsCertificateFault::WrongName) => {
-            tl!("The server's certificate is for another server's name, so MailCraft won't connect to it. Check the address in Server settings.")
+            tl!("The server's certificate is for another server's name, so ictMail won't connect to it. Check the address in Server settings.")
         }
         EwsSetupFailure::Other => tl!("The account couldn't be set up. Check the details, or type the server's address in Server settings."),
     }
@@ -488,7 +488,7 @@ impl AccountSetup {
             note(
                 ui,
                 tl!(
-                    "For a mail server your organisation runs itself. MailCraft looks for the server from your address, or you can type its address in Server settings. Nothing is sent until you press Connect."
+                    "For a mail server your organisation runs itself. ictMail looks for the server from your address, or you can type its address in Server settings. Nothing is sent until you press Connect."
                 ),
                 t.text,
             );
@@ -656,7 +656,7 @@ impl AccountSetup {
             note(
                 ui,
                 tl!(
-                    "Microsoft 365 mail is added as a Microsoft account: you sign in on Microsoft's own page in your browser, and MailCraft never sees your password."
+                    "Microsoft 365 mail is added as a Microsoft account: you sign in on Microsoft's own page in your browser, and ictMail never sees your password."
                 ),
                 t.text,
             );

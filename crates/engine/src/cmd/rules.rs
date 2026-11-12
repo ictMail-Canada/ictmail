@@ -20,7 +20,7 @@ use mailcraft_model::MAX_RULES;
 pub fn specs() -> Vec<CommandSpec> {
     vec![
         CommandSpec::new("rules.add", "Create Rule", "Home › Move", add).params(
-            r#"{"name": string, "conditions": [{"type": "fromContains"|"toContains"|"subjectContains"|"bodyContains", "value": string} | {"type": "hasAttachment"} | {"type": "importance", "value": "high"|"normal"|"low"}], "actions": [{"type": "moveTo", "value": folder id} | {"type": "categorize", "value": string} | {"type": "flag"} | {"type": "markRead"} | {"type": "setImportance", "value": string} | {"type": "delete"}], "stop"?: bool, "account"?: number (whose arriving mail it is for; without it, every account's, and kept on this computer), "server"?: bool (false keeps it on this computer; true refuses a rule the server can't keep; default: on the server when it can)} — on a Microsoft account the rule is kept on its server when the server can do all of it (it then runs there, whether MailCraft is open or not; the sender's and recipients' words are looked for in their addresses alone, as the server does); answers {"id", "keep": "server"|"here"}"#,
+            r#"{"name": string, "conditions": [{"type": "fromContains"|"toContains"|"subjectContains"|"bodyContains", "value": string} | {"type": "hasAttachment"} | {"type": "importance", "value": "high"|"normal"|"low"}], "actions": [{"type": "moveTo", "value": folder id} | {"type": "categorize", "value": string} | {"type": "flag"} | {"type": "markRead"} | {"type": "setImportance", "value": string} | {"type": "delete"}], "stop"?: bool, "account"?: number (whose arriving mail it is for; without it, every account's, and kept on this computer), "server"?: bool (false keeps it on this computer; true refuses a rule the server can't keep; default: on the server when it can)} — on a Microsoft account the rule is kept on its server when the server can do all of it (it then runs there, whether ictMail is open or not; the sender's and recipients' words are looked for in their addresses alone, as the server does); answers {"id", "keep": "server"|"here"}"#,
         ),
         CommandSpec::new("rules.remove", "Delete Rule", "Home › Move", remove).params(r#"{"id": number} — a rule its server has is deleted there too"#),
         CommandSpec::new("rules.enable", "Enable Rule", "Home › Move", enable).params(r#"{"id": number, "value"?: bool (default: toggle)}"#),
@@ -70,7 +70,7 @@ impl NotOnServer {
     /// Why, in words.
     pub fn said(self) -> &'static str {
         match self {
-            NotOnServer::NoServer => "MailCraft can't keep this account's rules on its server",
+            NotOnServer::NoServer => "ictMail can't keep this account's rules on its server",
             NotOnServer::Flag => "the server can't flag mail",
             NotOnServer::FolderHere => "the folder it moves mail to is on this computer",
             NotOnServer::FolderElsewhere => "the folder it moves mail to is in another account",
@@ -79,7 +79,7 @@ impl NotOnServer {
             NotOnServer::TwoOfAKind => "it has two conditions of one kind, and the server would take either of them rather than both",
             NotOnServer::TwoImportances => "it sets more than one importance",
             NotOnServer::Names => "it looks for a name, and the server looks at addresses only",
-            NotOnServer::NotInStep => "MailCraft reaches this account's rules on the server once it switches to Microsoft Graph",
+            NotOnServer::NotInStep => "ictMail reaches this account's rules on the server once it switches to Microsoft Graph",
         }
     }
 }
