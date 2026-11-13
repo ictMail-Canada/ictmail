@@ -56,9 +56,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # macos-26-intel, not an arm64 label: every macOS arm64 pool (macos-latest,
-        # macos-15) repeatedly failed to allocate jobs on 2026-11-13.
-        os: [ubuntu-24.04, macos-26-intel, windows-latest]
+        # macOS is deliberately absent: its hosted-runner pools failed to allocate or hung
+        # jobs on 2026-11-13 (arm64 capacity, then a wedged macos-26-intel leg), and gating
+        # every push on it blocked releases for hours. macOS coverage lives in package.yml —
+        # macos-build compiles both architectures and macos-smoke verifies the packaged
+        # .app/.dmg on a real macOS runner at release time.
+        os: [ubuntu-24.04, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
