@@ -12,6 +12,11 @@ fn respond(status: &str, body: &str) -> Vec<u8> {
     format!("HTTP/1.1 {status}\r\nContent-Type: application/xml\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}", body.len()).into_bytes()
 }
 
+fn respond_etag(status: &str, body: &str, etag: &str) -> Vec<u8> {
+    format!("HTTP/1.1 {status}\r\nContent-Type: application/xml\r\nETag: {etag}\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}", body.len())
+        .into_bytes()
+}
+
 fn redirect_to(location: &str) -> Vec<u8> {
     format!("HTTP/1.1 301 Moved Permanently\r\nLocation: {location}\r\nContent-Length: 0\r\nConnection: close\r\n\r\n").into_bytes()
 }
@@ -205,8 +210,9 @@ fn fetch_put_and_delete_speak_http() {
         }
     });
     let client = client("http://127.0.0.1/");
-    let doc = client.fetch(&server.url("/dav/c.ics")).unwrap();
+    let (doc, etag) = client.fetch(&server.url("/dav/c.ics")).unwrap();
     assert_eq!(doc, "BEGIN:VCALENDAR\nEND:VCALENDAR");
+    assert_eq!(etag, "");
     client.put(&server.url("/dav/c.ics"), "text/calendar; charset=utf-8", b"BEGIN:VCALENDAR", None).unwrap();
     assert!(server.request(1).contains("If-None-Match: *"));
     client.put(&server.url("/dav/c.ics"), "text/calendar; charset=utf-8", b"BEGIN:VCALENDAR", Some("\"v2\"")).unwrap();
@@ -216,11 +222,19 @@ fn fetch_put_and_delete_speak_http() {
 }
 
 #[test]
+fn fetch_keeps_the_etag() {
+    let server = FakeHttp::answering(respond_etag("200 OK", "the document", "\"v1\""));
+    let (body, etag) = client("http://127.0.0.1/").fetch(&server.url("/dav/c.ics")).unwrap();
+    assert_eq!(body, "the document");
+    assert_eq!(etag, "\"v1\"");
+}
+
+#[test]
 fn redirects_stay_on_their_own_server() {
     // A same-server redirect is followed.
     let same = FakeHttp::start(|n, _| if n == 0 { redirect_to("/new") } else { respond("200 OK", "the document") });
     let url = same.url("/old");
-    assert_eq!(client("http://127.0.0.1/").fetch(&url).unwrap(), "the document");
+    assert_eq!(client("http://127.0.0.1/").fetch(&url).unwrap().0, "the document");
     assert_eq!(same.asked(), 2);
 
     // A redirect to another server is not: the 301 comes back as a status, and nothing of the

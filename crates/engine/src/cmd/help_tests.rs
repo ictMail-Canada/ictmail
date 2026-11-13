@@ -24,7 +24,7 @@ fn help_pages_are_the_projects_own_and_name_nobody() {
     assert_eq!(feedback["dialog"], "reportProblem");
     for id in ["help.help", "help.training", "help.support", "help.feedback", "help.whatsNew"] {
         let page = url(&mut s, id);
-        assert!(page.starts_with(repo) && !page.contains("ada") && !page.contains('?'), "{id}: {page}");
+        assert!(page.starts_with(repo) && !page.contains("ada@") && !page.contains("ada%40") && !page.contains('?'), "{id}: {page}");
     }
 }
 

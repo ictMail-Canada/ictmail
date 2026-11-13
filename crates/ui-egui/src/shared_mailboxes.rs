@@ -108,6 +108,7 @@ impl MailApp {
             outbox: Vec::new(),
             directory: false,
             calendar: None,
+            now: self.session.now(),
             changes: None,
             asks: Vec::new(),
             settings: false,

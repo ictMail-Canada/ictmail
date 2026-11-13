@@ -369,9 +369,9 @@ mod tests {
         assert_eq!(ask(&server, false).unwrap().page, made);
         // The repository's name in another case is the same page.
         let mut release = release_of("v0.9.0");
-        release["html_url"] = Value::String("https://github.com/ucs-care-group/ictMail/releases/tag/v0.9.0".into());
+        release["html_url"] = Value::String("https://github.com/ucs-care-group/MailCraft/releases/tag/v0.9.0".into());
         let server = FakeHttp::answering(answer(&release));
-        assert_eq!(ask(&server, false).unwrap().page, "https://github.com/ucs-care-group/ictMail/releases/tag/v0.9.0");
+        assert_eq!(ask(&server, false).unwrap().page, "https://github.com/ucs-care-group/MailCraft/releases/tag/v0.9.0");
     }
 
     #[test]
@@ -413,7 +413,7 @@ mod tests {
             {"name": "SHA256SUMS.txt.sig", "size": 89, "browser_download_url": download("SHA256SUMS.txt.sig")},
             {"name": "mailcraft-0.9.0-linux-x86_64.AppImage", "size": 40_000_000u64, "browser_download_url": download("mailcraft-0.9.0-linux-x86_64.AppImage")},
             // Another case of the repository's name is the same repository.
-            {"name": "mailcraft-0.9.0-windows-x64.msi", "size": 9, "browser_download_url": "https://github.com/ucs-care-group/ictMail/releases/download/v0.9.0/mailcraft-0.9.0-windows-x64.msi"},
+            {"name": "mailcraft-0.9.0-windows-x64.msi", "size": 9, "browser_download_url": "https://github.com/ucs-care-group/MailCraft/releases/download/v0.9.0/mailcraft-0.9.0-windows-x64.msi"},
             // Left out: another host, another repository, another tag, another name, no size, a bad name.
             {"name": "evil.msi", "size": 9, "browser_download_url": "https://evil.example/UCS-Care-Group/mailcraft/releases/download/v0.9.0/evil.msi"},
             {"name": "other.msi", "size": 9, "browser_download_url": "https://github.com/someone/mailcraft/releases/download/v0.9.0/other.msi"},

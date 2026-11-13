@@ -165,6 +165,8 @@ pub(crate) struct Reply {
     pub(crate) challenges: Vec<String>,
     /// Its `X-EWS-Policy-Reason` header (why an organisation shuts Exchange Web Services).
     pub(crate) policy_reason: Option<String>,
+    /// Its `ETag` header, as the server wrote it (a DAV resource's version mark).
+    pub(crate) etag: Option<String>,
 }
 
 /// Most `WWW-Authenticate` headers kept of one answer, and the longest. An NTLM challenge (#252)
@@ -174,6 +176,8 @@ const MAX_CHALLENGES: usize = 16;
 const MAX_CHALLENGE: usize = 24 * 1024;
 /// The longest `X-EWS-Policy-Reason` kept.
 const MAX_REASON: usize = 1_024;
+/// The longest `ETag` kept: a quoted tag or a weak one, well under this.
+const MAX_ETAG: usize = 256;
 
 /// `text` as one piece of a URL or a form: everything but letters, digits and `-._~` as `%XX`.
 pub(crate) fn encode(text: &str) -> String {
@@ -641,6 +645,7 @@ struct Head {
     location: Option<String>,
     challenges: Vec<String>,
     policy_reason: Option<String>,
+    etag: Option<String>,
     content_range: Option<String>,
     /// The server closes the connection after this answer: it said so, it speaks HTTP/1.0, or
     /// the way the body ends is not one that leaves the connection fit for more (a coding
@@ -698,6 +703,7 @@ pub(crate) fn read_reply_kept<R: Read>(stream: &mut R, started: Instant, patienc
         location: head.location,
         challenges: head.challenges,
         policy_reason: head.policy_reason,
+        etag: head.etag,
     };
     Ok((reply, reusable))
 }
@@ -746,6 +752,8 @@ fn read_head<R: Read>(reader: &mut Reader<'_, R>) -> Result<Head, NetError> {
             }
         } else if name.eq_ignore_ascii_case("x-ews-policy-reason") {
             head.policy_reason = Some(tidy(value).chars().take(MAX_REASON).collect());
+        } else if name.eq_ignore_ascii_case("etag") {
+            head.etag = Some(tidy(value).chars().take(MAX_ETAG).collect());
         } else if name.eq_ignore_ascii_case("content-range") {
             head.content_range = Some(value.to_string());
         }

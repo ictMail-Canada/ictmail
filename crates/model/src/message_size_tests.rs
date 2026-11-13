@@ -56,7 +56,7 @@ fn a_message_too_large_to_download_has_its_size_on_the_server() {
     // A sender's header saying otherwise changes nothing.
     assert_eq!(Message { headers: header(NOT_DOWNLOADED, "1"), ..too_large.clone() }.list_size(), Some(62_914_560));
     // Only the header (a sender's, or one a file from before kept): no size.
-    for name in [NOT_DOWNLOADED, "x-mailcraft-not-downloaded"] {
+    for name in [NOT_DOWNLOADED, "x-ictmail-not-downloaded"] {
         let only_header = Message { body: preview(), headers: header(name, "62914560"), ..Default::default() };
         assert_eq!(only_header.list_size(), None, "{name}");
     }

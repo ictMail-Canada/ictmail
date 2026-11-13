@@ -310,6 +310,11 @@ msgid "A calendar change couldn't be sent yet and will be tried again: {error}"
 msgstr "Een agendawijziging kan nog niet worden verzonden en wordt opnieuw geprobeerd: {error}"
 
 #. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "A certificate is trusted for this account besides the system's."
+msgstr ""
+
+#. interface
 #: crates/ui-egui/src/calendar_sync.rs
 #, fuzzy
 msgid "A change to a shared mailbox's calendar was refused: this account may not edit it. It is tried once more, and then put back."
@@ -2111,6 +2116,11 @@ msgid "Calendar and contacts need your permission: File › Info › Connect cal
 msgstr "Agenda en contactpersonen hebben uw toestemming nodig: Bestand › Info › Agenda en contactpersonen verbinden"
 
 #. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Calendars and contacts"
+msgstr ""
+
+#. interface
 #: crates/ui-egui/src/open_shared.rs
 #, fuzzy
 msgid "Calendars you opened by address need your permission to be read: open one again to be asked"
@@ -3280,6 +3290,16 @@ msgid "Cut"
 msgstr "Knippen"
 
 #. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "DAV address"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "DAV user name"
+msgstr ""
+
+#. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 #, fuzzy
 msgid "DOMAIN\\user or you@example.org; empty for your address"
@@ -4219,6 +4239,21 @@ msgstr "Map leegmaken"
 msgid "Empty Mailbox"
 msgstr "Postvak leegmaken"
 
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Empty uses {url}"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Empty: the account's user name"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Empty: the address the incoming mail server suggests"
+msgstr ""
+
 #. command label
 #: crates/engine/src/cmd/rules.rs
 #, fuzzy
@@ -4836,6 +4871,11 @@ msgstr "Vertrouwd certificaat vergeten"
 #, fuzzy
 msgid "Forget the pictures that are kept; they are downloaded again when you ask."
 msgstr "De bewaarde afbeeldingen vergeten; ze worden opnieuw gedownload wanneer u erom vraagt."
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Forget trusted certificate"
+msgstr ""
 
 #. ribbon, ribbon location
 #: crates/engine/src/cmd/format.rs crates/ui-egui/src/ribbon.rs
@@ -6431,6 +6471,11 @@ msgstr ""
 #, fuzzy
 msgid "Keeping a copy of what was sent"
 msgstr "Een kopie bewaren van wat is verzonden"
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Keeps the calendars and contacts the account's DAV server has in step both ways."
+msgstr ""
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -12454,6 +12499,11 @@ msgstr "Symbool"
 msgid "Symbols"
 msgstr "Symbolen"
 
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Sync calendars and address books (CalDAV/CardDAV)"
+msgstr ""
+
 #. interface, name
 #: crates/ui-egui/src/folder_properties.rs
 #, fuzzy
@@ -12794,6 +12844,16 @@ msgstr "De"
 #, fuzzy
 msgid "The .pst file has {what} to import; nothing was imported"
 msgstr "Het .pst-bestand heeft {what} om te importeren; er werd niets geïmporteerd"
+
+#. interface
+#: crates/ui-egui/src/calendar_sync.rs
+msgid "The DAV server's certificate isn't trusted ({fingerprint}); it can be trusted for this account in its settings"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "The DAV server's certificate isn't trusted ({fingerprint}); trust it only if you know it is the server's"
+msgstr ""
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
@@ -15151,6 +15211,11 @@ msgstr "Vertalen"
 #, fuzzy
 msgid "Trouble on that page? Sign in for mail only"
 msgstr "Problemen op die pagina? Alleen voor e-mail aanmelden"
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Trust it for this account"
+msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs

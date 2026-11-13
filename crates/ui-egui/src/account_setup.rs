@@ -403,6 +403,18 @@ impl GmailSwitches {
     }
 }
 
+/// The DAV server settings of an IMAP account's calendars and address books
+/// (CalDAV/CardDAV — SOGo on ictMail hosts): whether it has them, the address to start
+/// from (empty: the one the incoming server suggests), the name it signs in with, and the
+/// fingerprint of the one certificate trusted besides the system's.
+#[derive(Clone)]
+struct DavFields {
+    on: bool,
+    url: String,
+    username: String,
+    trusted: String,
+}
+
 /// The Add Account wizard, and Account Settings for an account that exists.
 pub struct AccountSetup {
     page: Page,
@@ -502,6 +514,9 @@ pub struct AccountSetup {
     exchange: exchange::Exchange,
     /// The settings are of an Exchange server account: where it connects is shown, not changed.
     ews: Option<mailcraft_model::EwsServer>,
+    /// The settings are of an IMAP account and the host offers DAV syncing: its CalDAV/CardDAV
+    /// server, editable here.
+    dav: Option<DavFields>,
 }
 
 impl Drop for AccountSetup {
@@ -601,6 +616,7 @@ impl AccountSetup {
             reveal: false,
             exchange: Default::default(),
             ews: None,
+            dav: None,
         }
     }
 
@@ -615,7 +631,9 @@ impl AccountSetup {
             Some(id) if p.get("page").and_then(Value::as_str) == Some("approval") => AccountSetup::approval_for(app, id),
             // The certificate of an Exchange server account's server, asked about again (#252).
             Some(id) if p.get("page").and_then(Value::as_str) == Some("certificate") => AccountSetup::review_certificate(app, id),
-            Some(id) => app.session.mailbox.account(id).filter(|a| !a.email.is_empty() && !a.is_shared()).map(AccountSetup::edit),
+            Some(id) => {
+                app.session.mailbox.account(id).filter(|a| !a.email.is_empty() && !a.is_shared()).map(|a| AccountSetup::edit(&app.services, a))
+            }
             None if p.get("page").and_then(Value::as_str) == Some("exchange")
                 && address(&line(p.get("email").and_then(Value::as_str).unwrap_or_default(), LINE)).is_some() =>
             {
@@ -642,13 +660,21 @@ impl AccountSetup {
         w
     }
 
-    fn edit(a: &Account) -> AccountSetup {
+    fn edit(services: &crate::Services, a: &Account) -> AccountSetup {
         let mut w = AccountSetup::blank(Page::Settings);
         w.email = line(&a.email, LINE);
         w.name = line(&a.display_name, LINE);
         w.username = line(&a.username, LINE);
         w.incoming = ServerFields::of(a.incoming.as_ref());
         w.outgoing = ServerFields::of(a.outgoing.as_ref());
+        if services.dav.is_some() && a.kind == AccountKind::Imap {
+            w.dav = Some(DavFields {
+                on: a.dav.is_some(),
+                url: a.dav.as_ref().map(|d| d.url.clone()).unwrap_or_default(),
+                username: a.dav.as_ref().map(|d| d.username.clone()).unwrap_or_default(),
+                trusted: a.dav.as_ref().map(|d| d.trusted.clone()).unwrap_or_default(),
+            });
+        }
         if let Some(oauth) = &a.oauth {
             w.client_id = line(&oauth.client_id, 200);
             w.tenant = line(&oauth.tenant, 64);
@@ -803,6 +829,12 @@ impl AccountSetup {
         if self.oauth.is_some() {
             m.insert("clientId".into(), json!(self.client_id.trim()));
             m.insert("tenant".into(), json!(self.tenant.trim()));
+        }
+        if let Some(dav) = &self.dav {
+            m.insert(
+                "dav".into(),
+                if dav.on { json!({"url": dav.url.trim(), "username": dav.username.trim(), "trusted": dav.trusted.trim()}) } else { Value::Null },
+            );
         }
         m
     }
@@ -1298,7 +1330,7 @@ impl AccountSetup {
         if existing.oauth.is_some()
             || !google_conversion_ready(&existing)
             || !existing.email.trim().eq_ignore_ascii_case(self.email.trim())
-            || self.edit.as_ref().is_none_or(|edit| AccountSetup::edit(&existing).fields() != edit.baseline)
+            || self.edit.as_ref().is_none_or(|edit| AccountSetup::edit(&app.services, &existing).fields() != edit.baseline)
             || tokens.email.trim().is_empty()
             || !tokens.email.trim().eq_ignore_ascii_case(existing.email.trim())
         {
@@ -1334,7 +1366,7 @@ impl AccountSetup {
                 && account.email.trim().eq_ignore_ascii_case(self.email.trim())
                 && !tokens.email.trim().is_empty()
                 && tokens.email.trim().eq_ignore_ascii_case(account.email.trim())
-                && self.edit.as_ref().is_some_and(|edit| AccountSetup::edit(account).fields() == edit.baseline)
+                && self.edit.as_ref().is_some_and(|edit| AccountSetup::edit(&app.services, account).fields() == edit.baseline)
         });
         if !valid {
             self.oauth = app.session.mailbox.account(id).and_then(|account| account.oauth.clone());
@@ -2117,6 +2149,7 @@ impl AccountSetup {
                 self.exchange_settings(ui, &t, server.as_ref());
             } else if !self.graph {
                 self.settings(ui, pass);
+                self.dav_settings(ui, pass, app);
             }
             if let Some(oauth) = &self.oauth {
                 field(ui, pass, "clientId", tl!("Application (client) ID"), &mut self.client_id, tl!("The one in File › Options"), 200);
@@ -2219,6 +2252,66 @@ impl AccountSetup {
         field(ui, pass, "username", tl!("User name"), &mut self.username, tl!("Usually the whole address"), LINE);
         server_row(ui, pass, tl!("Incoming mail (IMAP)"), "incoming", &mut self.incoming, "imap.example.org", (993, 143));
         server_row(ui, pass, tl!("Outgoing mail (SMTP)"), "outgoing", &mut self.outgoing, "smtp.example.org", (465, 587));
+    }
+
+    /// The DAV server settings of an IMAP account's calendars and address books — where the
+    /// host offers DAV syncing: a switch for them, the address to start from (empty: the one
+    /// the incoming server suggests, shown as the hint), the name it signs in with, and trust
+    /// for the one certificate the owner chose besides the system's. Shown only for an account
+    /// that exists.
+    fn dav_settings(&mut self, ui: &mut Ui, pass: &mut Pass, app: &MailApp) {
+        if self.dav.is_none() || self.edit.is_none() {
+            return;
+        }
+        let t = pass.t;
+        // What the fields are peopled with is worked out before the fields are borrowed.
+        let suggested = self.edit.as_ref().and_then(|edit| app.session.mailbox.account(edit.id)).and_then(mailcraft_model::dav::DavServer::suggested);
+        let pending = self.edit.as_ref().and_then(|edit| app.calendar.dav_untrusted(edit.id).map(str::to_string));
+        caption(ui, tl!("Calendars and contacts"), &t);
+        let Some(dav) = self.dav.as_mut() else { return };
+        ui.checkbox(&mut dav.on, tl!("Sync calendars and address books (CalDAV/CardDAV)"))
+            .on_hover_text(tl!("Keeps the calendars and contacts the account's DAV server has in step both ways."));
+        if !dav.on {
+            return;
+        }
+        indented(ui, |ui| {
+            let hint = match &suggested {
+                Some(url) => fmt(tl!("Empty uses {url}"), &[("url", url)]),
+                None => tl!("Empty: the address the incoming mail server suggests").to_string(),
+            };
+            field(ui, pass, "davUrl", tl!("DAV address"), &mut dav.url, &hint, 2_000);
+            field(
+                ui,
+                pass,
+                "davUser",
+                tl!("DAV user name"),
+                &mut dav.username,
+                tl!("Empty: the account's user name"),
+                mailcraft_model::dav::DavServer::MAX_USERNAME,
+            );
+            if let Some(fingerprint) = &pending
+                && !fingerprint.is_empty()
+                && dav.trusted.trim() != fingerprint
+            {
+                note(
+                    ui,
+                    &fmt(
+                        tl!("The DAV server's certificate isn't trusted ({fingerprint}); trust it only if you know it is the server's"),
+                        &[("fingerprint", fingerprint)],
+                    ),
+                    t.orange,
+                );
+                if button(ui, tl!("Trust it for this account"), false, true).clicked() {
+                    dav.trusted = fingerprint.clone();
+                }
+            }
+            if !dav.trusted.trim().is_empty() {
+                note(ui, tl!("A certificate is trusted for this account besides the system's."), t.text_dim);
+                if button(ui, tl!("Forget trusted certificate"), false, true).clicked() {
+                    dav.trusted.clear();
+                }
+            }
+        });
     }
 }
 
@@ -3599,8 +3692,10 @@ mod tests {
                     if page_in_view == Page::Settings {
                         if !hostile {
                             let local = Server { host: "localhost".into(), port: 1143, security: Security::None };
-                            *w =
-                                AccountSetup::edit(&Account { id: 1, email: "noor@example.org".into(), incoming: Some(local), ..Default::default() });
+                            *w = AccountSetup::edit(
+                                &Services::default(),
+                                &Account { id: 1, email: "noor@example.org".into(), incoming: Some(local), ..Default::default() },
+                            );
                         }
                         drop((lookup, check));
                     } else {

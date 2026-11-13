@@ -14,8 +14,8 @@ use mailcraft_model::sync::{
     RemoteOp, SyncRequest, SyncResult, SyncStage, summary_line_in,
 };
 use mailcraft_model::{
-    Account, AccountKind, Directory, EwsServer, FlagStatus, Folder, FolderKind, Id, JmapServer, MailIdentity, Mailbox, Message, OAuth, OAuthProvider,
-    Pending, Queued, Rgb, Security, Server, clean_name,
+    Account, AccountKind, DavServer, Directory, EwsServer, FlagStatus, Folder, FolderKind, Id, JmapServer, MailIdentity, Mailbox, Message, OAuth,
+    OAuthProvider, Pending, Queued, Rgb, Security, Server, clean_name,
 };
 use serde_json::{Value, json};
 
@@ -44,7 +44,7 @@ pub fn specs() -> Vec<CommandSpec> {
     ]
 }
 
-const ACCOUNT: &str = r##"{"email": string, "displayName"?: string, "name"?: string, "username"?: string, "incoming"?: {"host": string, "port"?: number, "security"?: "tls"|"starttls"|"none"} | null, "outgoing"?: same | null, "auth"?: "password"|"oauth2" (oauth2: sign in on the provider's page), "provider"?: "microsoft"|"google", "clientId"?: string, "tenant"?: string, "directory"?: "organisation"|"personal" (which kind of Microsoft account signs in, when the sign-in said), "kind"?: "imap"|"local"|"microsoft"|"jmap"|"exchange" (microsoft: kept in step through Microsoft Graph, no mail servers; jmap: kept in step over JMAP, no mail servers; exchange: an Exchange server account, kept in step through Exchange Web Services, no mail servers), "ews"?: {"url": string (the https:// address of the server's Exchange Web Services, `…/EWS/Exchange.asmx`), "username"?: string (DOMAIN\user or a UPN; default the e-mail address), "trusted"?: string (the SHA-256 fingerprint of the one certificate trusted for this account besides the system's)} (an Exchange server account's server; the password is never a setting), "jmap"?: {"session": string (the https:// address of the server's JMAP session resource), "bearer"?: bool (the secret is a bearer token, not the account's password)} (a JMAP account's server; the secret is never a setting), "color"?: "#RRGGBB" | null (the account's colour: a dot by its name in the folder pane and a stripe on its mail in a list of more than one account's; a new account is given one of the palette's that no other has unless this says, null for none)}"##;
+const ACCOUNT: &str = r##"{"email": string, "displayName"?: string, "name"?: string, "username"?: string, "incoming"?: {"host": string, "port"?: number, "security"?: "tls"|"starttls"|"none"} | null, "outgoing"?: same | null, "auth"?: "password"|"oauth2" (oauth2: sign in on the provider's page), "provider"?: "microsoft"|"google", "clientId"?: string, "tenant"?: string, "directory"?: "organisation"|"personal" (which kind of Microsoft account signs in, when the sign-in said), "kind"?: "imap"|"local"|"microsoft"|"jmap"|"exchange" (microsoft: kept in step through Microsoft Graph, no mail servers; jmap: kept in step over JMAP, no mail servers; exchange: an Exchange server account, kept in step through Exchange Web Services, no mail servers), "ews"?: {"url": string (the https:// address of the server's Exchange Web Services, `…/EWS/Exchange.asmx`), "username"?: string (DOMAIN\user or a UPN; default the e-mail address), "trusted"?: string (the SHA-256 fingerprint of the one certificate trusted for this account besides the system's)} (an Exchange server account's server; the password is never a setting), "jmap"?: {"session": string (the https:// address of the server's JMAP session resource), "bearer"?: bool (the secret is a bearer token, not the account's password)} (a JMAP account's server; the secret is never a setting), "dav"?: {"url"?: string (the https:// DAV address to start from; empty or absent: the address the incoming server suggests, `https://<host>/SOGo/dav/<user>/` for SOGo), "username"?: string (the name the DAV server signs in with; default the account's), "trusted"?: string (the SHA-256 fingerprint of the one certificate trusted for this account besides the system's)} | null (an IMAP account's CalDAV/CardDAV server for its calendars and address books; the password is never a setting; null turns it off), "color"?: "#RRGGBB" | null (the account's colour: a dot by its name in the folder pane and a stripe on its mail in a list of more than one account's; a new account is given one of the palette's that no other has unless this says, null for none)}"##;
 
 fn has_server(s: &Session) -> Option<&'static str> {
     if s.mailbox.accounts.iter().any(|a| a.kind.has_server()) {
@@ -254,7 +254,7 @@ fn apply_fields(a: &mut Account, v: &Value) -> Result<(), CmdError> {
         AccountKind::Microsoft => {
             // Graph and nothing else: no mail servers, and a sign-in with Microsoft.
             a.kind = AccountKind::Microsoft;
-            (a.incoming, a.outgoing, a.jmap, a.ews) = (None, None, None, None);
+            (a.incoming, a.outgoing, a.jmap, a.ews, a.dav) = (None, None, None, None, None);
             let o = a.oauth.get_or_insert_with(OAuth::default);
             o.provider = OAuthProvider::Microsoft;
         }
@@ -263,7 +263,7 @@ fn apply_fields(a: &mut Account, v: &Value) -> Result<(), CmdError> {
             // server's session resource is (RFC 8620 §2) and how the secret goes.
             a.jmap = Some(jmap_server(v, a.jmap.as_ref())?);
             a.kind = AccountKind::Jmap;
-            (a.incoming, a.outgoing, a.oauth, a.ews) = (None, None, None, None);
+            (a.incoming, a.outgoing, a.oauth, a.ews, a.dav) = (None, None, None, None, None);
         }
         AccountKind::Exchange => {
             // Exchange Web Services and nothing else (#252): no mail servers and no sign-in with
@@ -271,11 +271,21 @@ fn apply_fields(a: &mut Account, v: &Value) -> Result<(), CmdError> {
             // server's services are and who signs in.
             a.ews = Some(ews_server(v, a.ews.as_ref())?);
             a.kind = AccountKind::Exchange;
-            (a.incoming, a.outgoing, a.oauth, a.jmap) = (None, None, None, None);
+            (a.incoming, a.outgoing, a.oauth, a.jmap, a.dav) = (None, None, None, None, None);
         }
         _ => {
             a.kind = if a.incoming.is_some() || a.outgoing.is_some() { AccountKind::Imap } else { AccountKind::Local };
             (a.jmap, a.ews) = (None, None);
+            // DAV is an IMAP account's calendars and address books beside its mail: `null` turns
+            // it off, an object sets it (an empty one means the address the incoming server
+            // suggests), not saying keeps what it has, and no other kind of account has one.
+            match v.get("dav") {
+                Some(Value::Null) => a.dav = None,
+                Some(_) if a.kind == AccountKind::Imap => a.dav = Some(dav_server(v, a.dav.as_ref())?),
+                Some(_) => a.dav = None,
+                None if a.kind != AccountKind::Imap => a.dav = None,
+                None => {}
+            }
         }
     }
     if a.name.is_empty() {
@@ -348,6 +358,42 @@ fn ews_server(v: &Value, before: Option<&EwsServer>) -> Result<EwsServer, CmdErr
             "trusted"
         };
         return Err(bad(format!("`ews.{word}` {why}")));
+    }
+    Ok(server)
+}
+
+/// An IMAP account's DAV server from `dav` in a command's params, over `before` (what it has,
+/// when it has one): `url` (empty or absent: the address the incoming server suggests), the
+/// `username` it signs in with and `trusted`, the fingerprint of the one certificate trusted
+/// besides the system's. What is given must be what the model takes ([`DavServer::problem`]);
+/// nothing is sent to it.
+fn dav_server(v: &Value, before: Option<&DavServer>) -> Result<DavServer, CmdError> {
+    let mut server = before.cloned().unwrap_or_default();
+    let mut given = false;
+    match v.get("dav") {
+        None => {}
+        Some(settings @ Value::Object(_)) => {
+            for (key, field) in [("url", &mut server.url), ("username", &mut server.username), ("trusted", &mut server.trusted)] {
+                match settings.get(key) {
+                    None => {}
+                    Some(Value::String(text)) => (*field, given) = (text.trim().to_string(), true),
+                    Some(_) => return Err(bad(format!("`dav.{key}` is a string"))),
+                }
+            }
+        }
+        Some(_) => return Err(bad("`dav` is {\"url\"?: string, \"username\"?: string, \"trusted\"?: string} or null")),
+    }
+    if (given || before.is_none())
+        && let Some(why) = server.problem()
+    {
+        let word = if !server.url.is_empty() && DavServer::check_url(&server.url).is_err() {
+            "url"
+        } else if DavServer::check_username(&server.username).is_err() {
+            "username"
+        } else {
+            "trusted"
+        };
+        return Err(bad(format!("`dav.{word}` {why}")));
     }
     Ok(server)
 }
@@ -450,6 +496,22 @@ fn jmap_shown(a: &Account) -> Option<Value> {
 fn ews_shown(a: &Account) -> Option<Value> {
     a.ews.as_ref().map(|server| {
         json!({"server": server.problem().is_none().then(|| jmap_origin(&server.url)), "username": server.username, "trustsCertificate": !server.trusted.is_empty()})
+    })
+}
+
+/// What `account.list` says of an IMAP account's DAV server: where it starts from (the address
+/// it was given, or the one its incoming server suggests) and the name it signs in with, not
+/// the rest of either.
+fn dav_shown(a: &Account) -> Option<Value> {
+    a.dav.as_ref().map(|server| {
+        let origin = if server.url.is_empty() {
+            DavServer::suggested(a).map(|url| jmap_origin(&url))
+        } else if server.problem().is_none() {
+            Some(jmap_origin(&server.url))
+        } else {
+            None
+        };
+        json!({"server": origin, "username": server.username, "trustsCertificate": !server.trusted.is_empty()})
     })
 }
 
@@ -708,7 +770,7 @@ fn list(s: &mut Session, _: &Value) -> CmdResult {
         .accounts_in_order()
         .into_iter()
         .map(|a| {
-            json!({"id": a.id, "name": a.name, "email": a.email, "displayName": a.display_name, "kind": a.kind, "username": a.username, "incoming": a.incoming, "outgoing": a.outgoing, "signature": a.signature, "replySignature": a.reply_signature(), "auth": if a.oauth.is_some() { "oauth2" } else { "password" }, "oauth": a.oauth, "downloadInFull": a.download_in_full, "keepOffline": s.mailbox.keep_offline_of(a.id), "askBeforeDeletingConversation": s.mailbox.asks_before_deleting_conversation(a.id), "gmail": a.is_gmail(), "showGmailCategories": a.shows_gmail_categories(), "alertPrimaryOnly": a.is_gmail() && a.alert_primary_only, "color": a.color.map(Rgb::hex), "sharedOf": a.shared_of, "jmap": jmap_shown(a), "ews": ews_shown(a)})
+            json!({"id": a.id, "name": a.name, "email": a.email, "displayName": a.display_name, "kind": a.kind, "username": a.username, "incoming": a.incoming, "outgoing": a.outgoing, "signature": a.signature, "replySignature": a.reply_signature(), "auth": if a.oauth.is_some() { "oauth2" } else { "password" }, "oauth": a.oauth, "downloadInFull": a.download_in_full, "keepOffline": s.mailbox.keep_offline_of(a.id), "askBeforeDeletingConversation": s.mailbox.asks_before_deleting_conversation(a.id), "gmail": a.is_gmail(), "showGmailCategories": a.shows_gmail_categories(), "alertPrimaryOnly": a.is_gmail() && a.alert_primary_only, "color": a.color.map(Rgb::hex), "sharedOf": a.shared_of, "jmap": jmap_shown(a), "ews": ews_shown(a), "dav": dav_shown(a)})
         })
         .collect();
     Ok(json!({"accounts": accounts, "signatures": s.mailbox.signatures}))

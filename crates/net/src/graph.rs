@@ -1761,6 +1761,7 @@ fn event_of(entry: &Value) -> Option<RemoteEvent> {
         online: online_meeting(entry),
         proposals: attendees.iter().take(MAX_PEOPLE).filter_map(proposal_of).collect(),
         attachments: flag("hasAttachments"),
+        exceptions: Vec::new(),
     };
     if event.kind == RemoteEventKind::SeriesMaster
         && let Some((rule, day)) = entry.get("recurrence").and_then(rule_of)

@@ -407,6 +407,13 @@ pub struct Account {
     /// there were any.
     #[serde(default, skip_serializing_if = "Option::is_none", deserialize_with = "crate::sync::lenient")]
     pub ews: Option<EwsServer>,
+    /// Where the account's CalDAV/CardDAV server is, for the calendars and address books it
+    /// keeps beside its mail ([`crate::dav::DavServer`]): its address (or the one its incoming
+    /// server suggests), the name it signs in with and the certificate it trusts. Plain
+    /// settings: the password is never kept here. `None` for every other account, and in a
+    /// file from before there were any.
+    #[serde(default, skip_serializing_if = "Option::is_none", deserialize_with = "crate::sync::lenient")]
+    pub dav: Option<crate::dav::DavServer>,
     /// Delete on a whole conversation of more than one message goes ahead without asking first
     /// (#503): the owner ticked Don't ask again, or cleared the switch in Account Settings. Off
     /// for a new account and in a file from before there was one: the question is asked. A
@@ -1152,6 +1159,12 @@ pub struct Mailbox {
     /// a server's list has been taken in.
     #[serde(skip_serializing_if = "Vec::is_empty", deserialize_with = "crate::sync::lenient_list")]
     pub favorites_from_server: Vec<ServerFavorites>,
+    /// What each account's DAV server last said about its calendar and address book collections,
+    /// and the sync-token each has been synced to ([`crate::dav::DavSync`]): what the next sync
+    /// asks for, so it brings only what changed. Nothing for an account without DAV settings,
+    /// and in a file from before there was any.
+    #[serde(skip_serializing_if = "BTreeMap::is_empty", deserialize_with = "crate::load_limit::capped_map")]
+    pub dav_sync: BTreeMap<Id, crate::dav::DavSync>,
     /// Changes to what a Microsoft account's server has that its next run is to tell it and that
     /// can't be worked out by comparing ([`Queued`]), oldest first.
     #[serde(skip_serializing_if = "Vec::is_empty", deserialize_with = "crate::sync::lenient_list")]
@@ -1226,6 +1239,7 @@ impl Default for Mailbox {
             task_place: None,
             event_checks: Vec::new(),
             favorites_from_server: Vec::new(),
+            dav_sync: BTreeMap::new(),
             queued: Vec::new(),
             account_categories: BTreeMap::new(),
             server_categories: BTreeMap::new(),

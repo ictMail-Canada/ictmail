@@ -28,6 +28,8 @@ pub mod compose;
 mod compose_trust_tests;
 #[cfg(test)]
 mod conversation_thread_tests;
+#[cfg(test)]
+mod dav_account_tests;
 pub mod edit;
 mod ews_down;
 pub mod ews_mail;

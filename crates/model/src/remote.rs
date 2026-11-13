@@ -21,11 +21,13 @@ use crate::{
 /// Most events and most contacts one download is taken to hold; what is beyond is left out.
 pub const MAX_EVENTS: usize = 20_000;
 pub const MAX_CONTACTS: usize = 20_000;
+/// Most days a series may be said to skip ([`RemoteEvent::exceptions`]).
+const MAX_SKIPPED: usize = 5_000;
 /// Longest id or change key a server may give an item. A longer one is no id at all: cut short,
 /// two items could end up with the same.
 pub const MAX_KEY: usize = 1_024;
 /// Longest title, place or name, and longest description or note.
-const MAX_LINE: usize = 500;
+pub(crate) const MAX_LINE: usize = 500;
 const MAX_TEXT: usize = 100_000;
 /// Most people in one event, and most addresses, numbers and the like of one contact.
 const MAX_ATTENDEES: usize = 500;
@@ -204,6 +206,11 @@ pub struct RemoteEvent {
     /// day of the first occurrence there, which may be the day before or after it here.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub series_day: Option<Date>,
+    /// For a series: the days its rule names that don't happen (the iCalendar `EXDATE`s), as the
+    /// server's copy has them. A download of occurrences says the same by leaving them out; this
+    /// is for a server that keeps a series as one document, as a DAV one does.
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub exceptions: Vec<Date>,
     /// For an occurrence or an exception: when the series has it (Unix seconds), whenever it
     /// happens now.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -262,6 +269,13 @@ impl RemoteEvent {
         self.end_zone = line(&self.end_zone, crate::zoned::MAX_ZONE);
         self.recurrence = self.recurrence.take().map(tidy_rule);
         self.series_day = self.series_day.and_then(|day| Date::new(day.year, day.month, day.day));
+        self.exceptions = {
+            let mut days: Vec<Date> = self.exceptions.iter().copied().filter_map(|day| Date::new(day.year, day.month, day.day)).collect();
+            days.sort();
+            days.dedup();
+            days.truncate(MAX_SKIPPED);
+            days
+        };
         self.categories = names(std::mem::take(&mut self.categories));
         // A link to join by is an `https` address or it is none.
         self.online = self.online.take().map(OnlineMeeting::tidied);

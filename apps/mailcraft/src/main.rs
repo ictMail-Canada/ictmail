@@ -35,6 +35,7 @@ mod clipboard;
 #[cfg(test)]
 mod control_challenge_flow;
 mod control_server;
+mod dav_runner;
 #[cfg(any(target_os = "linux", target_os = "freebsd", target_os = "openbsd", target_os = "netbsd", target_os = "dragonfly"))]
 mod desktop_icons;
 #[cfg(any(target_os = "linux", target_os = "freebsd", target_os = "openbsd", target_os = "netbsd", target_os = "dragonfly"))]
@@ -1214,7 +1215,8 @@ fn graph_sending_with(mut request: GraphRequest, zone: &str, renew: Renew<'_>, r
         out.uploaded = Some(uploaded);
     }
     // The wide stretch with the contacts, every quarter of an hour; otherwise the days on screen.
-    let now = mailcraft_time::now();
+    // Counted from the session's own clock, which the window keeps even when it is pinned.
+    let now = request.now;
     let stretch = if request.directory { Some((now - CALENDAR_BEHIND, now + CALENDAR_AHEAD)) } else { request.calendar };
     // A shared mailbox's calendars (#70): asked for and written at its own address, and only
     // those that are ticked are asked for (the window says which, in the asks); no contacts,
@@ -1594,7 +1596,7 @@ fn check_calendar_in(request: CalendarCheckRequest, zone: &str, offset_at: &dyn 
             }
         }
     }
-    let check = graph::check_calendar(&access, mailcraft_time::now(), zone, offset_at);
+    let check = graph::check_calendar(&access, request.now, zone, offset_at);
     (out.ok, out.cleaned_up, out.token_refused) = (check.ok(), check.cleaned_up, check.token_refused);
     out.steps = check
         .steps
@@ -1716,7 +1718,7 @@ fn services(
     let alert_ctx = ctx.clone();
     let (keys_ctx, keys_store) = (ctx.clone(), secrets::store());
     let attachment_preview = attachment_render::service(&ctx);
-    let (sync_ctx, sign_in_ctx, graph_ctx, mx_ctx, test_ctx) = (ctx.clone(), ctx.clone(), ctx.clone(), ctx.clone(), ctx);
+    let (sync_ctx, sign_in_ctx, graph_ctx, mx_ctx, test_ctx, dav_ctx) = (ctx.clone(), ctx.clone(), ctx.clone(), ctx.clone(), ctx.clone(), ctx);
     let sync_cancel = std::sync::Arc::new(std::sync::atomic::AtomicBool::new(false));
     let cancel = sync_cancel.clone();
     Services {
@@ -1749,6 +1751,36 @@ fn services(
             background(&sign_in_ctx, "sign-in", move || sign_in(&ctx, request))
         })),
         graph: Some(Box::new(move |request| background(&graph_ctx, "microsoft graph", move || graph(request)))),
+        // An IMAP account's CalDAV/CardDAV server (ictMail's SOGo and the rest): its calendars
+        // and address books in step, where the install offers DAV syncing (`install::dav_sync`).
+        dav: install::dav_sync().then(|| {
+            Box::new(move |request: mailcraft_ui_egui::DavRequest| {
+                background(&dav_ctx, "dav sync", move || {
+                    let ran = dav_runner::run(dav_runner::DavJob {
+                        account: request.account,
+                        password: request.password,
+                        zone: request.zone,
+                        now: request.now,
+                        asks: request.asks,
+                        contacts: request.contacts,
+                        changes: request.changes,
+                        sync: request.sync,
+                        cancel: request.cancel,
+                    });
+                    mailcraft_ui_egui::DavResult {
+                        account: ran.account,
+                        sync: ran.sync,
+                        calendars: ran.calendars,
+                        events: ran.events,
+                        contacts: ran.contacts,
+                        uploaded: ran.uploaded,
+                        auth_refused: ran.auth_refused,
+                        untrusted: ran.untrusted,
+                        errors: ran.errors,
+                    }
+                })
+            }) as Box<dyn Fn(mailcraft_ui_egui::DavRequest) -> std::sync::mpsc::Receiver<mailcraft_ui_egui::DavResult>>
+        }),
         // Messages of a Microsoft account fetched whole, a few at a time (R3.2).
         graph_fetch: Some(Box::new(move |job: mailcraft_ui_egui::graph_fetch::GraphFetchJob| {
             background(&fetch_ctx, "message download", move || mailcraft_net::graph::fetch_messages(&job.access, &job.request, &job.cancel))

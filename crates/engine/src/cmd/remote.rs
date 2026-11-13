@@ -467,7 +467,11 @@ pub fn seen_by_others(fields: &EventFields) -> bool {
 
 /// Make `event` as a server was told it is: the fields that were sent, with times as they read
 /// here.
-fn put_fields(event: &mut Event, fields: &EventFields, offset_at: &dyn Fn(Timestamp) -> i32) {
+/// What a server is told of an event, said back onto the event itself: the fields of an
+/// [`EventOp`] laid over the copy the server has (or a new one), for a host that writes the
+/// event whole — as a DAV `.ics` does — rather than sending the fields alone. Public for the
+/// DAV runner, which keeps events as iCalendar documents.
+pub fn put_fields(event: &mut Event, fields: &EventFields, offset_at: &dyn Fn(Timestamp) -> i32) {
     if let Some(title) = &fields.title {
         event.title = title.clone();
     }
@@ -3263,6 +3267,15 @@ pub fn merge_events(mailbox: &mut Mailbox, download: &EventsDownload, offset_at:
         let before = old.as_ref().map(|old| old.exceptions.clone()).unwrap_or_default();
         let on = days.get(name).unwrap_or(&no_days);
         fresh.exceptions = skipped_days(&fresh, &before, download, on, own.get(name), loose.get(name), waiting_days.get(name), offset_at);
+        // The days the server's own copy of the series says don't happen: a DAV server keeps a
+        // series as one document, its EXDATEs with it, where a download of occurrences says the
+        // same by leaving them out.
+        if let Some(master) = series.iter().find(|master| master.id == *name) {
+            fresh.exceptions.extend(master.exceptions.iter().copied());
+            fresh.exceptions.sort();
+            fresh.exceptions.dedup();
+            fresh.exceptions.truncate(MAX_SKIPPED);
+        }
         match old {
             Some(old) => {
                 fresh.id = old.id;

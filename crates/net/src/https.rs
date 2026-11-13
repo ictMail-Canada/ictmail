@@ -75,6 +75,8 @@ pub struct Response {
     pub retry_after: Option<String>,
     /// `X-EWS-Policy-Reason`.
     pub policy_reason: Option<String>,
+    /// `ETag`, as the server wrote it: the version mark a DAV resource is guarded by.
+    pub etag: Option<String>,
 }
 
 impl std::fmt::Debug for Response {
@@ -225,6 +227,7 @@ fn response(reply: http::Reply) -> Response {
         challenges: reply.challenges,
         retry_after: reply.retry_after,
         policy_reason: reply.policy_reason,
+        etag: reply.etag,
     }
 }
 

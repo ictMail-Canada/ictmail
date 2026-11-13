@@ -297,6 +297,10 @@ pub struct Services {
     /// background thread: send the Outbox (no "authenticated SMTP" switch stands in its way) and
     /// bring the calendar and the contacts down. Absent in the browser.
     pub graph: Option<Box<dyn Fn(GraphRequest) -> Receiver<GraphResult>>>,
+    /// Desktop: keep an IMAP account's CalDAV/CardDAV calendars and address books in step, on a
+    /// background thread, as a [`DavRequest`] says. Present only where the host has a runner and
+    /// the install offers DAV syncing; absent, an IMAP account's `dav` settings sync nothing.
+    pub dav: Option<Box<dyn Fn(DavRequest) -> Receiver<DavResult>>>,
     /// Desktop: fetch messages of a Microsoft account whole on a background thread (R3.2).
     pub graph_fetch: Option<Box<dyn Fn(graph_fetch::GraphFetchJob) -> Receiver<mailcraft_model::sync::GraphFetchResult>>>,
     /// Desktop: search a Microsoft mailbox on its server, one page, on a background thread
@@ -741,6 +745,9 @@ pub struct CalendarCheckRequest {
     pub refresh: String,
     /// A Graph access token from earlier in this session that is still good; else empty.
     pub access: String,
+    /// This run's time (Unix seconds): what "a year from today" is counted from, so it is the
+    /// session's own clock and not the wall's.
+    pub now: i64,
 }
 
 /// One step of a calendar connection check, as the host reports it.
@@ -792,6 +799,9 @@ pub struct GraphRequest {
     /// A stretch of the calendar to bring down when `directory` isn't asked for (Unix seconds,
     /// from and up to): the days on screen, for a refresh that costs one question.
     pub calendar: Option<(i64, i64)>,
+    /// This run's time (Unix seconds): what the wide stretch a directory job asks for is
+    /// counted from, so it is the session's own clock and not the wall's.
+    pub now: i64,
     /// What was made, changed or deleted in the calendar here, for the server to be told before
     /// the calendar is brought down.
     pub changes: Option<mailcraft_model::remote::EventsUpload>,
@@ -876,6 +886,54 @@ pub struct GraphResult {
     pub favorites_covered: Option<bool>,
     /// What the folders came to, when [`GraphRequest::mail`] asked.
     pub mail: Option<mailcraft_model::sync::GraphMailResult>,
+}
+
+/// What the host is asked to do with an IMAP account's CalDAV/CardDAV server
+/// ([`Services::dav`]): the calendars and address books it keeps, in step — the same job a
+/// [`GraphRequest`] is for a Microsoft account, for a server that takes the account's own
+/// password rather than OAuth.
+pub struct DavRequest {
+    /// The IMAP account the DAV settings belong to.
+    pub account: mailcraft_model::Account,
+    /// The account's password (the one its IMAP connection uses); never logged.
+    pub password: String,
+    /// The zone the calendar is shown in.
+    pub zone: mailcraft_time::Zone,
+    /// This run's time (Unix seconds), for the `DTSTAMP` a written document carries.
+    pub now: mailcraft_time::Timestamp,
+    /// The calendars asked for this run; empty asks for every discovered one.
+    pub asks: Vec<mailcraft_model::remote::CalendarAsk>,
+    /// Also bring the address books down.
+    pub contacts: bool,
+    /// What was made, changed or deleted here, for the server to be told first.
+    pub changes: Option<mailcraft_model::remote::EventsUpload>,
+    /// The sync state the mailbox last kept for the account.
+    pub sync: mailcraft_model::dav::DavSync,
+    /// Set when the owner stops the run: it stops after the exchange in hand.
+    pub cancel: std::sync::Arc<std::sync::atomic::AtomicBool>,
+}
+
+/// What a [`DavRequest`] came to. Never an error as a whole.
+#[derive(Default)]
+pub struct DavResult {
+    pub account: Id,
+    /// The collections and tokens to keep for the next run.
+    pub sync: mailcraft_model::dav::DavSync,
+    /// The calendars the server lists, when discovery answered.
+    pub calendars: Option<mailcraft_model::remote::CalendarsDownload>,
+    /// One download per calendar collection synced this run.
+    pub events: Vec<mailcraft_model::remote::EventsDownload>,
+    /// The address books' contacts, when they were asked for and read.
+    pub contacts: Option<mailcraft_model::remote::ContactsDownload>,
+    /// What the server made of the changes it was told.
+    pub uploaded: Option<mailcraft_model::remote::EventsUploaded>,
+    /// The sign-in was refused (401/403): the password is wrong or was taken back.
+    pub auth_refused: bool,
+    /// A certificate the system doesn't trust and the account doesn't either: its SHA-256
+    /// fingerprint, for the owner to be asked about (`DavServer::trusted`).
+    pub untrusted: Option<String>,
+    /// What went wrong, in a few plain words.
+    pub errors: Vec<String>,
 }
 
 /// A sign-in the host is busy with.
@@ -3419,6 +3477,7 @@ impl MailApp {
                     outbox: request.outbox.clone(),
                     directory: false,
                     calendar: None,
+                    now: self.session.now(),
                     changes: None,
                     asks: Vec::new(),
                     // (The calendar's own job asks for these: [`calendar_sync`].)
@@ -3521,6 +3580,7 @@ impl MailApp {
             // never hold up the next mailbox's mail ([`calendar_sync`], #276).
             directory: false,
             calendar: None,
+            now: self.session.now(),
             changes: None,
             asks: Vec::new(),
             settings: false,
@@ -4730,6 +4790,7 @@ impl MailApp {
             ctx.request_repaint_after(std::time::Duration::from_millis(150));
         }
         self.poll_calendar();
+        self.poll_dav();
         self.poll_tasks();
         self.poll_rules();
         self.poll_auto_replies();

@@ -39,7 +39,7 @@ use mailcraft_model::sync::Tokens;
 use mailcraft_time::{DateTime, Timestamp};
 use serde_json::{Value, json};
 
-use crate::{CalendarCheckRequest, CalendarCheckResult, GraphRequest, GraphResult, MailApp, now_ms};
+use crate::{CalendarCheckRequest, CalendarCheckResult, DavRequest, DavResult, GraphRequest, GraphResult, MailApp, now_ms};
 
 /// How often the calendar is asked for while it is in front of the owner, and otherwise
 /// (milliseconds).
@@ -86,6 +86,11 @@ pub(crate) struct CalendarSync {
     /// The job in flight: the account, whether it carried changes, when it started
     /// (milliseconds), and the answer to come.
     pub(crate) rx: Option<(Id, bool, f64, u64, Receiver<GraphResult>)>,
+    /// The same for an IMAP account's CalDAV/CardDAV job ([`DavRequest`]).
+    pub(crate) dav_rx: Option<(Id, bool, f64, u64, Receiver<DavResult>)>,
+    /// The fingerprint of the certificate a DAV server showed that the system doesn't trust,
+    /// from the account's last run: its settings offer to trust it for that account.
+    pub(crate) dav_untrusted: Option<(Id, String)>,
     /// When each account's calendar was last asked for (milliseconds).
     pub(crate) checked: HashMap<Id, f64>,
     /// How many jobs in a row came to nothing for an account, and when the last one did.
@@ -132,10 +137,17 @@ pub(crate) struct CalendarSync {
 }
 
 impl CalendarSync {
+    /// The fingerprint of the certificate `account`'s DAV server showed that the system
+    /// doesn't trust, from its last run.
+    pub(crate) fn dav_untrusted(&self, account: Id) -> Option<&str> {
+        self.dav_untrusted.as_ref().and_then(|(id, fingerprint)| (*id == account).then_some(fingerprint.as_str()))
+    }
+
     /// Another mailbox took the place of the open one: the job and the check in flight are let
     /// go of (AU3-V8).
     pub(crate) fn forget_jobs(&mut self) {
-        (self.rx, self.check_rx, self.directory) = (None, None, false);
+        (self.rx, self.dav_rx, self.check_rx, self.directory) = (None, None, None, false);
+        self.dav_untrusted = None;
         self.by_hand.clear();
     }
 }
@@ -143,17 +155,17 @@ impl CalendarSync {
 impl MailApp {
     /// Whether a calendar job is in flight.
     pub fn calendar_syncing(&self) -> bool {
-        self.calendar.rx.is_some()
+        self.calendar.rx.is_some() || self.calendar.dav_rx.is_some()
     }
 
     /// Look whether the calendar is due, and start a job when it is. Called every frame.
     pub(crate) fn calendar_tick(&mut self, ctx: &egui::Context) {
         let focused = ctx.input(|i| i.focused);
         self.calendar_tick_at(focused, now_ms());
-        if self.services.graph.is_none() || !self.auto_sync {
+        if (self.services.graph.is_none() && self.services.dav.is_none()) || !self.auto_sync {
             return;
         }
-        if self.calendar.rx.is_some() {
+        if self.calendar.rx.is_some() || self.calendar.dav_rx.is_some() {
             // An answer is on its way (the host wakes the window when it is there, too).
             ctx.request_repaint_after(std::time::Duration::from_millis(250));
         } else if !self.calendar_accounts().is_empty() {
@@ -168,6 +180,7 @@ impl MailApp {
     pub(crate) fn calendar_job_for(&self, account: Id) -> bool {
         let owner = self.session.mailbox.owner_of(account).map_or(account, |owner| owner.id);
         self.calendar.rx.as_ref().is_some_and(|(busy, ..)| *busy == owner || *busy == account)
+            || self.calendar.dav_rx.as_ref().is_some_and(|(busy, ..)| *busy == owner || *busy == account)
     }
 
     /// A Send/Receive the owner asked for was started for `account`: its calendar and contacts
@@ -180,11 +193,20 @@ impl MailApp {
     }
 
     /// The accounts whose calendar is kept in step now: those whose calendar a Microsoft server
-    /// keeps, and the shared mailboxes with a calendar ticked (#70).
+    /// keeps, the shared mailboxes with a calendar ticked (#70), and the IMAP accounts whose
+    /// DAV settings name a server (where the host has a DAV runner).
     fn calendar_accounts(&self) -> Vec<Id> {
         let mut accounts = self.microsoft_accounts();
         accounts.extend(self.shared_calendar_accounts());
+        if self.services.dav.is_some() {
+            accounts.extend(self.dav_accounts());
+        }
         accounts
+    }
+
+    /// The IMAP accounts whose `dav` settings name a CalDAV/CardDAV server.
+    fn dav_accounts(&self) -> Vec<Id> {
+        self.session.mailbox.accounts.iter().filter(|a| a.kind == mailcraft_model::AccountKind::Imap && a.dav.is_some()).map(|a| a.id).collect()
     }
 
     /// The accounts whose calendar a Microsoft server keeps.
@@ -207,11 +229,16 @@ impl MailApp {
         if came_back && focused && in_front {
             self.calendar.due = true;
         }
-        if !self.auto_sync || self.services.graph.is_none() {
+        if !self.auto_sync || (self.services.graph.is_none() && self.services.dav.is_none()) {
             return false;
         }
         // One at a time; and a Send/Receive that is about to ask Graph, or is asking, goes first.
-        if self.calendar.rx.is_some() || self.graph_rx.is_some() || self.sync_rx.is_some() || self.signing_in.is_some() || !self.sync_queue.is_empty()
+        if self.calendar.rx.is_some()
+            || self.calendar.dav_rx.is_some()
+            || self.graph_rx.is_some()
+            || self.sync_rx.is_some()
+            || self.signing_in.is_some()
+            || !self.sync_queue.is_empty()
         {
             return false;
         }
@@ -334,7 +361,12 @@ impl MailApp {
     /// (that goes first, in a job of its own). The answer is taken in like any other
     /// ([`poll_calendar`](Self::poll_calendar)). Why not, when it can't be asked now.
     pub(crate) fn calendar_job_around(&mut self, account: Id, day: mailcraft_time::Date) -> Result<(), String> {
-        if self.services.graph.is_none() {
+        let owner = self.session.mailbox.account(account).cloned();
+        if owner.as_ref().is_some_and(|a| a.kind == mailcraft_model::AccountKind::Imap && a.dav.is_some()) {
+            if self.services.dav.is_none() {
+                return Err(tl!("This build can't reach the account's calendar.").to_string());
+            }
+        } else if self.services.graph.is_none() {
             return Err(tl!("This build can't reach the account's calendar.").to_string());
         }
         let busy = self.calendar.rx.is_some() || self.graph_rx.is_some() || self.signing_in.is_some() || !self.sync_queue.is_empty();
@@ -362,6 +394,10 @@ impl MailApp {
     /// screen were last asked for (and brings no settings along).
     fn calendar_job(&mut self, account: Id, push: bool, now: f64, round: Option<(Timestamp, Timestamp)>) -> bool {
         let Some(owner) = self.session.mailbox.account(account).cloned() else { return false };
+        // An IMAP account with DAV settings is kept in step over CalDAV/CardDAV, not Graph.
+        if owner.kind == mailcraft_model::AccountKind::Imap && owner.dav.is_some() {
+            return self.dav_calendar_job(account, push, now, round);
+        }
         // A shared mailbox's calendars are read with the sign-in of the account it is opened
         // through, and with a token of their own (#70).
         let shared = owner.is_shared();
@@ -398,6 +434,7 @@ impl MailApp {
             outbox: Vec::new(),
             directory,
             calendar: Some(stretch),
+            now: self.session.now(),
             changes,
             asks: self.calendar_asks(account, directory, Some(stretch)),
             settings,
@@ -413,6 +450,54 @@ impl MailApp {
         }
         self.calendar.directory = directory;
         self.calendar.rx = Some((account, carried, now, self.session.openings(), graph(ask)));
+        if round.is_none() {
+            self.calendar.checked.insert(account, now);
+            self.calendar.shown.insert(account, self.calendar_window());
+            self.calendar.due = false;
+        }
+        true
+    }
+
+    /// Hand the host a CalDAV/CardDAV job for an IMAP account whose `dav` settings name a
+    /// server: its changes when `push`, then the days on screen and — every quarter of an hour —
+    /// the wide stretch with the address books. `false` when there is no password to sign in
+    /// with (the owner isn't asked for one here: Send/Receive does that) or no runner.
+    fn dav_calendar_job(&mut self, account: Id, push: bool, now: f64, round: Option<(Timestamp, Timestamp)>) -> bool {
+        let Some(owner) = self.session.mailbox.account(account).cloned() else { return false };
+        if owner.dav.is_none() || self.services.dav.is_none() {
+            return false;
+        }
+        let Some(password) = self.passwords.get(&account).cloned().or_else(|| self.remembered("password", account)) else {
+            return false;
+        };
+        if password.is_empty() {
+            return false;
+        }
+        let by_hand = self.calendar.by_hand.remove(&account);
+        let directory = round.is_none() && self.directory_due(account, now);
+        let changes = if push { self.calendar_changes(account) } else { None };
+        let carried = changes.is_some();
+        if let Some(changes) = &changes {
+            self.calendar.sent.insert(account, (changes.clone(), now));
+        }
+        let stretch = round.unwrap_or_else(|| self.calendar_window());
+        let ask = DavRequest {
+            account: owner,
+            password,
+            zone: self.session.zone(),
+            now: mailcraft_time::now(),
+            asks: self.calendar_asks(account, directory, Some(stretch)),
+            contacts: directory || by_hand,
+            changes,
+            sync: self.session.mailbox.dav_sync.get(&account).cloned().unwrap_or_default(),
+            cancel: Default::default(),
+        };
+        let Some(dav) = self.services.dav.as_ref().filter(|_| !self.offline()) else { return false };
+        if directory {
+            self.graph_checked.insert(account, now);
+        }
+        self.calendar.directory = directory;
+        self.calendar.dav_rx = Some((account, carried, now, self.session.openings(), dav(ask)));
         if round.is_none() {
             self.calendar.checked.insert(account, now);
             self.calendar.shown.insert(account, self.calendar_window());
@@ -503,6 +588,68 @@ impl MailApp {
         // Something went up: what the server has now is asked for again soon, should this
         // answer have been cut short.
         let went = result.uploaded.as_ref().is_some_and(|uploaded| !uploaded.outcomes.is_empty());
+        let nothing = !taken || (carried && !went);
+        match (nothing, self.calendar.failures.get(&account).copied()) {
+            (true, earlier) => {
+                self.calendar.failures.insert(account, (earlier.map_or(0, |(n, _)| n).saturating_add(1), started));
+            }
+            (false, _) => {
+                self.calendar.failures.remove(&account);
+            }
+        }
+        self.note_sync_problems(account, &errors, false);
+    }
+
+    /// A DAV job answered: keep the sync state it brought, take in the calendar list, what the
+    /// server made of the changes sent, the events of each collection and — when they came —
+    /// the contacts. The same taking-in a Graph answer gets.
+    pub fn poll_dav(&mut self) {
+        let Some((account, carried, started, opening, rx)) = &self.calendar.dav_rx else { return };
+        let (account, carried, started) = (*account, *carried, *started);
+        if *opening != self.session.openings() {
+            log::info!("dav: the answer is for a mailbox that is no longer open; let go of");
+            self.calendar.dav_rx = None;
+            return;
+        }
+        let mut result = match rx.try_recv() {
+            Ok(result) => result,
+            Err(std::sync::mpsc::TryRecvError::Empty) => return,
+            Err(std::sync::mpsc::TryRecvError::Disconnected) => {
+                log::warn!("dav, account {account}: the job ended without an answer (its thread ended early)");
+                DavResult { account, ..Default::default() }
+            }
+        };
+        self.calendar.dav_rx = None;
+        let mut errors = std::mem::take(&mut result.errors);
+        if result.auth_refused {
+            log::warn!("dav, account {account}: the sign-in was refused; Send/Receive asks the owner again");
+        }
+        let untrusted = result.untrusted.take();
+        self.calendar.dav_untrusted = untrusted.clone().map(|fingerprint| (account, fingerprint));
+        if let Some(fingerprint) = untrusted {
+            errors.push(crate::i18n::fmt(
+                tl!("The DAV server's certificate isn't trusted ({fingerprint}); it can be trusted for this account in its settings"),
+                &[("fingerprint", &fingerprint)],
+            ));
+        }
+        // The collections and tokens the run ended with are the next run's start.
+        self.session.mailbox.dav_sync.insert(account, result.sync);
+        self.session.mailbox_changed();
+        self.take_in_calendar_list(account, result.calendars.as_ref(), None, false, &mut errors);
+        // The changes told first, then the collections' events: the main calendar's download
+        // goes with the outcomes, the rest through the same path the other calendars take.
+        let went = result.uploaded.as_ref().is_some_and(|uploaded| !uploaded.outcomes.is_empty());
+        let mut events = result.events.into_iter();
+        let first = events.next();
+        let rest: Vec<mailcraft_model::remote::EventsDownload> = events.collect();
+        let taken = self.take_in_calendar(account, result.uploaded.as_ref(), first.as_ref(), &mut errors);
+        self.take_in_more_calendars(&rest, &mut errors);
+        if let Some(contacts) = &result.contacts {
+            match remote::apply_contacts(&mut self.session, contacts) {
+                Ok(_) => {}
+                Err(e) => errors.push(crate::i18n::fmt(tl!("The contacts couldn't be taken in: {error}"), &[("error", &e.to_string())])),
+            }
+        }
         let nothing = !taken || (carried && !went);
         match (nothing, self.calendar.failures.get(&account).copied()) {
             (true, earlier) => {
@@ -701,7 +848,7 @@ impl MailApp {
         if self.offline() {
             return Err(crate::send_receive::said());
         }
-        let request = CalendarCheckRequest { account: owner, oauth: self.effective_oauth(oauth), refresh, access };
+        let request = CalendarCheckRequest { account: owner, oauth: self.effective_oauth(oauth), refresh, access, now: self.session.now() };
         let Some(check) = &self.services.check_calendar else { return Err(tl!("This build can't reach the account's calendar.").to_string()) };
         self.calendar.check_rx = Some((account, self.session.openings(), check(request)));
         self.status(tl!("Checking the calendar connection…"));

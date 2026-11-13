@@ -169,25 +169,30 @@ impl Dav<'_> {
         Ok(Synced { changes, token: proto::sync_token(&root) })
     }
 
-    /// One resource's document (`.ics`/`.vcf`), for servers that don't inline it in a sync
-    /// answer. `url` is the absolute address a [`Change`] or discovery gave.
-    pub fn fetch(&self, url: &str) -> Result<String, DavError> {
+    /// One resource's document (`.ics`/`.vcf`) and its ETag, for servers that don't inline it
+    /// in a sync answer and for edits that are guarded by the tag (`put`, `delete`). `url` is
+    /// the absolute address a [`Change`] or discovery gave; the tag is empty when the answer
+    /// carried none.
+    pub fn fetch(&self, url: &str) -> Result<(String, String), DavError> {
         let reply = self.exchange("GET", url, None, None, &[], &[])?;
         if reply.status != 200 {
             return Err(DavError::Status(reply.status));
         }
-        String::from_utf8(reply.body).map_err(|_| DavError::Document)
+        let body = String::from_utf8(reply.body).map_err(|_| DavError::Document)?;
+        Ok((body, reply.etag.unwrap_or_default()))
     }
 
     /// Create (`etag` `None`: `If-None-Match: *`) or update (`etag`: `If-Match`) one resource's
-    /// document. A 412 means the document changed since its tag was read: fetch it again.
-    pub fn put(&self, url: &str, content_type: &str, body: &[u8], etag: Option<&str>) -> Result<(), DavError> {
+    /// document. A 412 means the document changed since its tag was read: fetch it again. The
+    /// answer's own ETag comes back when the server gives one (empty when it doesn't): it is
+    /// the version just written, for the next guarded change.
+    pub fn put(&self, url: &str, content_type: &str, body: &[u8], etag: Option<&str>) -> Result<String, DavError> {
         let extra: Vec<(String, String)> = match etag {
             Some(tag) => vec![("If-Match".to_string(), tag.to_string())],
             None => vec![("If-None-Match".to_string(), "*".to_string())],
         };
         let reply = self.exchange("PUT", url, None, Some(content_type), &extra, body)?;
-        if matches!(reply.status, 200 | 201 | 204) { Ok(()) } else { Err(DavError::Status(reply.status)) }
+        if matches!(reply.status, 200 | 201 | 204) { Ok(reply.etag.unwrap_or_default()) } else { Err(DavError::Status(reply.status)) }
     }
 
     /// Remove one resource, guarded by its tag when one is known (`If-Match`).
