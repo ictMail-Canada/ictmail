@@ -56,9 +56,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # macos-15, not macos-latest: macos-latest is the macOS 26 arm64 image, whose
-        # runner pool has repeatedly failed to allocate jobs.
-        os: [ubuntu-24.04, macos-15, windows-latest]
+        # macos-26-intel, not an arm64 label: every macOS arm64 pool (macos-latest,
+        # macos-15) repeatedly failed to allocate jobs on 2026-11-13.
+        os: [ubuntu-24.04, macos-26-intel, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
