@@ -71,9 +71,9 @@ pub const TABLE: &[(&str, Class)] = &[
 ];
 
 /// Explicit orderings *within* a layer (earlier may be used by later): the socket transport
-/// (`net`) drives the protocol state machines (`proto`), and web addresses (`link`) refuse the
-/// format characters of the one list (`names`).
-pub const INTRA_LAYER_ORDER: &[&[&str]] = &[&["proto", "net"], &["names", "link"]];
+/// (`net`) drives the protocol state machines (`proto`) and speaks the DAV documents (`dav`),
+/// and web addresses (`link`) refuse the format characters of the one list (`names`).
+pub const INTRA_LAYER_ORDER: &[&[&str]] = &[&["proto", "net"], &["dav", "net"], &["names", "link"]];
 
 fn intra_layer_allowed(from: &str, to: &str) -> bool {
     let (from, to) = (short_name(from), short_name(to));

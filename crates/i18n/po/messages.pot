@@ -1169,6 +1169,11 @@ msgid "Apply Sent Calendar Changes"
 msgstr ""
 
 #. command label
+#: crates/engine/src/cmd/remote.rs
+msgid "Apply Sent Contact Changes"
+msgstr ""
+
+#. command label
 #: crates/engine/src/cmd/rules_remote.rs
 msgid "Apply Sent Rule Changes"
 msgstr ""
@@ -2430,6 +2435,11 @@ msgstr ""
 #. command label
 #: crates/engine/src/cmd/compose.rs
 msgid "Contact Card"
+msgstr ""
+
+#. command label
+#: crates/engine/src/cmd/remote.rs
+msgid "Contact Changes to Send"
 msgstr ""
 
 #. interface
@@ -16679,6 +16689,11 @@ msgid "{n} change waiting for the IMAP server won't reach it; it stays in the ba
 msgid_plural "{n} changes waiting for the IMAP server won't reach it; they stay in the backup copy."
 msgstr[0] ""
 msgstr[1] ""
+
+#. what a command says
+#: crates/engine/src/cmd/remote.rs
+msgid "{n} changes to contacts were already waiting to be sent"
+msgstr ""
 
 #. interface
 #: crates/ui-egui/src/calendar_sync.rs
