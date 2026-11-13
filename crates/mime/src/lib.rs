@@ -61,6 +61,10 @@ pub const PST_ITEM_HEADER: &str = "X-ictMail-Pst-Item";
 /// ([`write_placed`]), never from a message's kept headers into anything else.
 pub const PLACE_HEADER: &str = "X-ictMail-Place";
 
+/// [`PLACE_HEADER`]'s name before the ictMail rename: copies already on servers carry it, and
+/// are still known by it.
+pub const LEGACY_PLACE_HEADER: &str = "X-MailCraft-Place";
+
 /// `message` as [`write()`] writes it, for a copy put on a mail server, with [`PLACE_HEADER`]
 /// carrying `marker` first (none when it is empty): for a
 /// Digitally signed or Encrypted message that keeps its original, its body as it came, which a
@@ -88,9 +92,15 @@ pub fn write_placed(message: &mailcraft_model::Message, opts: &WriteOptions, mar
     out
 }
 
-/// Whether the header block `header` has [`PLACE_HEADER`] carrying `marker`.
+/// Whether the header block `header` has [`PLACE_HEADER`] (or [`LEGACY_PLACE_HEADER`], which
+/// copies made before the rename carry) carrying `marker`.
 pub fn carries_place(header: &[u8], marker: &str) -> bool {
-    !marker.is_empty() && header::split(header, true).0.0.iter().any(|f| f.name.eq_ignore_ascii_case(PLACE_HEADER) && f.value == marker)
+    !marker.is_empty()
+        && header::split(header, true)
+            .0
+            .0
+            .iter()
+            .any(|f| (f.name.eq_ignore_ascii_case(PLACE_HEADER) || f.name.eq_ignore_ascii_case(LEGACY_PLACE_HEADER)) && f.value == marker)
 }
 pub use mbox::{MboxMessages, mbox_messages, parse_mbox, write_mbox};
 pub use media::media_type_for;

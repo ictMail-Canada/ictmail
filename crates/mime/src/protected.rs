@@ -10,7 +10,7 @@
 use mailcraft_model::{Message, Original};
 
 use crate::header::{self, Headers, parse_params};
-use crate::{PLACE_HEADER, parse, transfer};
+use crate::{LEGACY_PLACE_HEADER, PLACE_HEADER, parse, transfer};
 
 /// How deep into the first part of nested multiparts the body is looked for.
 const MAX_DEPTH: usize = 4;
@@ -274,12 +274,17 @@ pub(crate) fn content_of(original: &[u8]) -> Option<(Vec<u8>, Vec<u8>)> {
     Some((fields, body))
 }
 
-/// `bytes` without the [`PLACE_HEADER`] lines MailCraft put first in a copy it made.
+/// `bytes` without the [`PLACE_HEADER`] (or [`LEGACY_PLACE_HEADER`]) lines MailCraft put first
+/// in a copy it made.
 fn without_place(mut bytes: &[u8]) -> &[u8] {
     loop {
         let (line, next) = header::line_at(bytes, 0);
-        let named = line.get(..PLACE_HEADER.len()).is_some_and(|name| name.eq_ignore_ascii_case(PLACE_HEADER.as_bytes()));
-        if !named || line.get(PLACE_HEADER.len()) != Some(&b':') || next == 0 {
+        let named = line
+            .iter()
+            .position(|b| *b == b':')
+            .and_then(|at| line.get(..at))
+            .is_some_and(|name| name.eq_ignore_ascii_case(PLACE_HEADER.as_bytes()) || name.eq_ignore_ascii_case(LEGACY_PLACE_HEADER.as_bytes()));
+        if !named || next == 0 {
             return bytes;
         }
         bytes = bytes.get(next..).unwrap_or_default();

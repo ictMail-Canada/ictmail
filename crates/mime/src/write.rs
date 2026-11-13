@@ -9,7 +9,7 @@ use crate::words::{WORD_BYTES, encode_b, has_words, is_plain};
 use crate::{WriteOptions, address, charset, media, transfer};
 
 /// Header fields the writer makes itself; fields of these names in `Message::headers` are skipped.
-const OWN_FIELDS: [&str; 17] = [
+const OWN_FIELDS: [&str; 18] = [
     "date",
     "from",
     "to",
@@ -25,17 +25,20 @@ const OWN_FIELDS: [&str; 17] = [
     "keywords",
     "status",
     "x-status",
+    "x-ictmail-flag",
     "x-mailcraft-flag",
     "mime-version",
 ];
 
 /// Whether a kept header (`lower`, in lower case) is a note of MailCraft's own that stays in
 /// the mailbox: what was answered to a meeting (with this mailbox's mark), the file a message was
-/// opened from. Neither goes into a file, a server's copy or what is sent. `X-MailCraft-Flag` is
-/// written from the message's flag, and `X-MailCraft-Not-Downloaded` travels: it tells another
-/// program that what it has is only the header of a message too large to download.
+/// opened from. Neither goes into a file, a server's copy or what is sent. `X-ictMail-Flag` is
+/// written from the message's flag, and `X-ictMail-Not-Downloaded` travels: it tells another
+/// program that what it has is only the header of a message too large to download. The
+/// `X-MailCraft-` names are the same notes from before the rename.
 fn private(lower: &str) -> bool {
-    lower.starts_with("x-mailcraft-") && lower != "x-mailcraft-not-downloaded"
+    let own = lower.starts_with("x-ictmail-") || lower.starts_with("x-mailcraft-");
+    own && lower != "x-ictmail-not-downloaded" && lower != "x-mailcraft-not-downloaded"
 }
 
 /// Longest physical line a body may have without a transfer encoding (RFC 5322 §2.1.1).

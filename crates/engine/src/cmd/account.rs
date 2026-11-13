@@ -1809,8 +1809,12 @@ fn matched(mb: &mut Mailbox, on_server: &mut OnServer, folder: Id, theirs: &Mess
     let waiting = |id: &Id| mb.message(*id).filter(|m| m.folder == folder && m.uid == 0 && m.synced.is_some());
     // A copy put there from elsewhere is known by its marker alone: mail that merely looks like
     // it may be the server's own (#451).
-    let carries =
-        |m: &Message| theirs.headers.iter().any(|(name, value)| name.eq_ignore_ascii_case(mailcraft_mime::PLACE_HEADER) && *value == m.placed);
+    let carries = |m: &Message| {
+        theirs.headers.iter().any(|(name, value)| {
+            (name.eq_ignore_ascii_case(mailcraft_mime::PLACE_HEADER) || name.eq_ignore_ascii_case(mailcraft_mime::LEGACY_PLACE_HEADER))
+                && *value == m.placed
+        })
+    };
     let by_id = expected.iter().position(|id| waiting(id).is_some_and(|m| if m.placed.is_empty() { same_id(m) } else { carries(m) }));
     let at = by_id.or_else(|| expected.iter().position(|id| waiting(id).is_some_and(|m| m.placed.is_empty() && same_mail(m, theirs))))?;
     let id = expected.swap_remove(at);
