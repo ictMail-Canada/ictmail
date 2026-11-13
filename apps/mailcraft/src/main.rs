@@ -1764,6 +1764,7 @@ fn services(
                         asks: request.asks,
                         contacts: request.contacts,
                         changes: request.changes,
+                        contact_changes: request.contact_changes,
                         sync: request.sync,
                         cancel: request.cancel,
                     });
@@ -1774,6 +1775,7 @@ fn services(
                         events: ran.events,
                         contacts: ran.contacts,
                         uploaded: ran.uploaded,
+                        contacts_uploaded: ran.contacts_uploaded,
                         auth_refused: ran.auth_refused,
                         untrusted: ran.untrusted,
                         errors: ran.errors,

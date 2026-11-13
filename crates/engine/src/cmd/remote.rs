@@ -67,19 +67,28 @@
 //! not what the server has any more. Should an answer arrive for a change that was undone while
 //! it was on its way, the server is told the opposite ([`apply_event_outcomes`]).
 //!
-//! Contacts and calendars as such are not sent back yet: the commands that would change or
-//! delete one that a server keeps refuse ([`changeable`]). The calendars of an account and its
-//! categories are taken in as the server lists them ([`apply_calendars`], [`apply_categories`]).
+//! Contacts of an account whose DAV server keeps its address books go back the same way:
+//! `people.new`/`edit`/`delete` note a [`ContactChange`] in [`Mailbox::contact_changes`]
+//! ([`note_contact_created`], [`note_contact_changed`], [`note_contact_deleted`]),
+//! `sync.contactChanges` ([`contact_upload`]) says what the server is to be told, a host
+//! carries that out (`mailcraft-net`'s DAV runner: CardDAV PUT/DELETE), and
+//! `sync.applyContactChanges` ([`apply_contact_changes`]) takes in what the server said. A
+//! contact kept for such an account is the server's from the start: the next download that
+//! lists it is what gives it its resource's name and ETag. Other servers' contacts, and
+//! calendars as such, are still not sent back: the commands that would change or delete one
+//! that a server keeps refuse ([`changeable`]). The calendars of an account and its categories
+//! are taken in as the server lists them ([`apply_calendars`], [`apply_categories`]).
 
 use std::collections::{BTreeSet, HashMap, HashSet};
 use std::sync::atomic::{AtomicU64, Ordering};
 
 use mailcraft_model::remote::EventZones;
 use mailcraft_model::remote::{
-    CalendarsDownload, CategoriesDownload, ContactsDownload, EventChange, EventChangeKind, EventCheck, EventFields, EventOp, EventOutcome,
-    EventReminder, EventRepeat, EventResult, EventTime, EventWall, EventsDownload, EventsUpload, EventsUploaded, FavoritesDownload, FavoritesOutcome,
-    MAX_CHECK_AGE, MAX_CHECK_TRIES, MAX_CONTACTS, MAX_EVENT_CHANGES, MAX_EVENT_CHECKS, MAX_EVENT_OPS, MAX_EVENTS, MAX_FAVORITE_DEPTH, MAX_KEY,
-    RemoteContact, RemoteEvent, RemoteEventKind, RemoteFavorite, clean_key, id_tag,
+    CalendarsDownload, CategoriesDownload, ContactChange, ContactChangeKind, ContactOp, ContactOutcome, ContactResult, ContactsDownload,
+    ContactsUpload, ContactsUploaded, EventChange, EventChangeKind, EventCheck, EventFields, EventOp, EventOutcome, EventReminder, EventRepeat,
+    EventResult, EventTime, EventWall, EventsDownload, EventsUpload, EventsUploaded, FavoritesDownload, FavoritesOutcome, MAX_CHECK_AGE,
+    MAX_CHECK_TRIES, MAX_CONTACT_CHANGES, MAX_CONTACT_OPS, MAX_CONTACTS, MAX_EVENT_CHANGES, MAX_EVENT_CHECKS, MAX_EVENT_OPS, MAX_EVENTS,
+    MAX_FAVORITE_DEPTH, MAX_KEY, RemoteContact, RemoteEvent, RemoteEventKind, RemoteFavorite, clean_key, id_tag,
 };
 use mailcraft_model::sync::same_category;
 use mailcraft_model::zoned;
@@ -118,6 +127,11 @@ pub fn specs() -> Vec<CommandSpec> {
         CommandSpec::new("sync.applyContacts", "Apply Downloaded Contacts", "Send / Receive", apply_contacts_command)
             .pure()
             .params(r#"{"download": ContactsDownload} — what a host brought from the account's server: {"account": number, "email"?: string, "complete": bool, "contacts": [RemoteContact]}"#),
+        CommandSpec::new("sync.contactChanges", "Contact Changes to Send", "Send / Receive", contact_changes_command)
+            .params(r#"{"account": number} — what that account's DAV server is to be told of contacts made, changed or deleted here: {"account", "email", "ops": [{"kind": "create"|"update"|"delete", "contact": number, "remote"?: string, "etag"?: string, "card": {…a Contact…}}]}"#),
+        CommandSpec::new("sync.applyContactChanges", "Apply Sent Contact Changes", "Send / Receive", apply_contact_changes_command)
+            .pure()
+            .params(r#"{"result": ContactsUploaded} — what a host heard from the DAV server: {"account": number, "email"?: string, "outcomes": [{"op": ContactOp, "result": "done"|"gone"|"refused"|"denied"|"failed", "remote"?: string, "changeKey"?: string, "error"?: string}]} — answers {"done", "refused", "failed", "denied", "waiting", "messages": [string]}"#),
         CommandSpec::new("sync.applyCalendars", "Apply Downloaded Calendar List", "Send / Receive", apply_calendars_command)
             .pure()
             .params(r#"{"download": CalendarsDownload} — the account's calendars as a host brought them from its server: {"account": number, "email"?: string, "complete": bool, "calendars": [{"id": string, "name": string, "color"?: [r, g, b], "group"?: string, "readOnly": bool, "main": bool}]}"#),
@@ -255,9 +269,13 @@ pub(crate) fn who(account: &Account) -> &str {
 
 /// Refuse to change `what` ("contact", "calendar") when an account's server keeps it: the change
 /// would not reach the server, and the next download would take it back. (Events are sent back:
-/// [`note_changed`].)
+/// [`note_changed`]; contacts of an account whose DAV server keeps its address books are sent
+/// back too: [`note_contact_changed`], [`note_contact_deleted`].)
 pub(crate) fn changeable(mailbox: &Mailbox, origin: &Origin, what: &'static str) -> Result<(), CmdError> {
     let Some(account) = keeper(mailbox, origin) else { return Ok(()) };
+    if what == "contact" && account.dav.is_some() {
+        return Ok(());
+    }
     let who = who(account);
     Err(failed!(
         "This {what} is kept by the server of {who}. Changes made here are not sent back yet, so it can't be changed or deleted here.",
@@ -1003,6 +1021,88 @@ pub(crate) fn note_deleted(mailbox: &mut Mailbox, before: &Event) -> Result<(), 
     Ok(())
 }
 
+/// Room for one more noted contact change ([`MAX_CONTACT_CHANGES`]).
+fn room_for_contact_change(mailbox: &Mailbox) -> Result<(), CmdError> {
+    if mailbox.contact_changes.len() >= MAX_CONTACT_CHANGES {
+        return Err(failed!("{n} changes to contacts were already waiting to be sent", n = mailbox.contact_changes.len()));
+    }
+    Ok(())
+}
+
+/// Whether `account` keeps its contacts on a DAV server, whose address books changes go back to.
+fn dav_keeper(mailbox: &Mailbox, account: Id) -> bool {
+    mailbox.account(account).is_some_and(|account| account.dav.is_some())
+}
+
+/// A contact was kept for an account whose DAV server keeps its address books: the server is
+/// to be told. `account` is 0 for one kept on this computer only, which needs no telling.
+pub(crate) fn note_contact_created(mailbox: &mut Mailbox, id: Id, account: Id) -> Result<(), CmdError> {
+    if account == 0 || !dav_keeper(mailbox, account) {
+        return Ok(());
+    }
+    room_for_contact_change(mailbox)?;
+    mailbox.contact_changes.retain(|change| !(change.kind == ContactChangeKind::Create && change.contact == id));
+    mailbox.contact_changes.push(ContactChange { account, kind: ContactChangeKind::Create, contact: id, ..Default::default() });
+    Ok(())
+}
+
+/// A contact of a DAV account's address books was changed here. When the server keeps it, the
+/// server is to be told the whole card again, under the resource's ETag; a change that is
+/// still waiting stays one change (a create stays a create). A contact kept on this computer
+/// only, or of another kind of server, needs no telling.
+pub(crate) fn note_contact_changed(mailbox: &mut Mailbox, id: Id) -> Result<(), CmdError> {
+    let Some(contact) = mailbox.contact(id) else { return Ok(()) };
+    let Some(account) = keeper(mailbox, &contact.origin).map(|account| account.id) else { return Ok(()) };
+    if !dav_keeper(mailbox, account) {
+        return Ok(());
+    }
+    let (remote, etag) = (contact.origin.id.clone(), contact.origin.change_key.clone());
+    match mailbox.contact_changes.iter_mut().find(|change| change.contact == id && change.account == account) {
+        // Something new to say: it doesn't wait out what the last try earned.
+        Some(change) => change.retry_at = 0,
+        None => {
+            room_for_contact_change(mailbox)?;
+            mailbox.contact_changes.push(ContactChange {
+                account,
+                kind: if remote.is_empty() { ContactChangeKind::Create } else { ContactChangeKind::Update },
+                contact: id,
+                remote,
+                etag,
+                ..Default::default()
+            });
+        }
+    }
+    Ok(())
+}
+
+/// A contact was deleted here; `before` is what it was. A create that was still waiting never
+/// reached the server, and needs no telling; one the server has is to be deleted there too.
+pub(crate) fn note_contact_deleted(mailbox: &mut Mailbox, before: &Contact) -> Result<(), CmdError> {
+    let Some(account) = keeper(mailbox, &before.origin).map(|account| account.id) else { return Ok(()) };
+    if !dav_keeper(mailbox, account) {
+        return Ok(());
+    }
+    let of_contact = |change: &ContactChange| change.contact == before.id && change.account == account;
+    if mailbox.contact_changes.iter().any(|change| of_contact(change) && change.kind == ContactChangeKind::Create) {
+        mailbox.contact_changes.retain(|change| !of_contact(change));
+        return Ok(());
+    }
+    if before.origin.id.is_empty() {
+        return Ok(());
+    }
+    mailbox.contact_changes.retain(|change| !of_contact(change));
+    room_for_contact_change(mailbox)?;
+    mailbox.contact_changes.push(ContactChange {
+        account,
+        kind: ContactChangeKind::Delete,
+        contact: before.id,
+        remote: before.origin.id.clone(),
+        etag: before.origin.change_key.clone(),
+        ..Default::default()
+    });
+    Ok(())
+}
+
 /// Why a noted change no longer hangs together with the mailbox, when it doesn't: only one that
 /// does is sent. (A file from elsewhere could otherwise have the server told anything.) One that
 /// doesn't is given up, with a word to the owner ([`tidy_changes`]).
@@ -1431,6 +1531,78 @@ pub fn event_upload(s: &Session, account: Id) -> Result<EventsUpload, CmdError> 
     // (The zone the calendar is shown in: whole days are days there, and a series without a
     // zone of its own is told by its clock.)
     Ok(EventsUpload { ops, zone: s.zone().id(), ..Default::default() }.for_account(owner))
+}
+
+/// What the DAV server of `account` is to be told now of the contacts made, changed and deleted
+/// here: the changes that are due, oldest first, [`MAX_CONTACT_OPS`] at most. A create or a
+/// change carries the contact whole, as it is now; a deletion carries where it was and the
+/// ETag it was downloaded under.
+///
+/// Contacts kept on this computer only are the account's to create as well, when it is the only
+/// account whose contacts a DAV server keeps — there is no other to mean — but never ones an
+/// import brought ([`Contact::imported_from`]): an archive is not the owner's to publish.
+pub fn contact_upload(s: &Session, account: Id) -> Result<ContactsUpload, CmdError> {
+    let owner = s.mailbox.account(account).ok_or_else(|| failed!("no account with id {id}", id = account))?;
+    let (mailbox, now) = (&s.mailbox, s.now());
+    let mut ops = Vec::new();
+    for change in mailbox.contact_changes.iter().filter(|change| change.account == account && change.retry_at <= now) {
+        if ops.len() >= MAX_CONTACT_OPS {
+            break;
+        }
+        let card = match change.kind {
+            ContactChangeKind::Delete => Contact::default(),
+            // A contact that is gone needs no telling (its deletion was noted, or the server's
+            // own download took it away): the change is let go of below, not sent.
+            _ => match mailbox.contact(change.contact) {
+                Some(contact) => contact.clone(),
+                None => continue,
+            },
+        };
+        ops.push(ContactOp { kind: change.kind, contact: change.contact, remote: change.remote.clone(), etag: change.etag.clone(), card });
+    }
+    let solo = owner.dav.is_some() && mailbox.accounts.iter().filter(|a| a.dav.is_some()).count() == 1;
+    if solo {
+        for contact in mailbox.contacts.values() {
+            if ops.len() >= MAX_CONTACT_OPS {
+                break;
+            }
+            let contact = contact.as_ref();
+            if !contact.origin.is_local() || !contact.imported_from.is_empty() || contact.name().is_empty() {
+                continue;
+            }
+            ops.push(ContactOp { kind: ContactChangeKind::Create, contact: contact.id, card: contact.clone(), ..Default::default() });
+        }
+    }
+    Ok(ContactsUpload { ops, ..Default::default() }.for_account(owner))
+}
+
+/// How many of `account`'s contacts [`contact_upload`] would carry now: the changes that are
+/// due and still have a contact to tell of, and — when `account` is the only one whose contacts
+/// a DAV server keeps — the contacts kept on this computer that would be created there. For the
+/// scheduler's quiet moment: counted the same way the upload is built.
+pub fn contacts_waiting(s: &Session, account: Id) -> usize {
+    let mailbox = &s.mailbox;
+    let now = s.now();
+    let mut waiting = mailbox
+        .contact_changes
+        .iter()
+        .filter(|change| {
+            change.account == account
+                && change.retry_at <= now
+                && (change.kind == ContactChangeKind::Delete || mailbox.contact(change.contact).is_some())
+        })
+        .count();
+    if mailbox.account(account).is_some_and(|a| a.dav.is_some()) && mailbox.accounts.iter().filter(|a| a.dav.is_some()).count() == 1 {
+        waiting += mailbox
+            .contacts
+            .values()
+            .filter(|contact| {
+                let contact = contact.as_ref();
+                contact.origin.is_local() && contact.imported_from.is_empty() && !contact.name().is_empty()
+            })
+            .count();
+    }
+    waiting
 }
 
 /// The sign-in of `account` changed (the owner gave a permission, say): what was held back
@@ -3461,6 +3633,9 @@ pub fn merge_contacts(mailbox: &mut Mailbox, download: &ContactsDownload) -> Res
     for contact in mailbox.contacts.values().filter(|contact| contact.origin.account == account && !contact.origin.id.is_empty()) {
         extra.extend(known.insert(contact.origin.id.clone(), contact.id));
     }
+    // A contact with a change still waiting to go up keeps what was changed here: the server's
+    // copy is the one before it, and taking it in would undo the change before it is sent.
+    let pending: HashSet<Id> = mailbox.contact_changes.iter().filter(|change| change.account == account).map(|change| change.contact).collect();
     let mut seen: HashSet<String> = HashSet::new();
     for remote in download.contacts.iter().take(MAX_CONTACTS) {
         let mut remote = remote.clone();
@@ -3479,7 +3654,7 @@ pub fn merge_contacts(mailbox: &mut Mailbox, download: &ContactsDownload) -> Res
                 fresh.categories = old.categories.clone();
                 fresh.favorite = old.favorite;
                 fresh.uid = old.uid.clone();
-                if *old == fresh {
+                if *old == fresh || pending.contains(&old.id) {
                     merged.unchanged += 1;
                 } else if let Ok(contact) = mailbox.contact_mut(fresh.id) {
                     *contact = fresh;
@@ -3497,6 +3672,9 @@ pub fn merge_contacts(mailbox: &mut Mailbox, download: &ContactsDownload) -> Res
         for id in gone {
             if mailbox.remove_contact(id).is_ok() {
                 merged.removed += 1;
+                // Its changes waiting to go up have nothing left to say: the server's deletion
+                // is the word, and a pending one would only be told of a contact that is gone.
+                mailbox.contact_changes.retain(|change| change.contact != id);
             }
         }
     }
@@ -3547,6 +3725,118 @@ pub fn apply_contacts(s: &mut Session, download: &ContactsDownload) -> CmdResult
         s.mailbox_changed();
     }
     Ok(merged.json(download.complete))
+}
+
+/// What a DAV server made of the contact changes it was told ([`ContactsUploaded`]): each
+/// outcome settles its waiting change. One the server took is done — a created contact is the
+/// server's from then on, under the resource's name and ETag, a changed one's ETag is the new
+/// one; one the server no longer has is let go of (a deletion is done, a change is sent again
+/// as a create, the card whole); one it refused for good is let go of; one it couldn't do
+/// waits to be tried again, later each time.
+pub fn apply_contact_changes(s: &mut Session, uploaded: &ContactsUploaded) -> CmdResult {
+    let mut done = 0usize;
+    let mut refused = 0usize;
+    let mut failed = 0usize;
+    let mut denied = 0usize;
+    let mut noted = false;
+    for outcome in uploaded.outcomes.iter().take(MAX_OUTCOMES) {
+        let mut outcome = outcome.clone();
+        outcome.tidy();
+        let at = s
+            .mailbox
+            .contact_changes
+            .iter()
+            .position(|change| change.account == uploaded.account && change.contact == outcome.op.contact && change.kind == outcome.op.kind);
+        let Some(at) = at else {
+            // No change was noted for it: a contact kept on this computer the upload took
+            // along ([`contact_upload`]). The answer still says what the server has of it.
+            if settle_unnoted(s, uploaded.account, &outcome) {
+                noted = true;
+            }
+            continue;
+        };
+        match outcome.result {
+            ContactResult::Done | ContactResult::Gone => {
+                let change = s.mailbox.contact_changes.remove(at);
+                match (outcome.result, change.kind) {
+                    // The server's from now on, under the name it was given and the ETag it has.
+                    (ContactResult::Done, ContactChangeKind::Create | ContactChangeKind::Update) => {
+                        if let Ok(contact) = s.mailbox.contact_mut(change.contact) {
+                            if !outcome.remote.is_empty() {
+                                contact.origin.id = outcome.remote.clone();
+                            }
+                            if !outcome.change_key.is_empty() {
+                                contact.origin.change_key = outcome.change_key.clone();
+                            }
+                        }
+                    }
+                    // The server no longer has it: a change is sent again as a create, the card
+                    // whole, under a name of its own; a deletion is done either way.
+                    (ContactResult::Gone, ContactChangeKind::Update) => {
+                        room_for_contact_change(&s.mailbox)?;
+                        s.mailbox.contact_changes.push(ContactChange {
+                            account: uploaded.account,
+                            kind: ContactChangeKind::Create,
+                            contact: change.contact,
+                            ..Default::default()
+                        });
+                    }
+                    _ => {}
+                }
+                done += 1;
+            }
+            ContactResult::Refused | ContactResult::Denied => {
+                s.mailbox.contact_changes.remove(at);
+                if outcome.result == ContactResult::Refused {
+                    refused += 1;
+                } else {
+                    denied += 1;
+                }
+            }
+            ContactResult::Failed => {
+                let now = s.now();
+                if let Some(change) = s.mailbox.contact_changes.get_mut(at) {
+                    let wait = FIRST_WAIT.saturating_mul(1i64 << change.failures.min(16)).min(LONGEST_WAIT);
+                    change.failures = change.failures.saturating_add(1);
+                    change.retry_at = now.saturating_add(wait);
+                    change.error = outcome.error.clone();
+                }
+                failed += 1;
+            }
+        }
+    }
+    let waiting = s.mailbox.contact_changes.iter().filter(|change| change.account == uploaded.account).count();
+    if done + refused + denied > 0 || noted {
+        s.mailbox_changed();
+    }
+    Ok(json!({"done": done, "refused": refused, "denied": denied, "failed": failed, "waiting": waiting}))
+}
+
+/// What the server's answer means for a contact the upload took along without a noted change
+/// (one kept on this computer, [`contact_upload`]): a create the server took is the account's
+/// from then on, under the resource's name and ETag; one it refused for good is kept for the
+/// account all the same, so that a later change is sent the proper way. Anything else — a
+/// failure to try again, or an op that isn't a create — changes nothing here. Whether the
+/// mailbox was touched.
+fn settle_unnoted(s: &mut Session, account: Id, outcome: &ContactOutcome) -> bool {
+    if outcome.op.kind != ContactChangeKind::Create || !matches!(outcome.result, ContactResult::Done | ContactResult::Refused | ContactResult::Denied)
+    {
+        return false;
+    }
+    let Ok(contact) = s.mailbox.contact_mut(outcome.op.contact) else { return false };
+    if !contact.origin.is_local() {
+        return false;
+    }
+    contact.origin.account = account;
+    if outcome.result == ContactResult::Done {
+        if !outcome.remote.is_empty() {
+            contact.origin.id = outcome.remote.clone();
+        }
+        if !outcome.change_key.is_empty() {
+            contact.origin.change_key = outcome.change_key.clone();
+        }
+    }
+    true
 }
 
 /// Remove everything that came from the server of `account`: its events, its contacts and the
@@ -3601,9 +3891,10 @@ pub fn forget(s: &mut Session, account: Id) -> CmdResult {
     mailbox.task_gone.retain(|gone| gone.account != account);
     let tasks_gone = tasks.len() + (waiting - mailbox.task_gone.len());
     // What was waiting to be sent to that server has nowhere to go.
-    let unsent = mailbox.event_changes.len();
+    let unsent = mailbox.event_changes.len() + mailbox.contact_changes.len();
     mailbox.event_changes.retain(|change| change.account != account);
-    let unsent = unsent - mailbox.event_changes.len();
+    mailbox.contact_changes.retain(|change| change.account != account);
+    let unsent = unsent - mailbox.event_changes.len() - mailbox.contact_changes.len();
     mailbox.event_checks.retain(|check| check.account != account);
     let followed = |calendar: &Calendar| calendar.origin.account == account;
     let calendars = mailbox.calendars.iter().filter(|calendar| followed(calendar)).count();
@@ -3949,8 +4240,36 @@ fn apply_event_changes_command(s: &mut Session, v: &Value) -> CmdResult {
     Ok(apply_event_outcomes(s, &uploaded)?.json())
 }
 
+fn contact_changes_command(s: &mut Session, v: &Value) -> CmdResult {
+    let account = p::req_id(v, "account")?;
+    // A change whose contact is gone has nothing to say (its deletion was noted, or the
+    // server's own download took it away): let it go before the upload is built.
+    let before = s.mailbox.contact_changes.len();
+    {
+        let contacts = &s.mailbox.contacts;
+        s.mailbox
+            .contact_changes
+            .retain(|change| change.kind == ContactChangeKind::Delete || change.account != account || contacts.contains_key(&change.contact));
+    }
+    if s.mailbox.contact_changes.len() != before {
+        s.mailbox_changed();
+    }
+    let upload = contact_upload(s, account)?;
+    serde_json::to_value(upload).map_err(|e| fail(e.to_string()))
+}
+
+fn apply_contact_changes_command(s: &mut Session, v: &Value) -> CmdResult {
+    let result = v.get("result").cloned().ok_or_else(|| bad("`result` is required"))?;
+    let uploaded: ContactsUploaded = serde_json::from_value(result)
+        .map_err(|e| bad(format!("`result`: {}", e.to_string().chars().filter(|c| !c.is_control()).take(MAX_SHOWN).collect::<String>())))?;
+    apply_contact_changes(s, &uploaded)
+}
+
 #[cfg(test)]
 mod tests;
+
+#[cfg(test)]
+mod contact_upload_tests;
 
 #[cfg(test)]
 mod shared_calendar_tests;

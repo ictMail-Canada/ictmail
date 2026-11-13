@@ -907,6 +907,8 @@ pub struct DavRequest {
     pub contacts: bool,
     /// What was made, changed or deleted here, for the server to be told first.
     pub changes: Option<mailcraft_model::remote::EventsUpload>,
+    /// The same for the account's contacts (a DAV account's address books).
+    pub contact_changes: Option<mailcraft_model::remote::ContactsUpload>,
     /// The sync state the mailbox last kept for the account.
     pub sync: mailcraft_model::dav::DavSync,
     /// Set when the owner stops the run: it stops after the exchange in hand.
@@ -927,6 +929,8 @@ pub struct DavResult {
     pub contacts: Option<mailcraft_model::remote::ContactsDownload>,
     /// What the server made of the changes it was told.
     pub uploaded: Option<mailcraft_model::remote::EventsUploaded>,
+    /// What the server made of the contact changes it was told.
+    pub contacts_uploaded: Option<mailcraft_model::remote::ContactsUploaded>,
     /// The sign-in was refused (401/403): the password is wrong or was taken back.
     pub auth_refused: bool,
     /// A certificate the system doesn't trust and the account doesn't either: its SHA-256

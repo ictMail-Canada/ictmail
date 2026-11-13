@@ -108,9 +108,30 @@ fn target(s: &Session, v: &Value) -> Result<Id, CmdError> {
     s.mailbox.contact(id).map(|c| c.id).ok_or_else(|| failed!("no contact with id {id}", id))
 }
 
+/// Whether `mailbox` has exactly one account whose contacts a DAV server keeps: with no other
+/// to mean, a contact kept on this computer is that server's.
+fn solo_dav(mailbox: &Mailbox) -> Option<Id> {
+    let mut dav = mailbox.accounts.iter().filter(|a| a.dav.is_some());
+    match (dav.next(), dav.next()) {
+        (Some(account), None) => Some(account.id),
+        _ => None,
+    }
+}
+
+/// The DAV account a new contact is kept on the server of: the one whose contacts the list is
+/// showing, or the only one there is when all are shown. `None` keeps the contact on this
+/// computer only.
+fn dav_home(s: &Session) -> Option<Id> {
+    match shown_account(s) {
+        AccountChoice::Account(id) if s.mailbox.account(id).is_some_and(|a| a.dav.is_some()) => Some(id),
+        AccountChoice::All => solo_dav(&s.mailbox),
+        _ => None,
+    }
+}
+
 /// [`target`] for a command that changes or deletes the contact. A contact that an account's
-/// server keeps is refused: changes are not sent back yet, and the next download would undo
-/// them. (Its categories and whether it is a favourite are kept here, so those don't ask.)
+/// server keeps is refused where changes are not sent back (its categories and whether it is a
+/// favourite are kept here, so those don't ask); a DAV account's contacts are sent back.
 fn own_target(s: &Session, v: &Value) -> Result<Id, CmdError> {
     let id = target(s, v)?;
     if let Some(c) = s.mailbox.contact(id) {
@@ -231,7 +252,16 @@ fn new(s: &mut Session, v: &Value) -> CmdResult {
     if p::strings(v, "categories").is_some() {
         c.categories = super::category::spelled_all(s, c.origin.account, &c.categories, &[], c.origin.account)?;
     }
+    // Made while one account's contacts are shown, and that account keeps them on a DAV
+    // server: it is that server's from the start, and the server is to be told.
+    let home = dav_home(s);
+    if let Some(account) = home {
+        c.origin.account = account;
+    }
     let id = s.mailbox.add_contact(c);
+    if let Some(account) = home {
+        super::remote::note_contact_created(&mut s.mailbox, id, account)?;
+    }
     s.sel.contact = Some(id);
     reveal(s, id);
     Ok(json!({"id": id}))
@@ -248,7 +278,15 @@ fn edit(s: &mut Session, v: &Value) -> CmdResult {
     if p::strings(v, "categories").is_some() {
         c.categories = super::category::spelled_all(s, c.origin.account, &c.categories, &had, c.origin.account)?;
     }
+    // A contact kept on this computer that is changed while a DAV account's contacts are shown
+    // — or there is only one — becomes that server's: it is created there.
+    if c.origin.is_local()
+        && let Some(account) = dav_home(s)
+    {
+        c.origin.account = account;
+    }
     *s.mailbox.contact_mut(id)? = c;
+    super::remote::note_contact_changed(&mut s.mailbox, id)?;
     Ok(json!({"id": id}))
 }
 
@@ -282,6 +320,9 @@ fn delete(s: &mut Session, v: &Value) -> CmdResult {
     // The selection moves to the neighbour in the list.
     let order = sorted(s, &s.view.people_search);
     let at = order.iter().position(|x| *x == id);
+    if let Some(before) = s.mailbox.contact(id).cloned() {
+        super::remote::note_contact_deleted(&mut s.mailbox, &before)?;
+    }
     s.mailbox.remove_contact(id)?;
     if s.sel.contact == Some(id) {
         s.sel.contact = at.and_then(|i| order.get(i + 1).or_else(|| i.checked_sub(1).and_then(|j| order.get(j)))).copied();
@@ -389,7 +430,15 @@ fn from_message(s: &mut Session, v: &Value) -> CmdResult {
         Some((f, l)) => (f.trim().to_string(), l.trim().to_string()),
         None => (from.name.trim().to_string(), String::new()),
     };
-    let id = s.mailbox.add_contact(Contact { first, last, emails: vec![Labeled::new("work", from.email)], ..Default::default() });
+    let mut c = Contact { first, last, emails: vec![Labeled::new("work", from.email)], ..Default::default() };
+    let home = dav_home(s);
+    if let Some(account) = home {
+        c.origin.account = account;
+    }
+    let id = s.mailbox.add_contact(c);
+    if let Some(account) = home {
+        super::remote::note_contact_created(&mut s.mailbox, id, account)?;
+    }
     s.sel.contact = Some(id);
     reveal(s, id);
     s.view.module = Module::People;

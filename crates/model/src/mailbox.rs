@@ -698,9 +698,10 @@ impl Account {
         !self.is_shared() && self.kind != AccountKind::Jmap && self.oauth.as_ref().is_some_and(|o| o.provider == OAuthProvider::Microsoft)
     }
 
-    /// Whether its contacts are read from Microsoft: as for its to-dos ([`Account::keeps_tasks`]).
+    /// Whether its contacts are read from its server: as for its to-dos
+    /// ([`Account::keeps_tasks`]), or kept in step with a DAV server's address books.
     pub fn keeps_contacts(&self) -> bool {
-        self.keeps_tasks()
+        self.keeps_tasks() || self.dav.is_some()
     }
 
     /// The shared mailbox's own address, when this is one. Read here rather than at each call
@@ -1126,6 +1127,10 @@ pub struct Mailbox {
     /// to be told, oldest first ([`crate::remote::EventChange`]).
     #[serde(skip_serializing_if = "Vec::is_empty", deserialize_with = "crate::sync::lenient_list")]
     pub event_changes: Vec<crate::remote::EventChange>,
+    /// Changes made here to contacts of an account's address books that a DAV server keeps,
+    /// which that server is yet to be told, oldest first ([`crate::remote::ContactChange`]).
+    #[serde(skip_serializing_if = "Vec::is_empty", deserialize_with = "crate::sync::lenient_list")]
+    pub contact_changes: Vec<crate::remote::ContactChange>,
     /// To-dos deleted here that a Microsoft account's server (To Do) is yet to be told about,
     /// oldest first ([`crate::TaskGone`]).
     #[serde(skip_serializing_if = "Vec::is_empty", deserialize_with = "crate::sync::lenient_list")]
@@ -1232,6 +1237,7 @@ impl Default for Mailbox {
             signatures: Vec::new(),
             pending: Vec::new(),
             event_changes: Vec::new(),
+            contact_changes: Vec::new(),
             task_gone: Vec::new(),
             rule_gone: Vec::new(),
             shared_task_lists: BTreeMap::new(),
@@ -1421,6 +1427,7 @@ impl Mailbox {
         self.messages.retain(|_, m| !going.contains(&m.account));
         self.pending.retain(|p| !going.contains(&p.account()));
         self.event_changes.retain(|change| !going.contains(&change.account));
+        self.contact_changes.retain(|change| !going.contains(&change.account));
         self.event_checks.retain(|check| !going.contains(&check.account));
         self.task_gone.retain(|gone| !going.contains(&gone.account));
         self.rule_gone.retain(|gone| !going.contains(&gone.account));

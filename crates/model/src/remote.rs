@@ -1003,6 +1003,172 @@ impl EventsUpload {
     }
 }
 
+/// Most changes to contacts that may wait for a DAV server at once
+/// ([`crate::Mailbox::contact_changes`]), and most that one [`ContactsUpload`] carries: the
+/// rest go with the next.
+pub const MAX_CONTACT_CHANGES: usize = 5_000;
+pub const MAX_CONTACT_OPS: usize = 50;
+
+/// What is done to a contact that a DAV server keeps.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub enum ContactChangeKind {
+    /// A contact kept for the account that the server doesn't have yet.
+    #[default]
+    Create,
+    /// A contact the server has that was changed here.
+    Update,
+    /// A contact the server has that was deleted here.
+    Delete,
+}
+
+/// A change made here to a contact of an account's address books that a DAV server keeps, which
+/// the server is yet to be told. The change itself is already made in the mailbox; this is the
+/// note that it has to go to the server too. A host with sockets pushes it ([`ContactsUpload`])
+/// and it stays listed until the server has taken it on, or has refused it for good
+/// ([`ContactsUploaded`]).
+///
+/// What exactly is sent is worked out when it is sent, from the contact as it is then: the
+/// whole card goes, under the resource's ETag for a change or a deletion. So several changes to
+/// one contact before the server hears of any are one change, and one that is taken back is
+/// none.
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(default, rename_all = "camelCase")]
+pub struct ContactChange {
+    pub account: Id,
+    pub kind: ContactChangeKind,
+    /// The contact in the mailbox; for a deletion, the id it had.
+    pub contact: Id,
+    /// What the server calls the contact (its resource's address). Empty for one it doesn't
+    /// have yet.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub remote: String,
+    /// For a change or a deletion: the server's mark of the version that was downloaded (the
+    /// resource's ETag), which the write is guarded by.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub etag: String,
+    /// How many times in a row the server couldn't be told.
+    #[serde(skip_serializing_if = "is_zero")]
+    pub failures: u32,
+    /// Not to be tried again before this (Unix seconds); 0 for at once.
+    #[serde(skip_serializing_if = "is_zero_time")]
+    pub retry_at: Timestamp,
+    /// Why it didn't go through the last time, for the owner to read.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub error: String,
+}
+
+/// One thing a DAV server is asked to do to a contact ([`ContactsUpload`]).
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(default, rename_all = "camelCase")]
+pub struct ContactOp {
+    pub kind: ContactChangeKind,
+    /// The contact in the mailbox the change is about (for the answer to find it again).
+    pub contact: Id,
+    /// What the server calls the contact, for a change or a deletion.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub remote: String,
+    /// The ETag the write is guarded by, for a change or a deletion.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub etag: String,
+    /// The contact whole, for a create or a change; empty for a deletion.
+    pub card: crate::Contact,
+}
+
+impl ContactOp {
+    /// Cut to size, as everything from outside is: an id that can't be one is none.
+    pub fn tidy(&mut self) {
+        self.remote = key(&self.remote);
+        self.etag = key(&self.etag);
+    }
+}
+
+/// The changes to the contacts of an account's address books that its DAV server is to be told,
+/// oldest first. The engine says what they are (`sync.contactChanges`); a host with sockets
+/// carries them out, one after the other, and brings back a [`ContactsUploaded`].
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(default, rename_all = "camelCase")]
+pub struct ContactsUpload {
+    pub account: Id,
+    /// That account's address, as in [`ContactsDownload::email`].
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub email: String,
+    pub ops: Vec<ContactOp>,
+}
+
+impl ContactsUpload {
+    /// The upload as one for `account`.
+    pub fn for_account(mut self, account: &Account) -> ContactsUpload {
+        self.account = account.id;
+        self.email = account.email.trim().to_string();
+        self
+    }
+}
+
+/// What a DAV server made of one [`ContactOp`].
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub enum ContactResult {
+    /// It was done.
+    Done,
+    /// The server no longer has the contact: a deletion is done, a change has nothing to change.
+    Gone,
+    /// The server won't have it, and asking again would not help.
+    Refused,
+    /// The account may not do this.
+    Denied,
+    /// It couldn't be done now (no connection, a busy server): to be tried again later.
+    #[default]
+    Failed,
+}
+
+/// What became of one [`ContactOp`], with the op itself: the mailbox may have moved on since it
+/// was asked for, and what the server was told is how that is noticed.
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(default, rename_all = "camelCase")]
+pub struct ContactOutcome {
+    pub op: ContactOp,
+    pub result: ContactResult,
+    /// What the server calls the contact now (for one that was made) and its mark of the version
+    /// it has now (the resource's ETag), when it said.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub remote: String,
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub change_key: String,
+    /// The status of the server's answer; 0 when there was none (it wasn't asked, or couldn't be
+    /// reached).
+    #[serde(skip_serializing_if = "is_no_status")]
+    pub status: u16,
+    /// Why not, in words for the owner; never anything that was sent.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub error: String,
+}
+
+impl ContactOutcome {
+    /// Cut to size, as everything from outside is.
+    pub fn tidy(&mut self) {
+        self.op.tidy();
+        self.remote = key(&self.remote);
+        self.change_key = key(&self.change_key);
+        self.error = line(&self.error, MAX_WHY);
+    }
+}
+
+/// What a DAV server made of a [`ContactsUpload`]: an outcome for every op that was tried, in
+/// order. An op without one was not tried (the server stopped taking the sign-in, or was too
+/// busy), and waits as before.
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(default, rename_all = "camelCase")]
+pub struct ContactsUploaded {
+    pub account: Id,
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub email: String,
+    pub outcomes: Vec<ContactOutcome>,
+    /// The server stopped taking the sign-in part-way: a new one is needed for the rest.
+    #[serde(skip_serializing_if = "is_false")]
+    pub token_refused: bool,
+}
+
 /// Most changes that wait to be seen on the server at once ([`crate::Mailbox::event_checks`]).
 pub const MAX_EVENT_CHECKS: usize = 1_000;
 /// How many downloads may show an event otherwise than it was sent before the mailbox stops

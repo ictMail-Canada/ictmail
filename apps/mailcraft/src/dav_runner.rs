@@ -58,6 +58,8 @@ pub(crate) struct DavJob {
     pub contacts: bool,
     /// What was made, changed or deleted here, for the server to be told first.
     pub changes: Option<model_remote::EventsUpload>,
+    /// The same for the account's contacts (its address books).
+    pub contact_changes: Option<model_remote::ContactsUpload>,
     /// The sync state the mailbox last kept for the account.
     pub sync: DavSync,
     /// Set when the owner stops the run: it stops after the exchange in hand.
@@ -78,6 +80,8 @@ pub(crate) struct DavResult {
     pub contacts: Option<model_remote::ContactsDownload>,
     /// What the server made of the changes it was told.
     pub uploaded: Option<EventsUploaded>,
+    /// What the server made of the contact changes it was told.
+    pub contacts_uploaded: Option<model_remote::ContactsUploaded>,
     /// The sign-in was refused (401/403): the password is wrong or was taken back.
     pub auth_refused: bool,
     /// A certificate the system doesn't trust and the account doesn't either: the fingerprint
@@ -93,6 +97,8 @@ const MAX_ICS_EVENTS: usize = 1_000;
 const MAX_CHANGES: usize = 20_000;
 /// The iCalendar content type a calendar resource is written with.
 const ICS_TYPE: &str = "text/calendar; charset=utf-8";
+/// The vCard content type an address book resource is written with.
+const VCARD_TYPE: &str = "text/vcard; charset=utf-8";
 
 /// Run `job` to its end and answer what came of it. Blocking: the caller is a worker thread.
 pub(crate) fn run(job: DavJob) -> DavResult {
@@ -136,6 +142,16 @@ pub(crate) fn run(job: DavJob) -> DavResult {
     // the server takes is then seen in the download that follows, as the engine expects.
     if let Some(changes) = &job.changes {
         result.uploaded = Some(push(&dav, &collections, changes, job.now, job.zone, &offset_at, &job.cancel, &mut result));
+        if result.auth_refused || result.untrusted.is_some() || cancelled(&job) {
+            result.sync = sync;
+            return result;
+        }
+    }
+
+    // Contacts go up next, before the address books are brought down: what the server takes
+    // is then seen in the download that follows, as the engine expects.
+    if let Some(changes) = &job.contact_changes {
+        result.contacts_uploaded = Some(push_contacts(&dav, &collections, changes, &job.cancel, &mut result));
         if result.auth_refused || result.untrusted.is_some() || cancelled(&job) {
             result.sync = sync;
             return result;
@@ -619,6 +635,245 @@ fn fail_outcome(outcome: &mut EventOutcome, error: &DavError) {
         DavError::Status(404 | 410) => EventResult::Gone,
         DavError::Status(400..=499) => EventResult::Refused,
         _ => EventResult::Failed,
+    };
+    outcome.status = match error {
+        DavError::Status(status) => *status,
+        _ => 0,
+    };
+    outcome.error = say(error).to_string();
+}
+
+/// The address book contact changes go to: the first writable one, else the first listed — a
+/// read-only book refuses the writes, which the outcomes then say.
+fn contacts_book(collections: &[Collection]) -> Option<String> {
+    collections.iter().filter(|c| c.contacts).min_by_key(|c| c.read_only).map(|c| c.href.trim_end_matches('/').to_string())
+}
+
+/// The contact changes made here, told to the server: PUTs and DELETEs under their ETags, one
+/// outcome for each op tried, in order. An op the run doesn't reach has no outcome and waits,
+/// as the engine expects.
+fn push_contacts(
+    dav: &Dav<'_>,
+    collections: &[Collection],
+    upload: &model_remote::ContactsUpload,
+    cancel: &AtomicBool,
+    result: &mut DavResult,
+) -> model_remote::ContactsUploaded {
+    let mut uploaded = model_remote::ContactsUploaded { account: upload.account, email: upload.email.clone(), ..Default::default() };
+    let book = contacts_book(collections);
+    for op in upload.ops.iter().take(model_remote::MAX_CONTACT_OPS) {
+        if cancel.load(Ordering::Relaxed) {
+            break;
+        }
+        match contact_one(dav, book.as_deref(), op) {
+            Ok(outcome) => uploaded.outcomes.push(outcome),
+            Err(Stop::Auth) => {
+                uploaded.token_refused = true;
+                result.auth_refused = true;
+                break;
+            }
+            Err(Stop::Untrusted(fingerprint)) => {
+                result.untrusted = Some(fingerprint);
+                break;
+            }
+        }
+    }
+    uploaded
+}
+
+/// One [`ContactOp`](model_remote::ContactOp) against the server. `Err(Stop)` ends the run; an
+/// outcome is always a [`ContactOutcome`](model_remote::ContactOutcome) with its result.
+fn contact_one(dav: &Dav<'_>, book: Option<&str>, op: &model_remote::ContactOp) -> Result<model_remote::ContactOutcome, Stop> {
+    let mut outcome = model_remote::ContactOutcome { op: op.clone(), ..Default::default() };
+    match op.kind {
+        model_remote::ContactChangeKind::Delete => contact_delete(dav, op, &mut outcome)?,
+        _ => {
+            // A create, or a change whose resource was never named (one kept for the account
+            // whose create hasn't been seen yet): a new resource in the address book.
+            let href = if op.kind == model_remote::ContactChangeKind::Update && !op.remote.is_empty() {
+                op.remote.clone()
+            } else {
+                match book {
+                    Some(book) => format!("{book}/{}.vcf", card_name(op)),
+                    None => String::new(),
+                }
+            };
+            if href.is_empty() {
+                outcome.result = model_remote::ContactResult::Failed;
+                outcome.error = "the server has no address book to write to".into();
+                return Ok(outcome);
+            }
+            if op.kind == model_remote::ContactChangeKind::Update {
+                contact_update(dav, &href, op, &mut outcome)?;
+            } else {
+                contact_create(dav, &href, op, &mut outcome)?;
+            }
+        }
+    }
+    Ok(outcome)
+}
+
+/// The file name a new contact's resource is written under: its vCard `UID` when it has one,
+/// else one made of the contact — never empty, and only characters a name may carry.
+fn card_name(op: &model_remote::ContactOp) -> String {
+    let source = if op.card.uid.trim().is_empty() { format!("contact-{}", op.contact) } else { op.card.uid.clone() };
+    let name: String = source.chars().map(|c| if c.is_ascii_alphanumeric() || matches!(c, '.' | '-' | '_') { c } else { '-' }).take(120).collect();
+    if name.is_empty() { "contact".to_string() } else { name }
+}
+
+/// The op's card as the `.vcf` document it is written as, with a `UID` when it has none.
+fn card_text(op: &model_remote::ContactOp) -> String {
+    let mut card = op.card.clone();
+    if card.uid.trim().is_empty() {
+        card.uid = card_name(op);
+    }
+    mailcraft_vcard::write(&[&card])
+}
+
+/// A new contact: PUT `If-None-Match: *`. A 412 means the address is taken: what is there is
+/// written over, guarded by its tag.
+fn contact_create(dav: &Dav<'_>, href: &str, op: &model_remote::ContactOp, outcome: &mut model_remote::ContactOutcome) -> Result<(), Stop> {
+    let text = card_text(op);
+    match dav.put(href, VCARD_TYPE, text.as_bytes(), None) {
+        Ok(etag) => {
+            outcome.result = model_remote::ContactResult::Done;
+            outcome.remote = href.to_string();
+            outcome.change_key = etag;
+        }
+        Err(DavError::Status(412)) => match dav.fetch(href) {
+            Ok((_, tag)) => match dav.put(href, VCARD_TYPE, text.as_bytes(), (!tag.is_empty()).then_some(tag.as_str())) {
+                Ok(etag) => {
+                    outcome.result = model_remote::ContactResult::Done;
+                    outcome.remote = href.to_string();
+                    outcome.change_key = etag;
+                }
+                Err(e) => fail_typed_c(outcome, &e)?,
+            },
+            Err(e) => fail_typed_c(outcome, &e)?,
+        },
+        Err(e) => fail_typed_c(outcome, &e)?,
+    }
+    Ok(())
+}
+
+/// A change to a contact the server has: the whole card PUT back under the ETag it was
+/// downloaded with. A 412 means it moved since: the tag it has now is fetched and it is tried
+/// again, once; then it is a failure to try later.
+fn contact_update(dav: &Dav<'_>, href: &str, op: &model_remote::ContactOp, outcome: &mut model_remote::ContactOutcome) -> Result<(), Stop> {
+    let text = card_text(op);
+    let mut guard = op.etag.clone();
+    for _ in 0..2 {
+        match dav.put(href, VCARD_TYPE, text.as_bytes(), (!guard.is_empty()).then_some(guard.as_str())) {
+            Ok(etag) => {
+                outcome.result = model_remote::ContactResult::Done;
+                outcome.remote = href.to_string();
+                outcome.change_key = etag;
+                return Ok(());
+            }
+            Err(DavError::Status(412)) => match dav.fetch(href) {
+                Ok((_, tag)) => {
+                    guard = tag;
+                    continue;
+                }
+                Err(DavError::Status(404 | 410)) => {
+                    outcome.result = model_remote::ContactResult::Gone;
+                    outcome.remote = href.to_string();
+                    return Ok(());
+                }
+                Err(e) => {
+                    fail_typed_c(outcome, &e)?;
+                    return Ok(());
+                }
+            },
+            Err(DavError::Status(404 | 410)) => {
+                outcome.result = model_remote::ContactResult::Gone;
+                outcome.remote = href.to_string();
+                return Ok(());
+            }
+            Err(e) => {
+                fail_typed_c(outcome, &e)?;
+                return Ok(());
+            }
+        }
+    }
+    outcome.result = model_remote::ContactResult::Failed;
+    outcome.error = say(&DavError::Status(412)).to_string();
+    Ok(())
+}
+
+/// A deletion: the resource is DELETEd under the ETag it was downloaded with; one that moved
+/// since has its tag fetched and is tried again, once. One that is already gone is `Gone`, as
+/// the engine reads it.
+fn contact_delete(dav: &Dav<'_>, op: &model_remote::ContactOp, outcome: &mut model_remote::ContactOutcome) -> Result<(), Stop> {
+    let href = op.remote.as_str();
+    if href.is_empty() {
+        outcome.result = model_remote::ContactResult::Done;
+        return Ok(());
+    }
+    let mut guard = op.etag.clone();
+    for _ in 0..2 {
+        match dav.delete(href, (!guard.is_empty()).then_some(guard.as_str())) {
+            Ok(()) => {
+                outcome.result = model_remote::ContactResult::Done;
+                outcome.remote = href.to_string();
+                return Ok(());
+            }
+            Err(DavError::Status(412)) => match dav.fetch(href) {
+                Ok((_, tag)) => {
+                    guard = tag;
+                    continue;
+                }
+                Err(DavError::Status(404 | 410)) => {
+                    outcome.result = model_remote::ContactResult::Gone;
+                    outcome.remote = href.to_string();
+                    return Ok(());
+                }
+                Err(e) => {
+                    fail_typed_c(outcome, &e)?;
+                    return Ok(());
+                }
+            },
+            Err(DavError::Status(404 | 410)) => {
+                outcome.result = model_remote::ContactResult::Gone;
+                outcome.remote = href.to_string();
+                return Ok(());
+            }
+            Err(e) => {
+                fail_typed_c(outcome, &e)?;
+                return Ok(());
+            }
+        }
+    }
+    outcome.result = model_remote::ContactResult::Failed;
+    outcome.error = say(&DavError::Status(412)).to_string();
+    Ok(())
+}
+
+/// A contact exchange that didn't go through, as the outcome says it: the run stops on a
+/// refused sign-in or a certificate to ask about, else the op is a failure to try again later.
+fn fail_typed_c(outcome: &mut model_remote::ContactOutcome, error: &DavError) -> Result<(), Stop> {
+    match error {
+        DavError::Status(401 | 403) => Err(Stop::Auth),
+        DavError::Net(net) => {
+            if let Some(CertificateProblem::NotTrusted(info) | CertificateProblem::Changed(info)) = https::certificate_problem(net) {
+                return Err(Stop::Untrusted(info.fingerprint.clone()));
+            }
+            fail_outcome_c(outcome, error);
+            Ok(())
+        }
+        _ => {
+            fail_outcome_c(outcome, error);
+            Ok(())
+        }
+    }
+}
+
+/// The outcome of a contact op that couldn't be done, in a few words.
+fn fail_outcome_c(outcome: &mut model_remote::ContactOutcome, error: &DavError) {
+    outcome.result = match error {
+        DavError::Status(404 | 410) => model_remote::ContactResult::Gone,
+        DavError::Status(400..=499) => model_remote::ContactResult::Refused,
+        _ => model_remote::ContactResult::Failed,
     };
     outcome.status = match error {
         DavError::Status(status) => *status,

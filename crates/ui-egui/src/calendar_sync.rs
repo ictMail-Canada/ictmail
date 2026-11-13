@@ -34,7 +34,7 @@ use std::sync::mpsc::Receiver;
 use mailcraft_engine::Module;
 use mailcraft_engine::cmd::remote;
 use mailcraft_model::Id;
-use mailcraft_model::remote::{EventsUpload, EventsUploaded, id_tag};
+use mailcraft_model::remote::{ContactsUpload, EventsUpload, EventsUploaded, id_tag};
 use mailcraft_model::sync::Tokens;
 use mailcraft_time::{DateTime, Timestamp};
 use serde_json::{Value, json};
@@ -100,6 +100,8 @@ pub(crate) struct CalendarSync {
     /// What an account's server was last told, and when: the very same again right away would
     /// mean that the telling doesn't settle anything, and is left for later.
     sent: HashMap<Id, (EventsUpload, f64)>,
+    /// The same for the account's contacts ([`ContactsUpload`]).
+    contact_sent: HashMap<Id, (ContactsUpload, f64)>,
     /// The accounts whose next job was asked for by the owner (a Send/Receive).
     pub(crate) by_hand: std::collections::HashSet<Id>,
     /// Whether the job in flight brings the wide stretch with the contacts.
@@ -253,7 +255,8 @@ impl MailApp {
         self.shared_calendars_ask_tick();
         for account in self.calendar_accounts() {
             // What is ready to go, and for how long it has been: a change gets a quiet moment.
-            let ready = remote::events_waiting(&self.session, account).due;
+            let contact_ready = remote::contacts_waiting(&self.session, account);
+            let ready = remote::events_waiting(&self.session, account).due + contact_ready;
             let since = match self.calendar.waiting.get(&account) {
                 Some((seen, since)) if *seen == ready => *since,
                 _ => {
@@ -264,8 +267,11 @@ impl MailApp {
             // (What exactly would go: nothing, when a change was changed back; and not the very
             // same as a moment ago, which would go round in circles.)
             let changes = if ready > 0 && now - since >= QUIET_MS { self.calendar_changes(account) } else { None };
+            let contact_changes = if contact_ready > 0 && now - since >= QUIET_MS { self.contact_upload(account) } else { None };
             let again = |(sent, at): &(EventsUpload, f64)| changes.as_ref() == Some(sent) && now - at < FIRST_RETRY_MS;
-            let push = changes.is_some() && !self.calendar.sent.get(&account).is_some_and(again);
+            let contact_again = |(sent, at): &(ContactsUpload, f64)| contact_changes.as_ref() == Some(sent) && now - at < FIRST_RETRY_MS;
+            let push = (changes.is_some() && !self.calendar.sent.get(&account).is_some_and(again))
+                || (contact_changes.is_some() && !self.calendar.contact_sent.get(&account).is_some_and(contact_again));
             // A change that was just sent and isn't seen on the server yet: asked for again soon.
             let unseen = remote::recheck_due(&self.session, account);
             let every = match (unseen, in_front) {
@@ -323,6 +329,14 @@ impl MailApp {
         if self.calendar.send_waits.contains(&account) {
             upload.ops.retain(|op| !op.mails_others());
         }
+        Some(upload).filter(|upload| !upload.ops.is_empty())
+    }
+
+    /// What of the account's contacts waits to go to its DAV server now; `None` when nothing
+    /// does. (Contacts of other servers are never sent back: the engine notes changes only for
+    /// accounts whose DAV settings name a server.)
+    pub(crate) fn contact_upload(&self, account: Id) -> Option<ContactsUpload> {
+        let upload = remote::contact_upload(&self.session, account).ok()?;
         Some(upload).filter(|upload| !upload.ops.is_empty())
     }
 
@@ -476,9 +490,13 @@ impl MailApp {
         let by_hand = self.calendar.by_hand.remove(&account);
         let directory = round.is_none() && self.directory_due(account, now);
         let changes = if push { self.calendar_changes(account) } else { None };
+        let contact_changes = if push { self.contact_upload(account) } else { None };
         let carried = changes.is_some();
         if let Some(changes) = &changes {
             self.calendar.sent.insert(account, (changes.clone(), now));
+        }
+        if let Some(contact_changes) = &contact_changes {
+            self.calendar.contact_sent.insert(account, (contact_changes.clone(), now));
         }
         let stretch = round.unwrap_or_else(|| self.calendar_window());
         let ask = DavRequest {
@@ -489,6 +507,7 @@ impl MailApp {
             asks: self.calendar_asks(account, directory, Some(stretch)),
             contacts: directory || by_hand,
             changes,
+            contact_changes,
             sync: self.session.mailbox.dav_sync.get(&account).cloned().unwrap_or_default(),
             cancel: Default::default(),
         };
@@ -644,6 +663,15 @@ impl MailApp {
         let rest: Vec<mailcraft_model::remote::EventsDownload> = events.collect();
         let taken = self.take_in_calendar(account, result.uploaded.as_ref(), first.as_ref(), &mut errors);
         self.take_in_more_calendars(&rest, &mut errors);
+        // The contact changes told first, as the calendar's are: a contact the server took is
+        // the account's under the name it was given before the download below is merged, so the
+        // copy that comes down is seen as the same contact, not a second one.
+        if let Some(uploaded) = result.contacts_uploaded.take() {
+            match remote::apply_contact_changes(&mut self.session, &uploaded) {
+                Ok(summary) => log::info!("dav, account {account}: contacts sent: {summary}"),
+                Err(e) => log::warn!("dav, account {account}: the contact changes couldn't be taken in: {e}"),
+            }
+        }
         if let Some(contacts) = &result.contacts {
             match remote::apply_contacts(&mut self.session, contacts) {
                 Ok(_) => {}
