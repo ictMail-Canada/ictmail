@@ -560,6 +560,8 @@ const NEVER: &[&str] = &[
     "sync.eventChanges",
     "sync.applyEventChanges",
     "sync.applyEvents",
+    "sync.contactChanges",
+    "sync.applyContactChanges",
     "sync.applyContacts",
     "sync.taskChanges",
     "sync.applyTaskChanges",

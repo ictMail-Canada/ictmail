@@ -10,18 +10,19 @@ fn alpha(px: &[u8], size: u32, x: u32, y: u32) -> u8 {
 }
 
 #[test]
-fn the_tile_fills_the_canvas_and_its_corners_are_cut() {
+fn the_mark_is_centred_on_a_transparent_field() {
     let d = Drawing::parse(SVG).unwrap();
     let size = 256;
     let px = d.render(size, 1.0, 1.0).unwrap();
     assert_eq!(px.len(), (size * size * 4) as usize);
-    // The rounded corners are see-through; the middle of each edge and the centre are not.
-    for (x, y) in [(0, 0), (size - 1, 0), (0, size - 1), (size - 1, size - 1)] {
-        assert_eq!(alpha(&px, size, x, y), 0, "corner {x},{y}");
+    // The mark floats on transparency: the corners and the very edges are see-through; the
+    // centre is not.
+    for (x, y) in
+        [(0, 0), (size - 1, 0), (0, size - 1), (size - 1, size - 1), (size / 2, 1), (size / 2, size - 2), (1, size / 2), (size - 2, size / 2)]
+    {
+        assert_eq!(alpha(&px, size, x, y), 0, "{x},{y}");
     }
-    for (x, y) in [(size / 2, 1), (size / 2, size - 2), (1, size / 2), (size - 2, size / 2), (size / 2, size / 2)] {
-        assert_eq!(alpha(&px, size, x, y), 255, "{x},{y}");
-    }
+    assert_eq!(alpha(&px, size, size / 2, size / 2), 255);
 }
 
 #[test]
@@ -36,15 +37,16 @@ fn macos_keeps_its_margin() {
 }
 
 #[test]
-fn a_closer_drawing_stays_inside_the_tile() {
+fn a_closer_drawing_stays_inside_the_same_outline() {
     let d = Drawing::parse(SVG).unwrap();
     let size = 64;
     let plain = d.render(size, 1.0, 1.0).unwrap();
     let near = d.render(size, 1.0, 1.3).unwrap();
-    // The outline is the same; what is inside it differs.
+    // The closer drawing shows more of the mark inside the plain render's outline: it never
+    // takes in a pixel the plain one left clear.
     for y in 0..size {
         for x in 0..size {
-            assert_eq!(alpha(&plain, size, x, y), alpha(&near, size, x, y), "{x},{y}");
+            assert!(alpha(&near, size, x, y) <= alpha(&plain, size, x, y), "{x},{y}");
         }
     }
     assert_ne!(plain, near);
