@@ -1,0 +1,1 @@
+- An IMAP account's settings can keep its calendars and contacts in step with a CalDAV/CardDAV server, ictMail/SOGo included: events and contacts come down, and changes made here go back up under the server's own tags.

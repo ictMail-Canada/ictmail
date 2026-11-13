@@ -2,15 +2,19 @@
 
 > **Last reviewed:** 2026-10-24 · **Last updated:** 2026-11-02 · **Change:** patch
 
-**Status:** foundation only.
+**Status:** in use for calendars and contacts.
 
 `mailcraft_model::dav` describes a discovered calendar or address book and a resource snapshot.
 Snapshots retain the original document, the parsed contacts or events and the opaque ETag.
-Unknown collection permissions default to read-only. These types are not yet added to the
-mailbox file, account settings, or a sync command, and contain no passwords or tokens.
+Unknown collection permissions default to read-only. An IMAP account's DAV settings name the
+server, `mailcraft-net`'s DAV client discovers its collections and keeps a sync token per
+collection, and the desktop app's DAV runner (`apps/mailcraft/src/dav_runner.rs`) downloads
+and uploads the personal calendar and address books. This document is about the model and
+document helpers only; they hold no passwords or tokens.
 
-`mailcraft_dav` currently contains pure document helpers only. Nothing calls a server,
-opens a socket, reads a file or schedules a job. There is no discovery or upload implementation.
+`mailcraft_dav` contains pure document helpers only. Nothing in it calls a server,
+opens a socket, reads a file or schedules a job; discovery, sync and uploads live in
+`mailcraft-net` and the app's runner.
 
 ## Editing a document
 
