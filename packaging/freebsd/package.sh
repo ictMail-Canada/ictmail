@@ -43,7 +43,7 @@ rm -rf "$WORK"
 
 # BSD install has no -D: make the directories first.
 mkdir -p "$STAGE/bin" "$STAGE/share/applications" "$STAGE/share/mime/packages" "$STAGE/share/metainfo" \
-  "$STAGE/share/icons" "$STAGE/share/doc/mailcraft"
+  "$STAGE/share/icons" "$STAGE/share/doc/ictmail"
 install -m 755 "$BIN/ictmail" "$STAGE/bin/ictmail"
 install -m 755 "$BIN/ictmail-cli" "$STAGE/bin/ictmail-cli"
 strip "$STAGE/bin/ictmail" "$STAGE/bin/ictmail-cli" 2>/dev/null || true
@@ -52,7 +52,7 @@ install -m 644 "$LINUX/$APP_ID.mime.xml" "$STAGE/share/mime/packages/$APP_ID.xml
 sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$MAILCRAFT_BUILD_DATE/g" \
   "$LINUX/$APP_ID.metainfo.xml.in" >"$STAGE/share/metainfo/$APP_ID.metainfo.xml"
 cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/share/icons/"
-copy_docs "$STAGE/share/doc/mailcraft"
+copy_docs "$STAGE/share/doc/ictmail"
 
 tar -C "$WORK" -czf "$DIST/$BASENAME.tar.gz" "$BASENAME"
 echo "wrote $DIST/$BASENAME.tar.gz"

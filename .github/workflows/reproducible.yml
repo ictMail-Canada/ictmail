@@ -40,7 +40,7 @@ jobs:
       - name: Compare
         run: |
           set -eu
-          for bin in mailcraft mailcraft-cli; do
+          for bin in ictmail ictmail-cli; do
             a=$(sha256sum "first/target/release/$bin" | cut -d' ' -f1)
             b=$(sha256sum "elsewhere/second/target/release/$bin" | cut -d' ' -f1)
             echo "$bin: $a $b"

@@ -499,7 +499,7 @@ jobs:
           MAILCRAFT_NO_PREFS=1 timeout 20 xvfb-run -a ictmail --sample >"$RUNNER_TEMP/window.log" 2>&1 || code=$?
           # Still running when the time was up (124) is what a window that started looks like.
           if [ "${code:-0}" != 124 ]; then cat "$RUNNER_TEMP/window.log"; echo "::error::the window did not stay up (exit ${code:-0})"; exit 1; fi
-          sudo apt-get remove -y mailcraft
+          sudo apt-get remove -y ictmail
       - name: Hand the release files on by digest
         id: seal
         env:
