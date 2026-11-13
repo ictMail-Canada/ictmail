@@ -172,6 +172,12 @@ impl DavServer {
         Self::derive(account, name)
     }
 
+    /// [`DavServer::suggested`] for a sign-in name that isn't the saved setting's yet — the
+    /// settings page's field, as it is being filled in.
+    pub fn suggested_as(account: &Account, username: &str) -> Option<String> {
+        Self::derive(account, username)
+    }
+
     /// `https://<host>/SOGo/dav/<user>/` for the account's incoming server, `username` (when not
     /// empty) before the account's own names for the user.
     fn derive(account: &Account, username: &str) -> Option<String> {

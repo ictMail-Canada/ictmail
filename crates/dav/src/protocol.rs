@@ -155,6 +155,8 @@ pub struct Kind {
     pub collection: bool,
     pub calendar: bool,
     pub addressbook: bool,
+    /// A directory of users for lookups (SOGo's all-accounts list), not a book to keep in step.
+    pub directory: bool,
 }
 
 /// Read a `resourcetype` property node (or the answer's `resourcetype` prop) into a [`Kind`].
@@ -170,6 +172,8 @@ pub fn kind(answer: &Answer<'_>) -> Kind {
             kind.calendar = true;
         } else if child.is(CARDDAV, "addressbook") {
             kind.addressbook = true;
+        } else if child.is(CARDDAV, "directory") {
+            kind.directory = true;
         }
     }
     kind

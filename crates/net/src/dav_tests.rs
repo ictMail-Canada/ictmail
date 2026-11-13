@@ -54,6 +54,11 @@ const CONTACTS_HOME: &str = r#"<?xml version="1.0"?>
     <d:displayname>Personal</d:displayname>
     <d:current-user-privilege-set><d:privilege><d:read/></d:privilege></d:current-user-privilege-set>
   </d:prop><d:status>HTTP/1.1 200 OK</d:status></d:propstat></d:response>
+  <d:response><d:href>/dav/user@example.com/Contacts/directory.vcf</d:href><d:propstat><d:prop>
+    <d:resourcetype><d:collection/><card:addressbook/><card:directory/></d:resourcetype>
+    <d:displayname>All accounts</d:displayname>
+    <d:current-user-privilege-set><d:privilege><d:read/></d:privilege><d:privilege><d:all/></d:privilege></d:current-user-privilege-set>
+  </d:prop><d:status>HTTP/1.1 200 OK</d:status></d:propstat></d:response>
 </d:multistatus>"#;
 
 fn state(token: &str, sync: bool) -> String {
@@ -116,7 +121,9 @@ fn discovery_walks_principal_home_sets_and_collections() {
     });
     let base = server.url("/dav/user@example.com/");
     let found = client(&base).discover().unwrap();
-    assert_eq!(found.len(), 2);
+    // The Contacts home-set also offers a `directory` of every account: a lookup listing,
+    // not a book, so it is not discovered.
+    assert_eq!(found.len(), 2, "{found:?}");
     let cal = found.iter().find(|c| !c.contacts).unwrap();
     assert_eq!(cal.href, server.url("/dav/user@example.com/Calendar/personal.ics"));
     assert_eq!(cal.name, "Personal");

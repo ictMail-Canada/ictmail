@@ -62,11 +62,26 @@ fn answers_carry_href_and_successful_properties_only() {
     assert_eq!(home_sets(&answers[0], xml::CALDAV, "calendar-home-set"), vec!["/SOGo/dav/user@example.com/Calendar/"]);
     assert_eq!(home_sets(&answers[0], xml::CARDDAV, "addressbook-home-set"), vec!["/SOGo/dav/user@example.com/Contacts/"]);
     let calendar = kind(&answers[1]);
-    assert!(calendar.collection && calendar.calendar && !calendar.addressbook && !calendar.principal);
+    assert!(calendar.collection && calendar.calendar && !calendar.addressbook && !calendar.principal && !calendar.directory);
     let addressbook = kind(&answers[2]);
-    assert!(addressbook.collection && addressbook.addressbook && !addressbook.calendar);
+    assert!(addressbook.collection && addressbook.addressbook && !addressbook.calendar && !addressbook.directory);
     assert!(supports_sync(&answers[1]));
     assert!(supports_sync(&answers[2]));
+}
+
+#[test]
+fn kind_marks_a_directory_of_users_apart_from_a_book() {
+    // SOGo's all-accounts list carries `addressbook` and `directory` together: it is a
+    // lookup listing, not a book the owner keeps in step.
+    let body = r#"<?xml version="1.0"?>
+<d:multistatus xmlns:d="DAV:" xmlns:card="urn:ietf:params:xml:ns:carddav">
+  <d:response><d:href>/SOGo/dav/user@example.com/Contacts/mail_users/</d:href><d:propstat><d:prop>
+    <d:resourcetype><d:collection/><card:addressbook/><card:directory/></d:resourcetype>
+  </d:prop><d:status>HTTP/1.1 200 OK</d:status></d:propstat></d:response>
+</d:multistatus>"#;
+    let r = root(body);
+    let k = kind(&answers(&r)[0]);
+    assert!(k.addressbook && k.directory && k.collection);
 }
 
 const SYNC: &str = r#"<?xml version="1.0"?>

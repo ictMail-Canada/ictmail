@@ -413,6 +413,9 @@ struct DavFields {
     url: String,
     username: String,
     trusted: String,
+    /// The empty fields were already filled from the account once; clearing one afterwards
+    /// keeps it cleared (empty still means the account's own suggestion).
+    filled: bool,
 }
 
 /// The Add Account wizard, and Account Settings for an account that exists.
@@ -673,6 +676,7 @@ impl AccountSetup {
                 url: a.dav.as_ref().map(|d| d.url.clone()).unwrap_or_default(),
                 username: a.dav.as_ref().map(|d| d.username.clone()).unwrap_or_default(),
                 trusted: a.dav.as_ref().map(|d| d.trusted.clone()).unwrap_or_default(),
+                filled: false,
             });
         }
         if let Some(oauth) = &a.oauth {
@@ -2265,14 +2269,36 @@ impl AccountSetup {
         }
         let t = pass.t;
         // What the fields are peopled with is worked out before the fields are borrowed.
-        let suggested = self.edit.as_ref().and_then(|edit| app.session.mailbox.account(edit.id)).and_then(mailcraft_model::dav::DavServer::suggested);
+        let account = self.edit.as_ref().and_then(|edit| app.session.mailbox.account(edit.id));
+        let suggested = account.and_then(mailcraft_model::dav::DavServer::suggested);
         let pending = self.edit.as_ref().and_then(|edit| app.calendar.dav_untrusted(edit.id).map(str::to_string));
         caption(ui, tl!("Calendars and contacts"), &t);
         let Some(dav) = self.dav.as_mut() else { return };
         ui.checkbox(&mut dav.on, tl!("Sync calendars and address books (CalDAV/CardDAV)"))
             .on_hover_text(tl!("Keeps the calendars and contacts the account's DAV server has in step both ways."));
         if !dav.on {
+            dav.filled = false;
             return;
+        }
+        if !dav.filled
+            && let Some(account) = account
+        {
+            // The account's own answers fill the empty fields once: the sign-in the account
+            // uses and the address its incoming server suggests. The owner can still change
+            // or clear them; a cleared field stays cleared until the switch goes off and on.
+            if dav.username.trim().is_empty() {
+                let name = account.username.trim();
+                let name = if name.is_empty() { account.email.trim() } else { name };
+                if !name.is_empty() {
+                    dav.username = name.to_string();
+                }
+            }
+            if dav.url.trim().is_empty()
+                && let Some(url) = mailcraft_model::dav::DavServer::suggested_as(account, &dav.username)
+            {
+                dav.url = url;
+            }
+            dav.filled = true;
         }
         indented(ui, |ui| {
             let hint = match &suggested {

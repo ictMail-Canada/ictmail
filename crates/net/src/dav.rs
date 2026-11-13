@@ -287,6 +287,11 @@ impl Dav<'_> {
 /// One answer of a propfind on `against`: a collection to keep, or a home set to look in.
 fn collect(a: &proto::Answer<'_>, against: &str, found: &mut Vec<Collection>, homes: &mut Vec<String>) {
     let kind = proto::kind(a);
+    // A directory lists users for lookups; syncing it would merge every account it names
+    // into the owner's contacts.
+    if kind.directory {
+        return;
+    }
     if kind.calendar || kind.addressbook {
         let Some(href) = resolve(against, a.href) else { return };
         if found.len() >= MAX_COLLECTIONS || found.iter().any(|c| c.href == href) {
