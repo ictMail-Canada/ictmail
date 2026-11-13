@@ -310,9 +310,12 @@ jobs:
           if (Test-Path (Join-Path $dir 'ictmail.exe')) { throw 'uninstall left ictmail.exe behind' }
 
   # Compiles the two macOS programs for both architectures. No signing secret, no environment.
+  # All three macOS jobs pin macos-15, not macos-latest: macos-latest moved to the macOS 26
+  # arm64 image, whose runner pool repeatedly failed to allocate jobs (release run
+  # 43459729804). macos-15 is the previous image — same arm64 arch, proven toolchain.
   macos-build:
     name: macOS universal (build)
-    runs-on: macos-latest
+    runs-on: macos-15
     outputs:
       digest: ${{ steps.seal.outputs.digest }}
     steps:
@@ -348,7 +351,7 @@ jobs:
   macos:
     name: macOS universal
     needs: [macos-build]
-    runs-on: macos-latest
+    runs-on: macos-15
     # As for Windows: signing secrets only in the `release` environment, for a version tag.
     environment: ${{ inputs.sign && 'release' || '' }}
     outputs:
@@ -412,7 +415,7 @@ jobs:
   macos-smoke:
     name: macOS universal (check)
     needs: [macos]
-    runs-on: macos-latest
+    runs-on: macos-15
     steps:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
