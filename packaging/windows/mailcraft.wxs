@@ -10,10 +10,10 @@
   Per-machine install into Program Files with a Start Menu shortcut. The installer shows the
   standard WiX dialogs: welcome, license, a feature tree, progress, and a finish page. The
   dialog set is WiX's WixUI_FeatureTree replicated below (the UI extension's own ExitDialog
-  cannot be changed, and the finish page needs a second checkbox), with ictMail's banner and
+  cannot be changed, and the finish page needs its own checkbox), with ictMail's banner and
   side bitmaps (WixUIBannerBmp/WixUIDialogBmp, made by packaging/windows/make-bmps.py) and a
-  finish page that offers to launch ictMail and to put a shortcut on the desktop (both ticked
-  by default). The desktop shortcut is made by a custom action after the install finishes —
+  finish page that offers to launch ictMail (ticked by default). A shortcut to ictMail is
+  also put on the installing user's desktop by a custom action after the install finishes —
   the finish page runs once the files are already in place, so it cannot be an installed
   component. Silent installs (/qn) never show the page and make no desktop shortcut.
   package.ps1 builds the license RTF from LICENSE-MIT and LICENSE-APACHE.
@@ -58,7 +58,7 @@
          they can be) with three changes: the feature page is ours (IctMailCustomizeDlg
          below) so it has no Browse button — no feature offers its own directory, and the
          stock button would open a picker that changes nothing; the finish page is ours
-         (IctMailExitDialog) so it can carry the desktop-shortcut checkbox; and the
+         (IctMailExitDialog) so it can carry the launch checkbox; and the
          license page's Print button needs no per-architecture action (LicenseAgreementDlg
          prints through the MsiPrint event itself, unlike Minimal's WelcomeEulaDlg).
          ARPNOMODIFY is deliberately absent: Programs and Features must keep its Change
@@ -67,25 +67,42 @@
          desktop shortcut is WixQuietExec running PowerShell's WScript.Shell, since the .lnk
          must be made after the install and Windows Installer has no post-install shortcut
          table. Both are immediate, impersonated custom actions: they run as the person who
-         clicked Finish, so [DesktopFolder] is their desktop. Return="ignore": a shortcut
-         that can't be made never fails the install. The finish page only shows for a fresh
-         install or upgrade (NOT Installed keeps it — and both actions — off repairs,
-         changes and uninstalls). -->
+         clicked Finish. The shortcut goes to that user's own Desktop (the shell's
+         SpecialFolders "Desktop", which honours a redirected e.g. OneDrive desktop and
+         localized folder names), never [DesktopFolder]: for a per-machine package that
+         property is the all-users Public Desktop, which only an elevated process can
+         write, so a normal (medium-integrity) install silently failed to make the
+         shortcut there. The user's own Desktop is writable at any integrity level. The
+         same command removes the shortcut on uninstall: it looks for ictmail.exe, which
+         exists once the install has finished and is gone once the uninstall has, so one
+         static command creates on install and deletes on uninstall.
+         RemoveDesktopShortcut runs it from the execute sequence on REMOVE="ALL".
+         Return="ignore": a shortcut that can't be made never fails the install. The finish
+         page only shows for a fresh install or upgrade (NOT Installed keeps it — and both
+         actions — off repairs, changes and uninstalls). -->
     <WixVariable Id="WixUILicenseRtf" Value="$(var.LicenseRtf)" />
     <WixVariable Id="WixUIBannerBmp" Value="$(var.BannerBmp)" />
     <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch ictMail" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
-    <Property Id="DESKTOPSHORTCUT" Value="1" />
     <Property Id="WixShellExecTarget" Value="[#MailcraftExe]" />
-    <!-- The whole command line of the shortcut maker. It must begin with a quoted program
-         name (WixQuietExec's rule); [SystemFolder] is the Windows folder of the package's own
-         bitness, where PowerShell always lives. Join-Path takes [DesktopFolder] with or
-         without its trailing backslash. -->
-    <Property Id="WixQuietExecCmdLine" Value="&quot;[SystemFolder]WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -Command &quot;$ws=New-Object -ComObject WScript.Shell;$lnk=Join-Path '[DesktopFolder]' 'ictMail.lnk';$s=$ws.CreateShortcut($lnk);$s.TargetPath='[#MailcraftExe]';$s.WorkingDirectory='[INSTALLFOLDER]';$s.IconLocation='[#MailcraftExe],0';$s.Description='ictMail mail and calendar';$s.Save()&quot;" />
+    <!-- The whole command line of the shortcut maker/remover, run by both
+         CreateDesktopShortcut (finish page) and RemoveDesktopShortcut (uninstall).
+         It must begin with a quoted program name (WixQuietExec's rule); [SystemFolder]
+         is the Windows folder of the package's own bitness, where PowerShell always
+         lives. The script is base64 (-EncodedCommand) because a -Command string this
+         long does not survive WixQuietExec's command-line parsing. It needs no MSI
+         properties: the shell's SpecialFolders gives the installing user's own Desktop
+         (a redirected e.g. OneDrive desktop and localized names included — never
+         [DesktopFolder], which for a per-machine package is the all-users Public
+         Desktop only an elevated process can write), and the presence of ictmail.exe
+         tells install-finish (create) from uninstall-finish (delete). -->
+    <Property Id="WixQuietExecCmdLine" Value="&quot;[SystemFolder]WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -EncodedCommand JAB3AHMAIAA9ACAATgBlAHcALQBPAGIAagBlAGMAdAAgAC0AQwBvAG0ATwBiAGoAZQBjAHQAIABXAFMAYwByAGkAcAB0AC4AUwBoAGUAbABsAA0ACgAkAGwAbgBrACAAPQAgAEoAbwBpAG4ALQBQAGEAdABoACAAJAB3AHMALgBTAHAAZQBjAGkAYQBsAEYAbwBsAGQAZQByAHMALgBJAHQAZQBtACgAJwBEAGUAcwBrAHQAbwBwACcAKQAgACcAaQBjAHQATQBhAGkAbAAuAGwAbgBrACcADQAKACQAZQB4AGUAIAA9ACAAJABuAHUAbABsAA0ACgBmAG8AcgBlAGEAYwBoACAAKAAkAHAAIABpAG4AIABAACgAJwBDADoAXABQAHIAbwBnAHIAYQBtACAARgBpAGwAZQBzACcALAAgAFsARQBuAHYAaQByAG8AbgBtAGUAbgB0AF0AOgA6AEcAZQB0AEYAbwBsAGQAZQByAFAAYQB0AGgAKAAnAFAAcgBvAGcAcgBhAG0ARgBpAGwAZQBzACcAKQAsACAAWwBFAG4AdgBpAHIAbwBuAG0AZQBuAHQAXQA6ADoARwBlAHQARQBuAHYAaQByAG8AbgBtAGUAbgB0AFYAYQByAGkAYQBiAGwAZQAoACcAUAByAG8AZwByAGEAbQBGAGkAbABlAHMAKAB4ADgANgApACcAKQApACkAIAB7AA0ACgAgACAAaQBmACAAKAAkAHAAKQAgAHsAIAAkAHQAIAA9ACAASgBvAGkAbgAtAFAAYQB0AGgAIAAkAHAAIAAnAGkAYwB0AE0AYQBpAGwAXABpAGMAdABtAGEAaQBsAC4AZQB4AGUAJwA7ACAAaQBmACAAKABUAGUAcwB0AC0AUABhAHQAaAAgACQAdAApACAAewAgACQAZQB4AGUAIAA9ACAAJAB0ADsAIABiAHIAZQBhAGsAIAB9ACAAfQANAAoAfQANAAoAaQBmACAAKAAkAGUAeABlACkAIAB7AA0ACgAgACAAJABzACAAPQAgACQAdwBzAC4AQwByAGUAYQB0AGUAUwBoAG8AcgB0AGMAdQB0ACgAJABsAG4AawApAA0ACgAgACAAJABzAC4AVABhAHIAZwBlAHQAUABhAHQAaAAgAD0AIAAkAGUAeABlAA0ACgAgACAAJABzAC4AVwBvAHIAawBpAG4AZwBEAGkAcgBlAGMAdABvAHIAeQAgAD0AIABTAHAAbABpAHQALQBQAGEAdABoACAAJABlAHgAZQANAAoAIAAgACQAcwAuAEkAYwBvAG4ATABvAGMAYQB0AGkAbwBuACAAPQAgACIAJABlAHgAZQAsADAAIgANAAoAIAAgACQAcwAuAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAgAD0AIAAnAGkAYwB0AE0AYQBpAGwAIABtAGEAaQBsACAAYQBuAGQAIABjAGEAbABlAG4AZABhAHIAJwANAAoAIAAgACQAcwAuAFMAYQB2AGUAKAApAA0ACgB9ACAAZQBsAHMAZQBpAGYAIAAoAFQAZQBzAHQALQBQAGEAdABoACAAJABsAG4AawApACAAewANAAoAIAAgAFIAZQBtAG8AdgBlAC0ASQB0AGUAbQAgACQAbABuAGsAIAAtAEYAbwByAGMAZQANAAoAfQANAAoA" />
     <CustomAction Id="LaunchMailcraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec"
         Impersonate="yes" Return="ignore" />
     <CustomAction Id="CreateDesktopShortcut" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixQuietExec"
+        Impersonate="yes" Return="ignore" />
+    <CustomAction Id="RemoveDesktopShortcut" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixQuietExec"
         Impersonate="yes" Return="ignore" />
     <UI>
       <!-- Everything below that is not ours is WixUI_FeatureTree's, kept so the dialogs,
@@ -154,11 +171,12 @@
         </Control>
       </Dialog>
 
-      <!-- The finish page: the extension's ExitDialog plus a desktop-shortcut checkbox. It has
-           its own Id (IctMailExitDialog) so the UI extension's ExitDialog fragment is never
-           pulled in — WiX links a library fragment for every symbol a package references, and
-           a second "ExitDialog" would be a duplicate. The optional launch checkbox keeps its
-           WIXUI_EXITDIALOGOPTIONAL* wiring. -->
+      <!-- The finish page: the extension's ExitDialog minus its desktop-shortcut checkbox —
+           the shortcut is always made for the installing user now, so there is nothing to
+           choose. It has its own Id (IctMailExitDialog) so the UI extension's ExitDialog
+           fragment is never pulled in — WiX links a library fragment for every symbol a
+           package references, and a second "ExitDialog" would be a duplicate. The optional
+           launch checkbox keeps its WIXUI_EXITDIALOGOPTIONAL* wiring. -->
       <Dialog Id="IctMailExitDialog" Width="370" Height="270" Title="!(loc.ExitDialog_Title)">
         <Control Id="Finish" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Cancel="yes" Text="!(loc.WixUIFinish)" />
         <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Disabled="yes" Text="!(loc.WixUICancel)" />
@@ -169,7 +187,6 @@
         <Control Id="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Transparent="yes" NoPrefix="yes" Text="!(loc.ExitDialogTitle)" />
         <Control Id="OptionalText" Type="Text" X="135" Y="106" Width="220" Height="22" Transparent="yes" NoPrefix="yes" Hidden="yes" Text="[WIXUI_EXITDIALOGOPTIONALTEXT]" ShowCondition="WIXUI_EXITDIALOGOPTIONALTEXT AND NOT Installed" />
         <Control Id="OptionalCheckBox" Type="CheckBox" X="135" Y="132" Width="220" Height="20" Hidden="yes" Property="WIXUI_EXITDIALOGOPTIONALCHECKBOX" CheckBoxValue="1" Text="[WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT]" ShowCondition="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT AND NOT Installed" />
-        <Control Id="DesktopCheckBox" Type="CheckBox" X="135" Y="160" Width="220" Height="20" Hidden="yes" Property="DESKTOPSHORTCUT" CheckBoxValue="1" Text="Create a desktop shortcut" ShowCondition="NOT Installed" />
       </Dialog>
 
       <InstallUISequence>
@@ -178,10 +195,9 @@
       <AdminUISequence>
         <Show Dialog="IctMailExitDialog" OnExit="success" />
       </AdminUISequence>
-
       <Publish Dialog="IctMailExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999" />
       <Publish Dialog="IctMailExitDialog" Control="Finish" Event="DoAction" Value="LaunchMailcraft" Order="1" Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
-      <Publish Dialog="IctMailExitDialog" Control="Finish" Event="DoAction" Value="CreateDesktopShortcut" Order="2" Condition="DESKTOPSHORTCUT = 1 AND NOT Installed" />
+      <Publish Dialog="IctMailExitDialog" Control="Finish" Event="DoAction" Value="CreateDesktopShortcut" Order="2" Condition="NOT Installed" />
 
       <!-- The rest is WixUI_FeatureTree's wiring, with CustomizeDlg renamed to
            IctMailCustomizeDlg. Its ExitDialog publish is ours already (the three
@@ -205,6 +221,14 @@
 
       <UIRef Id="WixUI_Common" />
     </UI>
+
+    <!-- The uninstall half of the desktop shortcut: the same WixQuietExecCmdLine command,
+         which deletes instead of creates because ictmail.exe is already gone. Runs in the
+         execute sequence so silent uninstalls clean up too; after InstallFinalize the product
+         is already unregistered but the session still impersonates the user. -->
+    <InstallExecuteSequence>
+      <Custom Action="RemoveDesktopShortcut" After="InstallFinalize" Condition="REMOVE=&quot;ALL&quot;" />
+    </InstallExecuteSequence>
 
     <!-- An organisation turns ictMail's updating by itself off for every user of the computer
          by installing with DISABLEAUTOMATICUPDATES=1
