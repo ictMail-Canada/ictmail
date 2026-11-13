@@ -24,13 +24,18 @@ use serde_json::Value;
 use crate::NetError;
 use crate::http::{self, Request, Url};
 
-/// The public keys of MailCraft's release signature, in base64 (32 bytes each): the key the
-/// release workflow signs `SHA256SUMS.txt` with, and a spare whose private half is kept offline
-/// until the first is lost or stolen. A release signed by either is one of the project's; a copy
-/// that updates itself takes nothing that isn't (`update_download`). An empty one is no key:
-/// with neither, nothing is ever downloaded. `cargo xtask release-key new` prints both
+/// The public keys of the release signature, in base64 (32 bytes each): MailCraft's own pair
+/// first (the one the upstream release workflow signs `SHA256SUMS.txt` with, and a spare kept
+/// offline), then ictMail's pair, which signs this repository's releases the same way. A
+/// release signed by any of them is one this build takes (`update_download`). An empty one is
+/// no key: with none, nothing is ever downloaded. `cargo xtask release-key new` prints a pair
 /// (docs/releasing.md).
-pub const RELEASE_KEYS: [&str; 2] = ["Mu5RF5oJpFhDGfa5wpgznC39tDC8vbUbyNkiAMdluPQ=", "XV6WRgW06/mGhZCHhFVKMIEZDmLevQduZPLSj/UW5zI="];
+pub const RELEASE_KEYS: [&str; 4] = [
+    "Mu5RF5oJpFhDGfa5wpgznC39tDC8vbUbyNkiAMdluPQ=",
+    "XV6WRgW06/mGhZCHhFVKMIEZDmLevQduZPLSj/UW5zI=",
+    "vMA0R3eyAHW01xxUpmuzkAAZDoaZPjEtvSxP9uoqcVI=",
+    "bkwWkMexTBRWCBrB4O7Nu671AXARM9TNGceGm6wYU1w=",
+];
 
 /// The repository this build came from: `https://github.com/{owner}/{repo}`.
 pub const REPOSITORY: &str = env!("CARGO_PKG_REPOSITORY");
