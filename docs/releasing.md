@@ -14,6 +14,18 @@ standard runners in any public repository, a fork included. If the repository mo
 organisation, call `storytold/craft-common-actions/.github/workflows/release.yml` instead, as
 WordCraft does.
 
+## ictMail versioning
+
+ictMail's own releases step the minor version by ten — `0.13.0`, then `0.23.0`, `0.33.0`,
+and so on — while upstream MailCraft keeps its own line (`0.12.0`, `0.13.0`, …). The
+scheme keeps ictMail strictly ahead of upstream, so the two products never ship the same
+version number for different code and "higher version = newer" stays true for anyone
+comparing them; upstream would need ten minor releases to catch up. Patch releases inside
+a minor are ordinary (`0.23.1`). The update feed serves only this repository's releases,
+so the numbering is for people and for merges, not for the checker — but on an upstream
+merge, keep `[workspace.package] version` ahead of upstream's latest tag rather than
+resolving the conflict to upstream's number.
+
 1. Release notes: `packaging/release-notes.md` is the release's text on GitHub and on the
    website's changelog, which shows it as written. It opens with **MailCraft <version> in short**:
    a headline list of six to ten lines, a few words each, of what a tester would notice (the main
