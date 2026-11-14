@@ -16,15 +16,17 @@ WordCraft does.
 
 ## ictMail versioning
 
-ictMail's own releases step the minor version by ten — `0.13.0`, then `0.23.0`, `0.33.0`,
-and so on — while upstream MailCraft keeps its own line (`0.12.0`, `0.13.0`, …). The
+While ictMail is `0.x`, its releases step the minor version by ten — `0.13.0`, then `0.23.0`,
+`0.33.0`, and so on — while upstream MailCraft keeps its own line (`0.12.0`, `0.13.0`, …). The
 scheme keeps ictMail strictly ahead of upstream, so the two products never ship the same
 version number for different code and "higher version = newer" stays true for anyone
-comparing them; upstream would need ten minor releases to catch up. Patch releases inside
-a minor are ordinary (`0.23.1`). The update feed serves only this repository's releases,
-so the numbering is for people and for merges, not for the checker — but on an upstream
-merge, keep `[workspace.package] version` ahead of upstream's latest tag rather than
-resolving the conflict to upstream's number.
+comparing them; upstream would need ten minor releases to catch up. At `1.0.0` — a
+deliberate product decision, not an automatic step — ictMail goes to ordinary semver:
+minors advance by one (`1.0.0`, `1.1.0`, `1.2.0`) and patches inside a minor are ordinary
+(`1.2.1`); upstream will still be far behind on its own `0.x` line. The update feed serves
+only this repository's releases, so the numbering is for people and for merges, not for the
+checker — but on an upstream merge, keep `[workspace.package] version` ahead of upstream's
+latest tag rather than resolving the conflict to upstream's number.
 
 1. Release notes: `packaging/release-notes.md` is the release's text on GitHub and on the
    website's changelog, which shows it as written. It opens with **MailCraft <version> in short**:
