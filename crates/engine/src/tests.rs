@@ -764,9 +764,12 @@ fn accounts_that_sign_in_on_the_providers_page() {
     assert_eq!((mx["service"].as_str(), mx["auth"].as_str(), mx["provider"].is_null()), (Some("Google Workspace"), Some("password"), true));
     let mx = run(&mut s, "account.preset", json!({"email": "avery@lumen.example", "mx": ["mx.lumen.example", "evil.example/../mx.microsoft"]}));
     assert_eq!(
-        (mx["known"].as_bool(), mx["via"].as_str(), mx["incoming"]["host"].as_str()),
-        (Some(false), Some("guess"), Some("imap.lumen.example"))
+        (mx["known"].as_bool(), mx["via"].as_str(), mx["incoming"]["host"].as_str(), mx["outgoing"]["host"].as_str()),
+        (Some(false), Some("guess"), Some("mx.lumen.example"), Some("mx.lumen.example"))
     );
+    // Exchangers that aren't host names fall back to the conventional guess.
+    let mx = run(&mut s, "account.preset", json!({"email": "avery@lumen.example", "mx": ["not a host", "a/b.example"]}));
+    assert_eq!((mx["via"].as_str(), mx["incoming"]["host"].as_str()), (Some("guess"), Some("imap.lumen.example")));
     // Or the owner says whose it is.
     let named = run(&mut s, "account.preset", json!({"email": "avery@lumen.example", "service": "Outlook.com"}));
     assert_eq!((named["via"].as_str(), named["outgoing"]["host"].as_str()), (Some("asked"), Some("smtp-mail.outlook.com")));

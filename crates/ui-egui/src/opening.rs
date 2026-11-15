@@ -467,18 +467,26 @@ pub(crate) fn logo(ctx: &egui::Context) -> Option<egui::TextureHandle> {
     Some(texture)
 }
 
-/// The ictMail wordmark, for About: the brand's own logo file, kept like [`logo`].
+/// The ictMail wordmark, for About: the brand's own logo file, kept like [`logo`]. A dark
+/// window shows the white wordmark, the colour one would vanish on it.
 /// `None` when the picture can't be read (the screen then shows no mark).
 pub(crate) fn wordmark(ctx: &egui::Context) -> Option<egui::TextureHandle> {
-    /// The 600×240 logo every build ships (`assets/branding`, attributed in `ATTRIBUTION.md`).
+    /// The logos every build ships (`assets/branding`, attributed in `ATTRIBUTION.md`): the
+    /// colour wordmark for a light window, the white one for a dark one.
     const PNG: &[u8] = include_bytes!("../../../assets/branding/ictmail-logo.png");
-    let id = egui::Id::unique("ictmail-wordmark");
+    const PNG_DARK: &[u8] = include_bytes!("../../../assets/branding/ictmail-logo-white-trans-2180x842.png");
+    let (png, name, mark) = if ctx.global_style().visuals.dark_mode {
+        (PNG_DARK, "ictmail-wordmark-dark", "ictmail-wordmark-dark")
+    } else {
+        (PNG, "ictmail-wordmark", "ictmail-wordmark")
+    };
+    let id = egui::Id::unique(mark);
     if let Some(texture) = ctx.data(|d| d.get_temp::<egui::TextureHandle>(id)) {
         return Some(texture);
     }
-    let rgba = image::load_from_memory_with_format(PNG, image::ImageFormat::Png).ok()?.into_rgba8();
+    let rgba = image::load_from_memory_with_format(png, image::ImageFormat::Png).ok()?.into_rgba8();
     let size = [usize::try_from(rgba.width()).ok()?, usize::try_from(rgba.height()).ok()?];
-    let texture = ctx.load_texture("ictmail-wordmark", egui::ColorImage::from_rgba_unmultiplied(size, rgba.as_raw()), egui::TextureOptions::LINEAR);
+    let texture = ctx.load_texture(name, egui::ColorImage::from_rgba_unmultiplied(size, rgba.as_raw()), egui::TextureOptions::LINEAR);
     ctx.data_mut(|d| d.insert_temp(id, texture.clone()));
     Some(texture)
 }

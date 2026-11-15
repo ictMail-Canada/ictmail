@@ -866,7 +866,8 @@ fn about(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
     heading(ui, tl!("About ictMail"), t);
     // The wordmark, as in the About dialog; nothing when its picture can't be read.
     if let Some(logo) = crate::opening::wordmark(ui.ctx()) {
-        ui.image(egui::load::SizedTexture::new(logo.id(), egui::vec2(220.0, 88.0)));
+        let size = logo.size_vec2();
+        ui.image(egui::load::SizedTexture::new(logo.id(), egui::vec2(220.0, size.y * 220.0 / size.x)));
         ui.add_space(4.0);
     }
     ui.label(egui::RichText::new(crate::i18n::fmt(tl!("Version {version}"), &[("version", env!("CARGO_PKG_VERSION"))])).color(t.text_dim));

@@ -1586,14 +1586,20 @@ impl AccountSetup {
             .ok()
             .and_then(|mx| self.preset_command(Some(&mx), None))
             .and_then(|(command, params)| app.execute(command, params).ok())
-            .map(|v| Preset::read(&v))
-            .filter(|preset| preset.known);
+            .map(|v| Preset::read(&v));
         match found {
-            Some(preset) => {
+            Some(preset) if preset.known => {
                 self.take(preset);
                 self.proceed(app);
             }
-            // The guess made from the domain stays, for the owner to check.
+            // Still a guess, but the exchangers may have made it a better one (the mail host's
+            // own name): it stays for the owner to check, as the first guess did.
+            Some(preset) => {
+                self.take(preset);
+                (self.guessed, self.settings_open) = (true, true);
+                self.go(Page::Password);
+            }
+            // No better answer: the guess made from the domain stays, for the owner to check.
             None => self.go(Page::Password),
         }
     }
@@ -3368,10 +3374,15 @@ mod tests {
         assert_eq!(page(&h), None);
     }
 
-    /// (b, continued) A domain nobody knows gets the usual server names, for the owner to check.
+    /// (b, continued) A domain nobody knows gets the usual server names, for the owner to check;
+    /// its mail exchangers, when they name a host, become the guess instead.
     #[test]
     fn an_unknown_domain_gets_a_guess_to_check() {
-        for answer in [Some(Ok(vec!["mx1.lumen.example", "mx2.lumen.example"])), Some(Err("no such domain")), Some(Ok(Vec::new()))] {
+        for (answer, incoming, outgoing) in [
+            (Some(Ok(vec!["mx1.lumen.example", "mx2.lumen.example"])), "mx1.lumen.example", "mx1.lumen.example"),
+            (Some(Err("no such domain")), "imap.lumen.example", "smtp.lumen.example"),
+            (Some(Ok(Vec::new())), "imap.lumen.example", "smtp.lumen.example"),
+        ] {
             let mut a = app(false);
             let asked = lookups(&mut a, answer);
             checks(&mut a, None);
@@ -3382,10 +3393,7 @@ mod tests {
             assert!(says(&h, "Sign in to your account") && says(&h, "doesn't know the settings for this address"));
             let w = wizard(&h).unwrap();
             assert!(w.settings_open && w.guessed && w.oauth.is_none());
-            assert_eq!(
-                (w.username.as_str(), w.incoming.host.as_str(), w.outgoing.host.as_str()),
-                ("noor@lumen.example", "imap.lumen.example", "smtp.lumen.example")
-            );
+            assert_eq!((w.username.as_str(), w.incoming.host.as_str(), w.outgoing.host.as_str()), ("noor@lumen.example", incoming, outgoing));
             assert_eq!(
                 (w.incoming.port.as_str(), w.incoming.security, w.outgoing.port.as_str(), w.outgoing.security),
                 ("993", Security::Tls, "587", Security::StartTls)
@@ -3394,7 +3402,7 @@ mod tests {
             type_password(&mut h);
             press(&mut h, Key::Enter);
             assert_eq!(page(&h), Some(Page::Checking));
-            assert!(says(&h, "Checking the account") && says(&h, "Signing in to imap.lumen.example"));
+            assert!(says(&h, "Checking the account") && says(&h, &format!("Signing in to {incoming}")));
             click(&mut h, "Cancel");
             assert_eq!((page(&h), addresses(&h)), (Some(Page::Password), vec![String::new()]));
             // Back gives the address up, and the password with it.

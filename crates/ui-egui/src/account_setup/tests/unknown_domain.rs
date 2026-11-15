@@ -1,7 +1,8 @@
 // SPDX-FileCopyrightText: MailCraft contributors
 // SPDX-License-Identifier: MIT OR Apache-2.0
 //! #761: an address whose domain and mail exchangers nobody here knows. Its servers are a guess
-//! made from the domain, never another provider's, and the page says so plainly; the other kinds
+//! made from its exchangers or its domain, never another provider's, and the page says so
+//! plainly; the other kinds
 //! of account it may be (Microsoft 365, an Exchange server) are offered on the same page; and a
 //! server that refuses a password on that connection is said in the interface language.
 
@@ -55,9 +56,9 @@ fn an_unknown_domain_is_guessed_from_its_own_name_and_said_to_be_a_guess() {
     let h = unknown_domain(a);
     let w = wizard(&h).unwrap();
     assert!(w.guessed && w.settings_open && w.oauth.is_none() && w.service.is_empty());
-    // Its own name, never another provider's servers. (So it was before #761 too; kept here
+    // Its mail exchanger, never another provider's servers. (So it was before #761 too; kept here
     // because the issue saw Microsoft's servers for such an address.)
-    assert_eq!((w.incoming.host.as_str(), w.outgoing.host.as_str()), ("imap.lumen.example", "smtp.lumen.example"));
+    assert_eq!((w.incoming.host.as_str(), w.outgoing.host.as_str()), (HOSTED_MX, HOSTED_MX));
     assert!(!w.incoming.host.contains("office365") && !w.outgoing.host.contains("office365"));
     // Said in plain words: the settings aren't known, and the servers are only a guess.
     assert!(says(&h, "doesn't know the settings for this address"), "the page doesn't say the settings aren't known");

@@ -1,23 +1,13 @@
-**ictMail 0.13.0 in short**: MailCraft's mail, calendar and contacts program, now ictMail — built for ictTech's hosted mail platform.
-- CalDAV and CardDAV sync: an account's calendars and contacts stay in step with a CalDAV/CardDAV server — ictMail/SOGo included — with changes made here going back up.
-- The Windows installer offers the sync as an optional feature, and its finish page now always leaves a desktop shortcut that uninstall removes again.
-- ictMail has its own update feed and release signing: the app checks this repository's releases and trusts ictMail's release key.
-- New ictMail look throughout — name, icon, installer, About page — and `ictmail` / `ictmail-cli` binaries on every platform.
+**ictMail 0.23.0 in short**: a maintenance release on 0.13.0 — mail setup that works for ictMail-hosted domains out of the box.
+- Add Account suggests a hosted domain's own mail server, `mail.<domain>`, instead of `imap.`/`smtp.` names that usually don't resolve.
+- The About window and page show the white ictMail wordmark on a dark theme.
 - And the fixes below.
 
 **What's new**
-- The program is ictMail: window title, About page with the ictMail wordmark, icon, `ictMail`/`ictmail` data folders, log and diagnostics names, and the `ictmail` / `ictmail-cli` executables (the command-line tool and MCP server). Crate and package names stay `mailcraft-*`, and the project remains a MailCraft fork — upstream is [UCS-Care-Group/mailcraft](https://github.com/UCS-Care-Group/mailcraft).
-- **CalDAV/CardDAV sync.** An IMAP account's settings can keep its calendars and contacts in step with a CalDAV or CardDAV server — ictMail/SOGo included: events and contacts come down, and changes made here go back up under the server's own tags. On Windows the installer offers it as the optional **ictMail ActiveSync** feature; portable and source builds have it on.
-- The update check now asks ictMail's own repository and trusts ictMail's release-signing key beside MailCraft's, so a release published here — `SHA256SUMS.txt` signed by the ictMail key — is one a copy installs for itself.
-- The Windows installer is ictMail's own: branded banner and dialogs, a finish page with **Launch ictMail** and a desktop-shortcut option, and the optional feature tree.
-- The interface's translations were carried onto the renamed strings and regenerated (de, es, fr, it, nl and the rest).
+- Add Account now suggests a domain's own mail exchanger as its incoming and outgoing servers when nothing else is known about the domain, so an ictMail-hosted domain's `mail.<domain>` is offered instead of `imap.`/`smtp.` names that usually don't resolve.
 
 **Fixes**
-- The Windows installer now leaves a desktop shortcut on the installing user's own Desktop — a redirected (e.g. OneDrive) desktop included — and removes it on uninstall; earlier builds silently made none for a normal install.
-- Internal mail headers answer to both their ictMail and MailCraft names, so messages marked by either version are still recognised.
-- Linux packages are named `ictmail` end to end — `.deb`, `.rpm`, AppImage, Flatpak, tarball and the FreeBSD package all agree, with documentation under `usr/share/doc/ictmail`.
-- The contact-sync commands (`sync.contactChanges`, `sync.applyContactChanges`) are classified for agents.
-- A flaky test that needed a port nobody listens on now retries a few times before failing.
+- The About window and page show the white ictMail wordmark when the interface is dark, where the colour one all but vanished.
 
 **Public beta.** For Microsoft accounts (personal, or work or school) ictMail is a working mail, calendar and contacts program, kept in step with Outlook on the web; keep Outlook to hand while you try it, and tell us what is lost or out of step. Much of what a daily mail program needs is still to come, and other kinds of account are welcome but not part of the beta. What works is in the [README](https://github.com/GITHUB_REPOSITORY#what-works-today).
 

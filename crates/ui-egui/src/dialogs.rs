@@ -2010,7 +2010,8 @@ pub fn show(app: &mut MailApp, ctx: &egui::Context) {
                 }
                 match crate::opening::wordmark(ctx) {
                     Some(logo) => {
-                        ui.image(egui::load::SizedTexture::new(logo.id(), egui::vec2(220.0, 88.0)));
+                        let size = logo.size_vec2();
+                        ui.image(egui::load::SizedTexture::new(logo.id(), egui::vec2(220.0, size.y * 220.0 / size.x)));
                         ui.add_space(4.0);
                     }
                     None => {

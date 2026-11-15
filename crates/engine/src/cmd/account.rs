@@ -167,7 +167,9 @@ fn preset(_: &mut Session, v: &Value) -> CmdResult {
         (None, None) => (by_mx(), "mx"),
     };
     let known = found.is_some();
-    let preset = found.unwrap_or_else(|| provider::guess(&domain));
+    let preset = found.unwrap_or_else(|| {
+        exchangers.iter().take(20).filter_map(Value::as_str).find_map(provider::guess_mx).unwrap_or_else(|| provider::guess(&domain))
+    });
     // In the words `account.add` takes.
     let server = |s: &Server| json!({"host": s.host, "port": s.port, "security": s.security.code()});
     Ok(json!({

@@ -277,8 +277,32 @@ pub fn guess(domain: &str) -> Preset {
     }
 }
 
+/// What the owner is told when the servers are a guess from the domain's own records.
+const MX_GUESS: &str = "The servers are a guess from the domain's mail exchanger; correct them if they don't connect.";
+
+/// A guess from one of the domain's mail exchangers, for a domain nothing else knows: where
+/// the mail goes is usually also where IMAP and SMTP answer — a better guess than the
+/// conventional `imap.`/`smtp.` names, and the right one for hosts that keep both on a name
+/// of their own. `None` when the exchanger isn't a usable host name.
+pub fn guess_mx(exchanger: &str) -> Option<Preset> {
+    let host = exchanger.trim().trim_end_matches('.').to_ascii_lowercase();
+    if !is_domain(&host) {
+        return None;
+    }
+    Some(Preset {
+        service: "",
+        oauth: None,
+        incoming: server(&host, 993, Security::Tls),
+        outgoing: server(&host, 587, Security::StartTls),
+        note: MX_GUESS,
+    })
+}
+
 #[cfg(test)]
 mod custom_domain_tests;
+
+#[cfg(test)]
+mod mx_guess_tests;
 
 #[cfg(test)]
 mod tests {
