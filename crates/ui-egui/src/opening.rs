@@ -474,7 +474,7 @@ pub(crate) fn wordmark(ctx: &egui::Context) -> Option<egui::TextureHandle> {
     /// The logos every build ships (`assets/branding`, attributed in `ATTRIBUTION.md`): the
     /// colour wordmark for a light window, the white one for a dark one.
     const PNG: &[u8] = include_bytes!("../../../assets/branding/ictmail-logo.png");
-    const PNG_DARK: &[u8] = include_bytes!("../../../assets/branding/ictmail-logo-white-trans-2180x842.png");
+    const PNG_DARK: &[u8] = include_bytes!("../../../assets/branding/ictmail-logo-white-trans.png");
     let (png, name, mark) = if ctx.global_style().visuals.dark_mode {
         (PNG_DARK, "ictmail-wordmark-dark", "ictmail-wordmark-dark")
     } else {
