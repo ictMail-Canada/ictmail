@@ -55,6 +55,10 @@ pub const WORKING: &[&str] = &[
 /// download, the copy put on a server): all read by name, all on the message.
 pub const OWN_PREFIX: &str = "X-MailCraft-";
 
+/// The same for ictMail's own notes (`X-ictMail-…`), written beside the `X-MailCraft-…` ones
+/// for compatibility with mailboxes and servers that know them.
+pub const OWN_PREFIX_ICT: &str = "X-ictMail-";
+
 /// Most lines of a header block (as many as `mailcraft-mime` keeps of a message's header). Lines
 /// past it stay on the message ([`split`]): none is ever left out.
 pub const MAX_BLOCK_LINES: usize = 2000;
@@ -77,7 +81,8 @@ pub fn is_working(name: &str, value: &str) -> bool {
 
 /// Whether every header line with this name stays on the message ([`is_working`]).
 pub fn is_working_name(name: &str) -> bool {
-    WORKING.iter().any(|w| w.eq_ignore_ascii_case(name)) || name.get(..OWN_PREFIX.len()).is_some_and(|start| start.eq_ignore_ascii_case(OWN_PREFIX))
+    WORKING.iter().any(|w| w.eq_ignore_ascii_case(name))
+        || [OWN_PREFIX, OWN_PREFIX_ICT].iter().any(|prefix| name.get(..prefix.len()).is_some_and(|start| start.eq_ignore_ascii_case(prefix)))
 }
 
 /// One line of a header block: where it stood among all the message's header lines it kept, its
