@@ -57,6 +57,9 @@ pub(crate) struct CalendarSync {
     /// The fingerprint of the certificate a DAV server showed that the system doesn't trust,
     /// from the account's last run: its settings offer to trust it for that account.
     pub(crate) dav_untrusted: Option<(Id, String)>,
+    /// What an account's DAV server was last told of its contacts, and when: the very same
+    /// again right away would mean that the telling doesn't settle anything.
+    dav_contact_sent: std::collections::HashMap<Id, (mailcraft_model::remote::ContactsUpload, f64)>,
 }
 
 impl CalendarSync {
@@ -289,9 +292,27 @@ impl MailApp {
         let directory = round.is_none() && self.session.driver.calendar.directory_is_due(account, now);
         let ready = remote::events_waiting(&self.session, account).due + remote::contacts_waiting(&self.session, account);
         let push = by_hand || (ready > 0 && self.session.driver.calendar.quiet_over(account, ready, now));
+        // The very same changes a moment ago would go round in circles: left for later.
         let changes = if push { self.session.calendar_changes(account) } else { None };
-        let contact_changes = if push { remote::contact_upload(&self.session, account).ok().filter(|upload| !upload.ops.is_empty()) } else { None };
-        let carried = changes.is_some() || contact_changes.is_some();
+        let changes = changes.filter(|c| by_hand || self.session.driver.calendar.push_wanted(account, Some(c), now));
+        let contact_changes = if push {
+            remote::contact_upload(&self.session, account).ok().filter(|upload| {
+                !upload.ops.is_empty()
+                    && !self
+                        .calendar
+                        .dav_contact_sent
+                        .get(&account)
+                        .is_some_and(|(sent, at)| *sent == *upload && now - at < mailcraft_engine::sync_driver::Pacing::CALENDAR.first_retry_ms)
+            })
+        } else {
+            None
+        };
+        if let Some(upload) = &contact_changes {
+            self.calendar.dav_contact_sent.insert(account, (upload.clone(), now));
+        }
+        // Only event changes count as carried: what the contacts' answers can't verify isn't
+        // a failure of the job.
+        let carried = changes.is_some();
         let stretch = round.unwrap_or_else(|| self.session.calendar_window());
         let plan = CalendarPlan { account, push, changes: changes.clone(), directory, settings: false, window: stretch, around: round.is_some() };
         let ask = DavRequest {
