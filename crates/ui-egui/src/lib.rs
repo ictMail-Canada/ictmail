@@ -4729,6 +4729,7 @@ impl MailApp {
             crate::software::repaint_after(ctx, std::time::Duration::from_millis(150));
         }
         self.poll_calendar();
+        self.poll_dav();
         self.poll_tasks();
         self.poll_rules();
         self.poll_auto_replies();
