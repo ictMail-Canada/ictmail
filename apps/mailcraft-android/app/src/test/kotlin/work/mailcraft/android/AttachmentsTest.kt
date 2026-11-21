@@ -28,7 +28,7 @@ internal fun item(
     index: UInt = 0u,
     calendar: Boolean = false,
     size: Long = 2_048,
-) = AttachmentItem(index, name, name, size, verdict, blocked = if (verdict == OpenVerdict.BLOCKED) "MailCraft doesn't open $name" else "", calendar = calendar)
+) = AttachmentItem(index, name, name, size, verdict, blocked = if (verdict == OpenVerdict.BLOCKED) "ictMail doesn't open $name" else "", calendar = calendar)
 
 /** A source over invented files that records what it is asked. */
 internal class FakeAttachments : AttachmentSource {
@@ -341,10 +341,10 @@ class AttachmentControllerTest {
     @Test
     fun aFileThatTurnsOutBlockedWhenReadIsNeverShared() {
         // The row said PDF; the message was replaced, and what is read now is a program.
-        source.files[0u] = AttachmentBytes.Got(png, "run.exe", picture = false, OpenVerdict.BLOCKED, "MailCraft doesn't open run.exe")
+        source.files[0u] = AttachmentBytes.Got(png, "run.exe", picture = false, OpenVerdict.BLOCKED, "ictMail doesn't open run.exe")
         controller.act(7uL, item("report.pdf"), AttachmentAction.Share)
         assertTrue(device.shared.isEmpty())
-        assertEquals("MailCraft doesn't open run.exe", (controller.ui.value.notice as AttachmentNotice.Said).why)
+        assertEquals("ictMail doesn't open run.exe", (controller.ui.value.notice as AttachmentNotice.Said).why)
     }
 
     @Test

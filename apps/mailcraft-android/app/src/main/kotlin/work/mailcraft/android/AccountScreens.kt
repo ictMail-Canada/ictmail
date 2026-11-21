@@ -83,7 +83,7 @@ internal fun AddAccountScreen(texts: Texts, state: AddAccountState, actions: Acc
 private fun AddAccountForm(texts: Texts, state: AddAccountState.Form, actions: AccountActions) {
     Text(texts.t("Microsoft account"), style = MaterialTheme.typography.titleMedium)
     Text(
-        texts.t("Outlook.com, Hotmail, and Microsoft 365 work or school accounts. You sign in on Microsoft's own page in your browser, so MailCraft never sees your password."),
+        texts.t("Outlook.com, Hotmail, and Microsoft 365 work or school accounts. You sign in on Microsoft's own page in your browser, so ictMail never sees your password."),
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
     )
@@ -142,7 +142,7 @@ internal fun NoticeCard(text: String) {
 private fun SignInWaiting(texts: Texts, onCancel: () -> Unit) {
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(Gap)) {
         CircularProgressIndicator(modifier = Modifier.size(Spinner))
-        Text(texts.t("Finish signing in on Microsoft's page in your browser. MailCraft is waiting."), modifier = Modifier.weight(1f))
+        Text(texts.t("Finish signing in on Microsoft's page in your browser. ictMail is waiting."), modifier = Modifier.weight(1f))
     }
     OutlinedButton(onClick = onCancel, modifier = Modifier.fillMaxWidth()) { Text(texts.t("Cancel")) }
 }
@@ -150,14 +150,14 @@ private fun SignInWaiting(texts: Texts, onCancel: () -> Unit) {
 /** "Need admin approval": what is going on, what to do next, and the message to hand to an administrator. */
 @Composable
 private fun ApprovalHelp(texts: Texts, state: AddAccountState.Approval, actions: AccountActions) {
-    Text(texts.t("Your organisation needs to approve MailCraft"), style = MaterialTheme.typography.titleMedium)
+    Text(texts.t("Your organisation needs to approve ictMail"), style = MaterialTheme.typography.titleMedium)
     Text(
         texts.t("Many organisations let only an administrator approve a new program. Nothing is wrong with your account or your phone."),
         style = MaterialTheme.typography.bodyMedium,
     )
     Text(texts.t("What to do next"), style = MaterialTheme.typography.titleSmall)
     Text(texts.t("1. Copy the message below and send it to your organisation's administrator."), style = MaterialTheme.typography.bodyMedium)
-    Text(texts.t("2. When they have approved MailCraft, come back here and sign in again."), style = MaterialTheme.typography.bodyMedium)
+    Text(texts.t("2. When they have approved ictMail, come back here and sign in again."), style = MaterialTheme.typography.bodyMedium)
     val message = state.link?.let { adminMessage(texts, it) }
     if (message != null) {
         Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)) {
@@ -261,14 +261,14 @@ internal fun WithAppNotices(
         if (notices) {
             Column(modifier = Modifier.statusBarsPadding().padding(horizontal = Gutter, vertical = Gap)) {
                 if (ui.savingOff) {
-                    NoticeCard(texts.t("MailCraft couldn't set aside the saved mailbox it couldn't read, so changes aren't saved this time. Free up space and restart the app."))
+                    NoticeCard(texts.t("ictMail couldn't set aside the saved mailbox it couldn't read, so changes aren't saved this time. Free up space and restart the app."))
                 }
                 if (ui.saveFailed) {
-                    NoticeCard(texts.t("MailCraft couldn't save your latest changes yet. It will try again; if the app closes first they may be lost."))
+                    NoticeCard(texts.t("ictMail couldn't save your latest changes yet. It will try again; if the app closes first they may be lost."))
                     TextButton(onClick = actions.onRetrySave) { Text(texts.t("Retry")) }
                 }
                 if (ui.interrupted != null) {
-                    NoticeCard(texts.t("Android closed MailCraft while Microsoft's page was open, so that sign-in could not be finished. Nothing was added."))
+                    NoticeCard(texts.t("Android closed ictMail while Microsoft's page was open, so that sign-in could not be finished. Nothing was added."))
                     Row {
                         TextButton(onClick = { actions.onRestartInterrupted(); onRestart() }) { Text(texts.t("Sign in again")) }
                         TextButton(onClick = actions.onDismissInterrupted) { Text(texts.t("Not now")) }

@@ -47,7 +47,7 @@ internal fun PermissionQuestionCard(texts: Texts, state: QuestionState, account:
                 is QuestionState.Waiting -> {
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(Gap)) {
                         CircularProgressIndicator(modifier = Modifier.size(Spinner))
-                        Text(texts.t("Finish on Microsoft's page in your browser. MailCraft is waiting."), modifier = Modifier.weight(1f))
+                        Text(texts.t("Finish on Microsoft's page in your browser. ictMail is waiting."), modifier = Modifier.weight(1f))
                     }
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
                         TextButton(onClick = actions.onCancelGrant) { Text(texts.t("Cancel")) }

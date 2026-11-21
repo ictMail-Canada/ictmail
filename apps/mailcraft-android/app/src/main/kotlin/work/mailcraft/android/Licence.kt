@@ -22,7 +22,7 @@ internal data class Licence(
  * MailCraft uses it under.
  */
 internal val BUNDLED_LICENCES: List<Licence> = listOf(
-    Licence("MailCraft", "the program", "MIT OR Apache-2.0"),
+    Licence("ictMail", "the program", "MIT OR Apache-2.0"),
     Licence(
         "Jetpack Compose and AndroidX",
         "the screens, the window and the system's services",

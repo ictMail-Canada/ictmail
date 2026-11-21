@@ -35,9 +35,9 @@ internal enum class PermissionKind {
 
     /** What saying yes lets MailCraft do, and what it costs. */
     fun explanation(texts: Texts): String = when (this) {
-        Tasks -> texts.t("MailCraft will read and change your Microsoft To Do lists and tasks. Microsoft's page opens in your browser to ask you. Until you say yes, your tasks stay on this phone.")
-        SharedMail -> texts.t("MailCraft will read and change the shared mailboxes you have access to. Microsoft's page opens in your browser to ask you.")
-        SharedSend -> texts.t("MailCraft will send mail from a shared mailbox, as it or on its behalf. Microsoft's page opens in your browser to ask you.")
+        Tasks -> texts.t("ictMail will read and change your Microsoft To Do lists and tasks. Microsoft's page opens in your browser to ask you. Until you say yes, your tasks stay on this phone.")
+        SharedMail -> texts.t("ictMail will read and change the shared mailboxes you have access to. Microsoft's page opens in your browser to ask you.")
+        SharedSend -> texts.t("ictMail will send mail from a shared mailbox, as it or on its behalf. Microsoft's page opens in your browser to ask you.")
     }
 
     fun toCore(): Permission = when (this) {
@@ -266,8 +266,8 @@ internal sealed interface Notice {
         Declined -> texts.t("Microsoft's page came back without signing you in. You can try again.")
         TimedOut -> texts.t("Nothing came back from Microsoft's sign-in page. It may have been closed, or left open too long. You can try again.")
         Cancelled -> texts.t("The sign-in was cancelled.")
-        OrganisationBlocks -> texts.t("Your organisation's rules (Conditional Access) don't allow MailCraft to sign you in on this phone. This is your organisation's policy, not a fault in MailCraft or in your phone. Ask the people who run your organisation's mail whether sign-in from this kind of app can be allowed.")
-        NoBrowser -> texts.t("MailCraft couldn't open a browser for Microsoft's page. Install or enable a browser, then try again.")
+        OrganisationBlocks -> texts.t("Your organisation's rules (Conditional Access) don't allow ictMail to sign you in on this phone. This is your organisation's policy, not a fault in ictMail or in your phone. Ask the people who run your organisation's mail whether sign-in from this kind of app can be allowed.")
+        NoBrowser -> texts.t("ictMail couldn't open a browser for Microsoft's page. Install or enable a browser, then try again.")
         is Failed -> texts.t("The sign-in didn't go through.") + reason.takeIf { it.isNotBlank() }?.let { "\n$it" }.orEmpty()
     }
 }
@@ -303,11 +303,11 @@ internal fun afterSignIn(email: String, result: SignInResult, link: String?, kee
 internal fun grantNotice(texts: Texts, result: GrantResult): String? = when (result) {
     GrantResult.Granted, GrantResult.Cancelled -> null
     GrantResult.NeedsApproval -> texts.t("Your organisation needs an administrator to approve this first. Ask your administrator, then try again.")
-    GrantResult.OrganisationBlocks -> texts.t("Your organisation's rules don't allow this for your account. This is your organisation's policy, not a fault in MailCraft.")
+    GrantResult.OrganisationBlocks -> texts.t("Your organisation's rules don't allow this for your account. This is your organisation's policy, not a fault in ictMail.")
     GrantResult.NotForThisAccount -> texts.t("Microsoft doesn't offer this for this kind of account.")
     GrantResult.Declined -> texts.t("Microsoft's page came back without giving it. You can try again.")
     GrantResult.TimedOut -> texts.t("Nothing came back from Microsoft's page. You can try again.")
-    GrantResult.NoBrowser -> texts.t("MailCraft couldn't open a browser for Microsoft's page.")
+    GrantResult.NoBrowser -> texts.t("ictMail couldn't open a browser for Microsoft's page.")
     is GrantResult.Failed -> texts.t("That didn't go through.") + result.reason.takeIf { it.isNotBlank() }?.let { "\n$it" }.orEmpty()
 }
 
@@ -326,7 +326,7 @@ internal fun statusText(texts: Texts, status: PermissionStatus): String = when (
  */
 internal fun adminMessage(texts: Texts, link: String): String =
     texts.t(
-        "Hello,\n\nI would like to use MailCraft with my work account. MailCraft is an open-source mail and calendar program that runs on my own phone. Our organisation lets only an administrator approve a new program, so it needs your approval once, for the whole organisation. Microsoft's page for that is here:\n\n{link}\n\nAfter you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n\nThank you",
+        "Hello,\n\nI would like to use ictMail with my work account. ictMail is an open-source mail and calendar program that runs on my own phone. Our organisation lets only an administrator approve a new program, so it needs your approval once, for the whole organisation. Microsoft's page for that is here:\n\n{link}\n\nAfter you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n\nThank you",
     ).replace("{link}", link)
 
 /** One permission question waiting for the owner's answer. */

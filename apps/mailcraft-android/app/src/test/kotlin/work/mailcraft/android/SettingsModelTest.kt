@@ -107,7 +107,7 @@ class SettingsModelTest {
 
     @Test
     fun theLicencesNameTheProgramAndEveryPartHasAllThree() {
-        assertEquals("MailCraft", BUNDLED_LICENCES.first().name)
+        assertEquals("ictMail", BUNDLED_LICENCES.first().name)
         BUNDLED_LICENCES.forEach { assertTrue(it.name.isNotBlank() && it.part.isNotBlank() && it.licence.isNotBlank()) }
         assertEquals(BUNDLED_LICENCES.size, BUNDLED_LICENCES.map { it.name }.toSet().size)
     }

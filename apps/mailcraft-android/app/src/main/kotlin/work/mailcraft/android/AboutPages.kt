@@ -49,7 +49,7 @@ internal fun AboutScreenPage(
         return
     }
     Column(modifier = Modifier.padding(Gutter)) {
-        Text("MailCraft", style = MaterialTheme.typography.headlineSmall)
+        Text("ictMail", style = MaterialTheme.typography.headlineSmall)
         Text(
             texts.t("Version"),
             style = MaterialTheme.typography.labelLarge,
@@ -58,14 +58,14 @@ internal fun AboutScreenPage(
         )
         Text(version, style = MaterialTheme.typography.bodyLarge)
         Text(
-            texts.t("MailCraft is open source, under the MIT and Apache 2.0 licences."),
+            texts.t("ictMail is open source, under the MIT and Apache 2.0 licences."),
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.padding(top = Gutter),
         )
     }
     HorizontalDivider()
     LinkRow(texts.t("Licences"), texts.t("What is bundled in this app, and under which licence")) { onLicences(true) }
-    LinkRow(texts.t("Privacy"), texts.t("What MailCraft sends, and to whom")) { actions.onOpenLink(PRIVACY_URL) }
+    LinkRow(texts.t("Privacy"), texts.t("What ictMail sends, and to whom")) { actions.onOpenLink(PRIVACY_URL) }
 }
 
 @Composable
@@ -88,7 +88,7 @@ private fun LinkRow(label: String, said: String, onClick: () -> Unit) {
 internal fun LicencesPage(texts: Texts) {
     Hint(
         texts.t(
-            "MailCraft carries the software below. The Rust libraries of its core are listed with their versions in the source repository.",
+            "ictMail carries the software below. The Rust libraries of its core are listed with their versions in the source repository.",
         ),
     )
     BUNDLED_LICENCES.forEach { item ->
@@ -108,7 +108,7 @@ internal fun SpaceCard(texts: Texts, ask: SpaceAsk, actions: SettingsActions) {
         Column(modifier = Modifier.padding(Gutter), verticalArrangement = Arrangement.spacedBy(Gutter)) {
             Text(texts.t("Not much room on this phone"), style = MaterialTheme.typography.titleMedium)
             Text(
-                texts.t("This sync needs about {needed}. This phone has {free} free, and MailCraft keeps some room for the phone to go on working. Sync anyway?")
+                texts.t("This sync needs about {needed}. This phone has {free} free, and ictMail keeps some room for the phone to go on working. Sync anyway?")
                     .replace("{needed}", sizeText(ask.warning.needed))
                     .replace("{free}", sizeText(ask.warning.free)),
                 style = MaterialTheme.typography.bodyMedium,
