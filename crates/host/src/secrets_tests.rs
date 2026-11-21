@@ -35,7 +35,7 @@ fn dav_account() -> Account {
     use mailcraft_model::{DavCollectionState, DavServer};
     Account {
         email: " Ada@Lumen.Example ".to_string(),
-        dav: Some(DavServer {
+        dav_server: Some(DavServer {
             calendar_homes: vec!["https://dav.lumen.example/cal/".into()],
             contact_homes: vec!["https://cards.lumen.example:8443/c/".into()],
             collections: vec![DavCollectionState { href: "https://p1.lumen.example/x/".into(), ..Default::default() }],

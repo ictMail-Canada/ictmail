@@ -4481,7 +4481,7 @@ impl Mailbox {
         // A calendar and contacts server a file names is held to the limits and to the addresses a
         // password may go to (#209).
         for a in &mut self.accounts {
-            if a.dav.as_mut().is_some_and(DavServer::repair) {
+            if a.dav_server.as_mut().is_some_and(DavServer::repair) {
                 fixed.push("an account's calendar and contacts server tidied".into());
             }
         }

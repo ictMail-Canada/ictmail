@@ -4,10 +4,11 @@
 //! of server settings, `null` to turn it off, or nothing to keep what it has — and
 //! `account.list` says where it starts from.
 
-use mailcraft_model::{AccountKind, Id, dav::DavServer};
+use mailcraft_model::{AccountKind, DavCollectionState, Id, dav::DavServer};
 use serde_json::{Map, Value, json};
 
-use crate::Session;
+use crate::agent::{Access, Class, classify};
+use crate::{CmdError, Session};
 
 fn add(s: &mut Session, params: Value) -> Id {
     s.run("account.add", &params).unwrap()["id"].as_u64().unwrap()
@@ -102,13 +103,8 @@ fn only_an_imap_account_has_dav() {
     assert!(dav_of(&s, b).is_none());
 }
 
-//! An account's calendar and contacts servers (#209): the switch, the settings, the refusals.
-
-use mailcraft_model::{AccountKind, DavCollectionState, Id};
-use serde_json::json;
-
-use crate::agent::{Access, Class, classify};
-use crate::{CmdError, Session};
+// An account's calendar and contacts servers (#209): the switch, the settings, the refusals
+// (upstream's dav_server settings; the `dav` params above are ictMail's own server).
 
 const SYNC: [&str; 4] = ["sync.davRequest", "sync.applyDav", "sync.davChanges", "sync.applyDavUploaded"];
 
@@ -282,7 +278,7 @@ fn the_settings_survive_the_mailbox_file() {
     let text = serde_json::to_string(&s.mailbox).unwrap();
     assert!(!text.contains("password\":\""), "no password is among it");
     let back: mailcraft_model::Mailbox = serde_json::from_str(&text).unwrap();
-    assert_eq!(back.account(id).unwrap().dav_server, s.mailbox.account(id).unwrap().dav);
+    assert_eq!(back.account(id).unwrap().dav_server, s.mailbox.account(id).unwrap().dav_server);
     assert_eq!(back.account(id).unwrap().dav_server.as_ref().unwrap().collections[0].sync_token, "T-1");
 }
 

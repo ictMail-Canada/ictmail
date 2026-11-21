@@ -127,7 +127,7 @@ fn debug_output_shows_no_address_name_token_or_fingerprint() {
 
 #[test]
 fn an_account_keeps_its_dav_settings_in_the_mailbox_file() {
-    let account = Account { id: 4, email: "ada@example.org".into(), kind: AccountKind::Imap, dav: Some(server()), ..Default::default() };
+    let account = Account { id: 4, email: "ada@example.org".into(), kind: AccountKind::Imap, dav_server: Some(server()), ..Default::default() };
     let json = serde_json::to_string(&account).unwrap();
     assert!(json.contains(r#""dav":{"#) && json.contains("TOKEN-1") && json.contains(r#""separatePassword":true"#), "{json}");
     assert_eq!(serde_json::from_str::<Account>(&json).unwrap(), account);
@@ -141,7 +141,7 @@ fn damaged_dav_settings_cost_only_themselves() {
     for odd in ["5", "\"https://dav.example.org\"", "[]", "null", r#"{"calendarHomes":5}"#, r#"{"trusted":[]}"#, r#"{"collections":"x"}"#] {
         let read: Account = serde_json::from_str(&format!(r#"{{"id":4,"email":"ada@example.org","kind":"imap","dav":{odd}}}"#)).unwrap();
         assert_eq!(read.kind, AccountKind::Imap, "{odd}");
-        assert!(read.dav.as_ref().is_none_or(|server| server.problem().is_some()), "{odd}: {:?}", read.dav);
+        assert!(read.dav_server.as_ref().is_none_or(|server| server.problem().is_some()), "{odd}: {:?}", read.dav_server);
     }
     // One damaged collection, or home, is left out and the rest stays.
     let read: DavServer = serde_json::from_str(
@@ -175,7 +175,7 @@ fn what_a_later_version_wrote_is_kept_and_an_earlier_one_reads_the_file() {
             Older { id: 0, email: String::new(), kind: AccountKind::Local }
         }
     }
-    let account = Account { id: 4, email: "ada@example.org".into(), kind: AccountKind::Imap, dav: Some(server()), ..Default::default() };
+    let account = Account { id: 4, email: "ada@example.org".into(), kind: AccountKind::Imap, dav_server: Some(server()), ..Default::default() };
     let older: Older = serde_json::from_str(&serde_json::to_string(&account).unwrap()).unwrap();
     assert_eq!((older.id, older.email.as_str(), older.kind), (4, "ada@example.org", AccountKind::Imap));
 }
@@ -243,7 +243,7 @@ fn hostile(n: usize) -> String {
 #[test]
 fn a_hostile_file_is_cut_to_the_limits_and_to_addresses_a_password_may_go_to() {
     let account: Account = serde_json::from_str(&hostile(200_000)).unwrap();
-    let dav = account.dav.unwrap();
+    let dav = account.dav_server.unwrap();
     assert_eq!((dav.calendar_homes.len(), dav.contact_homes.len(), dav.collections.len()), (8, 8, DavServer::MAX_COLLECTIONS));
     assert!(dav.calendar_homes.iter().all(|h| h.contains("home")), "{:?}", dav.calendar_homes);
     assert!(dav.collections.iter().all(|c| c.href.contains(".example.org/c/") && !c.href.contains("attacker")));
@@ -269,10 +269,10 @@ fn repair_holds_a_server_made_another_way_to_the_same_limits() {
     let mut big = server();
     big.collections = (0..500).map(|i| DavCollectionState { href: format!("https://h{i}.example.org/"), ..Default::default() }).collect();
     big.contact_homes.push("https://www.googleapis.com/x/".into());
-    mb.accounts[0].dav = Some(big);
+    mb.accounts[0].dav_server = Some(big);
     let fixed = mb.repair();
     assert!(fixed.iter().any(|f| f.contains("calendar and contacts")), "{fixed:?}");
-    let dav = mb.accounts[0].dav.as_ref().unwrap();
+    let dav = mb.accounts[0].dav_server.as_ref().unwrap();
     assert_eq!((dav.collections.len(), dav.contact_homes.len()), (DavServer::MAX_COLLECTIONS, 1));
 }
 

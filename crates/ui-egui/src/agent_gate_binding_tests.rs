@@ -631,7 +631,7 @@ fn a_yes_to_a_server_change_does_not_reach_a_server_changed_since_it_was_asked()
     answer(&mut a, true);
     let r = second.try_recv().unwrap();
     assert!(r["ok"] == false && r["error"].as_str().is_some_and(|e| e.contains("changed since the owner was asked")), "{r}");
-    let dav = a.session.mailbox.account(account).unwrap().dav.clone().unwrap();
+    let dav = a.session.mailbox.account(account).unwrap().dav_server.clone().unwrap();
     assert_eq!((dav.trusted.as_str(), dav.calendar_homes[0].as_str()), ("", "https://other.example.org/cal/"));
 }
 
@@ -650,7 +650,7 @@ fn a_yes_to_a_server_change_does_not_reach_another_login_when_none_is_named() {
     answer(&mut a, true);
     let r = rx.try_recv().unwrap();
     assert!(r["ok"] == false && r["error"].as_str().is_some_and(|e| e.contains("changed since the owner was asked")), "{r}");
-    assert_eq!(a.session.mailbox.account(account).unwrap().dav.as_ref().unwrap().trusted, "");
+    assert_eq!(a.session.mailbox.account(account).unwrap().dav_server.as_ref().unwrap().trusted, "");
 }
 
 #[test]
@@ -668,5 +668,5 @@ fn a_yes_that_clears_the_user_name_does_not_reach_another_address() {
     answer(&mut a, true);
     let r = rx.try_recv().unwrap();
     assert!(r["ok"] == false && r["error"].as_str().is_some_and(|e| e.contains("changed since the owner was asked")), "{r}");
-    assert_eq!(a.session.mailbox.account(account).unwrap().dav.as_ref().unwrap().username, "bo");
+    assert_eq!(a.session.mailbox.account(account).unwrap().dav_server.as_ref().unwrap().username, "bo");
 }
