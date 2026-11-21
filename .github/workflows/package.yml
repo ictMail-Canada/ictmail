@@ -9,7 +9,7 @@ name: Package
 #   ictmail-<ver>-windows-{x64,x86,arm64}.msi, ictmail-<ver>-windows-{x64,x86,arm64}-portable.zip
 #   ictmail-<ver>-macos-universal.dmg, ictmail-cli-<ver>-macos-universal.zip
 #   ictmail-<ver>-linux-{x86_64,aarch64}.{AppImage,AppImage.zsync,deb,rpm,tar.gz,flatpak}
-#   ictmail-<ver>-freebsd-x86_64.tar.gz, mailcraft-web-<ver>.zip
+#   ictmail-<ver>-freebsd-x86_64.tar.gz, ictmail-web-<ver>.zip
 #
 # Building and signing are separate jobs. A job that compiles (cargo, and every build script and
 # macro of every dependency) or runs what was compiled has no signing secret, no Azure sign-in, no

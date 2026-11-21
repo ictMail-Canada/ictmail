@@ -1,7 +1,7 @@
-# Hosting MailCraft for the web
+# Hosting ictMail for the web
 
-`mailcraft-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
-static site in `mailcraft-web-<version>/`:
+`ictmail-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
+static site in `ictmail-web-<version>/`:
 
 | File | What it is |
 |---|---|
