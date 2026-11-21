@@ -15,9 +15,8 @@ use mailcraft_model::sync::{
     Placed, RemoteFlags, RemoteOp, SyncRequest, SyncResult, SyncStage, summary_line_in,
 };
 use mailcraft_model::{
-    Account, AccountKind, Directory, EwsServer, FlagStatus, Folder, FolderKind, Id, JmapServer, MailIdentity, Mailbox, Message, OAuth,
-    dav::DavServer,
-    OAuthProvider, Pending, Queued, Rgb, Security, Server, clean_name,
+    Account, AccountKind, Directory, EwsServer, FlagStatus, Folder, FolderKind, Id, JmapServer, MailIdentity, Mailbox, Message, OAuth, OAuthProvider,
+    Pending, Queued, Rgb, Security, Server, clean_name, dav::DavServer,
 };
 use serde_json::{Value, json};
 

@@ -41,8 +41,9 @@ pub fn specs() -> Vec<CommandSpec> {
 /// Why the commands are out of reach, when they are: the feature is switched off, or no account
 /// has a calendar and contacts server.
 fn available(s: &Session) -> Option<&'static str> {
-    super::dav_account::switched_on(s)
-        .or_else(|| if s.mailbox.accounts.iter().any(|a| a.dav_server.is_some()) { None } else { Some("no account has a calendar and contacts server") })
+    super::dav_account::switched_on(s).or_else(|| {
+        if s.mailbox.accounts.iter().any(|a| a.dav_server.is_some()) { None } else { Some("no account has a calendar and contacts server") }
+    })
 }
 
 fn request(_: &mut Session, _: &Value) -> CmdResult {
