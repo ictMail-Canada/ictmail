@@ -11,7 +11,7 @@
 //! - [`classify`] adds what only the params and the mailbox can tell (`"send": true`, a move into
 //!   the Outbox, a delete in Deleted Items).
 //! - No file on disk is named by an agent: [`file_param`] finds the params that name one, and
-//!   [`check`] refuses them. (`mailcraft-cli mcp --files DIR` reads and writes inside DIR itself
+//!   [`check`] refuses them. (`ictmail-cli mcp --files DIR` reads and writes inside DIR itself
 //!   and hands the command `data`.)
 //! - [`Session::run`](crate::Session::run) checks what a command did while [`Session::agent`] is
 //!   set: mail put in an Outbox (which sends it, or, an IMAP account's, holds it for Send Again)
@@ -778,7 +778,7 @@ pub fn file_named(id: &str, params: &Value) -> Option<&'static str> {
 /// The refusal for a file param from an agent.
 pub fn no_paths(id: &str, key: &str) -> String {
     format!(
-        "`{id}` was given `{key}`: agents don't name files on this computer. Pass the content as base64 `data` (and leave out `{key}` to get it back as `data`), or ask the owner to start the server with `mailcraft-cli mcp --files DIR`"
+        "`{id}` was given `{key}`: agents don't name files on this computer. Pass the content as base64 `data` (and leave out `{key}` to get it back as `data`), or ask the owner to start the server with `ictmail-cli mcp --files DIR`"
     )
 }
 
@@ -1666,7 +1666,7 @@ pub fn needs_owner_for(id: &str, classes: &[Class], asked: bool, what: &str) -> 
     }
     let names = classes.iter().map(|c| c.as_str()).collect::<Vec<_>>().join(",");
     format!(
-        "`{id}` needs the owner ({why}): it would {what}. Only the owner can let an agent do this, by starting the server with `mailcraft-cli mcp --allow {names}`"
+        "`{id}` needs the owner ({why}): it would {what}. Only the owner can let an agent do this, by starting the server with `ictmail-cli mcp --allow {names}`"
     )
 }
 

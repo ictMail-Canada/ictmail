@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: MailCraft contributors
 // SPDX-License-Identifier: MIT OR Apache-2.0
-//! What an agent may do through the window (`mailcraft-cli mcp --connect`): the bridge marks
+//! What an agent may do through the window (`ictmail-cli mcp --connect`): the bridge marks
 //! every request it sends as an agent's (`ControlRequest::agent`, with what the owner allowed it
 //! in advance), and those go through [`mailcraft_engine::agent`]'s gate here. A command that is
 //! not for agents, or names a file, is refused; one that needs the owner is asked about in a
@@ -97,7 +97,7 @@ pub fn screen(app: &mut MailApp, req: &ControlRequest, allow: &[Class]) -> Optio
         "ui.click" | "ui.move" | "ui.drag" | "ui.key" | "ui.text" => {
             if !allow.contains(&Class::Input) {
                 Some(err(format!(
-                    "clicking and typing in the window needs the owner: {}. Only the owner can let an agent do this, by starting the bridge with `mailcraft-cli mcp --allow input`",
+                    "clicking and typing in the window needs the owner: {}. Only the owner can let an agent do this, by starting the bridge with `ictmail-cli mcp --allow input`",
                     Class::Input.what()
                 )))
             } else if !app.asking.is_empty() {

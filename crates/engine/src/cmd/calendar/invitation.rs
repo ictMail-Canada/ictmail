@@ -60,7 +60,7 @@ pub(super) fn specs() -> Vec<CommandSpec> {
             .params(r#"{"message"?: number} — the calendar on the day of the meeting a message carries, with the meeting selected when it is there: {"date", "event": number|null}"#),
         CommandSpec::new("calendar.deleteAnsweredRequests", "Delete Meeting Requests after Responding", "File › Options", delete_answered)
             .pure()
-            .params(r#"{"value"?: bool (default: toggle)} — whether a meeting request or a cancellation answered from the mail goes from the Inbox to Deleted Items: the owner's choice in File › Options, on in a new install's window, off in a session without the window's settings (mailcraft-cli run, headless mcp)"#),
+            .params(r#"{"value"?: bool (default: toggle)} — whether a meeting request or a cancellation answered from the mail goes from the Inbox to Deleted Items: the owner's choice in File › Options, on in a new install's window, off in a session without the window's settings (ictmail-cli run, headless mcp)"#),
     ]
 }
 
