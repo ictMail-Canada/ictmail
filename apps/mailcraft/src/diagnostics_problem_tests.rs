@@ -15,7 +15,7 @@ fn a_logged_problem_text_is_redacted_in_the_report() {
     let text = "Couldn't move \"Private/Taxes\" for ada@example.org on imap.example.net:993: no";
     // As the log's writer writes it (`logging.rs`).
     let line = format!("2026-11-12T10:00:00Z WARN [main] mailcraft_ui_egui: {}\n", scrub(&format!("send/receive, account 10: problem: {text}")));
-    std::fs::write(dir.join("mailcraft.log"), line).unwrap();
+    std::fs::write(dir.join(crate::logging::LOG_FILE), line).unwrap();
     let out = report("0.0.0", "test", Some(&dir));
     std::fs::remove_dir_all(&dir).unwrap();
     assert!(out.contains("problem: Couldn't move"), "{out}");
