@@ -682,7 +682,9 @@ msgstr "Info"
 msgid ""
 "About\n"
 "ictMail"
-msgstr "Info\nictMail"
+msgstr ""
+"Info\n"
+"ictMail"
 
 #. interface, name
 #: crates/ui-egui/src/backstage.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/menubar.rs
@@ -6347,7 +6349,16 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr "Hallo,\n\nIk wil ictMail graag gebruiken met mijn werkaccount. ictMail is een open-sourceprogramma voor e-mail en agenda dat op mijn eigen computer draait. Onze organisatie laat alleen een beheerder een nieuw programma goedkeuren, dus het heeft eenmalig uw goedkeuring nodig, voor de hele organisatie. De pagina van Microsoft daarvoor is hier:\n\n{link}\n\nNadat u hebt goedgekeurd, kan uw browser een pagina tonen die niet kan worden bereikt. Dat is te verwachten: het is een adres op uw eigen computer, waar niets luistert, en de goedkeuring is dan al gegeven.\n\nDank u"
+msgstr ""
+"Hallo,\n"
+"\n"
+"Ik wil ictMail graag gebruiken met mijn werkaccount. ictMail is een open-sourceprogramma voor e-mail en agenda dat op mijn eigen computer draait. Onze organisatie laat alleen een beheerder een nieuw programma goedkeuren, dus het heeft eenmalig uw goedkeuring nodig, voor de hele organisatie. De pagina van Microsoft daarvoor is hier:\n"
+"\n"
+"{link}\n"
+"\n"
+"Nadat u hebt goedgekeurd, kan uw browser een pagina tonen die niet kan worden bereikt. Dat is te verwachten: het is een adres op uw eigen computer, waar niets luistert, en de goedkeuring is dan al gegeven.\n"
+"\n"
+"Dank u"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -6361,7 +6372,16 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr "Hallo,\n\nIk wil ictMail gebruiken met mijn werkaccount. ictMail is een opensourceprogramma voor e-mail en agenda dat op mijn eigen telefoon draait. Onze organisatie laat alleen een beheerder een nieuw programma goedkeuren, dus het heeft eenmalig uw goedkeuring nodig, voor de hele organisatie. De pagina van Microsoft daarvoor staat hier:\n\n{link}\n\nNa uw goedkeuring toont uw browser mogelijk een pagina die niet bereikbaar is. Dat is normaal: het is een adres op uw eigen computer, waar niets naar luistert, en de goedkeuring is dan al gegeven.\n\nAlvast bedankt"
+msgstr ""
+"Hallo,\n"
+"\n"
+"Ik wil ictMail gebruiken met mijn werkaccount. ictMail is een opensourceprogramma voor e-mail en agenda dat op mijn eigen telefoon draait. Onze organisatie laat alleen een beheerder een nieuw programma goedkeuren, dus het heeft eenmalig uw goedkeuring nodig, voor de hele organisatie. De pagina van Microsoft daarvoor staat hier:\n"
+"\n"
+"{link}\n"
+"\n"
+"Na uw goedkeuring toont uw browser mogelijk een pagina die niet bereikbaar is. Dat is normaal: het is een adres op uw eigen computer, waar niets naar luistert, en de goedkeuring is dan al gegeven.\n"
+"\n"
+"Alvast bedankt"
 
 #. command label, interface, name, ribbon, ribbon location
 #: crates/engine/src/cmd/help.rs crates/ui-egui/src/lib.rs crates/ui-egui/src/menubar.rs crates/ui-egui/src/ribbon.rs
@@ -18029,7 +18049,10 @@ msgid ""
 "To keep the automatic replies of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, your automatic replies aren't changed."
-msgstr "Om de automatische antwoorden van {address} gelijk te houden met Outlook, heeft ictMail uw toestemming nodig om uw postvakinstellingen te wijzigen. De pagina van Microsoft wordt in uw browser geopend om het u eenmalig te vragen.\n\nTot u het toestaat, worden uw automatische antwoorden niet gewijzigd."
+msgstr ""
+"Om de automatische antwoorden van {address} gelijk te houden met Outlook, heeft ictMail uw toestemming nodig om uw postvakinstellingen te wijzigen. De pagina van Microsoft wordt in uw browser geopend om het u eenmalig te vragen.\n"
+"\n"
+"Tot u het toestaat, worden uw automatische antwoorden niet gewijzigd."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18037,7 +18060,10 @@ msgid ""
 "To keep the rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr "Om de regels, automatische antwoorden en categorieën van {address} gelijk te houden met Outlook, heeft ictMail uw toestemming nodig om uw postvakinstellingen te wijzigen. De pagina van Microsoft wordt in uw browser geopend om het u eenmalig te vragen.\n\nTot u het toestaat, blijven regels op deze computer en wordt er niets van naar Microsoft verzonden, worden uw automatische antwoorden niet gewijzigd en kunnen de categorieën van dit postvak hier niet worden gewijzigd."
+msgstr ""
+"Om de regels, automatische antwoorden en categorieën van {address} gelijk te houden met Outlook, heeft ictMail uw toestemming nodig om uw postvakinstellingen te wijzigen. De pagina van Microsoft wordt in uw browser geopend om het u eenmalig te vragen.\n"
+"\n"
+"Tot u het toestaat, blijven regels op deze computer en wordt er niets van naar Microsoft verzonden, worden uw automatische antwoorden niet gewijzigd en kunnen de categorieën van dit postvak hier niet worden gewijzigd."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18045,7 +18071,10 @@ msgid ""
 "To keep the tasks and automatic replies of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft, and your automatic replies aren't changed."
-msgstr "Om de taken en automatische antwoorden van {address} gelijk te houden met Outlook, heeft ictMail uw toestemming nodig om uw To Do-lijsten en uw postvakinstellingen te wijzigen. De pagina van Microsoft wordt in uw browser geopend om het u eenmalig te vragen.\n\nTot u het toestaat, blijven taken op deze computer en wordt er niets van naar Microsoft verzonden, en worden uw automatische antwoorden niet gewijzigd."
+msgstr ""
+"Om de taken en automatische antwoorden van {address} gelijk te houden met Outlook, heeft ictMail uw toestemming nodig om uw To Do-lijsten en uw postvakinstellingen te wijzigen. De pagina van Microsoft wordt in uw browser geopend om het u eenmalig te vragen.\n"
+"\n"
+"Tot u het toestaat, blijven taken op deze computer en wordt er niets van naar Microsoft verzonden, en worden uw automatische antwoorden niet gewijzigd."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18053,7 +18082,10 @@ msgid ""
 "To keep the tasks of {address} in step with Microsoft To Do, ictMail needs your permission to read and change your To Do lists and tasks. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft."
-msgstr "Om de taken van {address} bij te houden met Microsoft To Do, heeft ictMail uw toestemming nodig om uw To Do-lijsten en taken te lezen en te wijzigen. De pagina van Microsoft opent in uw browser om het u te vragen, één keer.\n\nTotdat u het toestaat, blijven taken op deze computer en wordt er niets van naar Microsoft verzonden."
+msgstr ""
+"Om de taken van {address} bij te houden met Microsoft To Do, heeft ictMail uw toestemming nodig om uw To Do-lijsten en taken te lezen en te wijzigen. De pagina van Microsoft opent in uw browser om het u te vragen, één keer.\n"
+"\n"
+"Totdat u het toestaat, blijven taken op deze computer en wordt er niets van naar Microsoft verzonden."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18061,7 +18093,10 @@ msgid ""
 "To keep the tasks, rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks and rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr "Om de taken, regels, automatische antwoorden en categorieën van {address} gelijk te houden met Outlook, heeft ictMail uw toestemming nodig om uw To Do-lijsten en uw postvakinstellingen te wijzigen. De pagina van Microsoft wordt in uw browser geopend om het u eenmalig te vragen.\n\nTot u het toestaat, blijven taken en regels op deze computer en wordt er niets van naar Microsoft verzonden, worden uw automatische antwoorden niet gewijzigd en kunnen de categorieën van dit postvak hier niet worden gewijzigd."
+msgstr ""
+"Om de taken, regels, automatische antwoorden en categorieën van {address} gelijk te houden met Outlook, heeft ictMail uw toestemming nodig om uw To Do-lijsten en uw postvakinstellingen te wijzigen. De pagina van Microsoft wordt in uw browser geopend om het u eenmalig te vragen.\n"
+"\n"
+"Tot u het toestaat, blijven taken en regels op deze computer en wordt er niets van naar Microsoft verzonden, worden uw automatische antwoorden niet gewijzigd en kunnen de categorieën van dit postvak hier niet worden gewijzigd."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/MailListModel.kt
@@ -18075,7 +18110,10 @@ msgid ""
 "To read and send from the shared mailboxes you open with {address}, and to show the calendars shared with you, ictMail needs your permission. Microsoft's page opens in your browser to ask you, once, for everything ictMail uses that you haven't allowed yet.\n"
 "\n"
 "Until you allow it, nothing of those mailboxes and calendars is read, mail and meeting answers from a shared mailbox wait on this computer, and nothing is sent from your own address in their place."
-msgstr "Om de gedeelde postvakken die u met {address} opent te lezen en eruit te verzenden, en om de met u gedeelde agenda's te tonen, heeft ictMail uw toestemming nodig. De pagina van Microsoft wordt in uw browser geopend om u één keer te vragen naar alles wat ictMail gebruikt en wat u nog niet hebt toegestaan.\n\nTotdat u het toestaat, wordt er niets van die postvakken en agenda's gelezen, wachten e-mail en antwoorden op vergaderingen uit een gedeeld postvak op deze computer, en wordt er in hun plaats niets vanaf uw eigen adres verzonden."
+msgstr ""
+"Om de gedeelde postvakken die u met {address} opent te lezen en eruit te verzenden, en om de met u gedeelde agenda's te tonen, heeft ictMail uw toestemming nodig. De pagina van Microsoft wordt in uw browser geopend om u één keer te vragen naar alles wat ictMail gebruikt en wat u nog niet hebt toegestaan.\n"
+"\n"
+"Totdat u het toestaat, wordt er niets van die postvakken en agenda's gelezen, wachten e-mail en antwoorden op vergaderingen uit een gedeeld postvak op deze computer, en wordt er in hun plaats niets vanaf uw eigen adres verzonden."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs

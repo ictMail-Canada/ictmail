@@ -683,7 +683,9 @@ msgstr "შესახებ"
 msgid ""
 "About\n"
 "ictMail"
-msgstr "ictMail-ის\nშესახებ"
+msgstr ""
+"ictMail-ის\n"
+"შესახებ"
 
 #. interface, name
 #: crates/ui-egui/src/backstage.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/menubar.rs
@@ -6598,7 +6600,16 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr "გამარჯობა,\n\nმსურს ictMail-ის გამოყენება ჩემს სამსახურეობრივ ანგარიშთან. ictMail არის ღია კოდის საფოსტო და კალენდრის პროგრამა, რომელიც ჩემსავე კომპიუტერზე მუშაობს. ჩვენს ორგანიზაციაში ახალ პროგრამას მხოლოდ ადმინისტრატორი ამტკიცებს, ამიტომ საჭიროა თქვენი თანხმობა ერთხელ, მთელი ორგანიზაციისთვის. Microsoft-ის გვერდი ამისთვის აქაა:\n\n{link}\n\nდამტკიცების შემდეგ ბრაუზერმა შეიძლება აჩვენოს გვერდი, რომელიც მიუწვდომელია. ეს მოსალოდნელია: ეს მისამართი თქვენსავე კომპიუტერზეა, სადაც არაფერი უსმენს, და თანხმობა ამ დროისთვის უკვე მიცემულია.\n\nგმადლობთ"
+msgstr ""
+"გამარჯობა,\n"
+"\n"
+"მსურს ictMail-ის გამოყენება ჩემს სამსახურეობრივ ანგარიშთან. ictMail არის ღია კოდის საფოსტო და კალენდრის პროგრამა, რომელიც ჩემსავე კომპიუტერზე მუშაობს. ჩვენს ორგანიზაციაში ახალ პროგრამას მხოლოდ ადმინისტრატორი ამტკიცებს, ამიტომ საჭიროა თქვენი თანხმობა ერთხელ, მთელი ორგანიზაციისთვის. Microsoft-ის გვერდი ამისთვის აქაა:\n"
+"\n"
+"{link}\n"
+"\n"
+"დამტკიცების შემდეგ ბრაუზერმა შეიძლება აჩვენოს გვერდი, რომელიც მიუწვდომელია. ეს მოსალოდნელია: ეს მისამართი თქვენსავე კომპიუტერზეა, სადაც არაფერი უსმენს, და თანხმობა ამ დროისთვის უკვე მიცემულია.\n"
+"\n"
+"გმადლობთ"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -6612,7 +6623,16 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr "გამარჯობა,\n\nმსურს ictMail-ის გამოყენება ჩემს სამსახურეობრივ ანგარიშთან. ictMail არის ღია კოდის საფოსტო და კალენდრის პროგრამა, რომელიც ჩემსავე ტელეფონზე მუშაობს. ჩვენს ორგანიზაციაში ახალ პროგრამას მხოლოდ ადმინისტრატორი ამტკიცებს, ამიტომ საჭიროა თქვენი თანხმობა ერთხელ, მთელი ორგანიზაციისთვის. Microsoft-ის გვერდი ამისთვის აქაა:\n\n{link}\n\nდამტკიცების შემდეგ ბრაუზერმა შეიძლება აჩვენოს გვერდი, რომელიც მიუწვდომელია. ეს მოსალოდნელია: ეს მისამართი თქვენსავე კომპიუტერზეა, სადაც არაფერი უსმენს, და თანხმობა ამ დროისთვის უკვე მიცემულია.\n\nგმადლობთ"
+msgstr ""
+"გამარჯობა,\n"
+"\n"
+"მსურს ictMail-ის გამოყენება ჩემს სამსახურეობრივ ანგარიშთან. ictMail არის ღია კოდის საფოსტო და კალენდრის პროგრამა, რომელიც ჩემსავე ტელეფონზე მუშაობს. ჩვენს ორგანიზაციაში ახალ პროგრამას მხოლოდ ადმინისტრატორი ამტკიცებს, ამიტომ საჭიროა თქვენი თანხმობა ერთხელ, მთელი ორგანიზაციისთვის. Microsoft-ის გვერდი ამისთვის აქაა:\n"
+"\n"
+"{link}\n"
+"\n"
+"დამტკიცების შემდეგ ბრაუზერმა შეიძლება აჩვენოს გვერდი, რომელიც მიუწვდომელია. ეს მოსალოდნელია: ეს მისამართი თქვენსავე კომპიუტერზეა, სადაც არაფერი უსმენს, და თანხმობა ამ დროისთვის უკვე მიცემულია.\n"
+"\n"
+"გმადლობთ"
 
 #. command label, interface, name, ribbon, ribbon location
 #: crates/engine/src/cmd/help.rs crates/ui-egui/src/lib.rs crates/ui-egui/src/menubar.rs crates/ui-egui/src/ribbon.rs
@@ -18526,7 +18546,10 @@ msgid ""
 "To keep the automatic replies of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, your automatic replies aren't changed."
-msgstr "ანგარიშის {address} ავტომატური პასუხების Outlook-თან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა საფოსტო ყუთის პარამეტრების შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n\nსანამ ამას დაუშვებთ, თქვენი ავტომატური პასუხები არ შეიცვლება."
+msgstr ""
+"ანგარიშის {address} ავტომატური პასუხების Outlook-თან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა საფოსტო ყუთის პარამეტრების შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n"
+"\n"
+"სანამ ამას დაუშვებთ, თქვენი ავტომატური პასუხები არ შეიცვლება."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18534,7 +18557,10 @@ msgid ""
 "To keep the rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr "ანგარიშის {address} წესების, ავტომატური პასუხებისა და კატეგორიების Outlook-თან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა საფოსტო ყუთის პარამეტრების შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n\nსანამ ამას დაუშვებთ, წესები ამ კომპიუტერზე რჩება და მათგან არაფერი ეგზავნება Microsoft-ს, თქვენი ავტომატური პასუხები არ შეიცვლება, ამ საფოსტო ყუთის კატეგორიების შეცვლა კი აქ შეუძლებელია."
+msgstr ""
+"ანგარიშის {address} წესების, ავტომატური პასუხებისა და კატეგორიების Outlook-თან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა საფოსტო ყუთის პარამეტრების შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n"
+"\n"
+"სანამ ამას დაუშვებთ, წესები ამ კომპიუტერზე რჩება და მათგან არაფერი ეგზავნება Microsoft-ს, თქვენი ავტომატური პასუხები არ შეიცვლება, ამ საფოსტო ყუთის კატეგორიების შეცვლა კი აქ შეუძლებელია."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18542,7 +18568,10 @@ msgid ""
 "To keep the tasks and automatic replies of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft, and your automatic replies aren't changed."
-msgstr "ანგარიშის {address} დავალებებისა და ავტომატური პასუხების Outlook-თან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა To Do-ს სიებისა და საფოსტო ყუთის პარამეტრების შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n\nსანამ ამას დაუშვებთ, დავალებები ამ კომპიუტერზე რჩება და მათგან არაფერი ეგზავნება Microsoft-ს, თქვენი ავტომატური პასუხები კი არ შეიცვლება."
+msgstr ""
+"ანგარიშის {address} დავალებებისა და ავტომატური პასუხების Outlook-თან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა To Do-ს სიებისა და საფოსტო ყუთის პარამეტრების შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n"
+"\n"
+"სანამ ამას დაუშვებთ, დავალებები ამ კომპიუტერზე რჩება და მათგან არაფერი ეგზავნება Microsoft-ს, თქვენი ავტომატური პასუხები კი არ შეიცვლება."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18550,7 +18579,10 @@ msgid ""
 "To keep the tasks of {address} in step with Microsoft To Do, ictMail needs your permission to read and change your To Do lists and tasks. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft."
-msgstr "ანგარიშის {address} დავალებების Microsoft To Do-სთან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა To Do-ს სიებისა და დავალებების წასაკითხად და შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n\nსანამ ამას დაუშვებთ, დავალებები ამ კომპიუტერზე რჩება და მათგან არაფერი ეგზავნება Microsoft-ს."
+msgstr ""
+"ანგარიშის {address} დავალებების Microsoft To Do-სთან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა To Do-ს სიებისა და დავალებების წასაკითხად და შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n"
+"\n"
+"სანამ ამას დაუშვებთ, დავალებები ამ კომპიუტერზე რჩება და მათგან არაფერი ეგზავნება Microsoft-ს."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18558,7 +18590,10 @@ msgid ""
 "To keep the tasks, rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks and rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr "ანგარიშის {address} დავალებების, წესების, ავტომატური პასუხებისა და კატეგორიების Outlook-თან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა To Do-ს სიებისა და საფოსტო ყუთის პარამეტრების შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n\nსანამ ამას დაუშვებთ, დავალებები და წესები ამ კომპიუტერზე რჩება და მათგან არაფერი ეგზავნება Microsoft-ს, თქვენი ავტომატური პასუხები არ შეიცვლება, ამ საფოსტო ყუთის კატეგორიების შეცვლა კი აქ შეუძლებელია."
+msgstr ""
+"ანგარიშის {address} დავალებების, წესების, ავტომატური პასუხებისა და კატეგორიების Outlook-თან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა To Do-ს სიებისა და საფოსტო ყუთის პარამეტრების შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n"
+"\n"
+"სანამ ამას დაუშვებთ, დავალებები და წესები ამ კომპიუტერზე რჩება და მათგან არაფერი ეგზავნება Microsoft-ს, თქვენი ავტომატური პასუხები არ შეიცვლება, ამ საფოსტო ყუთის კატეგორიების შეცვლა კი აქ შეუძლებელია."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/MailListModel.kt

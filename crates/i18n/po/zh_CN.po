@@ -686,7 +686,9 @@ msgstr "关于"
 msgid ""
 "About\n"
 "ictMail"
-msgstr "关于\nictMail"
+msgstr ""
+"关于\n"
+"ictMail"
 
 #. interface, name
 #: crates/ui-egui/src/backstage.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/menubar.rs
@@ -6604,7 +6606,16 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr "您好，\n\n我希望使用工作账户登录 ictMail。ictMail 是运行在我自己电脑上的开源邮件和日历程序。我们组织只允许管理员批准新程序，因此需要您为整个组织批准一次。Microsoft 授权页面如下：\n\n{link}\n\n批准后，浏览器可能显示无法访问的页面。这是预期现象：该地址位于您自己的电脑上，没有程序监听；此时授权已经完成。\n\n谢谢"
+msgstr ""
+"您好，\n"
+"\n"
+"我希望使用工作账户登录 ictMail。ictMail 是运行在我自己电脑上的开源邮件和日历程序。我们组织只允许管理员批准新程序，因此需要您为整个组织批准一次。Microsoft 授权页面如下：\n"
+"\n"
+"{link}\n"
+"\n"
+"批准后，浏览器可能显示无法访问的页面。这是预期现象：该地址位于您自己的电脑上，没有程序监听；此时授权已经完成。\n"
+"\n"
+"谢谢"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -6618,7 +6629,16 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr "您好，\n\n我想在我的工作账户中使用 ictMail。ictMail 是一款开源的邮件和日历程序，运行在我自己的手机上。我们组织只允许管理员批准新程序，因此需要您为整个组织批准一次。Microsoft 的相关页面在这里：\n\n{link}\n\n您批准之后，浏览器可能会显示一个无法访问的页面。这是正常的：那是您自己电脑上的地址，没有任何程序在监听，而此时批准已经完成。\n\n谢谢"
+msgstr ""
+"您好，\n"
+"\n"
+"我想在我的工作账户中使用 ictMail。ictMail 是一款开源的邮件和日历程序，运行在我自己的手机上。我们组织只允许管理员批准新程序，因此需要您为整个组织批准一次。Microsoft 的相关页面在这里：\n"
+"\n"
+"{link}\n"
+"\n"
+"您批准之后，浏览器可能会显示一个无法访问的页面。这是正常的：那是您自己电脑上的地址，没有任何程序在监听，而此时批准已经完成。\n"
+"\n"
+"谢谢"
 
 #. command label, interface, name, ribbon, ribbon location
 #: crates/engine/src/cmd/help.rs crates/ui-egui/src/lib.rs crates/ui-egui/src/menubar.rs crates/ui-egui/src/ribbon.rs
@@ -18585,7 +18605,10 @@ msgid ""
 "To keep the automatic replies of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, your automatic replies aren't changed."
-msgstr "要让 {address} 的自动回复与 Outlook 同步，ictMail 需要您授权更改邮箱设置。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n\n在您授权之前，不会更改自动回复。"
+msgstr ""
+"要让 {address} 的自动回复与 Outlook 同步，ictMail 需要您授权更改邮箱设置。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n"
+"\n"
+"在您授权之前，不会更改自动回复。"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18593,7 +18616,10 @@ msgid ""
 "To keep the rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr "要让 {address} 的规则、自动回复和类别与 Outlook 同步，ictMail 需要您授权更改邮箱设置。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n\n在您授权之前，规则只保存在此计算机上，不会向 Microsoft 发送任何规则内容，不会更改自动回复，也无法在此更改此邮箱的类别。"
+msgstr ""
+"要让 {address} 的规则、自动回复和类别与 Outlook 同步，ictMail 需要您授权更改邮箱设置。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n"
+"\n"
+"在您授权之前，规则只保存在此计算机上，不会向 Microsoft 发送任何规则内容，不会更改自动回复，也无法在此更改此邮箱的类别。"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18601,7 +18627,10 @@ msgid ""
 "To keep the tasks and automatic replies of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft, and your automatic replies aren't changed."
-msgstr "要让 {address} 的任务和自动回复与 Outlook 同步，ictMail 需要您授权更改 To Do 列表和邮箱设置。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n\n在您授权之前，任务只保存在此计算机上，不会向 Microsoft 发送任何任务内容，也不会更改自动回复。"
+msgstr ""
+"要让 {address} 的任务和自动回复与 Outlook 同步，ictMail 需要您授权更改 To Do 列表和邮箱设置。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n"
+"\n"
+"在您授权之前，任务只保存在此计算机上，不会向 Microsoft 发送任何任务内容，也不会更改自动回复。"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18609,7 +18638,10 @@ msgid ""
 "To keep the tasks of {address} in step with Microsoft To Do, ictMail needs your permission to read and change your To Do lists and tasks. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft."
-msgstr "要将 {address} 的任务与 Microsoft To Do 同步，ictMail 需要您授权读取和更改 To Do 列表及任务。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n\n在您授权之前，任务只保存在此计算机上，不会向 Microsoft 发送任何任务内容。"
+msgstr ""
+"要将 {address} 的任务与 Microsoft To Do 同步，ictMail 需要您授权读取和更改 To Do 列表及任务。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n"
+"\n"
+"在您授权之前，任务只保存在此计算机上，不会向 Microsoft 发送任何任务内容。"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18617,7 +18649,10 @@ msgid ""
 "To keep the tasks, rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks and rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr "要让 {address} 的任务、规则、自动回复和类别与 Outlook 同步，ictMail 需要您授权更改 To Do 列表和邮箱设置。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n\n在您授权之前，任务和规则只保存在此计算机上，不会向 Microsoft 发送其任何内容，不会更改自动回复，也无法在此更改此邮箱的类别。"
+msgstr ""
+"要让 {address} 的任务、规则、自动回复和类别与 Outlook 同步，ictMail 需要您授权更改 To Do 列表和邮箱设置。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n"
+"\n"
+"在您授权之前，任务和规则只保存在此计算机上，不会向 Microsoft 发送其任何内容，不会更改自动回复，也无法在此更改此邮箱的类别。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/MailListModel.kt
@@ -18631,7 +18666,10 @@ msgid ""
 "To read and send from the shared mailboxes you open with {address}, and to show the calendars shared with you, ictMail needs your permission. Microsoft's page opens in your browser to ask you, once, for everything ictMail uses that you haven't allowed yet.\n"
 "\n"
 "Until you allow it, nothing of those mailboxes and calendars is read, mail and meeting answers from a shared mailbox wait on this computer, and nothing is sent from your own address in their place."
-msgstr "要读取你通过 {address} 打开的共享邮箱并从中发送邮件，以及显示与你共享的日历，ictMail 需要你的许可。Microsoft 的页面将在浏览器中打开，一次性询问 ictMail 使用但你尚未允许的所有权限。\n\n在你允许之前，不会读取这些邮箱和日历的任何内容，来自共享邮箱的邮件和会议答复会在这台电脑上等待，也不会改用你自己的地址发送任何内容。"
+msgstr ""
+"要读取你通过 {address} 打开的共享邮箱并从中发送邮件，以及显示与你共享的日历，ictMail 需要你的许可。Microsoft 的页面将在浏览器中打开，一次性询问 ictMail 使用但你尚未允许的所有权限。\n"
+"\n"
+"在你允许之前，不会读取这些邮箱和日历的任何内容，来自共享邮箱的邮件和会议答复会在这台电脑上等待，也不会改用你自己的地址发送任何内容。"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs

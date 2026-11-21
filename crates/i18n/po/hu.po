@@ -689,7 +689,9 @@ msgstr "Névjegy"
 msgid ""
 "About\n"
 "ictMail"
-msgstr "A ictMail\nnévjegye"
+msgstr ""
+"A ictMail\n"
+"névjegye"
 
 #. interface, name
 #: crates/ui-egui/src/backstage.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/menubar.rs
@@ -6603,7 +6605,16 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr "Üdvözlöm!\n\nSzeretném a munkahelyi fiókommal használni a ictMail nyílt forráskódú levelező- és naptáralkalmazást, amely a saját számítógépemen fut. A szervezetünkben új alkalmazást csak rendszergazda hagyhat jóvá. A jóváhagyást egyszer kell megadni, az egész szervezet számára. A Microsoft jóváhagyási oldala:\n\n{link}\n\nJóváhagyás után előfordulhat, hogy a böngésző egy nem elérhető oldalt jelez. Ez rendben van: a cím a saját számítógépére mutat, ahol nincs kiszolgáló, a jóváhagyás ekkor már megtörtént.\n\nKöszönöm!"
+msgstr ""
+"Üdvözlöm!\n"
+"\n"
+"Szeretném a munkahelyi fiókommal használni a ictMail nyílt forráskódú levelező- és naptáralkalmazást, amely a saját számítógépemen fut. A szervezetünkben új alkalmazást csak rendszergazda hagyhat jóvá. A jóváhagyást egyszer kell megadni, az egész szervezet számára. A Microsoft jóváhagyási oldala:\n"
+"\n"
+"{link}\n"
+"\n"
+"Jóváhagyás után előfordulhat, hogy a böngésző egy nem elérhető oldalt jelez. Ez rendben van: a cím a saját számítógépére mutat, ahol nincs kiszolgáló, a jóváhagyás ekkor már megtörtént.\n"
+"\n"
+"Köszönöm!"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -6617,7 +6628,16 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr "Tisztelt Rendszergazda!\n\nSzeretném a ictMailot használni a munkahelyi fiókommal. A ictMail egy nyílt forráskódú levelező- és naptárprogram, amely a saját telefonomon fut. A szervezetünkben új programot csak rendszergazda hagyhat jóvá, ezért az Ön jóváhagyására van szükség, egyszer, az egész szervezet számára. A Microsoft erre szolgáló oldala itt található:\n\n{link}\n\nA jóváhagyás után előfordulhat, hogy a böngészőben egy nem elérhető oldal jelenik meg. Ez várható: ez egy címe a saját számítógépének, ahol semmi sem figyel, és a jóváhagyás ekkorra már megtörtént.\n\nKöszönöm"
+msgstr ""
+"Tisztelt Rendszergazda!\n"
+"\n"
+"Szeretném a ictMailot használni a munkahelyi fiókommal. A ictMail egy nyílt forráskódú levelező- és naptárprogram, amely a saját telefonomon fut. A szervezetünkben új programot csak rendszergazda hagyhat jóvá, ezért az Ön jóváhagyására van szükség, egyszer, az egész szervezet számára. A Microsoft erre szolgáló oldala itt található:\n"
+"\n"
+"{link}\n"
+"\n"
+"A jóváhagyás után előfordulhat, hogy a böngészőben egy nem elérhető oldal jelenik meg. Ez várható: ez egy címe a saját számítógépének, ahol semmi sem figyel, és a jóváhagyás ekkorra már megtörtént.\n"
+"\n"
+"Köszönöm"
 
 #. command label, interface, name, ribbon, ribbon location
 #: crates/engine/src/cmd/help.rs crates/ui-egui/src/lib.rs crates/ui-egui/src/menubar.rs crates/ui-egui/src/ribbon.rs
@@ -18591,7 +18611,10 @@ msgid ""
 "To keep the automatic replies of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, your automatic replies aren't changed."
-msgstr "Ahhoz, hogy a(z) {address} automatikus válaszait szinkronban tartsa az Outlookkal, a ictMailnak engedélyre van szüksége a postafiók beállításainak módosításához. A Microsoft oldala megnyílik a böngészőben, hogy egyszer megkérdezze Önt.\n\nAmíg nem engedélyezi, az automatikus válaszok nem módosulnak."
+msgstr ""
+"Ahhoz, hogy a(z) {address} automatikus válaszait szinkronban tartsa az Outlookkal, a ictMailnak engedélyre van szüksége a postafiók beállításainak módosításához. A Microsoft oldala megnyílik a böngészőben, hogy egyszer megkérdezze Önt.\n"
+"\n"
+"Amíg nem engedélyezi, az automatikus válaszok nem módosulnak."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18599,7 +18622,10 @@ msgid ""
 "To keep the rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr "Ahhoz, hogy a(z) {address} szabályait, automatikus válaszait és kategóriáit szinkronban tartsa az Outlookkal, a ictMailnak engedélyre van szüksége a postafiók beállításainak módosításához. A Microsoft oldala megnyílik a böngészőben, hogy egyszer megkérdezze Önt.\n\nAmíg nem engedélyezi, a szabályok ezen a számítógépen maradnak, és semmi sem jut el belőlük a Microsofthoz, az automatikus válaszok nem módosulnak, és a postafiók kategóriái itt nem módosíthatók."
+msgstr ""
+"Ahhoz, hogy a(z) {address} szabályait, automatikus válaszait és kategóriáit szinkronban tartsa az Outlookkal, a ictMailnak engedélyre van szüksége a postafiók beállításainak módosításához. A Microsoft oldala megnyílik a böngészőben, hogy egyszer megkérdezze Önt.\n"
+"\n"
+"Amíg nem engedélyezi, a szabályok ezen a számítógépen maradnak, és semmi sem jut el belőlük a Microsofthoz, az automatikus válaszok nem módosulnak, és a postafiók kategóriái itt nem módosíthatók."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18607,7 +18633,10 @@ msgid ""
 "To keep the tasks and automatic replies of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft, and your automatic replies aren't changed."
-msgstr "Ahhoz, hogy a(z) {address} feladatait és automatikus válaszait szinkronban tartsa az Outlookkal, a ictMailnak engedélyre van szüksége a To Do listák és a postafiók beállításainak módosításához. A Microsoft oldala megnyílik a böngészőben, hogy egyszer megkérdezze Önt.\n\nAmíg nem engedélyezi, a feladatok ezen a számítógépen maradnak, és semmi sem jut el belőlük a Microsofthoz, az automatikus válaszok pedig nem módosulnak."
+msgstr ""
+"Ahhoz, hogy a(z) {address} feladatait és automatikus válaszait szinkronban tartsa az Outlookkal, a ictMailnak engedélyre van szüksége a To Do listák és a postafiók beállításainak módosításához. A Microsoft oldala megnyílik a böngészőben, hogy egyszer megkérdezze Önt.\n"
+"\n"
+"Amíg nem engedélyezi, a feladatok ezen a számítógépen maradnak, és semmi sem jut el belőlük a Microsofthoz, az automatikus válaszok pedig nem módosulnak."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18615,7 +18644,10 @@ msgid ""
 "To keep the tasks of {address} in step with Microsoft To Do, ictMail needs your permission to read and change your To Do lists and tasks. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft."
-msgstr "Ahhoz, hogy a {address} feladatait lépést tarthasson a Microsoft To Do-val, a ictMail-nak szüksége van az engedélyére, hogy elolvassa és megváltoztassa a To Do listáit és feladatait.\n\nA Microsoft oldala egyszer megnyílik a böngészőjében, hogy kérje Önt. Amíg nem engedi, a feladatok ezen a számítógépen maradnak, és semmi sem kerül a Microsoftba."
+msgstr ""
+"Ahhoz, hogy a {address} feladatait lépést tarthasson a Microsoft To Do-val, a ictMail-nak szüksége van az engedélyére, hogy elolvassa és megváltoztassa a To Do listáit és feladatait.\n"
+"\n"
+"A Microsoft oldala egyszer megnyílik a böngészőjében, hogy kérje Önt. Amíg nem engedi, a feladatok ezen a számítógépen maradnak, és semmi sem kerül a Microsoftba."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18623,7 +18655,10 @@ msgid ""
 "To keep the tasks, rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks and rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr "Ahhoz, hogy a(z) {address} feladatait, szabályait, automatikus válaszait és kategóriáit szinkronban tartsa az Outlookkal, a ictMailnak engedélyre van szüksége a To Do listák és a postafiók beállításainak módosításához. A Microsoft oldala megnyílik a böngészőben, hogy egyszer megkérdezze Önt.\n\nAmíg nem engedélyezi, a feladatok és a szabályok ezen a számítógépen maradnak, és semmi sem jut el belőlük a Microsofthoz, az automatikus válaszok nem módosulnak, és a postafiók kategóriái itt nem módosíthatók."
+msgstr ""
+"Ahhoz, hogy a(z) {address} feladatait, szabályait, automatikus válaszait és kategóriáit szinkronban tartsa az Outlookkal, a ictMailnak engedélyre van szüksége a To Do listák és a postafiók beállításainak módosításához. A Microsoft oldala megnyílik a böngészőben, hogy egyszer megkérdezze Önt.\n"
+"\n"
+"Amíg nem engedélyezi, a feladatok és a szabályok ezen a számítógépen maradnak, és semmi sem jut el belőlük a Microsofthoz, az automatikus válaszok nem módosulnak, és a postafiók kategóriái itt nem módosíthatók."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/MailListModel.kt
@@ -18637,7 +18672,10 @@ msgid ""
 "To read and send from the shared mailboxes you open with {address}, and to show the calendars shared with you, ictMail needs your permission. Microsoft's page opens in your browser to ask you, once, for everything ictMail uses that you haven't allowed yet.\n"
 "\n"
 "Until you allow it, nothing of those mailboxes and calendars is read, mail and meeting answers from a shared mailbox wait on this computer, and nothing is sent from your own address in their place."
-msgstr "A(z) {address} címmel megnyitott megosztott postafiókok olvasásához és az azokból való küldéshez, valamint az Önnel megosztott naptárak megjelenítéséhez a ictMailnak szüksége van az Ön engedélyére. A Microsoft oldala megnyílik a böngészőben, és egyszer rákérdez mindenre, amit a ictMail használ, és Ön még nem engedélyezett.\n\nAmíg nem engedélyezi, semmi sem olvasható ezekből a postafiókokból és naptárakból, a megosztott postafiókból küldendő levelek és értekezlet-válaszok ezen a számítógépen várnak, és semmi sem megy el helyettük az Ön saját címéről."
+msgstr ""
+"A(z) {address} címmel megnyitott megosztott postafiókok olvasásához és az azokból való küldéshez, valamint az Önnel megosztott naptárak megjelenítéséhez a ictMailnak szüksége van az Ön engedélyére. A Microsoft oldala megnyílik a böngészőben, és egyszer rákérdez mindenre, amit a ictMail használ, és Ön még nem engedélyezett.\n"
+"\n"
+"Amíg nem engedélyezi, semmi sem olvasható ezekből a postafiókokból és naptárakból, a megosztott postafiókból küldendő levelek és értekezlet-válaszok ezen a számítógépen várnak, és semmi sem megy el helyettük az Ön saját címéről."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs

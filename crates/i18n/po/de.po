@@ -634,7 +634,9 @@ msgstr "Info"
 msgid ""
 "About\n"
 "ictMail"
-msgstr "Über\nictMail"
+msgstr ""
+"Über\n"
+"ictMail"
 
 #. interface, name
 #: crates/ui-egui/src/backstage.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/menubar.rs
@@ -6227,7 +6229,16 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr "Hallo,\n\nich möchte ictMail mit meinem Arbeitskonto verwenden. ictMail ist ein quelloffenes E-Mail- und Kalenderprogramm, das auf meinem eigenen Computer läuft. In unserer Organisation darf nur ein Administrator ein neues Programm genehmigen; es braucht also einmal Ihre Genehmigung, für die ganze Organisation. Die Seite von Microsoft dafür ist hier:\n\n{link}\n\nNach der Genehmigung zeigt Ihr Browser vielleicht eine Seite, die nicht erreichbar ist. Das ist so gewollt: Es ist eine Adresse auf Ihrem eigenen Computer, an der nichts lauscht, und die Genehmigung ist dann bereits erteilt.\n\nVielen Dank"
+msgstr ""
+"Hallo,\n"
+"\n"
+"ich möchte ictMail mit meinem Arbeitskonto verwenden. ictMail ist ein quelloffenes E-Mail- und Kalenderprogramm, das auf meinem eigenen Computer läuft. In unserer Organisation darf nur ein Administrator ein neues Programm genehmigen; es braucht also einmal Ihre Genehmigung, für die ganze Organisation. Die Seite von Microsoft dafür ist hier:\n"
+"\n"
+"{link}\n"
+"\n"
+"Nach der Genehmigung zeigt Ihr Browser vielleicht eine Seite, die nicht erreichbar ist. Das ist so gewollt: Es ist eine Adresse auf Ihrem eigenen Computer, an der nichts lauscht, und die Genehmigung ist dann bereits erteilt.\n"
+"\n"
+"Vielen Dank"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -6241,7 +6252,16 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr "Hallo,\n\nich möchte ictMail mit meinem Arbeitskonto verwenden. ictMail ist ein Open-Source-Mail- und Kalenderprogramm, das auf meinem eigenen Smartphone läuft. In unserer Organisation dürfen nur Administratoren neue Programme genehmigen. Daher ist Ihre einmalige Genehmigung für die gesamte Organisation erforderlich. Die entsprechende Seite von Microsoft finden Sie hier:\n\n{link}\n\nNach der Genehmigung zeigt Ihr Browser möglicherweise eine Seite an, die nicht erreichbar ist. Das ist normal: Es handelt sich um eine Adresse auf Ihrem eigenen Computer, an der kein Dienst auf Anfragen wartet. Zu diesem Zeitpunkt wurde die Genehmigung bereits erteilt.\n\nVielen Dank"
+msgstr ""
+"Hallo,\n"
+"\n"
+"ich möchte ictMail mit meinem Arbeitskonto verwenden. ictMail ist ein Open-Source-Mail- und Kalenderprogramm, das auf meinem eigenen Smartphone läuft. In unserer Organisation dürfen nur Administratoren neue Programme genehmigen. Daher ist Ihre einmalige Genehmigung für die gesamte Organisation erforderlich. Die entsprechende Seite von Microsoft finden Sie hier:\n"
+"\n"
+"{link}\n"
+"\n"
+"Nach der Genehmigung zeigt Ihr Browser möglicherweise eine Seite an, die nicht erreichbar ist. Das ist normal: Es handelt sich um eine Adresse auf Ihrem eigenen Computer, an der kein Dienst auf Anfragen wartet. Zu diesem Zeitpunkt wurde die Genehmigung bereits erteilt.\n"
+"\n"
+"Vielen Dank"
 
 #. command label, interface, name, ribbon, ribbon location
 #: crates/engine/src/cmd/help.rs crates/ui-egui/src/lib.rs crates/ui-egui/src/menubar.rs crates/ui-egui/src/ribbon.rs
@@ -17498,7 +17518,10 @@ msgid ""
 "To keep the automatic replies of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, your automatic replies aren't changed."
-msgstr "Um die automatischen Antworten von {address} mit Outlook abzugleichen, braucht ictMail Ihre Erlaubnis, Ihre Postfacheinstellungen zu ändern. Die Seite von Microsoft öffnet sich in Ihrem Browser, um Sie einmal zu fragen.\n\nBis Sie es erlauben, werden Ihre automatischen Antworten nicht geändert."
+msgstr ""
+"Um die automatischen Antworten von {address} mit Outlook abzugleichen, braucht ictMail Ihre Erlaubnis, Ihre Postfacheinstellungen zu ändern. Die Seite von Microsoft öffnet sich in Ihrem Browser, um Sie einmal zu fragen.\n"
+"\n"
+"Bis Sie es erlauben, werden Ihre automatischen Antworten nicht geändert."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -17506,7 +17529,10 @@ msgid ""
 "To keep the rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr "Um die Regeln, automatischen Antworten und Kategorien von {address} mit Outlook abzugleichen, braucht ictMail Ihre Erlaubnis, Ihre Postfacheinstellungen zu ändern. Die Seite von Microsoft öffnet sich in Ihrem Browser, um Sie einmal zu fragen.\n\nBis Sie es erlauben, bleiben Regeln auf diesem Computer, nichts davon wird an Microsoft gesendet, Ihre automatischen Antworten werden nicht geändert, und die Kategorien dieses Postfachs können hier nicht geändert werden."
+msgstr ""
+"Um die Regeln, automatischen Antworten und Kategorien von {address} mit Outlook abzugleichen, braucht ictMail Ihre Erlaubnis, Ihre Postfacheinstellungen zu ändern. Die Seite von Microsoft öffnet sich in Ihrem Browser, um Sie einmal zu fragen.\n"
+"\n"
+"Bis Sie es erlauben, bleiben Regeln auf diesem Computer, nichts davon wird an Microsoft gesendet, Ihre automatischen Antworten werden nicht geändert, und die Kategorien dieses Postfachs können hier nicht geändert werden."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -17514,7 +17540,10 @@ msgid ""
 "To keep the tasks and automatic replies of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft, and your automatic replies aren't changed."
-msgstr "Um die Aufgaben und automatischen Antworten von {address} mit Outlook abzugleichen, braucht ictMail Ihre Erlaubnis, Ihre To Do-Listen und Ihre Postfacheinstellungen zu ändern. Die Seite von Microsoft öffnet sich in Ihrem Browser, um Sie einmal zu fragen.\n\nBis Sie es erlauben, bleiben Aufgaben auf diesem Computer, nichts davon wird an Microsoft gesendet, und Ihre automatischen Antworten werden nicht geändert."
+msgstr ""
+"Um die Aufgaben und automatischen Antworten von {address} mit Outlook abzugleichen, braucht ictMail Ihre Erlaubnis, Ihre To Do-Listen und Ihre Postfacheinstellungen zu ändern. Die Seite von Microsoft öffnet sich in Ihrem Browser, um Sie einmal zu fragen.\n"
+"\n"
+"Bis Sie es erlauben, bleiben Aufgaben auf diesem Computer, nichts davon wird an Microsoft gesendet, und Ihre automatischen Antworten werden nicht geändert."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -17522,7 +17551,10 @@ msgid ""
 "To keep the tasks of {address} in step with Microsoft To Do, ictMail needs your permission to read and change your To Do lists and tasks. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft."
-msgstr "Um die Aufgaben von {address} mit Microsoft To Do synchron zu halten, benötigt ictMail Ihre Zustimmung, Ihre To-Do-Listen und Aufgaben zu lesen und zu ändern. Dazu wird einmalig eine Microsoft-Seite in Ihrem Browser geöffnet, auf der Sie um Erlaubnis gebeten werden.\n\nBis Sie dies erlauben, bleiben die Aufgaben auf diesem Computer. Es werden keine Aufgaben an Microsoft gesendet."
+msgstr ""
+"Um die Aufgaben von {address} mit Microsoft To Do synchron zu halten, benötigt ictMail Ihre Zustimmung, Ihre To-Do-Listen und Aufgaben zu lesen und zu ändern. Dazu wird einmalig eine Microsoft-Seite in Ihrem Browser geöffnet, auf der Sie um Erlaubnis gebeten werden.\n"
+"\n"
+"Bis Sie dies erlauben, bleiben die Aufgaben auf diesem Computer. Es werden keine Aufgaben an Microsoft gesendet."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -17530,7 +17562,10 @@ msgid ""
 "To keep the tasks, rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks and rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr "Um die Aufgaben, Regeln, automatischen Antworten und Kategorien von {address} mit Outlook abzugleichen, braucht ictMail Ihre Erlaubnis, Ihre To Do-Listen und Ihre Postfacheinstellungen zu ändern. Die Seite von Microsoft öffnet sich in Ihrem Browser, um Sie einmal zu fragen.\n\nBis Sie es erlauben, bleiben Aufgaben und Regeln auf diesem Computer, nichts davon wird an Microsoft gesendet, Ihre automatischen Antworten werden nicht geändert, und die Kategorien dieses Postfachs können hier nicht geändert werden."
+msgstr ""
+"Um die Aufgaben, Regeln, automatischen Antworten und Kategorien von {address} mit Outlook abzugleichen, braucht ictMail Ihre Erlaubnis, Ihre To Do-Listen und Ihre Postfacheinstellungen zu ändern. Die Seite von Microsoft öffnet sich in Ihrem Browser, um Sie einmal zu fragen.\n"
+"\n"
+"Bis Sie es erlauben, bleiben Aufgaben und Regeln auf diesem Computer, nichts davon wird an Microsoft gesendet, Ihre automatischen Antworten werden nicht geändert, und die Kategorien dieses Postfachs können hier nicht geändert werden."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/MailListModel.kt
@@ -17543,7 +17578,10 @@ msgid ""
 "To read and send from the shared mailboxes you open with {address}, and to show the calendars shared with you, ictMail needs your permission. Microsoft's page opens in your browser to ask you, once, for everything ictMail uses that you haven't allowed yet.\n"
 "\n"
 "Until you allow it, nothing of those mailboxes and calendars is read, mail and meeting answers from a shared mailbox wait on this computer, and nothing is sent from your own address in their place."
-msgstr "Um aus den freigegebenen Postfächern, die Sie mit {address} öffnen, zu lesen und zu senden und die für Sie freigegebenen Kalender anzuzeigen, braucht ictMail Ihre Erlaubnis. Die Seite von Microsoft öffnet sich in Ihrem Browser und fragt Sie einmal nach allem, was ictMail nutzt und Sie noch nicht erlaubt haben.\n\nBis Sie es erlauben, wird nichts aus diesen Postfächern und Kalendern gelesen, E-Mails und Antworten auf Besprechungen aus einem freigegebenen Postfach warten auf diesem Computer, und nichts wird stattdessen von Ihrer eigenen Adresse gesendet."
+msgstr ""
+"Um aus den freigegebenen Postfächern, die Sie mit {address} öffnen, zu lesen und zu senden und die für Sie freigegebenen Kalender anzuzeigen, braucht ictMail Ihre Erlaubnis. Die Seite von Microsoft öffnet sich in Ihrem Browser und fragt Sie einmal nach allem, was ictMail nutzt und Sie noch nicht erlaubt haben.\n"
+"\n"
+"Bis Sie es erlauben, wird nichts aus diesen Postfächern und Kalendern gelesen, E-Mails und Antworten auf Besprechungen aus einem freigegebenen Postfach warten auf diesem Computer, und nichts wird stattdessen von Ihrer eigenen Adresse gesendet."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
