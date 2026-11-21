@@ -126,7 +126,7 @@ fn back_from_a_found_exchange_server_is_the_question_and_imap_is_the_guess_as_it
         assert_eq!(page(&h), Some(Page::Password), "{from_exchange}");
         let w = wizard(&h).unwrap();
         assert!(w.guessed && w.settings_open && !w.exchange.found && w.password.0.is_empty());
-        assert_eq!((w.incoming.host.as_str(), w.outgoing.host.as_str()), ("imap.lumen.example", "smtp.lumen.example"));
+        assert_eq!((w.incoming.host.as_str(), w.outgoing.host.as_str()), (HOSTED_MX, HOSTED_MX));
         assert!(says(&h, "only a guess"));
         // The Exchange server is still one tile away.
         assert!(h.query_by_role_and_label(Role::Button, Kind::Exchange.title()).is_some());

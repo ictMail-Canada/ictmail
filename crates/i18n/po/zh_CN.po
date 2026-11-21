@@ -306,7 +306,7 @@ msgstr "2 年"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "2. When they have approved ictMail, come back here and sign in again."
-msgstr ""
+msgstr "2. 管理员批准 ictMail 后，请回到这里重新登录。"
 
 #. android, interface, name
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/SettingsModel.kt crates/model/src/offline.rs crates/ui-egui/src/keep_offline.rs
@@ -538,7 +538,7 @@ msgstr "一封请求退订的邮件将通过发件箱从 {from} 发送到 {to}�
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "A new version is downloaded in the background, kept only when ictMail's own release signature says it is ours, and installed when you restart to update or quit."
-msgstr ""
+msgstr "新版本会在后台下载，只有通过 ictMail 发布签名验证后才会保留；当您重启以更新或退出时安装。"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs crates/ui-egui/src/meeting_dialogs.rs crates/ui-egui/src/reading/invitation.rs
@@ -567,7 +567,7 @@ msgstr "A 在上方"
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "A part of this key is RSA (a subkey for encryption, perhaps), which ictMail doesn't use by itself: keep the key in GnuPG, whose agent ictMail signs with, and leave it out of here."
-msgstr ""
+msgstr "此密钥的一部分是 RSA（可能是加密子密钥），ictMail 不单独使用它：请将密钥保留在 GnuPG 中，让 ictMail 通过其代理签名，不要将其导入此处。"
 
 #. interface
 #: crates/ui-egui/src/reading/remote.rs
@@ -638,7 +638,7 @@ msgstr "无法从这里将账户服务器管理的重复日程移到其他日历
 #. what a command says
 #: crates/engine/src/cmd/auto_replies.rs
 msgid "A shared mailbox's automatic replies are set by whoever manages it; ictMail sets only your own account's"
-msgstr ""
+msgstr "共享邮箱的自动回复由其管理员设置；ictMail 只能设置您自己的账户。"
 
 #. interface
 #: crates/ui-egui/src/ribbon.rs
@@ -661,7 +661,7 @@ msgstr "共享邮箱，使用 {account} 的登录信息读取"
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "A short note with the link to that page, to paste into mail or chat. ictMail sends nothing itself."
-msgstr ""
+msgstr "一段附有该页面链接的简短说明,可粘贴到邮件或聊天中。ictMail 本身不会发送任何内容。"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
@@ -686,12 +686,12 @@ msgstr "关于"
 msgid ""
 "About\n"
 "ictMail"
-msgstr ""
+msgstr "关于\nictMail"
 
 #. interface, name
 #: crates/ui-egui/src/backstage.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/menubar.rs
 msgid "About ictMail"
-msgstr ""
+msgstr "关于 ictMail"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
@@ -1086,7 +1086,7 @@ msgstr "添加到日历"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Added by a newer version of ictMail: send and receive with it there"
-msgstr ""
+msgstr "由较新版本的 ictMail 添加：请使用该版本发送和接收邮件"
 
 #. interface
 #: crates/ui-egui/src/address_book.rs
@@ -1303,12 +1303,12 @@ msgstr "允许从共享邮箱发送邮件"
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "Allow ictMail to keep this mailbox in step with Outlook on the page that opened in your browser…"
-msgstr ""
+msgstr "在浏览器打开的页面上，允许 ictMail 将此邮箱与 Outlook 同步…"
 
 #. interface
 #: crates/ui-egui/src/shared_mailboxes.rs
 msgid "Allow ictMail to read shared mailboxes on the page that opened in your browser…"
-msgstr ""
+msgstr "在浏览器打开的页面上，允许 ictMail 读取共享邮箱…"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -1469,7 +1469,7 @@ msgstr "通往受信任证书颁发机构的证书链中，有颁发机构不允
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "An https:// or webcal:// address. Nothing is read until you press Subscribe. The calendar is listed under Other Calendars, read-only, and brought up to date from the web every hour and when you press Send/Receive; you can choose another time in File › Info. Its address is asked for over an encrypted connection, with nothing that says who you are. A private address holds a secret: it is kept like a password, in your system's credential store when you let ictMail remember sign-ins, and otherwise until you quit."
-msgstr ""
+msgstr "一个 https:// 或 webcal:// 地址。在您点击“订阅”之前不会读取任何内容。该日历列在“其他日历”下，为只读，并每小时以及点击“发送/接收”时从网络更新；您可以在“文件 › 信息”中选择其他时间。其地址通过加密连接请求，不包含任何能表明您身份的信息。私有地址包含机密：它像密码一样保存——如果您允许 ictMail 记住登录，则保存在系统的凭据存储中，否则保留到退出为止。"
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -1499,7 +1499,7 @@ msgstr[0] "以及另外 {n} 个类似链接。"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "Android closed ictMail while Microsoft's page was open, so that sign-in could not be finished. Nothing was added."
-msgstr ""
+msgstr "Microsoft 页面打开期间 Android 关闭了 ictMail，因此无法完成登录。未添加任何账户。"
 
 #. command label, interface
 #: crates/ui-egui/src/backstage.rs crates/ui-egui/src/lib.rs
@@ -1564,7 +1564,7 @@ msgstr "任何其他邮件服务器"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "Anything still waiting to go to the server goes first: mail in the Outbox, and flags and moves made while you were offline. If ictMail can't reach the server, the switch waits until it can."
-msgstr ""
+msgstr "等待发送到服务器的内容将先被处理：发件箱中的邮件，以及您离线时的标记和移动。如果 ictMail 无法连接服务器，切换将等待连接恢复。"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -1938,7 +1938,7 @@ msgstr "立即向账户服务器查询此会议附近的日历日程。"
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
 msgid "Ask the list to stop sending you its mail. ictMail asks first and says how."
-msgstr ""
+msgstr "请邮件列表停止向你发送邮件。ictMail 会先询问你，并说明方式。"
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -2188,7 +2188,7 @@ msgstr "正在发送 {address} 的自动回复"
 #. what a command says
 #: crates/engine/src/cmd/auto_replies.rs
 msgid "Automatic replies are kept on the mail server, and ictMail can set them only for accounts that sign in with Microsoft so far: IMAP has no standard way to set them (Sieve vacation replies may come later)"
-msgstr ""
+msgstr "自动回复保存在邮件服务器上。目前 ictMail 只能为通过 Microsoft 登录的账户设置自动回复：IMAP 没有标准设置方式（将来可能支持 Sieve 假期回复）。"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -2253,12 +2253,12 @@ msgstr "自动回复：从 {start} 到 {end}"
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Automatic replies: ictMail may change them"
-msgstr ""
+msgstr "自动回复：ictMail 可以更改"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Automatic replies: ictMail needs you to sign in again to read them"
-msgstr ""
+msgstr "自动回复：请重新登录以读取"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -2287,7 +2287,7 @@ msgstr "自动回复：正在读取…"
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Automatic replies: your organisation doesn't let ictMail change them"
-msgstr ""
+msgstr "自动回复：您的组织不允许 ictMail 更改"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -2298,7 +2298,7 @@ msgstr "自动设置 (Autodiscover)"
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "Automatic setup can't sign in to this server. Type its address in Server settings and ictMail will sign in with NTLM."
-msgstr ""
+msgstr "自动设置无法登录此服务器。在服务器设置中键入其地址，ictMail 将使用 NTLM 登录。"
 
 #. interface
 #: crates/ui-egui/src/meeting_dialogs/share.rs
@@ -2762,7 +2762,7 @@ msgstr "来自 {address} 服务器的类别。正在请求更改权限…"
 #. interface
 #: crates/ui-egui/src/category_sync.rs
 msgid "Categories from {address}'s server. Checking whether ictMail may change them…"
-msgstr ""
+msgstr "来自 {address} 服务器的类别。正在检查 ictMail 是否可以更改…"
 
 #. interface
 #: crates/ui-egui/src/category_sync.rs
@@ -2785,7 +2785,7 @@ msgstr "来自 {address} 服务器的类别。没有更改权限（{why}）"
 #. interface
 #: crates/ui-egui/src/category_sync.rs
 msgid "Categories from {address}'s server. Read-only here until ictMail can check whether it may change them"
-msgstr ""
+msgstr "来自 {address} 服务器的类别。在 ictMail 能够检查是否可以更改之前，此处为只读"
 
 #. what a command says
 #: crates/engine/src/cmd/tasks/status.rs
@@ -2820,7 +2820,7 @@ msgstr "类别：与 Outlook 保持同步"
 #. interface
 #: crates/ui-egui/src/category_sync.rs
 msgid "Categories: read-only here (ictMail may not change them)"
-msgstr ""
+msgstr "类别：此处为只读（ictMail 无权更改）"
 
 #. interface
 #: crates/ui-egui/src/category_sync.rs
@@ -2831,7 +2831,7 @@ msgstr "类别：此处为只读（{why}）"
 #. interface
 #: crates/ui-egui/src/category_sync.rs
 msgid "Categories: read-only here until ictMail can check whether it may change them"
-msgstr ""
+msgstr "类别：在 ictMail 能够检查是否可以更改之前，此处为只读"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/RowActionsSheet.kt
@@ -3096,7 +3096,7 @@ msgstr "连接之前请先检查这两个服务器。"
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "Check daily for new versions of ictMail, and download and install them when you quit? Only GitHub is asked; nothing about you or your mail is sent."
-msgstr ""
+msgstr "每天检查 ictMail 是否有新版本，并在您退出时下载和安装？只连接 GitHub，不会发送有关您或邮件的信息。"
 
 #. command label
 #: crates/ui-egui/src/lib.rs
@@ -3389,7 +3389,7 @@ msgstr "关闭并保留为草稿"
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "Close ictMail, install the new version and start it again. Otherwise it is installed when you quit."
-msgstr ""
+msgstr "关闭 ictMail，安装新版本并再次启动。否则，它会在您退出时安装。"
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -3649,7 +3649,7 @@ msgstr "已复制。请将其粘贴到邮件或聊天中发给您的管理员。
 #. name
 #: crates/engine/src/sync_driver/favorites.rs
 msgid "Copies a short message with the address of Microsoft's page where an administrator of your organisation approves ictMail, once for everybody. Nothing is sent: paste it into mail or chat yourself."
-msgstr ""
+msgstr "复制一条短消息，其中包含 Microsoft 授权页面的地址。贵组织管理员可在该页面为整个组织批准 ictMail。程序不会发送消息，请自行粘贴到邮件或聊天中。"
 
 #. command label, interface, name
 #: crates/engine/src/cmd/format.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/menubar.rs crates/ui-egui/src/view_source.rs
@@ -3748,7 +3748,7 @@ msgstr "将所选项目复制到文件夹："
 #. interface
 #: crates/ui-egui/src/chrome.rs
 msgid "Copy the version, the platform and the end of ictMail's own record, to paste into a problem report. No message, address, password or token is in it, and nothing is sent."
-msgstr ""
+msgstr "复制 ictMail 的版本、平台及其日志末尾内容，以便粘贴到问题报告中。内容不包含邮件、地址、密码或令牌，也不会发送任何信息。"
 
 #. command label, interface
 #: crates/engine/src/cmd/mail.rs crates/ui-egui/src/ribbon.rs
@@ -4421,7 +4421,7 @@ msgstr "桌面通知"
 #. interface
 #: crates/ui-egui/src/alerts.rs
 msgid "Desktop alerts are turned off for ictMail in System Settings."
-msgstr ""
+msgstr "系统设置中已关闭 ictMail 的桌面通知。"
 
 #. interface
 #: crates/ui-egui/src/alerts.rs
@@ -4786,7 +4786,7 @@ msgstr "自动下载"
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "Downloaded pictures and opened attachments can't be told apart by account: File › Info › Remove ictMail's data from this computer clears them."
-msgstr ""
+msgstr "下载的图片和已打开的附件无法按账户区分：使用“文件 › 信息 › 从此计算机移除 ictMail 数据”会将其清除。"
 
 #. interface
 #: crates/ui-egui/src/attachment_open.rs crates/ui-egui/src/files.rs
@@ -5358,7 +5358,7 @@ msgstr "其中的其他所有内容都将照常打开。"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Everything else is gone. ictMail quits when you close this."
-msgstr ""
+msgstr "其余内容均已删除。关闭此窗口时 ictMail 将退出。"
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -5663,7 +5663,7 @@ msgstr "指纹："
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountDialogs.kt
 msgid "Finish on Microsoft's page in your browser. ictMail is waiting."
-msgstr ""
+msgstr "请在浏览器中的 Microsoft 页面上完成操作。ictMail 正在等待。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposeHost.kt
@@ -5680,7 +5680,7 @@ msgstr "首先完成登录（您的浏览器正在等待）"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "Finish signing in on Microsoft's page in your browser. ictMail is waiting."
-msgstr ""
+msgstr "请在浏览器中的 Microsoft 页面上完成登录。ictMail 正在等待。"
 
 #. interface
 #: crates/ui-egui/src/credits.rs
@@ -5887,7 +5887,7 @@ msgstr "适用于 IMAP 账户。Microsoft 和 Exchange 服务器账户通过“�
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "For a mail server your organisation runs itself. ictMail looks for the server from your address, or you can type its address in Server settings. Nothing is sent until you press Connect."
-msgstr ""
+msgstr "适用于由组织自行运行的邮件服务器。ictMail 会根据您的地址查找服务器，您也可以在服务器设置中输入地址。点击“连接”前不会发送任何内容。"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -5898,7 +5898,7 @@ msgstr "适用于无需密码即可接收邮件的中继服务器：绝不会向
 #. interface
 #: crates/ui-egui/src/favorites_sync.rs
 msgid "For an account that signs in with Microsoft: the folders you keep under Favorites in Outlook, in the same order. They are read from the server and never changed there. Without this, the favourites you mark in ictMail are shown."
-msgstr ""
+msgstr "对于使用 Microsoft 登录的账户：按 Outlook 中的顺序显示“收藏夹”下的文件夹。它们从服务器读取，不会更改服务器上的内容。未开启时，显示在 ictMail 中标记的收藏夹。"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -6248,12 +6248,12 @@ msgstr "GitHub 页面已通过链接填入能携带的内容；请将其余内�
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "GitHub's page is open: attach the diagnostics file there, then submit. ictMail sent nothing."
-msgstr ""
+msgstr "GitHub 页面已打开：请在该页面附加诊断文件，然后提交。ictMail 没有发送任何内容。"
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "GitHub's page is open: check it, then submit. ictMail sent nothing."
-msgstr ""
+msgstr "GitHub 页面已打开：请检查后再提交。ictMail 没有发送任何内容。"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
@@ -6390,7 +6390,7 @@ msgstr "转至 {host}"
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "Going back to ictMail {version} didn't happen: this version is still the one here."
-msgstr ""
+msgstr "未能退回 ictMail {version}：当前仍使用此版本。"
 
 #. interface
 #: crates/ui-egui/src/ribbon.rs
@@ -6425,12 +6425,12 @@ msgstr "Google OAuth 访问令牌只能发送到 Google 的 Gmail IMAP 和 SMTP 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Google blocked access to ictMail"
-msgstr ""
+msgstr "Google 阻止了 ictMail 的访问"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Google did not authorize ictMail. Your mailbox was not changed. You can retry or choose an app password."
-msgstr ""
+msgstr "Google 并未授权 ictMail。您的邮箱没有更改。您可以重试或选择应用程序密码。"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -6447,7 +6447,7 @@ msgstr "Google 未确认此未更改的账户；原有登录信息和邮件已�
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Google did not return to ictMail. If you saw Error 403 or Access blocked because the app is in testing, ask the developer to add you as a test user. If your organization blocked it, ask its Workspace administrator. Otherwise, retry. Mail and settings are unchanged."
-msgstr ""
+msgstr "Google 未返回 ictMail。如果看到错误 403 或因应用处于测试阶段而显示访问被阻止，请联系开发者将您添加为测试用户。如果是组织阻止了访问，请联系 Google Workspace 管理员。否则请重试。邮件和设置未更改。"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -6488,7 +6488,7 @@ msgstr "此版本未配置 Google 登录。请改用应用密码。"
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "Google sign-in is open only to invited testers while Google reviews ictMail. To join, email systems@ucscaregroup.co.uk."
-msgstr ""
+msgstr "当 Google 审核 ictMail 时，Google 登录仅向受邀测试人员开放。如需加入，请发送电子邮件至 systems@ucscaregroup.co.uk。"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -6604,7 +6604,7 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr ""
+msgstr "您好，\n\n我希望使用工作账户登录 ictMail。ictMail 是运行在我自己电脑上的开源邮件和日历程序。我们组织只允许管理员批准新程序，因此需要您为整个组织批准一次。Microsoft 授权页面如下：\n\n{link}\n\n批准后，浏览器可能显示无法访问的页面。这是预期现象：该地址位于您自己的电脑上，没有程序监听；此时授权已经完成。\n\n谢谢"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -6618,7 +6618,7 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr ""
+msgstr "您好，\n\n我想在我的工作账户中使用 ictMail。ictMail 是一款开源的邮件和日历程序，运行在我自己的手机上。我们组织只允许管理员批准新程序，因此需要您为整个组织批准一次。Microsoft 的相关页面在这里：\n\n{link}\n\n您批准之后，浏览器可能会显示一个无法访问的页面。这是正常的：那是您自己电脑上的地址，没有任何程序在监听，而此时批准已经完成。\n\n谢谢"
 
 #. command label, interface, name, ribbon, ribbon location
 #: crates/engine/src/cmd/help.rs crates/ui-egui/src/lib.rs crates/ui-egui/src/menubar.rs crates/ui-egui/src/ribbon.rs
@@ -6659,7 +6659,7 @@ msgstr "隐藏此副本"
 #. interface
 #: crates/ui-egui/src/menubar.rs
 msgid "Hide ictMail"
-msgstr ""
+msgstr "隐藏 ictMail"
 
 #. interface
 #: crates/ui-egui/src/secret_field.rs
@@ -6778,7 +6778,7 @@ msgstr "每个文件夹包含的邮件数量及其占用空间"
 #. command label
 #: crates/ui-egui/src/lib.rs
 msgid "I'm an Administrator: Approve ictMail for My Organisation"
-msgstr ""
+msgstr "我是管理员：为我的组织批准 ictMail"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -6795,12 +6795,12 @@ msgstr "图标"
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "If Google says the app is in testing, ask the developer to add your email as a test user. If your organization blocks ictMail, ask its Workspace administrator. Those pages may not return here: cancel, then retry when access is granted or use an app password if allowed."
-msgstr ""
+msgstr "如果 Google 表示应用正在测试，请联系开发者将您的电子邮件地址添加为测试用户。如果您的组织阻止 ictMail，请联系 Google Workspace 管理员。这些页面可能不会返回此处：请取消，待授权后重试；如果允许，也可使用应用密码。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "If ictMail is still in Google's testing mode, ask its developer to add this address to the Test users list. If your organization blocked access, ask your Google Workspace administrator. Your mailbox was not changed."
-msgstr ""
+msgstr "如果 ictMail 仍处于 Google 测试模式，请联系开发者将此地址添加到测试用户列表。如果您的组织阻止访问，请联系 Google Workspace 管理员。您的邮箱没有更改。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -7076,7 +7076,7 @@ msgstr "已导入 {what}；在 {count} 后停止：文件中的内容超过单�
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Imported: ictMail keeps it in the system's credential store, still protected by its passphrase."
-msgstr ""
+msgstr "已导入：ictMail 将其保存在系统凭据存储中，并继续以密码短语保护。"
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -7381,7 +7381,7 @@ msgstr "下次发送/接收时，此项目会作为 iCalendar 文件附在发件
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "It goes to the server once ictMail may change the server's rules (File › Info › Ask again); until then it runs on this computer, while ictMail is open."
-msgstr ""
+msgstr "获得更改服务器规则的权限后，规则将发送到服务器（文件 › 信息 › 再次询问）；在此之前，只在 ictMail 打开时于此计算机运行。"
 
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
@@ -7392,7 +7392,7 @@ msgstr "它会在下次发送/接收时发出，之后邮件列表会将你移�
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "It is an identifier, not a secret. ictMail keeps it in its settings (File › Options)."
-msgstr ""
+msgstr "这是标识符，不是秘密。ictMail 将其保存在设置中（文件 › 选项）。"
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -7439,22 +7439,22 @@ msgstr "它也会从邮件服务器中删除，此操作无法撤销。"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "It is the same for an installed and a portable copy. ictMail quits afterwards."
-msgstr ""
+msgstr "安装版和便携版均是如此。随后 ictMail 将退出。"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "It runs on this computer, while ictMail is open."
-msgstr ""
+msgstr "当 ictMail 打开时，它在此计算机上运行。"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "It runs there whether ictMail is open or not, and shows in Outlook on the web and on your phone."
-msgstr ""
+msgstr "无论 ictMail 是否打开，它都会在服务器上运行，并显示在 Outlook 网页版和手机上。"
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
 msgid "It uses an algorithm ictMail doesn't know."
-msgstr ""
+msgstr "它使用 ictMail 不支持的算法。"
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
@@ -7700,7 +7700,7 @@ msgstr "保留数据"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Keep ictMail running for mail and reminders when you close its window. Click its icon beside the clock to show it again, or choose Quit from the icon's menu. If no system tray is available, closing exits ictMail."
-msgstr ""
+msgstr "关闭窗口后，ictMail 会继续运行以收取邮件和提醒。点击时钟旁边的图标可再次显示，或从图标菜单中选择“退出”。如果没有系统托盘，关闭窗口将退出 ictMail。"
 
 #. command label, interface
 #: crates/ui-egui/src/lib.rs crates/ui-egui/src/server_sync.rs
@@ -7741,12 +7741,12 @@ msgstr "保留这个"
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Keep this rule on an account's server: choose which. It then runs there whether ictMail is open or not, for that account's mail"
-msgstr ""
+msgstr "选择账户，将此规则保留在其服务器上。无论 ictMail 是否打开，规则都会在服务器上处理该账户的邮件"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Keep this rule on the server of {address}: it then runs there whether ictMail is open or not, for that account's mail"
-msgstr ""
+msgstr "将此规则保留在 {address} 的服务器上：无论 ictMail 是否打开，规则都会在服务器上处理该账户的邮件"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
@@ -7757,7 +7757,7 @@ msgstr "保留此版本"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "Keep waiting, and the switch goes ahead by itself once ictMail can reach the server. Or switch without them, if the server can't be reached any more (for example, your organisation has turned IMAP off):"
-msgstr ""
+msgstr "继续等待：一旦 ictMail 能连接服务器，切换会自动继续。如果服务器已无法连接（例如组织关闭了 IMAP），也可不带这些待处理内容切换："
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -7797,7 +7797,7 @@ msgstr "保存在"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Kept in the system's credential store, never in the mailbox or its settings. Without it you sign in again each time ictMail starts."
-msgstr ""
+msgstr "保存在系统凭据存储中，绝不会保存在邮箱或其设置中。没有它时，每次启动 ictMail 都需要重新登录。"
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -8234,7 +8234,7 @@ msgstr "由其贡献者制作："
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Made in another program or on the web, with parts ictMail can't show"
-msgstr ""
+msgstr "在其他程序或网页中创建，其中部分内容 ictMail 无法显示"
 
 #. android, command label, interface, name, ribbon location
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/MainActivity.kt apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Navigation.kt crates/engine/src/cmd/compose.rs crates/engine/src/cmd/graph_send.rs crates/engine/src/cmd/mail.rs crates/engine/src/cmd/send_later.rs crates/engine/src/cmd/view.rs crates/engine/src/session.rs crates/ui-egui/src/backstage.rs crates/ui-egui/src/lib.rs
@@ -8251,7 +8251,7 @@ msgstr "保留在此设备上的邮件"
 #. interface
 #: crates/ui-egui/src/close_to_tray.rs
 msgid "Mail and reminders will keep running. To bring the window back, click ictMail's system tray icon and choose Show ictMail. On Windows, the icon may be under the arrow for hidden icons beside the clock. On macOS, use the menu-bar icon or click ictMail in the Dock. Choose Quit ictMail from the icon's menu to exit."
-msgstr ""
+msgstr "邮件和提醒将继续运行。要恢复窗口，请点击 ictMail 的系统托盘图标并选择“显示 ictMail”。在 Windows 上，图标可能位于时钟旁边的隐藏图标箭头下。在 macOS 上，请使用菜单栏图标或点击 Dock 中的 ictMail。从图标菜单中选择“退出 ictMail”即可退出。"
 
 #. what a command says
 #: crates/engine/src/io.rs
@@ -8729,7 +8729,7 @@ msgstr "Microsoft 365"
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "Microsoft 365 mail is added as a Microsoft account: you sign in on Microsoft's own page in your browser, and ictMail never sees your password."
-msgstr ""
+msgstr "Microsoft 365 邮箱会作为 Microsoft 账户添加：您在浏览器中登录 Microsoft 官方页面，ictMail 不会看到您的密码。"
 
 #. command label
 #: crates/ui-egui/src/lib.rs
@@ -8788,7 +8788,7 @@ msgstr "Microsoft 不再接受您的登录凭据。请重新登录以查看和�
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "Microsoft only lets a registered application show its sign-in page, and this build of ictMail has no registration of its own yet."
-msgstr ""
+msgstr "Microsoft 只允许已注册的应用显示其登录页面，此版本的 ictMail 尚未完成应用注册。"
 
 #. interface
 #: crates/ui-egui/src/shared_mailboxes.rs
@@ -9157,7 +9157,7 @@ msgstr "我的任务"
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "My organisation has to approve ictMail first: what to do"
-msgstr ""
+msgstr "我的组织必须先批准 ictMail：该怎么办"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -10240,7 +10240,7 @@ msgstr "暂不"
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "Not now: it is installed when you quit ictMail."
-msgstr ""
+msgstr "暂不：退出 ictMail 时将安装它。"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
@@ -10533,7 +10533,7 @@ msgstr "开"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "On Wayland, restart ictMail after enabling this option. A reachable X11/XWayland server and a system tray are required."
-msgstr ""
+msgstr "在 Wayland 上，启用此选项后请重启 ictMail。需要可用的 X11/XWayland 服务器和系统托盘。"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
@@ -10820,7 +10820,7 @@ msgstr "仅在我要求时"
 #. interface
 #: crates/ui-egui/src/alerts.rs
 msgid "Only while ictMail isn't the window in front, and only for the Inboxes of your own accounts."
-msgstr ""
+msgstr "仅在 ictMail 不是前台窗口时通知，且只适用于您自己账户的收件箱。"
 
 #. android, interface, ribbon
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AttachmentsView.kt apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ReadingScreen.kt crates/ui-egui/src/attachment_open.rs crates/ui-egui/src/calendar_view.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/reading.rs crates/ui-egui/src/ribbon.rs
@@ -10937,7 +10937,7 @@ msgstr "打开活动"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Open ictMail's data folder"
-msgstr ""
+msgstr "打开 ictMail 的数据文件夹"
 
 #. interface
 #: crates/ui-egui/src/mail_view.rs
@@ -11050,7 +11050,7 @@ msgstr "已打开 {name} 的日历。它列在“共享日历”下，仅保存�
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "Opened with {owner}'s sign-in. It needs Full Access to the mailbox, which your organisation's administrator gives. Microsoft asks you once to let ictMail read and change shared mailboxes. What you change in it goes to it. Mail you write in it is from its address, and sending as it needs Send As or Send on Behalf permission: Microsoft asks you once more at your first send."
-msgstr ""
+msgstr "使用 {owner} 的登录信息打开。此操作需要组织管理员授予您对该邮箱的完全访问权限。Microsoft 会询问您是否允许 ictMail 读取和更改共享邮箱；您在其中所做的更改会同步到该邮箱。您在此撰写的邮件使用共享邮箱地址发送；发送需要“以该用户身份发送”或“代表该用户发送”权限，Microsoft 会在首次发送时再次询问您。"
 
 #. interface
 #: crates/ui-egui/src/attachment_open.rs
@@ -11097,7 +11097,7 @@ msgstr "在浏览器中打开已填好内容的 GitHub 页面，供您检查并�
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Opens Microsoft's approval page in your browser. Sign in there with an administrator account and accept; ictMail carries on by itself."
-msgstr ""
+msgstr "在浏览器中打开 Microsoft 的审批页面。请在那里用管理员账户登录并接受;ictMail 会自行继续。"
 
 #. interface
 #: crates/ui-egui/src/reading/sharing.rs
@@ -11240,7 +11240,7 @@ msgstr "Outlook 的收藏夹"
 #. interface
 #: crates/ui-egui/src
 msgid "Outlook's Favorites are now read through Microsoft Graph. To show ictMail's own instead, turn them off in File › Options."
-msgstr ""
+msgstr "Outlook 收藏夹现通过 Microsoft Graph 读取。如需显示 ictMail 自己的收藏夹，请在“文件 › 选项”中关闭此功能。"
 
 #. interface
 #: crates/ui-egui/src/favorites_sync.rs
@@ -11251,7 +11251,7 @@ msgstr "Outlook 收藏夹已在“文件 › 选项”中关闭"
 #. interface
 #: crates/ui-egui/src/nav.rs
 msgid "Outlook's Favorites can't be shown for this account, so the ones kept in ictMail are. File › Options can ask again."
-msgstr ""
+msgstr "无法显示此账户的 Outlook 收藏夹，因此显示保存在 ictMail 中的收藏夹。可在“文件 › 选项”中重新请求授权。"
 
 #. name
 #: crates/ui-egui/src/account_setup.rs
@@ -11262,7 +11262,7 @@ msgstr "Outlook.com"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "Outlook.com, Hotmail, and Microsoft 365 work or school accounts. You sign in on Microsoft's own page in your browser, so ictMail never sees your password."
-msgstr ""
+msgstr "Outlook.com、Hotmail 以及 Microsoft 365 工作或学校账户。您在浏览器中的 Microsoft 页面上登录，因此 ictMail 永远不会看到您的密码。"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -11921,7 +11921,7 @@ msgstr "快速访问"
 #. interface
 #: crates/ui-egui/src/menubar.rs
 msgid "Quit ictMail"
-msgstr ""
+msgstr "退出 ictMail"
 
 #. command label
 #: crates/engine/src/cmd/followup.rs
@@ -11974,7 +11974,7 @@ msgstr "立即从 Outlook 重新读取收藏夹"
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "Read with {owner}'s sign-in, for as long as you keep it: the person has to have shared their calendar with you. It is kept on this computer only: it won't appear in Outlook or on your other devices. Microsoft asks you once to let ictMail read other people's calendars."
-msgstr ""
+msgstr "使用 {owner} 的登录信息读取，直到您移除该日历：对方须先与您共享日历。此日历仅保存在本机，不会出现在 Outlook 或其他设备上。Microsoft 会询问您是否允许 ictMail 读取他人的日历。"
 
 #. interface
 #: crates/ui-egui/src/people_view.rs
@@ -12405,17 +12405,17 @@ msgstr "从安全发件人或阻止发件人中移除"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Remove ictMail's Data"
-msgstr ""
+msgstr "删除 ictMail 的数据"
 
 #. command label
 #: crates/ui-egui/src/lib.rs
 msgid "Remove ictMail's Data from This Computer"
-msgstr ""
+msgstr "从此计算机中删除 ictMail 的数据"
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Remove ictMail's data from this computer…"
-msgstr ""
+msgstr "从此计算机中删除 ictMail 的数据…"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposerScreen.kt
@@ -12468,7 +12468,7 @@ msgstr "移除此条件"
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Remove your {format} key for {who} from this computer? It is deleted from the system's credential store, and ictMail can't sign with it any more. Keep a copy of the file if you may need it again."
-msgstr ""
+msgstr "从这台计算机移除 {who} 的 {format} 密钥吗？密钥将从系统凭据存储中删除，ictMail 将无法再使用它签名。如果以后可能需要此文件，请保留一份副本。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposerScreen.kt
@@ -12485,7 +12485,7 @@ msgstr "移除此手机上保存的邮件、日历、联系人和任务，以及
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Removing ictMail's data isn't available here"
-msgstr ""
+msgstr "此处无法删除 ictMail 的数据"
 
 #. interface
 #: crates/ui-egui/src/signatures.rs
@@ -12950,12 +12950,12 @@ msgstr "立即运行规则"
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Run by ictMail as mail arrives, while it is open"
-msgstr ""
+msgstr "ictMail 打开时，由 ictMail 在邮件到达时运行"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Run by the server as mail arrives, whether ictMail is open or not"
-msgstr ""
+msgstr "无论 ictMail 是否打开，均由服务器在邮件到达时运行"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
@@ -13291,7 +13291,7 @@ msgstr "请描述遇到的问题。在您点击“发送报告”前不会发送
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "Say what went wrong. ictMail sends nothing by itself: you check the report and send it."
-msgstr ""
+msgstr "请描述遇到的问题。ictMail 不会自动发送报告；请检查后自行发送。"
 
 #. interface
 #: crates/ui-egui/src/lib.rs
@@ -13326,7 +13326,7 @@ msgstr "只有在您确实要求智能体执行此操作时才选择“是”。
 #. name
 #: crates/engine/src/sync_driver/favorites.rs
 msgid "Says what you and your organisation's administrator can do, and lets an administrator approve ictMail on Microsoft's page from here."
-msgstr ""
+msgstr "说明您和您组织的管理员可以执行的操作，并让管理员从此处在 Microsoft 页面上批准 ictMail。"
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -14009,7 +14009,7 @@ msgstr "正在发送…"
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "Sends the report to the ictMail team, as this window shows it."
-msgstr ""
+msgstr "按此窗口显示的内容向 ictMail 团队发送报告。"
 
 #. interface
 #: crates/ui-egui/src/lib.rs
@@ -14038,7 +14038,7 @@ msgstr "发送至"
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "Sent to the ictMail team privately. If it's a real problem we may make it public on GitHub, with what you wrote and the diagnostics, so we can track it. Leave out anything private."
-msgstr ""
+msgstr "报告将私下发送给 ictMail 团队。如果确属问题，我们可能会在 GitHub 公开您填写的内容和诊断信息，以便跟踪。请勿填写任何隐私信息。"
 
 #. what a command says
 #: crates/model/src/sync/progress.rs
@@ -14375,7 +14375,7 @@ msgstr "显示已完成的任务"
 #. interface
 #: crates/ui-egui/src/menubar.rs
 msgid "Show ictMail"
-msgstr ""
+msgstr "显示 ictMail"
 
 #. command label
 #: crates/engine/src/cmd/calendar/invitation.rs
@@ -14554,7 +14554,7 @@ msgstr "在文件管理器中显示 {path}，其中包含邮箱和设置。"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Shows {path}, which holds the mailbox open now, in your file manager. ictMail's settings are in a folder of their own."
-msgstr ""
+msgstr "在文件管理器中显示当前打开的邮箱所在位置 {path}。ictMail 设置保存在单独的文件夹中。"
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -14639,27 +14639,27 @@ msgstr "请在浏览器打开的页面中登录…"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Sign in once more to let ictMail read and change your mail, send, and show your calendar and contacts through Microsoft."
-msgstr ""
+msgstr "请再次登录，允许 ictMail 通过 Microsoft 读取、更改和发送邮件，并显示您的日历和联系人。"
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Sign in once more to let ictMail send through Microsoft and show your calendar and contacts. Mail works without it."
-msgstr ""
+msgstr "请再次登录，允许 ictMail 通过 Microsoft 发送邮件并显示您的日历和联系人。即使不这样做，邮件仍可使用。"
 
 #. interface
 #: crates/ui-egui/src/calendar_view.rs
 msgid "Sign in once more, so that ictMail may read the categories and the working hours your mailbox has. Your calendar works as it is."
-msgstr ""
+msgstr "请再次登录，允许 ictMail 读取邮箱的类别和工作时间。日历仍可照常使用。"
 
 #. interface
 #: crates/ui-egui/src/calendar_view.rs
 msgid "Sign in once more, so that ictMail may show and change your calendar"
-msgstr ""
+msgstr "请再次登录，允许 ictMail 查看和更改您的日历"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "Sign in securely with Google in your browser. Your Google password is never entered in ictMail."
-msgstr ""
+msgstr "在浏览器中安全地使用 Google 登录。无需在 ictMail 中输入 Google 密码。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -14706,7 +14706,7 @@ msgstr "使用 Microsoft 登录"
 #. interface
 #: crates/ui-egui/src/favorites_sync.rs crates/ui-egui/src/nav.rs
 msgid "Sign in with Microsoft once more to let ictMail read the folders you keep under Favorites in Outlook. They are only read, never changed, and everything else stays as it is."
-msgstr ""
+msgstr "请再次登录 Microsoft，允许 ictMail 读取 Outlook 收藏夹下的文件夹。程序只读取这些文件夹，不会更改它们，也不会更改其他内容。"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -14771,7 +14771,7 @@ msgstr "签署人："
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "Signed in, but Microsoft still won't let ictMail read the mail of {account}. Try Send/Receive again later."
-msgstr ""
+msgstr "已登录，但 Microsoft 仍不允许 ictMail 读取 {account} 的邮件。请稍后重试“发送/接收”。"
 
 #. interface
 #: crates/ui-egui/src/lib.rs
@@ -14938,7 +14938,7 @@ msgstr "此邮件中的部分字符无法读取：发件人的程序未正确说
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Some of it is still there, as listed above. ictMail quits when you close this."
-msgstr ""
+msgstr "如上所列，部分内容仍然保留。关闭此窗口时，ictMail 将退出。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposerScreen.kt
@@ -15446,7 +15446,7 @@ msgstr "取消已验证标记"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Take everything ictMail keeps here with you when you are done: for a shared or work computer, or before deleting a portable copy."
-msgstr ""
+msgstr "操作完成后，可带走 ictMail 在此保存的所有内容，例如在使用共享电脑或工作电脑之后，或删除便携版之前。"
 
 #. interface
 #: crates/ui-egui/src/reading/invitation.rs
@@ -15565,7 +15565,7 @@ msgstr "Teams 会议"
 #. interface
 #: crates/ui-egui/src/chrome.rs
 msgid "Tell ictMail's makers what went wrong, on GitHub or by email. You check the report and send it yourself."
-msgstr ""
+msgstr "通过 GitHub 或电子邮件向 ictMail 开发者反馈问题。由您检查并亲自发送报告。"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -15642,7 +15642,7 @@ msgstr "要查找的文字"
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "Thank you. The ictMail team has it under this reference."
-msgstr ""
+msgstr "谢谢。ictMail 团队已收到报告，并使用此编号跟踪。"
 
 #. interface
 #: crates/ui-egui/src/signatures.rs
@@ -15909,7 +15909,7 @@ msgstr "该账户已不存在"
 #. interface
 #: crates/ui-egui/src/approval.rs
 msgid "The account that signed in on Microsoft's page is not an administrator of your organisation, so it could not approve ictMail. Copy the message for an administrator instead."
-msgstr ""
+msgstr "在 Microsoft 页面登录的账户不是您组织的管理员，因此无法批准 ictMail。请复制该消息并交给管理员。"
 
 #. what a command says
 #: crates/engine/src/cmd/calendar_opened.rs
@@ -16310,7 +16310,7 @@ msgstr "诊断信息未保存，因此未打开 GitHub 页面。请重试，或�
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The domain {domain} names a server for Exchange's automatic setup (Autodiscover), so this looks like an Exchange server account. Type your password and press Connect: ictMail looks for the server and checks the account. Nothing is sent until then."
-msgstr ""
+msgstr "域名 {domain} 指定了 Exchange 自动设置 (Autodiscover) 所用的服务器，因此这看起来是一个 Exchange 服务器账户。请输入密码并点击“连接”：ictMail 将查找服务器并检查账户。在此之前不会发送任何内容。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -16532,7 +16532,7 @@ msgstr "发件人列表已满：在“文件” › “选项”中删除一些�
 #. what a command says
 #: crates/mobile/src/core.rs
 msgid "The list of sign-ins kept on this phone was damaged, so some older sign-ins may still be kept on it. The phone's own settings for ictMail let you clear what it keeps."
-msgstr ""
+msgstr "此手机上保存的登录信息列表已损坏，因此可能仍保留一些较早的登录信息。您可以在手机系统设置中的 ictMail 应用设置里清除其保存的内容。"
 
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
@@ -16657,12 +16657,12 @@ msgstr "邮件已不存在"
 #. interface
 #: crates/ui-egui/src/send_later.rs
 msgid "The message waits in your Outbox, where you can change or cancel it. ictMail sends it at that time; if ictMail isn't running then, it goes the next time it runs."
-msgstr ""
+msgstr "邮件在发件箱中等待，您可以更改或取消。ictMail 会在该时间发送；若届时 ictMail 未运行，则在下次运行时发出。"
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
 msgid "The message was downloaded before ictMail kept the bytes it came as. Check Again downloads them."
-msgstr ""
+msgstr "下载此邮件时，ictMail 尚未保存邮件的原始字节。使用“再次检查”可重新下载。"
 
 #. interface
 #: crates/ui-egui/src/opened_message.rs crates/ui-egui/src/windows.rs
@@ -16811,7 +16811,7 @@ msgstr "端口；留空则使用默认端口"
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "The private key in this file isn't encrypted, so ictMail doesn't keep it: export it again with its key encrypted (AES), protected by a passphrase."
-msgstr ""
+msgstr "此文件中的私钥未加密，因此 ictMail 不会保存它。请重新导出文件，使用 AES 加密私钥并设置密码短语。"
 
 #. interface
 #: crates/ui-egui/src/meeting_dialogs.rs
@@ -16876,7 +16876,7 @@ msgstr "报告服务暂时不可用。请稍后重试，或在 GitHub 上提交�
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "The report service's answer wasn't one ictMail understands, so the report may have arrived. Try again later, or open it on GitHub."
-msgstr ""
+msgstr "ictMail 无法理解报告服务的回应，报告可能已经送达。请稍后重试，或在 GitHub 上提交。"
 
 #. interface
 #: crates/ui-egui/src/rule_sync.rs
@@ -16899,7 +16899,7 @@ msgstr "无法记录已发送的规则：{error}"
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "The same page asks to read and send from the shared mailboxes you have access to and to read the calendars shared with you, so that ictMail doesn't have to ask again."
-msgstr ""
+msgstr "同一页面还会请求读取您有权访问的共享邮箱并从中发送邮件，以及读取与您共享的日历，这样 ictMail 就不必再次询问。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -17060,7 +17060,7 @@ msgstr "服务器或组织未提供其设置。请向管理员询问服务器地
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The server sent the setup somewhere that isn't encrypted, which ictMail never follows. Type the server's address in Server settings."
-msgstr ""
+msgstr "服务器将自动设置重定向到未加密的地址，ictMail 不会跟随该重定向。请在服务器设置中输入服务器地址。"
 
 #. interface
 #: crates/ui-egui/src/ews_setup.rs
@@ -17113,17 +17113,17 @@ msgstr "服务器的证书已更改"
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The server's certificate has expired, so ictMail won't connect to it. Ask your administrator to renew it."
-msgstr ""
+msgstr "服务器证书已过期，ictMail 无法连接。请联系管理员续订证书。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The server's certificate is for another server's name, so ictMail won't connect to it. Check the address in Server settings."
-msgstr ""
+msgstr "服务器证书上的名称与服务器不匹配，ictMail 无法连接。请检查服务器设置中的地址。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The server's certificate isn't valid yet, so ictMail won't connect to it. Check this computer's date and time, or ask your administrator."
-msgstr ""
+msgstr "服务器证书尚未生效，ictMail 无法连接。请检查此计算机的日期和时间，或联系管理员。"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
@@ -17314,7 +17314,7 @@ msgstr "开始和结束都需要时间"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "The switch of {account} to Microsoft Graph waits until ictMail can reach the server."
-msgstr ""
+msgstr "待 ictMail 能连接服务器后，才会将 {account} 切换到 Microsoft Graph。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
@@ -17349,7 +17349,7 @@ msgstr "无法读取任务。"
 #. interface
 #: crates/ui-egui/src/calendar_sync.rs
 msgid "The test appointment (\"ictMail connection check\", a year from today) could not be deleted: please delete it in the calendar. Nothing else was read or changed."
-msgstr ""
+msgstr "无法删除测试约会（“ictMail 连接检查”，日期为一年后的今天）：请在日历中自行删除。未读取或更改其他内容。"
 
 #. interface
 #: crates/ui-egui/src/calendar_sync.rs
@@ -17462,7 +17462,7 @@ msgstr "没有该账户"
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
 msgid "There's more in this Digital signature than ictMail checks for one message."
-msgstr ""
+msgstr "此数字签名包含的内容超出了 ictMail 对单封邮件所能检查的范围。"
 
 #. interface
 #: crates/ui-egui/src/open_shared.rs
@@ -17563,7 +17563,7 @@ msgstr "此账户不使用 Google 登录。"
 #. what a command says
 #: crates/engine/src/cmd/unsubscribe.rs
 msgid "This account doesn't send mail from ictMail, so it can't unsubscribe by mail."
-msgstr ""
+msgstr "此账户不从 ictMail 发送邮件，因此无法通过邮件退订。"
 
 #. interface
 #: crates/ui-egui/src/approval.rs crates/ui-egui/src/calendar_sync.rs crates/ui-egui/src/favorites_sync.rs crates/ui-egui/src/lib.rs
@@ -17622,7 +17622,7 @@ msgstr "此账户不再使用应用密码"
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "This account was added by a newer version of ictMail. This version keeps it as it is and doesn't send or receive with it: use the newer version for that, and to change its settings."
-msgstr ""
+msgstr "此账户由较新版本的 ictMail 添加。此版本会原样保留该账户，但不会用它收发邮件；请使用较新版本收发邮件或更改其设置。"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -17639,7 +17639,7 @@ msgstr "Google 登录页面打开期间，此账户已被移除"
 #. what a command says
 #: crates/engine/src/cmd/folder.rs
 msgid "This account's Favorites come from Outlook and are changed there (File › Options can show the ones kept in ictMail instead)"
-msgstr ""
+msgstr "此账户的收藏夹来自 Outlook，并在 Outlook 中更改（也可以在文件 › 选项中选择显示保存在 ictMail 中的收藏夹）"
 
 #. interface
 #: crates/ui-egui/src/calendar_sync.rs
@@ -17806,7 +17806,7 @@ msgstr "服务器上保存的日历中带有此类别的日程过多，无法同
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This certificate's key is of a kind ictMail doesn't use: only ECDSA on P-256 or P-384 is imported here."
-msgstr ""
+msgstr "ictMail 不支持此证书的密钥类型；此处仅导入 P-256 或 P-384 曲线上的 ECDSA 密钥。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -17841,7 +17841,7 @@ msgstr "该联系人将被永久删除。"
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "This copy of ictMail doesn't update itself."
-msgstr ""
+msgstr "此 ictMail 版本不会自行更新。"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
@@ -17972,12 +17972,12 @@ msgstr "这仅涉及 {day} 的那一次。"
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This is an RSA certificate, which ictMail doesn't use by itself on this system: put it on a smartcard or token (PKCS#11), where ictMail finds it."
-msgstr ""
+msgstr "这是 RSA 证书，ictMail 无法在此系统上直接使用它。请将它放在智能卡或令牌（PKCS#11）上，ictMail 可从那里读取。"
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This is an RSA key, which ictMail doesn't use by itself: keep it in GnuPG, whose agent ictMail signs with, and leave it out of here."
-msgstr ""
+msgstr "这是 RSA 密钥，ictMail 不直接使用它。请将它保存在 GnuPG 中，ictMail 通过 GnuPG 代理签名；不必将它导入此处。"
 
 #. what a command says
 #: crates/engine/src/cmd/calendar/invitation.rs
@@ -18036,12 +18036,12 @@ msgstr "此密钥无法进行数字签名：其中没有可用于签名的密钥
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This key has no passphrase, so ictMail doesn't keep it. Add one in GnuPG (gpg --edit-key <key>, then passwd) and import it again."
-msgstr ""
+msgstr "此密钥没有密码短语，因此 ictMail 不会保存它。请在 GnuPG 中设置密码短语（先执行 gpg --edit-key <key>，再执行 passwd），然后重新导入。"
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This key signs with an algorithm ictMail doesn't use: only Ed25519 and ECDSA keys are imported here."
-msgstr ""
+msgstr "此密钥使用 ictMail 不支持的签名算法；此处仅导入 Ed25519 和 ECDSA 密钥。"
 
 #. what a command says
 #: crates/mobile/src/sync.rs
@@ -18221,7 +18221,7 @@ msgstr "此邮件有关于其发件人的警告：请将其移到垃圾邮件，
 #: crates/ui-egui/src/send_warnings.rs
 msgid "This message has more recipients than ictMail checks: only the first one was looked at."
 msgid_plural "This message has more recipients than ictMail checks: only the first {n} were looked at."
-msgstr[0] ""
+msgstr[0] "此邮件的收件人多于 ictMail 检查的数量：只检查了第一位。"
 
 #. interface
 #: crates/ui-egui/src/reading/view.rs
@@ -18280,7 +18280,7 @@ msgstr "此邮件尚未下载到本机。联网后将自动下载。"
 #. interface
 #: crates/ui-egui/src/reading/warnings.rs
 msgid "This message lays itself out in more ways than ictMail could check, so a link in one of them may go somewhere other than its text says."
-msgstr ""
+msgstr "此邮件包含的布局方式超出了 ictMail 能检查的范围，因此其中某种布局的链接目标可能与显示文字不符。"
 
 #. interface
 #: crates/ui-egui/src/reading/warnings.rs
@@ -18369,7 +18369,7 @@ msgstr "图片已下载，但无法显示。"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "This removes everything ictMail keeps on this computer: every account's mail, attachments, contacts, calendar and settings, the sign-ins remembered in the system's credential store, downloaded pictures, opened attachments and logs."
-msgstr ""
+msgstr "这将删除 ictMail 在此计算机上保存的所有内容：所有账户的邮件、附件、联系人、日历和设置，系统凭据存储中记住的登录信息，以及已下载的图片、已打开的附件和日志。"
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
@@ -18380,7 +18380,7 @@ msgstr "报告太长，无法发送。请缩短内容，或取消勾选“包含
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "This rule can't be kept on the server: {why}. It runs on this computer, while ictMail is open."
-msgstr ""
+msgstr "此规则无法保存在服务器上：{why}。它只会在 ictMail 打开时在本机运行。"
 
 #. what a command says
 #: crates/engine/src/cmd/calendar.rs
@@ -18409,12 +18409,12 @@ msgstr "此签名含有图片或自定义版式。请在电脑上修改。"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "This sync needs about {needed}. This phone has {free} free, and ictMail keeps some room for the phone to go on working. Sync anyway?"
-msgstr ""
+msgstr "此次同步大约需要 {needed}。此手机有 {free} 可用空间，ictMail 还会留出一些空间让手机正常运行。仍然同步吗？"
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "This system has no place ictMail knows for S/MIME certificates with a private key."
-msgstr ""
+msgstr "ictMail 在此系统上找不到可存放带私钥的 S/MIME 证书的位置。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/TaskDraft.kt
@@ -18425,7 +18425,7 @@ msgstr "无法读取此任务。"
 #. interface
 #: crates/ui-egui/src/address_book.rs
 msgid "This version of ictMail can't search an address list"
-msgstr ""
+msgstr "此版本的 ictMail 无法搜索地址列表"
 
 #. what a command says
 #: crates/engine/src/cmd/remote.rs
@@ -18585,7 +18585,7 @@ msgid ""
 "To keep the automatic replies of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, your automatic replies aren't changed."
-msgstr ""
+msgstr "要让 {address} 的自动回复与 Outlook 同步，ictMail 需要您授权更改邮箱设置。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n\n在您授权之前，不会更改自动回复。"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18593,7 +18593,7 @@ msgid ""
 "To keep the rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr ""
+msgstr "要让 {address} 的规则、自动回复和类别与 Outlook 同步，ictMail 需要您授权更改邮箱设置。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n\n在您授权之前，规则只保存在此计算机上，不会向 Microsoft 发送任何规则内容，不会更改自动回复，也无法在此更改此邮箱的类别。"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18601,7 +18601,7 @@ msgid ""
 "To keep the tasks and automatic replies of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft, and your automatic replies aren't changed."
-msgstr ""
+msgstr "要让 {address} 的任务和自动回复与 Outlook 同步，ictMail 需要您授权更改 To Do 列表和邮箱设置。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n\n在您授权之前，任务只保存在此计算机上，不会向 Microsoft 发送任何任务内容，也不会更改自动回复。"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18609,7 +18609,7 @@ msgid ""
 "To keep the tasks of {address} in step with Microsoft To Do, ictMail needs your permission to read and change your To Do lists and tasks. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft."
-msgstr ""
+msgstr "要将 {address} 的任务与 Microsoft To Do 同步，ictMail 需要您授权读取和更改 To Do 列表及任务。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n\n在您授权之前，任务只保存在此计算机上，不会向 Microsoft 发送任何任务内容。"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18617,7 +18617,7 @@ msgid ""
 "To keep the tasks, rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks and rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr ""
+msgstr "要让 {address} 的任务、规则、自动回复和类别与 Outlook 同步，ictMail 需要您授权更改 To Do 列表和邮箱设置。系统会在浏览器中打开 Microsoft 页面，向您请求一次授权。\n\n在您授权之前，任务和规则只保存在此计算机上，不会向 Microsoft 发送其任何内容，不会更改自动回复，也无法在此更改此邮箱的类别。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/MailListModel.kt
@@ -18631,7 +18631,7 @@ msgid ""
 "To read and send from the shared mailboxes you open with {address}, and to show the calendars shared with you, ictMail needs your permission. Microsoft's page opens in your browser to ask you, once, for everything ictMail uses that you haven't allowed yet.\n"
 "\n"
 "Until you allow it, nothing of those mailboxes and calendars is read, mail and meeting answers from a shared mailbox wait on this computer, and nothing is sent from your own address in their place."
-msgstr ""
+msgstr "要读取你通过 {address} 打开的共享邮箱并从中发送邮件，以及显示与你共享的日历，ictMail 需要你的许可。Microsoft 的页面将在浏览器中打开，一次性询问 ictMail 使用但你尚未允许的所有权限。\n\n在你允许之前，不会读取这些邮箱和日历的任何内容，来自共享邮箱的邮件和会议答复会在这台电脑上等待，也不会改用你自己的地址发送任何内容。"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -18863,12 +18863,12 @@ msgstr "输入您想要执行的操作"
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "Type your address. ictMail finds your mail servers and how you sign in."
-msgstr ""
+msgstr "输入您的地址，ictMail 会查找您的邮件服务器和登录方式。"
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Type your e-mail address and ictMail finds the rest: Microsoft 365, Outlook.com, Google and other providers, or a mailbox on this device only"
-msgstr ""
+msgstr "输入电子邮件地址，ictMail 会查找其余设置：Microsoft 365、Outlook.com、Google 及其他服务商；也可以使用仅保存在此设备上的邮箱。"
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -19168,7 +19168,7 @@ msgstr "使用系统设置"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Use system setting follows Animation effects in Windows' settings. Where ictMail can't read the system's setting yet, animations play until you choose Never play."
-msgstr ""
+msgstr "“使用系统设置”遵循 Windows 设置中的“动画效果”。如果 ictMail 暂时无法读取系统设置，动画会照常播放，直到您选择“从不播放”。"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -19323,7 +19323,7 @@ msgstr "等待"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Waiting for ictMail's Google registration"
-msgstr ""
+msgstr "等待 ictMail 的 Google 注册"
 
 #. interface
 #: crates/ui-egui/src/approval.rs
@@ -19400,7 +19400,7 @@ msgstr "邮件到达后会发生什么"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "What ictMail sends, and to whom"
-msgstr ""
+msgstr "ictMail 发送什么内容，发送给谁"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
@@ -19429,7 +19429,7 @@ msgstr "要求受邀人做什么由组织者决定。"
 #. command label
 #: crates/ui-egui/src/lib.rs
 msgid "What to Do When Your Organisation Has to Approve ictMail"
-msgstr ""
+msgstr "当组织需要批准 ictMail 时该怎么做"
 
 #. android, interface, name
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt crates/engine/src/sync_driver/favorites.rs crates/ui-egui/src/account_setup/help.rs
@@ -19522,7 +19522,7 @@ msgstr "位置"
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Where the card says the key is: ictMail doesn't fetch it."
-msgstr ""
+msgstr "密钥的位置由名片给出；ictMail 不会获取该密钥。"
 
 #. interface
 #: crates/ui-egui/src/merge_contacts.rs
@@ -19539,7 +19539,7 @@ msgstr "是否在线举行由组织者决定。"
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Which keys your GnuPG trusts fully, last read: {when}. It is read again when ictMail comes back to the front, and by Refresh."
-msgstr ""
+msgstr "GnuPG 完全信任的密钥，上次读取时间：{when}。ictMail 重新回到前台时以及点击“刷新”时会重新读取。"
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -19580,12 +19580,12 @@ msgstr "Windows 证书存储"
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Windows keeps the certificate and its private key in your certificate store, and asks you before ictMail uses it."
-msgstr ""
+msgstr "Windows 将证书及其私钥保存在您的证书存储中，并在 ictMail 使用前征求您的同意。"
 
 #. interface
 #: crates/ui-egui/src/calendar_view.rs
 msgid "Without this, the calendar uses the working hours your Microsoft 365 mailbox has, once ictMail may read them. The ones above are used until then."
-msgstr ""
+msgstr "未启用此选项时，一旦 ictMail 获准读取，日历便会使用 Microsoft 365 邮箱中设置的工作时间。在此之前，将使用上方的时间。"
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -19848,7 +19848,7 @@ msgstr "您已将此密钥标记为已验证。"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "You may be asked to sign in with Microsoft again, to let ictMail read and change your mail there."
-msgstr ""
+msgstr "系统可能要求您再次登录 Microsoft，允许 ictMail 读取和更改其中的邮件。"
 
 #. interface
 #: crates/ui-egui/src/meeting_dialogs.rs
@@ -19943,7 +19943,7 @@ msgstr "无法查询您域名的 DNS。请检查网络连接后重新搜索。"
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "Your domain's DNS names no server for automatic setup. ictMail still tries the usual places for your address."
-msgstr ""
+msgstr "您域名的 DNS 没有指定自动设置所用的服务器。ictMail 仍会尝试您的地址常用的位置。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -19954,7 +19954,7 @@ msgstr "您域名的 DNS 将其 autodiscover 名称指向 {host}，但在 Exchan
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Your keychain keeps the certificate and its private key, and macOS asks you before ictMail uses it."
-msgstr ""
+msgstr "您的钥匙串保存证书及其私钥，ictMail 使用前 macOS 会征求您的同意。"
 
 #. what a command says
 #: crates/mobile/src/sync.rs
@@ -19983,7 +19983,7 @@ msgstr "邮件服务器检查了此邮件的来源，但检查未通过：发件
 #. interface
 #: crates/ui-egui/src/reading/remote.rs
 msgid "Your mail server didn't confirm that this message came from {sender}, so ictMail won't remember them: a sender's address can be faked."
-msgstr ""
+msgstr "您的邮件服务器没有确认此邮件来自 {sender}，因此 ictMail 不会记住该发件人：发件人地址可能被伪造。"
 
 #. what a command says
 #: crates/engine/src/cmd/unsubscribe.rs
@@ -20036,47 +20036,47 @@ msgstr "您的组织不允许此账户使用 Exchange Web 服务。请联系管�
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Your organisation doesn't let ictMail change your automatic replies. Ask your administrator."
-msgstr ""
+msgstr "您的组织不允许 ictMail 更改您的自动回复。请联系管理员。"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "Your organisation doesn't let ictMail keep this mailbox in step with Outlook"
-msgstr ""
+msgstr "您的组织不允许 ictMail 将此邮箱与 Outlook 同步"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs crates/ui-egui/src/shared_permission.rs
 msgid "Your organisation doesn't let ictMail read shared mailboxes and the calendars shared with you"
-msgstr ""
+msgstr "您的组织不允许 ictMail 读取共享邮箱和与您共享的日历"
 
 #. interface
 #: crates/ui-egui/src/approval.rs
 msgid "Your organisation has approved ictMail"
-msgstr ""
+msgstr "您的组织已批准 ictMail"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Your organisation has approved ictMail. Now sign in with your own account."
-msgstr ""
+msgstr "您的组织已批准 ictMail。现在请使用您自己的账户登录。"
 
 #. what a command says
 #: crates/mobile/src/sync_api.rs
 msgid "Your organisation has to approve ictMail before you can sign in. Ask an administrator."
-msgstr ""
+msgstr "您所在的组织必须先批准 ictMail，您才能登录。请联系管理员。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Your organisation has to approve ictMail first"
-msgstr ""
+msgstr "您的组织必须首先批准 ictMail"
 
 #. interface
 #: crates/ui-egui/src/nav.rs
 msgid "Your organisation keeps this permission for its administrators to give. Once one of them has approved it, choose it again here. Until then the Favorites kept in ictMail are shown."
-msgstr ""
+msgstr "您的组织只允许管理员授予此权限。管理员批准后，请在此重新选择。在此之前，将显示保存在 ictMail 中的收藏夹。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Your organisation lets only an administrator approve a new program, and none has approved ictMail yet. Nothing is wrong with your account or your password."
-msgstr ""
+msgstr "您的组织只允许管理员批准新程序，目前尚未批准 ictMail。您的账户和密码没有问题。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -20093,7 +20093,7 @@ msgstr "您所在的组织需要管理员先批准此操作。请联系管理员
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "Your organisation needs to approve ictMail"
-msgstr ""
+msgstr "您所在的组织需要批准 ictMail"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -20104,12 +20104,12 @@ msgstr "此时您的组织只允许管理员批准新程序。您的账户或密
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "Your organisation's administrator has to approve ictMail keeping this mailbox in step with Outlook once: File › Info"
-msgstr ""
+msgstr "组织管理员需要批准一次 ictMail 将此邮箱与 Outlook 同步的权限：文件 › 信息"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "Your organisation's administrator has to approve ictMail reading shared mailboxes and calendars once: File › Info"
-msgstr ""
+msgstr "您的组织管理员需要批准一次 ictMail 读取共享邮箱和日历：文件 › 信息"
 
 #. interface
 #: crates/ui-egui/src
@@ -20120,17 +20120,17 @@ msgstr "组织管理员需要批准一次此操作"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "Your organisation's rules (Conditional Access) don't allow ictMail to sign you in on this phone. This is your organisation's policy, not a fault in ictMail or in your phone. Ask the people who run your organisation's mail whether sign-in from this kind of app can be allowed."
-msgstr ""
+msgstr "您所在组织的规则（条件访问）不允许 ictMail 在这部手机上为您登录。这是您组织的策略，不是 ictMail 或您手机的故障。请询问负责组织邮件的人员，能否允许这类应用登录。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "Your organisation's rules don't allow this for your account. This is your organisation's policy, not a fault in ictMail."
-msgstr ""
+msgstr "您所在组织的规则不允许您的账户执行此操作。这是您组织的策略，不是 ictMail 的故障。"
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Your own certificates and keys are used by ictMail's desktop program: here Digital signatures are checked, and nothing is signed or decrypted."
-msgstr ""
+msgstr "ictMail 桌面程序使用您自己的证书和密钥；此处只检查数字签名，不会进行签名或解密。"
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -20267,7 +20267,7 @@ msgstr "JMAP 账户的邮件下载到此处后，服务器和地址便无法更�
 #. what a command says
 #: crates/engine/src/cmd/senders.rs
 msgid "a Microsoft or Exchange account sends from other addresses only as its server allows, which ictMail doesn't ask for yet"
-msgstr ""
+msgstr "Microsoft 或 Exchange 账户只能按其服务器允许的范围使用其他地址发送，ictMail 暂不查询该信息"
 
 #. why a mail server couldn't be used
 #: crates/net/src/sync.rs
@@ -20665,7 +20665,7 @@ msgstr "从邮件收集"
 #. why a command can't run
 #: crates/engine/src/gmail.rs
 msgid "comes once Google has reviewed ictMail"
-msgstr ""
+msgstr "Google 审查 ictMail 后就会出现"
 
 #. why a mail server couldn't be used
 #: crates/proto/src/lib.rs
@@ -20822,258 +20822,258 @@ msgstr "icloud.com、me.com 和 mac.com"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "ictMail can now keep {account} in step with Microsoft through Microsoft Graph, the way Outlook on the web does, instead of IMAP. Your folders, flags, categories and drafts then match what you see in Outlook, and your mail keeps coming even where your organisation has turned IMAP off."
-msgstr ""
+msgstr "ictMail 现在可以像 Outlook 网页版一样，通过 Microsoft Graph 而非 IMAP 将 {account} 与 Microsoft 同步。您的文件夹、标记、类别和草稿将与 Outlook 中看到的一致，即使组织关闭了 IMAP，您仍能收到邮件。"
 
 #. name
 #: crates/engine/src/cmd/rules.rs
 msgid "ictMail can't keep this account's rules on its server"
-msgstr ""
+msgstr "ictMail 无法在服务器上保存此账户的规则"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "ictMail can't sign in to this server this way yet (it wants Kerberos). Ask your administrator whether it can take a user name and password over an encrypted connection."
-msgstr ""
+msgstr "ictMail 暂时无法以此方式登录该服务器（服务器要求使用 Kerberos）。请询问管理员是否可以通过加密连接使用用户名和密码。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "ictMail carries the software below. The Rust libraries of its core are listed with their versions in the source repository."
-msgstr ""
+msgstr "ictMail 包含下列软件。其核心的 Rust 库及版本列在源代码仓库中。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail couldn't open a browser for Microsoft's page."
-msgstr ""
+msgstr "ictMail 无法打开浏览器来显示 Microsoft 页面。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail couldn't open a browser for Microsoft's page. Install or enable a browser, then try again."
-msgstr ""
+msgstr "ictMail 无法打开浏览器来显示 Microsoft 页面。请安装或启用浏览器，然后重试。"
 
 #. interface
 #: crates/ui-egui/src/approval.rs
 msgid "ictMail couldn't open your browser for Microsoft's approval page. Copy the message instead: the link in it opens the same page."
-msgstr ""
+msgstr "ictMail 无法打开您的浏览器访问 Microsoft 的批准页面。请复制该消息：其中的链接会打开同一页面。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "ictMail couldn't save your latest changes yet. It will try again; if the app closes first they may be lost."
-msgstr ""
+msgstr "ictMail 暂时无法保存您最近的更改。它会重试；如果应用先关闭，这些更改可能会丢失。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "ictMail couldn't set aside the saved mailbox it couldn't read, so changes aren't saved this time. Free up space and restart the app."
-msgstr ""
+msgstr "ictMail 无法将读取失败的已保存邮箱另行存放，因此这次不会保存更改。请释放存储空间并重启应用。"
 
 #. what a command says
 #: crates/model/src/mailbox.rs
 msgid "ictMail doesn't delete a JMAP account's folders yet: the next Send/Receive would bring them back"
-msgstr ""
+msgstr "ictMail 暂不删除 JMAP 账户的文件夹：下次发送/接收时它们会重新出现"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "ictMail doesn't know the settings for this address. The servers below are only a guess made from its domain: check them with your provider or administrator before you connect."
-msgstr ""
+msgstr "ictMail 不知道此地址的服务器设置。下面的服务器地址仅根据其域名推测，请在连接前向服务提供商或管理员确认。"
 
 #. what a command says
 #: crates/model/src/mailbox.rs
 msgid "ictMail doesn't rename or move a JMAP account's folders yet: its server wouldn't be told"
-msgstr ""
+msgstr "ictMail 暂不支持重命名或移动 JMAP 账户的文件夹：这些更改不会通知服务器"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "ictMail doesn't support POP yet. Use your provider's IMAP server instead (usually imap.<your domain>, port 993)."
-msgstr ""
+msgstr "ictMail 尚不支持 POP。请改用服务提供商的 IMAP 服务器（通常为 imap.<your domain>，端口 993）。"
 
 #. interface
 #: crates/ui-egui/src/software.rs
 msgid "ictMail is drawing without the graphics card, which uses a lot of processor time. Installing or updating the graphics driver usually fixes this."
-msgstr ""
+msgstr "ictMail 没有使用显卡绘制界面，这会占用大量处理器时间。安装或更新显卡驱动程序通常可以解决此问题。"
 
 #. interface
 #: crates/ui-egui/src/ribbon.rs
 msgid "ictMail is open source (MIT or Apache-2.0). Every button here runs a command that scripts and agents can run too: see Search Commands."
-msgstr ""
+msgstr "ictMail 是开源软件（MIT 或 Apache-2.0）。此处每个按钮执行的命令也可由脚本和智能体运行；请参阅“搜索命令”。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "ictMail is open source, under the MIT and Apache 2.0 licences."
-msgstr ""
+msgstr "ictMail 是开源软件，采用 MIT 和 Apache 2.0 许可证。"
 
 #. interface
 #: crates/ui-egui/src/credits.rs
 msgid "ictMail is tested on real mail, by people who use it every day and tell us what goes wrong. Thank you."
-msgstr ""
+msgstr "ictMail 由每天使用它的人用真实邮件进行测试，并向我们反馈问题。谢谢。"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail is up to date ({version})."
-msgstr ""
+msgstr "ictMail 已是最新版本（{version}）。"
 
 #. interface
 #: crates/ui-egui/src/open_shared.rs crates/ui-egui/src/shared_permission.rs
 msgid "ictMail isn't allowed to read other people's calendars yet."
-msgstr ""
+msgstr "ictMail 尚未获得读取其他人日历的权限。"
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "ictMail keeps at most {n} keys imported here, and has that many: remove one you don't use, then import this one."
-msgstr ""
+msgstr "ictMail 在此最多可保存 {n} 个导入的密钥，目前已达上限。请先移除一个不使用的密钥，再导入此密钥。"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs crates/ui-egui/src/dialogs.rs
 msgid "ictMail keeps it in memory until you close the app. It is never written to disk."
-msgstr ""
+msgstr "ictMail 仅将其保存在内存中，直到您关闭应用；它绝不会写入磁盘。"
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "ictMail keeps the file, still protected by its passphrase, in the system's credential store. Only an ECDSA certificate (P-256 or P-384) is kept this way: an RSA one belongs on a smartcard or token (PKCS#11)."
-msgstr ""
+msgstr "ictMail 将文件保存在系统凭据存储中，文件仍受密码短语保护。只有 ECDSA 证书（P-256 或 P-384）以这种方式保存；RSA 证书应保存在智能卡或令牌（PKCS#11）上。"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "ictMail keeps this account's rules on this computer: the rule runs while ictMail is open."
-msgstr ""
+msgstr "ictMail 将此账户的规则保存在这台计算机上，规则仅在 ictMail 打开时运行。"
 
 #. what a command says
 #: crates/model/src/mailbox.rs crates/model/src/mailbox_bulk.rs
 msgid "ictMail moves a JMAP account's mail only between the folders its server has: the next Send/Receive would bring it back"
-msgstr ""
+msgstr "ictMail 只在 JMAP 账户服务器已有的文件夹之间移动邮件：下次发送/接收时邮件会移回原处"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "ictMail needs you to sign in again to read your automatic replies: Microsoft's page opens in your browser. Mail and your calendar work as they are meanwhile."
-msgstr ""
+msgstr "ictMail 需要您重新登录才能读取自动回复；Microsoft 登录页面将在浏览器中打开。在此期间，邮件和日历仍可照常使用。"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "ictMail needs your permission to change your automatic replies first: File › Info › Ask again."
-msgstr ""
+msgstr "ictMail 需要先获得您的许可才能更改自动回复：文件 › 信息 › 再次询问。"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "ictMail needs your system browser to sign in. You can also use a Google app password."
-msgstr ""
+msgstr "ictMail 需要使用系统浏览器登录。您也可以使用 Google 应用密码。"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail now installs its updates itself. Turn this off in File › About."
-msgstr ""
+msgstr "ictMail 现在会自行安装更新。可在“文件 › 关于”中关闭此功能。"
 
 #. name
 #: crates/engine/src/cmd/rules.rs
 msgid "ictMail reaches this account's rules on the server once it switches to Microsoft Graph"
-msgstr ""
+msgstr "账户切换到 Microsoft Graph 后，ictMail 即可访问服务器上该账户的规则"
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "ictMail reads the key without its passphrase and keeps the file, still protected by it, in the system's credential store. The key must have a passphrase and sign with Ed25519 or ECDSA; ictMail asks for the passphrase when you sign."
-msgstr ""
+msgstr "ictMail 读取密钥时无需输入密码短语，并将仍受密码短语保护的文件保存在系统凭据存储中。密钥必须设置密码短语，并使用 Ed25519 或 ECDSA 签名；签名时 ictMail 会要求输入密码短语。"
 
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
 msgid "ictMail sends {host} the address this list gave for unsubscribing, which may identify you to it, and nothing else: no cookies, no sign-in. Like any connection, it also shows your internet address."
-msgstr ""
+msgstr "ictMail 只会把此列表提供的退订地址发送给 {host}，该地址可能让对方识别出你，此外不发送任何内容：没有 Cookie，也不登录。与任何连接一样，它也会显示你的 IP 地址。"
 
 #. interface
 #: crates/ui-egui/src/opening.rs
 msgid "ictMail starts with an empty mailbox and leaves the file as it is."
-msgstr ""
+msgstr "ictMail 将以空邮箱启动，文件保持原样。"
 
 #. interface
 #: crates/ui-egui/src/opening.rs
 msgid "ictMail stopped reading it before it was done."
-msgstr ""
+msgstr "ictMail 尚未读取完成便停止了。"
 
 #. what a command says
 #: crates/engine/src/import_pst.rs
 msgid "ictMail stopped reading the .pst file before it was done: what came in is kept"
-msgstr ""
+msgstr "ictMail 未能读完整个 .pst 文件；已导入的内容会保留"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "ictMail tries the usual places for your address."
-msgstr ""
+msgstr "ictMail 会尝试您的地址常用的位置。"
 
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "ictMail was started with {n} thing that isn't a mail link or a file it opens: it was left alone"
 msgid_plural "ictMail was started with {n} things that aren't mail links or files it opens: they were left alone"
-msgstr[0] ""
+msgstr[0] "启动 ictMail 时提供的 {n} 个项目既不是邮件链接，也不是支持打开的文件，已保持原样"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "ictMail wasn't allowed to keep this mailbox in step with Outlook: {error}"
-msgstr ""
+msgstr "ictMail 未获准将此邮箱与 Outlook 同步：{error}"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "ictMail will have no account afterwards: File › Add Account sets one up again."
-msgstr ""
+msgstr "之后 ictMail 将没有账户；可通过“文件 › 添加账户”重新设置。"
 
 #. interface
 #: crates/ui-egui/src/close_to_tray.rs
 msgid "ictMail will keep running"
-msgstr ""
+msgstr "ictMail 将保持运行"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "ictMail will make one appointment called \"ictMail connection check\" in the calendar of {account}, a year from today. It reads it back, changes its time twice (the second time said in this computer's time zone), reads it back each time, and deletes it again. Nothing else in your calendar is read or changed, nobody is invited or written to, and no reminder is set. Afterwards you see what the server answered at each step, and whether what was sent is what the server has."
-msgstr ""
+msgstr "ictMail 将在 {account} 的日历中创建一个名为“ictMail connection check”的约会，时间为今天起一年后。程序会读取该约会，两次更改其时间（第二次使用本机时区），每次更改后重新读取，最后删除该约会。不会读取或更改日历中的其他内容，不会邀请任何人或向任何人发送消息，也不会设置提醒。完成后会显示服务器在每一步的响应，以及服务器保存的内容是否与发送的一致。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail will read and change the shared mailboxes you have access to. Microsoft's page opens in your browser to ask you."
-msgstr ""
+msgstr "ictMail 将读取并更改您有权访问的共享邮箱。Microsoft 页面将在浏览器中打开以征求您的同意。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail will read and change your Microsoft To Do lists and tasks. Microsoft's page opens in your browser to ask you. Until you say yes, your tasks stay on this phone."
-msgstr ""
+msgstr "ictMail 将读取并更改您的 Microsoft To Do 列表和任务。Microsoft 页面将在浏览器中打开以征求您的同意。在您同意之前，您的任务保留在这部手机上。"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail will send mail from a shared mailbox, as it or on its behalf. Microsoft's page opens in your browser to ask you."
-msgstr ""
+msgstr "ictMail 将以共享邮箱本人或代表它的名义从共享邮箱发送邮件。Microsoft 页面将在浏览器中打开以征求您的同意。"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail {version} didn't start."
-msgstr ""
+msgstr "ictMail {version} 未启动。"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail {version} is available"
-msgstr ""
+msgstr "ictMail {version} 已可用"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail {version} is available and fixes a security problem"
-msgstr ""
+msgstr "ictMail {version} 已可用，该版本修复了一项安全问题"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail {version} wasn't installed: this version is still the one here."
-msgstr ""
+msgstr "ictMail {version} 未安装；当前仍使用原版本。"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "ictMail's Google Desktop registration is not yet configured for this build."
-msgstr ""
+msgstr "此构建版本尚未配置 ictMail 的 Google 桌面应用注册。"
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "ictMail's data has been removed already"
-msgstr ""
+msgstr "ictMail 的数据已被删除"
 
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "ictMail's data has been removed: nothing is sent or received"
-msgstr ""
+msgstr "ictMail 的数据已被移除：无法发送或接收邮件"
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "ictMail's search for your keys stopped without an answer. Try again."
-msgstr ""
+msgstr "ictMail 搜索密钥时未得到结果便停止了。请重试。"
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -21120,12 +21120,12 @@ msgstr "位于待清理的文件夹之外：未作处理"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "is part of a mailbox you opened from outside ictMail's own folder: it is yours and was not touched"
-msgstr ""
+msgstr "它属于您从 ictMail 数据文件夹之外打开的邮箱，已保留原样"
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "isn't a folder ictMail keeps its data in: left alone"
-msgstr ""
+msgstr "不是 ictMail 用于保存数据的文件夹：未作处理"
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
@@ -21968,7 +21968,7 @@ msgstr "这不是该 .pst 文件的密码：未导入任何内容"
 #. interface
 #: crates/ui-egui/src
 msgid "that mailbox is open in another ictMail window; close it there first"
-msgstr ""
+msgstr "此邮箱已在另一个 ictMail 窗口中打开；请先在该窗口中关闭"
 
 #. what a command says
 #: crates/engine/src/cmd/compose.rs
@@ -22219,7 +22219,7 @@ msgstr "下载尚未完成就已停止"
 #. why a mail server couldn't be used
 #: crates/proto/src/line.rs
 msgid "the encrypted connection was damaged on the way (this is usually antivirus or firewall software that scans mail connections: turn off its mail or SSL scanning for ictMail, or ask the mail provider)"
-msgstr ""
+msgstr "加密连接在传输途中被破坏（通常是扫描邮件连接的杀毒或防火墙软件所致：请为 ictMail 关闭其邮件或 SSL 扫描，或咨询邮件服务商）"
 
 #. what a command says
 #: crates/engine/src/cmd/calendar.rs crates/engine/src/cmd/calendar_extra.rs crates/engine/src/cmd/zones.rs
@@ -22542,7 +22542,7 @@ msgstr "服务器接受了未发送的密码"
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
 msgid "the server and ictMail found no encryption in common; often the server offers only older encryption (CBC suites) that ictMail doesn't use, and its administrator can turn on the AES-GCM suites"
-msgstr ""
+msgstr "服务器与 ictMail 没有共同支持的加密方式；服务器可能只提供 ictMail 不使用的旧加密方式（CBC 套件），其管理员可以启用 AES-GCM 套件"
 
 #. why a mail server couldn't be used
 #: crates/proto/src/imap/idle.rs crates/proto/src/imap/mod.rs crates/proto/src/imap/status.rs
@@ -22709,7 +22709,7 @@ msgstr "服务器不支持使用访问令牌登录"
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
 msgid "the server offers only older encryption (CBC suites) that ictMail doesn't use; its administrator can turn on the AES-GCM suites"
-msgstr ""
+msgstr "服务器只提供 ictMail 不使用的旧加密方式（CBC 套件）；其管理员可以启用 AES-GCM 套件"
 
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
@@ -22786,12 +22786,12 @@ msgstr "服务器响应一个命令发送了太多信息"
 #. why a mail server couldn't be used
 #: crates/proto/src/imap/mod.rs
 msgid "the server sent {claimed} bytes in one piece, more than the {mb} MB ictMail accepts"
-msgstr ""
+msgstr "服务器一次发送了 {claimed} 字节，超过 ictMail 允许的 {mb} MB"
 
 #. why a mail server couldn't be used
 #: crates/proto/src/line.rs
 msgid "the server sent {n} bytes in one piece, more than ictMail accepts"
-msgstr ""
+msgstr "服务器一次发送了 {n} 字节，超过 ictMail 允许的大小"
 
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
@@ -23345,19 +23345,19 @@ msgstr "Microsoft 不再接受您的登录凭据。"
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
 msgid "ictMail needs your permission first (File › Info › Ask again)."
-msgstr ""
+msgstr "ictMail 首先需要您的许可（文件 › 信息 › 再次询问）。"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
 msgid "ictMail wasn't allowed to change them."
-msgstr ""
+msgstr "ictMail 未获准更改自动回复。"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
 msgid "sign in again to let ictMail read them (File › Info)."
-msgstr ""
+msgstr "请重新登录，以便 ictMail 读取自动回复（文件 › 信息）。"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -23370,7 +23370,7 @@ msgstr "您正在离线工作。"
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
 msgid "your organisation doesn't let ictMail change them."
-msgstr ""
+msgstr "您的组织不允许 ictMail 更改自动回复。"
 
 #. interface
 #: crates/ui-egui/src/alerts.rs
@@ -23383,13 +23383,13 @@ msgstr "此桌面上没有通知服务响应。"
 #: crates/ui-egui/src/alerts.rs
 msgctxt "why desktop alerts can't be shown"
 msgid "this copy doesn't run from the ictMail app."
-msgstr ""
+msgstr "此副本并非从 ictMail 应用中运行。"
 
 #. interface
 #: crates/ui-egui/src/alerts.rs
 msgctxt "why desktop alerts can't be shown"
 msgid "this copy of ictMail wasn't installed with its installer (.msi), so Windows doesn't know it."
-msgstr ""
+msgstr "此 ictMail 副本并非通过安装程序（.msi）安装，因此 Windows 无法识别。"
 
 #. interface
 #: crates/ui-egui/src/send_later.rs
@@ -23430,7 +23430,7 @@ msgstr "{account} 无法切换到 Microsoft Graph：{why}"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "{account} is switching to Microsoft Graph, but ictMail can't reach its IMAP server to send what is waiting there first."
-msgstr ""
+msgstr "{account} 正在切换到 Microsoft Graph，但 ictMail 无法连接其 IMAP 服务器，以便先发送待处理的内容。"
 
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
@@ -23730,7 +23730,7 @@ msgstr "{line} · 上次运行时无法读取：{folders}"
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "{line} · ictMail may change them"
-msgstr ""
+msgstr "{line} · ictMail 可能会更改它们"
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -23915,7 +23915,7 @@ msgstr "{name} 不是 Microsoft 或 Exchange 服务器账户"
 #. what a command says
 #: crates/engine/src/cmd/file.rs
 msgid "{name} isn't a ictMail mailbox"
-msgstr ""
+msgstr "{name} 不是 ictMail 邮箱"
 
 #. what a command says
 #: crates/engine/src/cmd/file.rs
@@ -24046,7 +24046,7 @@ msgstr "{name}：不是邮件文件"
 #. what a command says
 #: crates/engine/src/io.rs
 msgid "{name}: not a message, calendar or contact file ictMail reads"
-msgstr ""
+msgstr "{name}：不是 ictMail 可读取的邮件、日历或联系人文件"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -24798,7 +24798,7 @@ msgstr[0] "在 {scope} 中找到 {n} 个结果"
 #: crates/ui-egui/src/forms.rs
 msgid "{n} rule deleted here is still on the server until ictMail may change the server's rules (File › Info › Ask again)."
 msgid_plural "{n} rules deleted here are still on the server until ictMail may change the server's rules (File › Info › Ask again)."
-msgstr[0] ""
+msgstr[0] "此处删除的 {n} 条规则仍保留在服务器上，直到 ictMail 获准更改服务器规则（文件 › 信息 › 再次询问）。"
 
 #. interface
 #: crates/ui-egui/src/sync_panel.rs
@@ -24998,7 +24998,7 @@ msgstr "{said}；{left}{more}"
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "{saving} · ictMail closes when it is done"
-msgstr ""
+msgstr "{saving} · ictMail 完成后关闭"
 
 #. interface
 #: crates/ui-egui/src/lib.rs
@@ -25095,7 +25095,7 @@ msgstr "{what}（{already}）"
 #. what a command says
 #: crates/engine/src/cmd/account.rs
 msgid "{who} was added by a newer version of ictMail, {then}"
-msgstr ""
+msgstr "{who} 由较新版本的 ictMail 添加，{then}"
 
 #. interface
 #: crates/ui-egui/src/import_pst.rs
@@ -25106,7 +25106,7 @@ msgstr "{why} 此前导入的内容会保留；请重新导入文件以导入剩
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "{why}, so sign-ins aren't remembered: ictMail asks again each time it starts."
-msgstr ""
+msgstr "{why}，因此无法保存登录信息：ictMail 每次启动时都会再次询问。"
 
 #. interface
 #: crates/ui-egui/src/shared_mailboxes.rs

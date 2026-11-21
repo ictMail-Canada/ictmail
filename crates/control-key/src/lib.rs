@@ -14,8 +14,8 @@ mod proof_tests;
 mod tests;
 
 /// The app's settings folder (preferences, logs, key files): macOS
-/// `~/Library/Application Support/MailCraft`, Windows `%APPDATA%\MailCraft`, otherwise
-/// `$XDG_CONFIG_HOME/mailcraft` or `~/.config/mailcraft`.
+/// `~/Library/Application Support/ictMail`, Windows `%APPDATA%\ictMail`, otherwise
+/// `$XDG_CONFIG_HOME/ictmail` or `~/.config/ictmail`.
 pub fn settings_dir() -> Option<PathBuf> {
     if cfg!(target_os = "macos") {
         std::env::var_os("HOME").map(|h| PathBuf::from(h).join("Library/Application Support/ictMail"))

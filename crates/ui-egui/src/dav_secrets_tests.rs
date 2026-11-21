@@ -204,7 +204,7 @@ fn undoing_a_server_change_forgets_the_new_servers_passwords_and_keeps_the_mail_
     a.index_secret_key(grace.clone());
     a.execute("edit.undo", json!({})).unwrap();
     settle(&mut a);
-    assert_eq!(a.session.mailbox.account(id).unwrap().dav.as_ref().unwrap().username, "");
+    assert_eq!(a.session.mailbox.account(id).unwrap().dav_server.as_ref().unwrap().username, "");
     assert_eq!(a.passwords.get(&id).map(String::as_str), Some("mail"), "no reason to ask for the mail password again");
     assert!(a.dav_passwords.is_empty() && store.get(&grace).is_none(), "the password for the server undone is forgotten");
 }

@@ -129,7 +129,7 @@ fn debug_output_shows_no_address_name_token_or_fingerprint() {
 fn an_account_keeps_its_dav_settings_in_the_mailbox_file() {
     let account = Account { id: 4, email: "ada@example.org".into(), kind: AccountKind::Imap, dav_server: Some(server()), ..Default::default() };
     let json = serde_json::to_string(&account).unwrap();
-    assert!(json.contains(r#""dav":{"#) && json.contains("TOKEN-1") && json.contains(r#""separatePassword":true"#), "{json}");
+    assert!(json.contains(r#""davServer":{"#) && json.contains("TOKEN-1") && json.contains(r#""separatePassword":true"#), "{json}");
     assert_eq!(serde_json::from_str::<Account>(&json).unwrap(), account);
     assert!(!serde_json::to_string(&Account::default()).unwrap().contains("dav"));
     // The server's state is not a secret but no password is ever among it.
@@ -139,7 +139,7 @@ fn an_account_keeps_its_dav_settings_in_the_mailbox_file() {
 #[test]
 fn damaged_dav_settings_cost_only_themselves() {
     for odd in ["5", "\"https://dav.example.org\"", "[]", "null", r#"{"calendarHomes":5}"#, r#"{"trusted":[]}"#, r#"{"collections":"x"}"#] {
-        let read: Account = serde_json::from_str(&format!(r#"{{"id":4,"email":"ada@example.org","kind":"imap","dav":{odd}}}"#)).unwrap();
+        let read: Account = serde_json::from_str(&format!(r#"{{"id":4,"email":"ada@example.org","kind":"imap","davServer":{odd}}}"#)).unwrap();
         assert_eq!(read.kind, AccountKind::Imap, "{odd}");
         assert!(read.dav_server.as_ref().is_none_or(|server| server.problem().is_some()), "{odd}: {:?}", read.dav_server);
     }
@@ -161,7 +161,7 @@ fn what_a_later_version_wrote_is_kept_and_an_earlier_one_reads_the_file() {
     assert!(read.other.contains_key("futureThing"));
     let back = serde_json::to_string(&read).unwrap();
     assert!(back.contains(r#""futureThing":{"a":[1,2]}"#), "{back}");
-    // A build from before `dav` read the file by ignoring it (every account field is optional):
+    // A build from before `davServer` read the file by ignoring it (every account field is optional):
     // the account is the same account, as a file from before has it.
     #[derive(Deserialize)]
     #[serde(default, rename_all = "camelCase")]
@@ -233,7 +233,7 @@ fn hostile(n: usize) -> String {
     }
     let homes: Vec<String> = (0..200).map(|i| format!(r#""https://home{i}.example.org/""#)).collect();
     format!(
-        r#"{{"id":4,"email":"ada@example.org","kind":"imap","dav":{{"calendarHomes":["http://attacker.example/", {}],"contactHomes":[{}],"trusted":"nope","collections":[{}]}}}}"#,
+        r#"{{"id":4,"email":"ada@example.org","kind":"imap","davServer":{{"calendarHomes":["http://attacker.example/", {}],"contactHomes":[{}],"trusted":"nope","collections":[{}]}}}}"#,
         homes.join(","),
         homes.join(","),
         collections.join(",")

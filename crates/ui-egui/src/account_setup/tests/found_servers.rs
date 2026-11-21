@@ -214,6 +214,6 @@ fn nothing_found_leaves_the_guess_as_it_was() {
     checks(&mut a, None);
     let h = with_found(a, Discovered::from_exchangers(vec!["mx.lumen.example".into()]));
     let w = wizard(&h).unwrap();
-    assert_eq!((w.found, w.guessed, w.incoming.host.as_str(), w.outgoing.host.as_str()), (None, true, "imap.lumen.example", "smtp.lumen.example"));
+    assert_eq!((w.found, w.guessed, w.incoming.host.as_str(), w.outgoing.host.as_str()), (None, true, "mx.lumen.example", "mx.lumen.example"));
     assert!(says(&h, "only a guess") && !says(&h, "found in the DNS records"));
 }

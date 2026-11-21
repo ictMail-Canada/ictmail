@@ -304,7 +304,7 @@ msgstr "2 წელი"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "2. When they have approved ictMail, come back here and sign in again."
-msgstr ""
+msgstr "2. როცა ictMail-ს დაამტკიცებენ, დაბრუნდით აქ და ხელახლა შედით."
 
 #. android, interface, name
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/SettingsModel.kt crates/model/src/offline.rs crates/ui-egui/src/keep_offline.rs
@@ -536,7 +536,7 @@ msgstr "გამოწერის გაუქმების მოთხო�
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "A new version is downloaded in the background, kept only when ictMail's own release signature says it is ours, and installed when you restart to update or quit."
-msgstr ""
+msgstr "ახალი ვერსია ფონურად ჩამოიტვირთება, ინახება მხოლოდ მაშინ, თუ ictMail-ის საკუთარი გამოშვების ხელმოწერა ადასტურებს, რომ ჩვენია, და დაინსტალირდება, როცა განახლებისთვის გადატვირთავთ ან გახვალთ."
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs crates/ui-egui/src/meeting_dialogs.rs crates/ui-egui/src/reading/invitation.rs
@@ -565,7 +565,7 @@ msgstr "ჯერ A"
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "A part of this key is RSA (a subkey for encryption, perhaps), which ictMail doesn't use by itself: keep the key in GnuPG, whose agent ictMail signs with, and leave it out of here."
-msgstr ""
+msgstr "ამ გასაღების ნაწილი RSA-ა (შესაძლოა, დაშიფვრის ქვეგასაღები), რომელსაც ictMail თავად არ იყენებს: შეინახეთ გასაღები GnuPG-ში, რომლის აგენტითაც ictMail ხელს აწერს, და აქ ნუ დაამატებთ."
 
 #. interface
 #: crates/ui-egui/src/reading/remote.rs
@@ -635,7 +635,7 @@ msgstr "სერია, რომელსაც ანგარიშის �
 #. what a command says
 #: crates/engine/src/cmd/auto_replies.rs
 msgid "A shared mailbox's automatic replies are set by whoever manages it; ictMail sets only your own account's"
-msgstr ""
+msgstr "საერთო საფოსტო ყუთის ავტომატურ პასუხებს მისი მმართველი აყენებს; ictMail მხოლოდ თქვენი ანგარიშისას აყენებს"
 
 #. interface
 #: crates/ui-egui/src/ribbon.rs
@@ -683,12 +683,12 @@ msgstr "შესახებ"
 msgid ""
 "About\n"
 "ictMail"
-msgstr ""
+msgstr "ictMail-ის\nშესახებ"
 
 #. interface, name
 #: crates/ui-egui/src/backstage.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/menubar.rs
 msgid "About ictMail"
-msgstr ""
+msgstr "ictMail-ის შესახებ"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
@@ -1083,7 +1083,7 @@ msgstr "კალენდარში დამატება"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Added by a newer version of ictMail: send and receive with it there"
-msgstr ""
+msgstr "დაემატა ictMail-ის უფრო ახალი ვერსიით: გაგზავნა და მიღება იქ შეასრულეთ"
 
 #. interface
 #: crates/ui-egui/src/address_book.rs
@@ -1302,12 +1302,12 @@ msgstr "საერთო საფოსტო ყუთებიდან გ
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "Allow ictMail to keep this mailbox in step with Outlook on the page that opened in your browser…"
-msgstr ""
+msgstr "მიეცით ictMail-ს ამ საფოსტო ყუთის Outlook-თან სინქრონიზაციის ნებართვა ბრაუზერში გახსნილ გვერდზე…"
 
 #. interface
 #: crates/ui-egui/src/shared_mailboxes.rs
 msgid "Allow ictMail to read shared mailboxes on the page that opened in your browser…"
-msgstr ""
+msgstr "მიეცით ictMail-ს საერთო საფოსტო ყუთების წაკითხვის ნებართვა ბრაუზერში გახსნილ გვერდზე…"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -1468,7 +1468,7 @@ msgstr "სანდოსკენ მიმავალ ჯაჭვში ე
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "An https:// or webcal:// address. Nothing is read until you press Subscribe. The calendar is listed under Other Calendars, read-only, and brought up to date from the web every hour and when you press Send/Receive; you can choose another time in File › Info. Its address is asked for over an encrypted connection, with nothing that says who you are. A private address holds a secret: it is kept like a password, in your system's credential store when you let ictMail remember sign-ins, and otherwise until you quit."
-msgstr ""
+msgstr "https:// ან webcal:// მისამართი. „გამოწერაზე“ დაჭერამდე არაფერი იკითხება. კალენდარი ჩამოთვლილი იქნება „სხვა კალენდრებში“, მხოლოდ წასაკითხად, და ინტერნეტიდან განახლდება ყოველ საათში და „გაგზავნა/მიღებაზე“ დაჭერისას; სხვა დროის არჩევა შეგიძლიათ აქ: ფაილი › ინფორმაცია. მისი მისამართიდან მოთხოვნა დაშიფრული კავშირით ხდება და არაფერს შეიცავს, რაც თქვენს ვინაობას გაამხელს. პირადი მისამართი საიდუმლოს შეიცავს: ის პაროლივით ინახება — სისტემის ავტორიზაციის მონაცემების საცავში, თუ ictMail-ს შესვლების დამახსოვრების უფლებას აძლევთ, სხვა შემთხვევაში კი გასვლამდე."
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -1499,7 +1499,7 @@ msgstr[1] "და კიდევ {n} მსგავსი ბმული."
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "Android closed ictMail while Microsoft's page was open, so that sign-in could not be finished. Nothing was added."
-msgstr ""
+msgstr "Android-მა ictMail დახურა, სანამ Microsoft-ის გვერდი ღია იყო, ამიტომ შესვლა ვერ დასრულდა. არაფერი დამატებულა."
 
 #. command label, interface
 #: crates/ui-egui/src/backstage.rs crates/ui-egui/src/lib.rs
@@ -1564,7 +1564,7 @@ msgstr "ნებისმიერი სხვა საფოსტო სე
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "Anything still waiting to go to the server goes first: mail in the Outbox, and flags and moves made while you were offline. If ictMail can't reach the server, the switch waits until it can."
-msgstr ""
+msgstr "ჯერ იგზავნება ყველაფერი, რაც სერვერზე გასაგზავნად ელოდება: გასაგზავნებში არსებული ფოსტა და ოფლაინ რეჟიმში დასმული დროშები და გადატანები. თუ ictMail სერვერს ვერ უკავშირდება, გადასვლა დაელოდება, სანამ შეძლებს."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -1934,7 +1934,7 @@ msgstr "ანგარიშის სერვერისგან კალ�
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
 msgid "Ask the list to stop sending you its mail. ictMail asks first and says how."
-msgstr ""
+msgstr "სთხოვეთ სიას, აღარ გამოგიგზავნოთ თავისი ფოსტა. ictMail ჯერ დაგეკითხებათ და გეტყვით, როგორ."
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -2185,7 +2185,7 @@ msgstr "ავტომატური პასუხები იგზავ�
 #. what a command says
 #: crates/engine/src/cmd/auto_replies.rs
 msgid "Automatic replies are kept on the mail server, and ictMail can set them only for accounts that sign in with Microsoft so far: IMAP has no standard way to set them (Sieve vacation replies may come later)"
-msgstr ""
+msgstr "ავტომატური პასუხები საფოსტო სერვერზე ინახება და ictMail-ს ჯერჯერობით მათი დაყენება მხოლოდ იმ ანგარიშებისთვის შეუძლია, რომლებიც Microsoft-ით შედიან: IMAP-ს მათი დაყენების სტანდარტული გზა არ აქვს (Sieve-ის შვებულების პასუხები შეიძლება მოგვიანებით დაემატოს)"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -2250,12 +2250,12 @@ msgstr "ავტომატური პასუხები: {start} – {en
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Automatic replies: ictMail may change them"
-msgstr ""
+msgstr "ავტომატური პასუხები: ictMail-ს შეუძლია მათი შეცვლა"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Automatic replies: ictMail needs you to sign in again to read them"
-msgstr ""
+msgstr "ავტომატური პასუხები: მათ წასაკითხად ictMail-ს თქვენი ხელახლა შესვლა სჭირდება"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -2284,7 +2284,7 @@ msgstr "ავტომატური პასუხები: იკითხ
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Automatic replies: your organisation doesn't let ictMail change them"
-msgstr ""
+msgstr "ავტომატური პასუხები: თქვენი ორგანიზაცია ictMail-ს მათი შეცვლის უფლებას არ აძლევს"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -2295,7 +2295,7 @@ msgstr "ავტომატური დაყენება (Autodiscover)"
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "Automatic setup can't sign in to this server. Type its address in Server settings and ictMail will sign in with NTLM."
-msgstr ""
+msgstr "ავტომატური დაყენება ამ სერვერზე ვერ შედის. აკრიფეთ მისი მისამართი სერვერის პარამეტრებში და ictMail NTLM-ით შევა."
 
 #. interface
 #: crates/ui-egui/src/meeting_dialogs/share.rs
@@ -2755,7 +2755,7 @@ msgstr "კატეგორიები ანგარიშის {address} 
 #. interface
 #: crates/ui-egui/src/category_sync.rs
 msgid "Categories from {address}'s server. Checking whether ictMail may change them…"
-msgstr ""
+msgstr "კატეგორიები ანგარიშის {address} სერვერიდან. მოწმდება, შეუძლია თუ არა ictMail-ს მათი შეცვლა…"
 
 #. interface
 #: crates/ui-egui/src/category_sync.rs
@@ -2778,7 +2778,7 @@ msgstr "კატეგორიები ანგარიშის {address} 
 #. interface
 #: crates/ui-egui/src/category_sync.rs
 msgid "Categories from {address}'s server. Read-only here until ictMail can check whether it may change them"
-msgstr ""
+msgstr "კატეგორიები ანგარიშის {address} სერვერიდან. აქ მხოლოდ წასაკითხია, სანამ ictMail არ შეამოწმებს, შეუძლია თუ არა მათი შეცვლა"
 
 #. what a command says
 #: crates/engine/src/cmd/tasks/status.rs
@@ -2813,7 +2813,7 @@ msgstr "კატეგორიები: სინქრონიზებუ�
 #. interface
 #: crates/ui-egui/src/category_sync.rs
 msgid "Categories: read-only here (ictMail may not change them)"
-msgstr ""
+msgstr "კატეგორიები: აქ მხოლოდ წასაკითხია (ictMail-ს მათი შეცვლის უფლება არ აქვს)"
 
 #. interface
 #: crates/ui-egui/src/category_sync.rs
@@ -2824,7 +2824,7 @@ msgstr "კატეგორიები: აქ მხოლოდ წას�
 #. interface
 #: crates/ui-egui/src/category_sync.rs
 msgid "Categories: read-only here until ictMail can check whether it may change them"
-msgstr ""
+msgstr "კატეგორიები: აქ მხოლოდ წასაკითხია, სანამ ictMail არ შეამოწმებს, შეუძლია თუ არა მათი შეცვლა"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/RowActionsSheet.kt
@@ -3088,7 +3088,7 @@ msgstr "დაკავშირებამდე ორივე სერვ�
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "Check daily for new versions of ictMail, and download and install them when you quit? Only GitHub is asked; nothing about you or your mail is sent."
-msgstr ""
+msgstr "შევამოწმო ყოველდღე ictMail-ის ახალი ვერსიები და გასვლისას ჩამოვტვირთო და დავაინსტალირო? მხოლოდ GitHub-ს მივმართავთ; თქვენზე ან თქვენს ფოსტაზე არაფერი იგზავნება."
 
 #. command label
 #: crates/ui-egui/src/lib.rs
@@ -3380,7 +3380,7 @@ msgstr "დახურვა და მონახაზად შენახ
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "Close ictMail, install the new version and start it again. Otherwise it is installed when you quit."
-msgstr ""
+msgstr "ictMail დაიხურება, ახალი ვერსია დაინსტალირდება და ხელახლა გაეშვება. სხვა შემთხვევაში ის გასვლისას დაინსტალირდება."
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -3639,7 +3639,7 @@ msgstr "დაკოპირდა. ჩასვით ის წერილ�
 #. name
 #: crates/engine/src/sync_driver/favorites.rs
 msgid "Copies a short message with the address of Microsoft's page where an administrator of your organisation approves ictMail, once for everybody. Nothing is sent: paste it into mail or chat yourself."
-msgstr ""
+msgstr "აკოპირებს მოკლე შეტყობინებას Microsoft-ის იმ გვერდის მისამართით, სადაც თქვენი ორგანიზაციის ადმინისტრატორი ictMail-ს ერთხელ, ყველასთვის ამტკიცებს. არაფერი იგზავნება: თავად ჩასვით ის წერილში ან ჩატში."
 
 #. command label, interface, name
 #: crates/engine/src/cmd/format.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/menubar.rs crates/ui-egui/src/view_source.rs
@@ -3738,7 +3738,7 @@ msgstr "მონიშნული ელემენტების კოპ�
 #. interface
 #: crates/ui-egui/src/chrome.rs
 msgid "Copy the version, the platform and the end of ictMail's own record, to paste into a problem report. No message, address, password or token is in it, and nothing is sent."
-msgstr ""
+msgstr "ვერსიის, პლატფორმისა და ictMail-ის საკუთარი ჟურნალის ბოლოს კოპირება პრობლემის მოხსენებაში ჩასასმელად. მასში არ არის წერილები, მისამართები, პაროლები ან ტოკენები, და არაფერი იგზავნება."
 
 #. command label, interface
 #: crates/engine/src/cmd/mail.rs crates/ui-egui/src/ribbon.rs
@@ -4409,7 +4409,7 @@ msgstr "სამუშაო მაგიდის შეტყობინე�
 #. interface
 #: crates/ui-egui/src/alerts.rs
 msgid "Desktop alerts are turned off for ictMail in System Settings."
-msgstr ""
+msgstr "ictMail-ისთვის სამუშაო მაგიდის შეტყობინებები სისტემის პარამეტრებშია გამორთული."
 
 #. interface
 #: crates/ui-egui/src/alerts.rs
@@ -4774,7 +4774,7 @@ msgstr "ავტომატურად ჩამოიტვირთებ�
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "Downloaded pictures and opened attachments can't be told apart by account: File › Info › Remove ictMail's data from this computer clears them."
-msgstr ""
+msgstr "ჩამოტვირთული სურათებისა და გახსნილი დანართების ანგარიშების მიხედვით გარჩევა შეუძლებელია: მათ ასუფთავებს ფაილი › ინფორმაცია › ictMail-ის მონაცემების წაშლა ამ კომპიუტერიდან."
 
 #. interface
 #: crates/ui-egui/src/attachment_open.rs crates/ui-egui/src/files.rs
@@ -5354,7 +5354,7 @@ msgstr "მასში ყველაფერი დანარჩენი 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Everything else is gone. ictMail quits when you close this."
-msgstr ""
+msgstr "ყველაფერი დანარჩენი წაიშალა. ამის დახურვისას ictMail დაიხურება."
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -5658,7 +5658,7 @@ msgstr "ანაბეჭდი:"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountDialogs.kt
 msgid "Finish on Microsoft's page in your browser. ictMail is waiting."
-msgstr ""
+msgstr "დაასრულეთ Microsoft-ის გვერდზე ბრაუზერში. ictMail გელოდებათ."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposeHost.kt
@@ -5675,7 +5675,7 @@ msgstr "ჯერ დაასრულეთ შესვლა (ბრაუ�
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "Finish signing in on Microsoft's page in your browser. ictMail is waiting."
-msgstr ""
+msgstr "დაასრულეთ შესვლა Microsoft-ის გვერდზე ბრაუზერში. ictMail გელოდებათ."
 
 #. interface
 #: crates/ui-egui/src/credits.rs
@@ -5882,7 +5882,7 @@ msgstr "IMAP ანგარიშებისთვის. Microsoft-ისა 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "For a mail server your organisation runs itself. ictMail looks for the server from your address, or you can type its address in Server settings. Nothing is sent until you press Connect."
-msgstr ""
+msgstr "საფოსტო სერვერისთვის, რომელსაც თქვენი ორგანიზაცია თავად მართავს. ictMail სერვერს თქვენი მისამართით ეძებს, ან შეგიძლიათ მისი მისამართი სერვერის პარამეტრებში აკრიფოთ. დაკავშირებაზე დაჭერამდე არაფერი იგზავნება."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -5893,7 +5893,7 @@ msgstr "გადამგზავნი სერვერისთვის, 
 #. interface
 #: crates/ui-egui/src/favorites_sync.rs
 msgid "For an account that signs in with Microsoft: the folders you keep under Favorites in Outlook, in the same order. They are read from the server and never changed there. Without this, the favourites you mark in ictMail are shown."
-msgstr ""
+msgstr "ანგარიშისთვის, რომელიც Microsoft-ით შედის: საქაღალდეები, რომლებიც Outlook-ში რჩეულებში გაქვთ, იმავე თანმიმდევრობით. ისინი სერვერიდან იკითხება და იქ არასოდეს იცვლება. ამის გარეშე ჩანს რჩეულები, რომლებსაც ictMail-ში მონიშნავთ."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -6244,12 +6244,12 @@ msgstr "GitHub-ის გვერდზე იმდენია, რამდ�
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "GitHub's page is open: attach the diagnostics file there, then submit. ictMail sent nothing."
-msgstr ""
+msgstr "GitHub-ის გვერდი გახსნილია: მიამაგრეთ იქ დიაგნოსტიკის ფაილი და გაგზავნეთ. ictMail-ს არაფერი გაუგზავნია."
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "GitHub's page is open: check it, then submit. ictMail sent nothing."
-msgstr ""
+msgstr "GitHub-ის გვერდი გახსნილია: შეამოწმეთ და გაგზავნეთ. ictMail-ს არაფერი გაუგზავნია."
 
 #. interface
 #: crates/ui-egui/src/forms.rs
@@ -6387,7 +6387,7 @@ msgstr "ბმული მიდის: {host}"
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "Going back to ictMail {version} didn't happen: this version is still the one here."
-msgstr ""
+msgstr "ictMail {version} ვერსიაზე დაბრუნება არ მოხერხდა: აქ ისევ ეს ვერსიაა."
 
 #. interface
 #: crates/ui-egui/src/ribbon.rs
@@ -6421,12 +6421,12 @@ msgstr "Google OAuth-ის წვდომის ტოკენების �
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Google blocked access to ictMail"
-msgstr ""
+msgstr "Google-მა ictMail-ს წვდომა დაუბლოკა"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Google did not authorize ictMail. Your mailbox was not changed. You can retry or choose an app password."
-msgstr ""
+msgstr "Google-მა ictMail-ს ავტორიზაცია არ მისცა. თქვენი საფოსტო ყუთი არ შეცვლილა. შეგიძლიათ კიდევ სცადოთ ან აპლიკაციის პაროლი აირჩიოთ."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -6443,7 +6443,7 @@ msgstr "Google-მა არ დაადასტურა ეს უცვლ�
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Google did not return to ictMail. If you saw Error 403 or Access blocked because the app is in testing, ask the developer to add you as a test user. If your organization blocked it, ask its Workspace administrator. Otherwise, retry. Mail and settings are unchanged."
-msgstr ""
+msgstr "Google ictMail-ში არ დაბრუნდა. თუ იხილეთ Error 403 ან Access blocked, რადგან აპლიკაცია ტესტირების ეტაპზეა, სთხოვეთ დეველოპერს, სატესტო მომხმარებლად დაგამატოთ. თუ თქვენმა ორგანიზაციამ დაბლოკა, მიმართეთ მის Workspace-ის ადმინისტრატორს. სხვა შემთხვევაში კიდევ სცადეთ. ფოსტა და პარამეტრები უცვლელია."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -6484,7 +6484,7 @@ msgstr "Google-ით შესვლა ამ ანაწყობში ა�
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "Google sign-in is open only to invited testers while Google reviews ictMail. To join, email systems@ucscaregroup.co.uk."
-msgstr ""
+msgstr "სანამ Google ictMail-ს განიხილავს, Google-ით შესვლა მხოლოდ მოწვეული ტესტერებისთვისაა ხელმისაწვდომი. შესაერთებლად მოგვწერეთ: systems@ucscaregroup.co.uk."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -6598,7 +6598,7 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr ""
+msgstr "გამარჯობა,\n\nმსურს ictMail-ის გამოყენება ჩემს სამსახურეობრივ ანგარიშთან. ictMail არის ღია კოდის საფოსტო და კალენდრის პროგრამა, რომელიც ჩემსავე კომპიუტერზე მუშაობს. ჩვენს ორგანიზაციაში ახალ პროგრამას მხოლოდ ადმინისტრატორი ამტკიცებს, ამიტომ საჭიროა თქვენი თანხმობა ერთხელ, მთელი ორგანიზაციისთვის. Microsoft-ის გვერდი ამისთვის აქაა:\n\n{link}\n\nდამტკიცების შემდეგ ბრაუზერმა შეიძლება აჩვენოს გვერდი, რომელიც მიუწვდომელია. ეს მოსალოდნელია: ეს მისამართი თქვენსავე კომპიუტერზეა, სადაც არაფერი უსმენს, და თანხმობა ამ დროისთვის უკვე მიცემულია.\n\nგმადლობთ"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -6612,7 +6612,7 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr ""
+msgstr "გამარჯობა,\n\nმსურს ictMail-ის გამოყენება ჩემს სამსახურეობრივ ანგარიშთან. ictMail არის ღია კოდის საფოსტო და კალენდრის პროგრამა, რომელიც ჩემსავე ტელეფონზე მუშაობს. ჩვენს ორგანიზაციაში ახალ პროგრამას მხოლოდ ადმინისტრატორი ამტკიცებს, ამიტომ საჭიროა თქვენი თანხმობა ერთხელ, მთელი ორგანიზაციისთვის. Microsoft-ის გვერდი ამისთვის აქაა:\n\n{link}\n\nდამტკიცების შემდეგ ბრაუზერმა შეიძლება აჩვენოს გვერდი, რომელიც მიუწვდომელია. ეს მოსალოდნელია: ეს მისამართი თქვენსავე კომპიუტერზეა, სადაც არაფერი უსმენს, და თანხმობა ამ დროისთვის უკვე მიცემულია.\n\nგმადლობთ"
 
 #. command label, interface, name, ribbon, ribbon location
 #: crates/engine/src/cmd/help.rs crates/ui-egui/src/lib.rs crates/ui-egui/src/menubar.rs crates/ui-egui/src/ribbon.rs
@@ -6653,7 +6653,7 @@ msgstr "ამ ასლის დამალვა"
 #. interface
 #: crates/ui-egui/src/menubar.rs
 msgid "Hide ictMail"
-msgstr ""
+msgstr "ictMail-ის დამალვა"
 
 #. interface
 #: crates/ui-egui/src/secret_field.rs
@@ -6772,7 +6772,7 @@ msgstr "რამდენ წერილს შეიცავს თითო
 #. command label
 #: crates/ui-egui/src/lib.rs
 msgid "I'm an Administrator: Approve ictMail for My Organisation"
-msgstr ""
+msgstr "ადმინისტრატორი ვარ: ictMail-ის დამტკიცება ჩემი ორგანიზაციისთვის"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -6789,12 +6789,12 @@ msgstr "ხატულები"
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "If Google says the app is in testing, ask the developer to add your email as a test user. If your organization blocks ictMail, ask its Workspace administrator. Those pages may not return here: cancel, then retry when access is granted or use an app password if allowed."
-msgstr ""
+msgstr "თუ Google წერს, რომ აპლიკაცია ტესტირების ეტაპზეა, სთხოვეთ დეველოპერს, თქვენი ელფოსტა სატესტო მომხმარებლად დაამატოს. თუ თქვენი ორგანიზაცია ictMail-ს ბლოკავს, მიმართეთ მის Workspace-ის ადმინისტრატორს. ის გვერდები შეიძლება აქ არ დაბრუნდეს: გააუქმეთ და წვდომის მიღების შემდეგ კიდევ სცადეთ, ან, თუ ნებადართულია, აპლიკაციის პაროლი გამოიყენეთ."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "If ictMail is still in Google's testing mode, ask its developer to add this address to the Test users list. If your organization blocked access, ask your Google Workspace administrator. Your mailbox was not changed."
-msgstr ""
+msgstr "თუ ictMail ჯერ კიდევ Google-ის ტესტირების რეჟიმშია, სთხოვეთ მის დეველოპერს, ეს მისამართი Test users სიაში დაამატოს. თუ თქვენმა ორგანიზაციამ წვდომა დაბლოკა, მიმართეთ თქვენს Google Workspace-ის ადმინისტრატორს. თქვენი საფოსტო ყუთი არ შეცვლილა."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -7071,7 +7071,7 @@ msgstr "იმპორტირებულია: {what}; შეჩერდ�
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Imported: ictMail keeps it in the system's credential store, still protected by its passphrase."
-msgstr ""
+msgstr "იმპორტირებულია: ictMail მას სისტემის ავტორიზაციის მონაცემების საცავში ინახავს, ისევ საიდუმლო ფრაზით დაცულს."
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -7376,7 +7376,7 @@ msgstr "ის გაიგზავნება წერილად „გა
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "It goes to the server once ictMail may change the server's rules (File › Info › Ask again); until then it runs on this computer, while ictMail is open."
-msgstr ""
+msgstr "ის სერვერზე გადავა, როგორც კი ictMail-ს სერვერის წესების შეცვლის უფლება ექნება (ფაილი › ინფორმაცია › ხელახლა მოთხოვნა); მანამდე ის ამ კომპიუტერზე მუშაობს, სანამ ictMail ღიაა."
 
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
@@ -7387,7 +7387,7 @@ msgstr "ის მომდევნო „გაგზავნა/მიღე
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "It is an identifier, not a secret. ictMail keeps it in its settings (File › Options)."
-msgstr ""
+msgstr "ეს იდენტიფიკატორია და არა საიდუმლო. ictMail მას თავის პარამეტრებში ინახავს (ფაილი › პარამეტრები)."
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -7434,22 +7434,22 @@ msgstr "ის საფოსტო სერვერიდანაც წა
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "It is the same for an installed and a portable copy. ictMail quits afterwards."
-msgstr ""
+msgstr "ეს ერთნაირია დაინსტალირებული და პორტატული ასლისთვის. ამის შემდეგ ictMail დაიხურება."
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "It runs on this computer, while ictMail is open."
-msgstr ""
+msgstr "ის ამ კომპიუტერზე მუშაობს, სანამ ictMail ღიაა."
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "It runs there whether ictMail is open or not, and shows in Outlook on the web and on your phone."
-msgstr ""
+msgstr "ის იქ მუშაობს, ღიაა ictMail თუ არა, და ჩანს Outlook-ის ვებვერსიაში და თქვენს ტელეფონზე."
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
 msgid "It uses an algorithm ictMail doesn't know."
-msgstr ""
+msgstr "ის იყენებს ალგორითმს, რომელსაც ictMail არ იცნობს."
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
@@ -7695,7 +7695,7 @@ msgstr "მონაცემების დატოვება"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Keep ictMail running for mail and reminders when you close its window. Click its icon beside the clock to show it again, or choose Quit from the icon's menu. If no system tray is available, closing exits ictMail."
-msgstr ""
+msgstr "ფანჯრის დახურვისას ictMail ფოსტისა და შეხსენებებისთვის მუშაობას განაგრძობს. ხელახლა საჩვენებლად დაწკაპეთ მის ხატულას საათის გვერდით, ან ხატულის მენიუდან აირჩიეთ „გასვლა“. თუ სისტემური უჯრა მიუწვდომელია, დახურვა ictMail-იდან გასვლას ნიშნავს."
 
 #. command label, interface
 #: crates/ui-egui/src/lib.rs crates/ui-egui/src/server_sync.rs
@@ -7736,12 +7736,12 @@ msgstr "ამის შენარჩუნება"
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Keep this rule on an account's server: choose which. It then runs there whether ictMail is open or not, for that account's mail"
-msgstr ""
+msgstr "ეს წესი შეინახეთ ანგარიშის სერვერზე: აირჩიეთ, რომლის. ამის შემდეგ ის იქ იმუშავებს, ღიაა ictMail თუ არა, იმ ანგარიშის ფოსტისთვის"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Keep this rule on the server of {address}: it then runs there whether ictMail is open or not, for that account's mail"
-msgstr ""
+msgstr "ეს წესი შეინახეთ ანგარიშის {address} სერვერზე: ამის შემდეგ ის იქ იმუშავებს, ღიაა ictMail თუ არა, იმ ანგარიშის ფოსტისთვის"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
@@ -7752,7 +7752,7 @@ msgstr "ამ ვერსიის შენარჩუნება"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "Keep waiting, and the switch goes ahead by itself once ictMail can reach the server. Or switch without them, if the server can't be reached any more (for example, your organisation has turned IMAP off):"
-msgstr ""
+msgstr "განაგრძეთ ლოდინი და გადართვა თავისით მოხდება, როგორც კი ictMail სერვერს დაუკავშირდება. ან გადართეთ მათ გარეშე, თუ სერვერი აღარ არის ხელმისაწვდომი (მაგალითად, თქვენმა ორგანიზაციამ IMAP გამორთო):"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -7792,7 +7792,7 @@ msgstr "სად ინახება"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Kept in the system's credential store, never in the mailbox or its settings. Without it you sign in again each time ictMail starts."
-msgstr ""
+msgstr "ინახება სისტემის ავტორიზაციის მონაცემების საცავში და არასოდეს საფოსტო ყუთში ან მის პარამეტრებში. მის გარეშე ictMail-ის ყოველ გაშვებაზე ხელახლა მოგიწევთ შესვლა."
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -8217,7 +8217,7 @@ msgstr "შექმნეს მისმა მონაწილეებმ�
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Made in another program or on the web, with parts ictMail can't show"
-msgstr ""
+msgstr "შექმნილია სხვა პროგრამაში ან ვებში, ნაწილებით, რომლებსაც ictMail ვერ აჩვენებს"
 
 #. android, command label, interface, name, ribbon location
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/MainActivity.kt apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Navigation.kt crates/engine/src/cmd/compose.rs crates/engine/src/cmd/graph_send.rs crates/engine/src/cmd/mail.rs crates/engine/src/cmd/send_later.rs crates/engine/src/cmd/view.rs crates/engine/src/session.rs crates/ui-egui/src/backstage.rs crates/ui-egui/src/lib.rs
@@ -8234,7 +8234,7 @@ msgstr "ამ მოწყობილობაზე შენახული 
 #. interface
 #: crates/ui-egui/src/close_to_tray.rs
 msgid "Mail and reminders will keep running. To bring the window back, click ictMail's system tray icon and choose Show ictMail. On Windows, the icon may be under the arrow for hidden icons beside the clock. On macOS, use the menu-bar icon or click ictMail in the Dock. Choose Quit ictMail from the icon's menu to exit."
-msgstr ""
+msgstr "ფოსტა და შეხსენებები მუშაობას განაგრძობს. ფანჯრის დასაბრუნებლად დაწკაპეთ ictMail-ის ხატულას სისტემურ უჯრაში და აირჩიეთ „ictMail-ის ჩვენება“. Windows-ზე ხატულა შეიძლება საათის გვერდით, დამალული ხატულების ისრის ქვეშ იყოს. macOS-ზე გამოიყენეთ მენიუს ზოლის ხატულა ან დაწკაპეთ ictMail-ს Dock-ში. გასასვლელად ხატულის მენიუდან აირჩიეთ „ictMail-იდან გასვლა“."
 
 #. what a command says
 #: crates/engine/src/io.rs
@@ -8711,7 +8711,7 @@ msgstr "Microsoft 365"
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "Microsoft 365 mail is added as a Microsoft account: you sign in on Microsoft's own page in your browser, and ictMail never sees your password."
-msgstr ""
+msgstr "Microsoft 365-ის ფოსტა Microsoft-ის ანგარიშად ემატება: Microsoft-ის საკუთარ გვერდზე შედიხართ ბრაუზერში და ictMail თქვენს პაროლს ვერასოდეს ხედავს."
 
 #. command label
 #: crates/ui-egui/src/lib.rs
@@ -8770,7 +8770,7 @@ msgstr "Microsoft თქვენს შესვლას აღარ იღ�
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "Microsoft only lets a registered application show its sign-in page, and this build of ictMail has no registration of its own yet."
-msgstr ""
+msgstr "Microsoft შესვლის გვერდის ჩვენების უფლებას მხოლოდ რეგისტრირებულ აპლიკაციას აძლევს, ictMail-ის ამ ანაწყობს კი საკუთარი რეგისტრაცია ჯერ არ აქვს."
 
 #. interface
 #: crates/ui-egui/src/shared_mailboxes.rs
@@ -9138,7 +9138,7 @@ msgstr "ჩემი დავალებები"
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "My organisation has to approve ictMail first: what to do"
-msgstr ""
+msgstr "ჩემმა ორგანიზაციამ ჯერ ictMail უნდა დაამტკიცოს: რა უნდა გავაკეთო"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -10214,7 +10214,7 @@ msgstr "ახლა არა"
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "Not now: it is installed when you quit ictMail."
-msgstr ""
+msgstr "ახლა არა: ის ictMail-იდან გასვლისას დაინსტალირდება."
 
 #. interface
 #: crates/ui-egui/src/forms.rs
@@ -10507,7 +10507,7 @@ msgstr "თარიღი"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "On Wayland, restart ictMail after enabling this option. A reachable X11/XWayland server and a system tray are required."
-msgstr ""
+msgstr "Wayland-ზე ამ პარამეტრის ჩართვის შემდეგ ictMail ხელახლა გაუშვით. საჭიროა ხელმისაწვდომი X11/XWayland სერვერი და სისტემური უჯრა."
 
 #. interface
 #: crates/ui-egui/src/forms.rs
@@ -10794,7 +10794,7 @@ msgstr "მხოლოდ ჩემი მოთხოვნით"
 #. interface
 #: crates/ui-egui/src/alerts.rs
 msgid "Only while ictMail isn't the window in front, and only for the Inboxes of your own accounts."
-msgstr ""
+msgstr "მხოლოდ მაშინ, როცა ictMail წინა პლანზე არ არის, და მხოლოდ თქვენი საკუთარი ანგარიშების „შემოსულებისთვის“."
 
 #. android, interface, ribbon
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AttachmentsView.kt apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ReadingScreen.kt crates/ui-egui/src/attachment_open.rs crates/ui-egui/src/calendar_view.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/reading.rs crates/ui-egui/src/ribbon.rs
@@ -10911,7 +10911,7 @@ msgstr "ღონისძიების გახსნა"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Open ictMail's data folder"
-msgstr ""
+msgstr "ictMail-ის მონაცემთა საქაღალდის გახსნა"
 
 #. interface
 #: crates/ui-egui/src/mail_view.rs
@@ -11024,7 +11024,7 @@ msgstr "გაიხსნა კალენდარი ({name}). ის ჩ�
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "Opened with {owner}'s sign-in. It needs Full Access to the mailbox, which your organisation's administrator gives. Microsoft asks you once to let ictMail read and change shared mailboxes. What you change in it goes to it. Mail you write in it is from its address, and sending as it needs Send As or Send on Behalf permission: Microsoft asks you once more at your first send."
-msgstr ""
+msgstr "გაიხსნა ანგარიშით {owner}. მას საფოსტო ყუთზე სრული წვდომა (Full Access) სჭირდება, რომელსაც თქვენი ორგანიზაციის ადმინისტრატორი იძლევა. Microsoft ერთხელ გკითხავთ, მისცეთ თუ არა ictMail-ს საერთო საფოსტო ყუთების წაკითხვისა და შეცვლის უფლება. რასაც მასში შეცვლით, იქვე აისახება. მასში დაწერილი ფოსტა მისი მისამართიდან იგზავნება, მისი სახელით გაგზავნას კი Send As ან Send on Behalf ნებართვა სჭირდება: Microsoft პირველი გაგზავნისას კიდევ ერთხელ გკითხავთ."
 
 #. interface
 #: crates/ui-egui/src/attachment_open.rs
@@ -11212,7 +11212,7 @@ msgstr "Outlook-ის რჩეულები"
 #. interface
 #: crates/ui-egui/src
 msgid "Outlook's Favorites are now read through Microsoft Graph. To show ictMail's own instead, turn them off in File › Options."
-msgstr ""
+msgstr "Outlook-ის რჩეულები ახლა Microsoft Graph-ით იკითხება. თუ ictMail-ის საკუთარი რჩეულების ჩვენება გსურთ, გამორთეთ ისინი: ფაილი › პარამეტრები."
 
 #. interface
 #: crates/ui-egui/src/favorites_sync.rs
@@ -11223,7 +11223,7 @@ msgstr "Outlook-ის რჩეულები გამორთულია: 
 #. interface
 #: crates/ui-egui/src/nav.rs
 msgid "Outlook's Favorites can't be shown for this account, so the ones kept in ictMail are. File › Options can ask again."
-msgstr ""
+msgstr "ამ ანგარიშისთვის Outlook-ის რჩეულების ჩვენება შეუძლებელია, ამიტომ ნაჩვენებია ictMail-ში შენახული რჩეულები. „ფაილი › პარამეტრები“ ხელახლა იკითხავს."
 
 #. name
 #: crates/ui-egui/src/account_setup.rs
@@ -11234,7 +11234,7 @@ msgstr "Outlook.com"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "Outlook.com, Hotmail, and Microsoft 365 work or school accounts. You sign in on Microsoft's own page in your browser, so ictMail never sees your password."
-msgstr ""
+msgstr "Outlook.com, Hotmail და Microsoft 365-ის სამსახურის ან სასწავლებლის ანგარიშები. ბრაუზერში შედიხართ Microsoft-ის საკუთარ გვერდზე, ამიტომ ictMail თქვენს პაროლს ვერასოდეს ხედავს."
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -11889,7 +11889,7 @@ msgstr "სწრაფი წვდომა"
 #. interface
 #: crates/ui-egui/src/menubar.rs
 msgid "Quit ictMail"
-msgstr ""
+msgstr "ictMail-იდან გასვლა"
 
 #. command label
 #: crates/engine/src/cmd/followup.rs
@@ -11941,7 +11941,7 @@ msgstr "რჩეულების Outlook-იდან ახლავე ხ�
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "Read with {owner}'s sign-in, for as long as you keep it: the person has to have shared their calendar with you. It is kept on this computer only: it won't appear in Outlook or on your other devices. Microsoft asks you once to let ictMail read other people's calendars."
-msgstr ""
+msgstr "იკითხება ანგარიშით {owner}, სანამ შეინახავთ: ამ ადამიანს თავისი კალენდარი თქვენთვის უნდა ჰქონდეს გაზიარებული. ის მხოლოდ ამ კომპიუტერზე ინახება: არ გამოჩნდება Outlook-ში ან თქვენს სხვა მოწყობილობებზე. Microsoft ერთხელ გკითხავთ, მისცეთ თუ არა ictMail-ს სხვა ადამიანების კალენდრების წაკითხვის უფლება."
 
 #. interface
 #: crates/ui-egui/src/people_view.rs
@@ -12363,17 +12363,17 @@ msgstr "სანდო ან დაბლოკილი გამგზავ
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Remove ictMail's Data"
-msgstr ""
+msgstr "ictMail-ის მონაცემების წაშლა"
 
 #. command label
 #: crates/ui-egui/src/lib.rs
 msgid "Remove ictMail's Data from This Computer"
-msgstr ""
+msgstr "ictMail-ის მონაცემების წაშლა ამ კომპიუტერიდან"
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Remove ictMail's data from this computer…"
-msgstr ""
+msgstr "ictMail-ის მონაცემების წაშლა ამ კომპიუტერიდან…"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposerScreen.kt
@@ -12426,7 +12426,7 @@ msgstr "ამ პირობის წაშლა"
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Remove your {format} key for {who} from this computer? It is deleted from the system's credential store, and ictMail can't sign with it any more. Keep a copy of the file if you may need it again."
-msgstr ""
+msgstr "გსურთ თქვენი {format} გასაღების ({who}) წაშლა ამ კომპიუტერიდან? ის სისტემის ავტორიზაციის მონაცემების საცავიდან წაიშლება და ictMail მით ვეღარ მოაწერს ხელს. შეინახეთ ფაილის ასლი, თუ შეიძლება ისევ დაგჭირდეთ."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposerScreen.kt
@@ -12443,7 +12443,7 @@ msgstr "შლის ამ ტელეფონზე შენახულ �
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Removing ictMail's data isn't available here"
-msgstr ""
+msgstr "ictMail-ის მონაცემების წაშლა აქ მიუწვდომელია"
 
 #. interface
 #: crates/ui-egui/src/signatures.rs
@@ -12905,12 +12905,12 @@ msgstr "წესების ახლავე გაშვება"
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Run by ictMail as mail arrives, while it is open"
-msgstr ""
+msgstr "ასრულებს ictMail ფოსტის მოსვლისას, სანამ ის გახსნილია"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Run by the server as mail arrives, whether ictMail is open or not"
-msgstr ""
+msgstr "ასრულებს სერვერი ფოსტის მოსვლისას, ictMail გახსნილია თუ არა"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
@@ -13242,7 +13242,7 @@ msgstr "აღწერეთ, რა მოხდა არასწორა�
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "Say what went wrong. ictMail sends nothing by itself: you check the report and send it."
-msgstr ""
+msgstr "აღწერეთ, რა მოხდა არასწორად. ictMail თავად არაფერს აგზავნის: მოხსენებას თქვენ ამოწმებთ და აგზავნით."
 
 #. interface
 #: crates/ui-egui/src/lib.rs
@@ -13277,7 +13277,7 @@ msgstr "დაეთანხმეთ მხოლოდ მაშინ, თ�
 #. name
 #: crates/engine/src/sync_driver/favorites.rs
 msgid "Says what you and your organisation's administrator can do, and lets an administrator approve ictMail on Microsoft's page from here."
-msgstr ""
+msgstr "აჩვენებს, რისი გაკეთება შეგიძლიათ თქვენ და თქვენი ორგანიზაციის ადმინისტრატორს, და ადმინისტრატორს საშუალებას აძლევს, აქედანვე დაამტკიცოს ictMail Microsoft-ის გვერდზე."
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -13962,7 +13962,7 @@ msgstr "გაგზავნა…"
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "Sends the report to the ictMail team, as this window shows it."
-msgstr ""
+msgstr "აგზავნის მოხსენებას ictMail-ის გუნდთან, ისე, როგორც ამ ფანჯარაშია ნაჩვენები."
 
 #. interface
 #: crates/ui-egui/src/lib.rs
@@ -13991,7 +13991,7 @@ msgstr "ვის გაეგზავნა"
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "Sent to the ictMail team privately. If it's a real problem we may make it public on GitHub, with what you wrote and the diagnostics, so we can track it. Leave out anything private."
-msgstr ""
+msgstr "იგზავნება ictMail-ის გუნდთან კონფიდენციალურად. თუ ეს ნამდვილი პრობლემაა, შესაძლოა GitHub-ზე საჯარო გავხადოთ, თქვენ მიერ დაწერილთან და დიაგნოსტიკასთან ერთად, რომ თვალი ვადევნოთ. პირადი არაფერი ჩაწეროთ."
 
 #. what a command says
 #: crates/model/src/sync/progress.rs
@@ -14320,7 +14320,7 @@ msgstr "შესრულებული დავალებების ჩ�
 #. interface
 #: crates/ui-egui/src/menubar.rs
 msgid "Show ictMail"
-msgstr ""
+msgstr "ictMail-ის ჩვენება"
 
 #. command label
 #: crates/engine/src/cmd/calendar/invitation.rs
@@ -14498,7 +14498,7 @@ msgstr "ფაილების მმართველში აჩვენ�
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Shows {path}, which holds the mailbox open now, in your file manager. ictMail's settings are in a folder of their own."
-msgstr ""
+msgstr "ფაილების მმართველში აჩვენებს საქაღალდეს {path}, სადაც ახლა გახსნილი საფოსტო ყუთია. ictMail-ის პარამეტრები ცალკე საქაღალდეშია."
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -14585,27 +14585,27 @@ msgstr "შედით გვერდზე, რომელიც თქვ�
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Sign in once more to let ictMail read and change your mail, send, and show your calendar and contacts through Microsoft."
-msgstr ""
+msgstr "კიდევ ერთხელ შედით, რომ ictMail-მა შეძლოს Microsoft-ის გავლით თქვენი ფოსტის წაკითხვა და შეცვლა, გაგზავნა და კალენდრისა და კონტაქტების ჩვენება."
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Sign in once more to let ictMail send through Microsoft and show your calendar and contacts. Mail works without it."
-msgstr ""
+msgstr "კიდევ ერთხელ შედით, რომ ictMail-მა შეძლოს Microsoft-ის გავლით გაგზავნა და კალენდრისა და კონტაქტების ჩვენება. ფოსტა ამის გარეშეც მუშაობს."
 
 #. interface
 #: crates/ui-egui/src/calendar_view.rs
 msgid "Sign in once more, so that ictMail may read the categories and the working hours your mailbox has. Your calendar works as it is."
-msgstr ""
+msgstr "კიდევ ერთხელ შედით, რომ ictMail-მა შეძლოს თქვენი საფოსტო ყუთის კატეგორიებისა და სამუშაო საათების წაკითხვა. კალენდარი ჩვეულებრივ მუშაობს."
 
 #. interface
 #: crates/ui-egui/src/calendar_view.rs
 msgid "Sign in once more, so that ictMail may show and change your calendar"
-msgstr ""
+msgstr "კიდევ ერთხელ შედით, რომ ictMail-მა შეძლოს თქვენი კალენდრის ჩვენება და შეცვლა"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "Sign in securely with Google in your browser. Your Google password is never entered in ictMail."
-msgstr ""
+msgstr "შედით უსაფრთხოდ Google-ით თქვენს ბრაუზერში. თქვენი Google-ის პაროლი ictMail-ში არასოდეს შეიყვანება."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -14652,7 +14652,7 @@ msgstr "Microsoft-ით შესვლა"
 #. interface
 #: crates/ui-egui/src/favorites_sync.rs crates/ui-egui/src/nav.rs
 msgid "Sign in with Microsoft once more to let ictMail read the folders you keep under Favorites in Outlook. They are only read, never changed, and everything else stays as it is."
-msgstr ""
+msgstr "კიდევ ერთხელ შედით Microsoft-ით, რომ ictMail-მა შეძლოს Outlook-ში რჩეულებში შენახული საქაღალდეების წაკითხვა. ისინი მხოლოდ იკითხება, არასოდეს იცვლება, და დანარჩენი ყველაფერი ისე რჩება, როგორც არის."
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -14717,7 +14717,7 @@ msgstr "ხელმომწერი:"
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "Signed in, but Microsoft still won't let ictMail read the mail of {account}. Try Send/Receive again later."
-msgstr ""
+msgstr "შესვლა შესრულდა, მაგრამ Microsoft ჯერაც არ აძლევს ictMail-ს ანგარიშის {account} ფოსტის წაკითხვის უფლებას. „გაგზავნა/მიღება“ მოგვიანებით ისევ სცადეთ."
 
 #. interface
 #: crates/ui-egui/src/lib.rs
@@ -14881,7 +14881,7 @@ msgstr "ამ წერილის ზოგიერთი სიმბოლ
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Some of it is still there, as listed above. ictMail quits when you close this."
-msgstr ""
+msgstr "ნაწილი ჯერ კიდევ იქ არის, როგორც ზემოთაა ჩამოთვლილი. ამის დახურვისას ictMail დაიხურება."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposerScreen.kt
@@ -15386,7 +15386,7 @@ msgstr "დადასტურების უკან წაღება"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Take everything ictMail keeps here with you when you are done: for a shared or work computer, or before deleting a portable copy."
-msgstr ""
+msgstr "წაიღეთ თან ყველაფერი, რასაც ictMail აქ ინახავს, როცა დაასრულებთ: საერთო ან სამსახურებრივი კომპიუტერისთვის, ან პორტატული ასლის წაშლამდე."
 
 #. interface
 #: crates/ui-egui/src/reading/invitation.rs
@@ -15505,7 +15505,7 @@ msgstr "Teams-ის შეხვედრა"
 #. interface
 #: crates/ui-egui/src/chrome.rs
 msgid "Tell ictMail's makers what went wrong, on GitHub or by email. You check the report and send it yourself."
-msgstr ""
+msgstr "აცნობეთ ictMail-ის შემქმნელებს, რა მოხდა არასწორად, GitHub-ზე ან ელფოსტით. მოხსენებას თავად ამოწმებთ და აგზავნით."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -15582,7 +15582,7 @@ msgstr "საძიებო ტექსტი"
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "Thank you. The ictMail team has it under this reference."
-msgstr ""
+msgstr "გმადლობთ. ictMail-ის გუნდმა ის მიიღო ამ ნომრით."
 
 #. interface
 #: crates/ui-egui/src/signatures.rs
@@ -15849,7 +15849,7 @@ msgstr "ანგარიში აღარ არსებობს"
 #. interface
 #: crates/ui-egui/src/approval.rs
 msgid "The account that signed in on Microsoft's page is not an administrator of your organisation, so it could not approve ictMail. Copy the message for an administrator instead."
-msgstr ""
+msgstr "ანგარიში, რომლითაც Microsoft-ის გვერდზე შეხვედით, თქვენი ორგანიზაციის ადმინისტრატორი არ არის, ამიტომ ictMail-ს ვერ დაამტკიცებდა. ნაცვლად ამისა, დააკოპირეთ შეტყობინება ადმინისტრატორისთვის."
 
 #. what a command says
 #: crates/engine/src/cmd/calendar_opened.rs
@@ -16250,7 +16250,7 @@ msgstr "დიაგნოსტიკა არ შეინახა, ამ�
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The domain {domain} names a server for Exchange's automatic setup (Autodiscover), so this looks like an Exchange server account. Type your password and press Connect: ictMail looks for the server and checks the account. Nothing is sent until then."
-msgstr ""
+msgstr "დომენი {domain} Exchange-ის ავტომატური დაყენებისთვის (Autodiscover) სერვერს ასახელებს, ამიტომ ეს Exchange სერვერის ანგარიშს ჰგავს. აკრიფეთ პაროლი და დააჭირეთ „დაკავშირებას“: ictMail სერვერს მოძებნის და ანგარიშს შეამოწმებს. მანამდე არაფერი იგზავნება."
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -16473,7 +16473,7 @@ msgstr "გამგზავნთა სია სავსეა: წაშ�
 #. what a command says
 #: crates/mobile/src/core.rs
 msgid "The list of sign-ins kept on this phone was damaged, so some older sign-ins may still be kept on it. The phone's own settings for ictMail let you clear what it keeps."
-msgstr ""
+msgstr "ამ ტელეფონზე შენახული შესვლების სია დაზიანებული იყო, ამიტომ ზოგიერთი ძველი შესვლა შესაძლოა ისევ ინახებოდეს. ტელეფონის პარამეტრებში ictMail-ისთვის შეგიძლიათ გაასუფთაოთ ის, რასაც ინახავს."
 
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
@@ -16598,12 +16598,12 @@ msgstr "წერილი აღარ არსებობს"
 #. interface
 #: crates/ui-egui/src/send_later.rs
 msgid "The message waits in your Outbox, where you can change or cancel it. ictMail sends it at that time; if ictMail isn't running then, it goes the next time it runs."
-msgstr ""
+msgstr "წერილი ელოდება „გასაგზავნებში“, სადაც შეგიძლიათ შეცვალოთ ან გააუქმოთ. ictMail მას იმ დროს გაგზავნის; თუ მაშინ ictMail გაშვებული არ იქნება, წერილი მომდევნო გაშვებისას გაიგზავნება."
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
 msgid "The message was downloaded before ictMail kept the bytes it came as. Check Again downloads them."
-msgstr ""
+msgstr "წერილი ჩამოიტვირთა მანამ, სანამ ictMail მის ორიგინალ ბაიტებს შეინახავდა. „ხელახლა შემოწმება“ მათ ჩამოტვირთავს."
 
 #. interface
 #: crates/ui-egui/src/opened_message.rs crates/ui-egui/src/windows.rs
@@ -16751,7 +16751,7 @@ msgstr "პორტი; ჩვეულებრივისთვის ცა
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "The private key in this file isn't encrypted, so ictMail doesn't keep it: export it again with its key encrypted (AES), protected by a passphrase."
-msgstr ""
+msgstr "ამ ფაილში პირადი გასაღები დაშიფრული არ არის, ამიტომ ictMail მას არ ინახავს: ხელახლა გაიტანეთ ის დაშიფრული გასაღებით (AES), საიდუმლო ფრაზით დაცული."
 
 #. interface
 #: crates/ui-egui/src/meeting_dialogs.rs
@@ -16814,7 +16814,7 @@ msgstr "მოხსენებების სერვისი ახლა 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "The report service's answer wasn't one ictMail understands, so the report may have arrived. Try again later, or open it on GitHub."
-msgstr ""
+msgstr "მოხსენებების სერვისის პასუხი ictMail-ისთვის გაუგებარია, ამიტომ მოხსენება შესაძლოა მივიდა. მოგვიანებით სცადეთ ან გახსენით GitHub-ზე."
 
 #. interface
 #: crates/ui-egui/src/rule_sync.rs
@@ -16997,7 +16997,7 @@ msgstr "სერვერმა ან ორგანიზაციამ თ
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The server sent the setup somewhere that isn't encrypted, which ictMail never follows. Type the server's address in Server settings."
-msgstr ""
+msgstr "სერვერმა დაყენება დაუშიფრავ მისამართზე გადაამისამართა, რასაც ictMail არასოდეს მიჰყვება. შეიყვანეთ სერვერის მისამართი სერვერის პარამეტრებში."
 
 #. interface
 #: crates/ui-egui/src/ews_setup.rs
@@ -17050,17 +17050,17 @@ msgstr "სერვერის სერტიფიკატი შეიც�
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The server's certificate has expired, so ictMail won't connect to it. Ask your administrator to renew it."
-msgstr ""
+msgstr "სერვერის სერტიფიკატს ვადა გაუვიდა, ამიტომ ictMail მას არ დაუკავშირდება. სთხოვეთ ადმინისტრატორს მისი განახლება."
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The server's certificate is for another server's name, so ictMail won't connect to it. Check the address in Server settings."
-msgstr ""
+msgstr "სერვერის სერტიფიკატი სხვა სერვერის სახელზეა, ამიტომ ictMail მას არ დაუკავშირდება. შეამოწმეთ მისამართი სერვერის პარამეტრებში."
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The server's certificate isn't valid yet, so ictMail won't connect to it. Check this computer's date and time, or ask your administrator."
-msgstr ""
+msgstr "სერვერის სერტიფიკატი ჯერ არ მოქმედებს, ამიტომ ictMail მას არ დაუკავშირდება. შეამოწმეთ ამ კომპიუტერის თარიღი და დრო ან მიმართეთ ადმინისტრატორს."
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
@@ -17249,7 +17249,7 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "The switch of {account} to Microsoft Graph waits until ictMail can reach the server."
-msgstr ""
+msgstr "ანგარიშის {account} Microsoft Graph-ზე გადასვლა დაელოდება, სანამ ictMail სერვერს დაუკავშირდება."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
@@ -17284,7 +17284,7 @@ msgstr "დავალებების წაკითხვა ვერ მ
 #. interface
 #: crates/ui-egui/src/calendar_sync.rs
 msgid "The test appointment (\"ictMail connection check\", a year from today) could not be deleted: please delete it in the calendar. Nothing else was read or changed."
-msgstr ""
+msgstr "სატესტო ჩანაწერი („ictMail connection check“, დღეიდან ერთი წლის შემდეგ) ვერ წაიშალა: გთხოვთ, წაშალოთ ის კალენდარში. სხვა არაფერი წაკითხულა ან შეცვლილა."
 
 #. interface
 #: crates/ui-egui/src/calendar_sync.rs
@@ -17397,7 +17397,7 @@ msgstr "ასეთი ანგარიში არ არსებობს
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
 msgid "There's more in this Digital signature than ictMail checks for one message."
-msgstr ""
+msgstr "ამ ციფრულ ხელმოწერაში იმაზე მეტია, ვიდრე ictMail ერთი წერილისთვის ამოწმებს."
 
 #. interface
 #: crates/ui-egui/src/open_shared.rs
@@ -17498,7 +17498,7 @@ msgstr "ეს ანგარიში Google-ით შესვლას ა�
 #. what a command says
 #: crates/engine/src/cmd/unsubscribe.rs
 msgid "This account doesn't send mail from ictMail, so it can't unsubscribe by mail."
-msgstr ""
+msgstr "ეს ანგარიში ictMail-იდან ფოსტას არ აგზავნის, ამიტომ ფოსტით გამოწერას ვერ გააუქმებს."
 
 #. interface
 #: crates/ui-egui/src/approval.rs crates/ui-egui/src/calendar_sync.rs crates/ui-egui/src/favorites_sync.rs crates/ui-egui/src/lib.rs
@@ -17557,7 +17557,7 @@ msgstr "ეს ანგარიში აპლიკაციის პარ
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "This account was added by a newer version of ictMail. This version keeps it as it is and doesn't send or receive with it: use the newer version for that, and to change its settings."
-msgstr ""
+msgstr "ეს ანგარიში ictMail-ის უფრო ახალმა ვერსიამ დაამატა. ეს ვერსია მას ისე ინახავს, როგორც არის, და მისით არც აგზავნის, არც იღებს: ამისთვის და მისი პარამეტრების შესაცვლელად გამოიყენეთ უფრო ახალი ვერსია."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -17574,7 +17574,7 @@ msgstr "ეს ანგარიში წაიშალა, სანამ G
 #. what a command says
 #: crates/engine/src/cmd/folder.rs
 msgid "This account's Favorites come from Outlook and are changed there (File › Options can show the ones kept in ictMail instead)"
-msgstr ""
+msgstr "ამ ანგარიშის რჩეულები Outlook-იდან მოდის და იქ იცვლება (ფაილი › პარამეტრები შეუძლია ნაცვლად ictMail-ში შენახულები აჩვენოს)"
 
 #. interface
 #: crates/ui-egui/src/calendar_sync.rs
@@ -17740,7 +17740,7 @@ msgstr "ეს კატეგორია სერვერზე შენა
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This certificate's key is of a kind ictMail doesn't use: only ECDSA on P-256 or P-384 is imported here."
-msgstr ""
+msgstr "ამ სერტიფიკატის გასაღები ისეთი ტიპისაა, რომელსაც ictMail არ იყენებს: აქ შემოიტანება მხოლოდ ECDSA P-256 ან P-384-ზე."
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -17775,7 +17775,7 @@ msgstr "ეს კონტაქტი სამუდამოდ წაიშ
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "This copy of ictMail doesn't update itself."
-msgstr ""
+msgstr "ictMail-ის ეს ასლი თავად არ განახლდება."
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
@@ -17912,12 +17912,12 @@ msgstr "ეს მხოლოდ ამ დღეს ეხება: {day}."
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This is an RSA certificate, which ictMail doesn't use by itself on this system: put it on a smartcard or token (PKCS#11), where ictMail finds it."
-msgstr ""
+msgstr "ეს RSA სერტიფიკატია, რომელსაც ictMail ამ სისტემაში დამოუკიდებლად არ იყენებს: მოათავსეთ ის სმარტ-ბარათზე ან ტოკენზე (PKCS#11), სადაც ictMail მას იპოვის."
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This is an RSA key, which ictMail doesn't use by itself: keep it in GnuPG, whose agent ictMail signs with, and leave it out of here."
-msgstr ""
+msgstr "ეს RSA გასაღებია, რომელსაც ictMail დამოუკიდებლად არ იყენებს: შეინახეთ ის GnuPG-ში, რომლის აგენტითაც ictMail ხელს აწერს, და აქ ნუ შემოიტანთ."
 
 #. what a command says
 #: crates/engine/src/cmd/calendar/invitation.rs
@@ -17976,12 +17976,12 @@ msgstr "ამ გასაღებს ციფრული ხელმოწ
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This key has no passphrase, so ictMail doesn't keep it. Add one in GnuPG (gpg --edit-key <key>, then passwd) and import it again."
-msgstr ""
+msgstr "ამ გასაღებს საიდუმლო ფრაზა არ აქვს, ამიტომ ictMail მას არ ინახავს. დაამატეთ ის GnuPG-ში (gpg --edit-key <key>, შემდეგ passwd) და ხელახლა შემოიტანეთ."
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This key signs with an algorithm ictMail doesn't use: only Ed25519 and ECDSA keys are imported here."
-msgstr ""
+msgstr "ეს გასაღები ხელს აწერს ალგორითმით, რომელსაც ictMail არ იყენებს: აქ შემოიტანება მხოლოდ Ed25519 და ECDSA გასაღებები."
 
 #. what a command says
 #: crates/mobile/src/sync.rs
@@ -18161,8 +18161,8 @@ msgstr "ამ წერილს გამგზავნის შესახ
 #: crates/ui-egui/src/send_warnings.rs
 msgid "This message has more recipients than ictMail checks: only the first one was looked at."
 msgid_plural "This message has more recipients than ictMail checks: only the first {n} were looked at."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ამ წერილს იმაზე მეტი მიმღები აქვს, ვიდრე ictMail ამოწმებს: შემოწმდა მხოლოდ პირველი."
+msgstr[1] "ამ წერილს იმაზე მეტი მიმღები აქვს, ვიდრე ictMail ამოწმებს: შემოწმდა მხოლოდ პირველი {n}."
 
 #. interface
 #: crates/ui-egui/src/reading/view.rs
@@ -18221,7 +18221,7 @@ msgstr "ეს წერილი ამ კომპიუტერზე ჯ�
 #. interface
 #: crates/ui-egui/src/reading/warnings.rs
 msgid "This message lays itself out in more ways than ictMail could check, so a link in one of them may go somewhere other than its text says."
-msgstr ""
+msgstr "ეს წერილი იმაზე მეტი გზით ლაგდება, ვიდრე ictMail-მა შემოწმება შეძლო, ამიტომ რომელიმე მათგანში ბმული შესაძლოა სხვაგან მიდიოდეს, ვიდრე მისი ტექსტი ამბობს."
 
 #. interface
 #: crates/ui-egui/src/reading/warnings.rs
@@ -18310,7 +18310,7 @@ msgstr "ეს სურათი ჩამოიტვირთა, მაგ�
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "This removes everything ictMail keeps on this computer: every account's mail, attachments, contacts, calendar and settings, the sign-ins remembered in the system's credential store, downloaded pictures, opened attachments and logs."
-msgstr ""
+msgstr "ეს შლის ყველაფერს, რასაც ictMail ამ კომპიუტერზე ინახავს: ყველა ანგარიშის ფოსტას, დანართებს, კონტაქტებს, კალენდარს და პარამეტრებს, სისტემის ავტორიზაციის მონაცემების საცავში დამახსოვრებულ შესვლებს, ჩამოტვირთულ სურათებს, გახსნილ დანართებს და ჟურნალებს."
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
@@ -18321,7 +18321,7 @@ msgstr "ეს მოხსენება გასაგზავნად ზ
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "This rule can't be kept on the server: {why}. It runs on this computer, while ictMail is open."
-msgstr ""
+msgstr "ამ წესის სერვერზე შენახვა შეუძლებელია: {why}. ის ამ კომპიუტერზე სრულდება, სანამ ictMail გახსნილია."
 
 #. what a command says
 #: crates/engine/src/cmd/calendar.rs
@@ -18350,12 +18350,12 @@ msgstr "ამ ხელმოწერას სურათი ან სა�
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "This sync needs about {needed}. This phone has {free} free, and ictMail keeps some room for the phone to go on working. Sync anyway?"
-msgstr ""
+msgstr "ამ სინქრონიზაციას დაახლოებით {needed} სჭირდება. ამ ტელეფონზე თავისუფალია {free}, და ictMail გარკვეულ ადგილს ტოვებს, რომ ტელეფონმა მუშაობა გააგრძელოს. მაინც გაგრძელდეს სინქრონიზაცია?"
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "This system has no place ictMail knows for S/MIME certificates with a private key."
-msgstr ""
+msgstr "ამ სისტემაში ictMail-მა არ იცის ადგილი პირადი გასაღების მქონე S/MIME სერტიფიკატებისთვის."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/TaskDraft.kt
@@ -18366,7 +18366,7 @@ msgstr "ამ დავალების წაკითხვა ვერ �
 #. interface
 #: crates/ui-egui/src/address_book.rs
 msgid "This version of ictMail can't search an address list"
-msgstr ""
+msgstr "ictMail-ის ამ ვერსიას მისამართების სიაში ძიება არ შეუძლია"
 
 #. what a command says
 #: crates/engine/src/cmd/remote.rs
@@ -18526,7 +18526,7 @@ msgid ""
 "To keep the automatic replies of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, your automatic replies aren't changed."
-msgstr ""
+msgstr "ანგარიშის {address} ავტომატური პასუხების Outlook-თან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა საფოსტო ყუთის პარამეტრების შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n\nსანამ ამას დაუშვებთ, თქვენი ავტომატური პასუხები არ შეიცვლება."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18534,7 +18534,7 @@ msgid ""
 "To keep the rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr ""
+msgstr "ანგარიშის {address} წესების, ავტომატური პასუხებისა და კატეგორიების Outlook-თან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა საფოსტო ყუთის პარამეტრების შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n\nსანამ ამას დაუშვებთ, წესები ამ კომპიუტერზე რჩება და მათგან არაფერი ეგზავნება Microsoft-ს, თქვენი ავტომატური პასუხები არ შეიცვლება, ამ საფოსტო ყუთის კატეგორიების შეცვლა კი აქ შეუძლებელია."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18542,7 +18542,7 @@ msgid ""
 "To keep the tasks and automatic replies of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft, and your automatic replies aren't changed."
-msgstr ""
+msgstr "ანგარიშის {address} დავალებებისა და ავტომატური პასუხების Outlook-თან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა To Do-ს სიებისა და საფოსტო ყუთის პარამეტრების შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n\nსანამ ამას დაუშვებთ, დავალებები ამ კომპიუტერზე რჩება და მათგან არაფერი ეგზავნება Microsoft-ს, თქვენი ავტომატური პასუხები კი არ შეიცვლება."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18550,7 +18550,7 @@ msgid ""
 "To keep the tasks of {address} in step with Microsoft To Do, ictMail needs your permission to read and change your To Do lists and tasks. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft."
-msgstr ""
+msgstr "ანგარიშის {address} დავალებების Microsoft To Do-სთან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა To Do-ს სიებისა და დავალებების წასაკითხად და შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n\nსანამ ამას დაუშვებთ, დავალებები ამ კომპიუტერზე რჩება და მათგან არაფერი ეგზავნება Microsoft-ს."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -18558,7 +18558,7 @@ msgid ""
 "To keep the tasks, rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks and rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr ""
+msgstr "ანგარიშის {address} დავალებების, წესების, ავტომატური პასუხებისა და კატეგორიების Outlook-თან სინქრონიზაციისთვის ictMail-ს სჭირდება თქვენი ნებართვა To Do-ს სიებისა და საფოსტო ყუთის პარამეტრების შესაცვლელად. ამის საკითხავად თქვენს ბრაუზერში ერთხელ გაიხსნება Microsoft-ის გვერდი.\n\nსანამ ამას დაუშვებთ, დავალებები და წესები ამ კომპიუტერზე რჩება და მათგან არაფერი ეგზავნება Microsoft-ს, თქვენი ავტომატური პასუხები არ შეიცვლება, ამ საფოსტო ყუთის კატეგორიების შეცვლა კი აქ შეუძლებელია."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/MailListModel.kt
@@ -18804,12 +18804,12 @@ msgstr "აკრიფეთ, რისი გაკეთება გსუ�
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "Type your address. ictMail finds your mail servers and how you sign in."
-msgstr ""
+msgstr "აკრიფეთ თქვენი მისამართი. ictMail თავად იპოვის თქვენს საფოსტო სერვერებს და შესვლის წესს."
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Type your e-mail address and ictMail finds the rest: Microsoft 365, Outlook.com, Google and other providers, or a mailbox on this device only"
-msgstr ""
+msgstr "აკრიფეთ თქვენი ელფოსტის მისამართი და დანარჩენს ictMail თავად იპოვის: Microsoft 365, Outlook.com, Google და სხვა პროვაიდერები, ან საფოსტო ყუთი მხოლოდ ამ მოწყობილობაზე"
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -19111,7 +19111,7 @@ msgstr "სისტემის პარამეტრის გამოყ�
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Use system setting follows Animation effects in Windows' settings. Where ictMail can't read the system's setting yet, animations play until you choose Never play."
-msgstr ""
+msgstr "„სისტემის პარამეტრის გამოყენება“ Windows-ის პარამეტრებში „ანიმაციის ეფექტებს“ მიჰყვება. სადაც ictMail სისტემის პარამეტრს ჯერ ვერ კითხულობს, ანიმაციები ეშვება, სანამ „არასოდეს გაშვებას“ არ აირჩევთ."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -19266,7 +19266,7 @@ msgstr "მოლოდინში"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Waiting for ictMail's Google registration"
-msgstr ""
+msgstr "ictMail-ის Google-ში რეგისტრაციის მოლოდინი"
 
 #. interface
 #: crates/ui-egui/src/approval.rs
@@ -19343,7 +19343,7 @@ msgstr "რა ემართება ფოსტას მიღების
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "What ictMail sends, and to whom"
-msgstr ""
+msgstr "რას აგზავნის ictMail და ვის"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
@@ -19372,7 +19372,7 @@ msgstr "რას ეკითხებიან მოწვეულებს,
 #. command label
 #: crates/ui-egui/src/lib.rs
 msgid "What to Do When Your Organisation Has to Approve ictMail"
-msgstr ""
+msgstr "რა გააკეთოთ, როცა თქვენმა ორგანიზაციამ ictMail უნდა დაამტკიცოს"
 
 #. android, interface, name
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt crates/engine/src/sync_driver/favorites.rs crates/ui-egui/src/account_setup/help.rs
@@ -19465,7 +19465,7 @@ msgstr "სად"
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Where the card says the key is: ictMail doesn't fetch it."
-msgstr ""
+msgstr "სადაც ბარათის თანახმად გასაღებია: ictMail მას არ ჩამოტვირთავს."
 
 #. interface
 #: crates/ui-egui/src/merge_contacts.rs
@@ -19482,7 +19482,7 @@ msgstr "ონლაინ ჩატარდება თუ არა, ამ�
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Which keys your GnuPG trusts fully, last read: {when}. It is read again when ictMail comes back to the front, and by Refresh."
-msgstr ""
+msgstr "რომელ გასაღებებს ენდობა თქვენი GnuPG სრულად; ბოლოს წაკითხულია: {when}. ხელახლა იკითხება, როცა ictMail წინა პლანზე დაბრუნდება, და „განახლებით“."
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -19523,12 +19523,12 @@ msgstr "Windows-ის სერტიფიკატების საცა�
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Windows keeps the certificate and its private key in your certificate store, and asks you before ictMail uses it."
-msgstr ""
+msgstr "Windows სერტიფიკატს და მის პირად გასაღებს თქვენს სერტიფიკატების საცავში ინახავს და ictMail-ის მიერ გამოყენებამდე გეკითხებათ."
 
 #. interface
 #: crates/ui-egui/src/calendar_view.rs
 msgid "Without this, the calendar uses the working hours your Microsoft 365 mailbox has, once ictMail may read them. The ones above are used until then."
-msgstr ""
+msgstr "ამის გარეშე კალენდარი თქვენი Microsoft 365 საფოსტო ყუთის სამუშაო საათებს გამოიყენებს, როგორც კი ictMail-ს მათი წაკითხვის ნება ექნება. მანამდე ზემოთ მითითებული საათები გამოიყენება."
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -19788,7 +19788,7 @@ msgstr "ეს გასაღები დადასტურებულა�
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "You may be asked to sign in with Microsoft again, to let ictMail read and change your mail there."
-msgstr ""
+msgstr "შესაძლოა, Microsoft-ით ხელახლა შესვლა მოგთხოვონ, რათა ictMail-მა იქ თქვენი ფოსტის წაკითხვა და შეცვლა შეძლოს."
 
 #. interface
 #: crates/ui-egui/src/meeting_dialogs.rs
@@ -19883,7 +19883,7 @@ msgstr "თქვენი დომენის DNS-ის გამოკი�
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "Your domain's DNS names no server for automatic setup. ictMail still tries the usual places for your address."
-msgstr ""
+msgstr "თქვენი დომენის DNS ავტომატური დაყენებისთვის სერვერს არ ასახელებს. ictMail მაინც ცდის თქვენი მისამართისთვის ჩვეულ ადგილებს."
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -19894,7 +19894,7 @@ msgstr "თქვენი დომენის DNS autodiscover სახე�
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Your keychain keeps the certificate and its private key, and macOS asks you before ictMail uses it."
-msgstr ""
+msgstr "სერტიფიკატს და მის პირად გასაღებს თქვენი Keychain ინახავს და macOS ictMail-ის მიერ გამოყენებამდე გეკითხებათ."
 
 #. what a command says
 #: crates/mobile/src/sync.rs
@@ -19923,7 +19923,7 @@ msgstr "თქვენმა საფოსტო სერვერმა შ
 #. interface
 #: crates/ui-egui/src/reading/remote.rs
 msgid "Your mail server didn't confirm that this message came from {sender}, so ictMail won't remember them: a sender's address can be faked."
-msgstr ""
+msgstr "თქვენმა საფოსტო სერვერმა არ დაადასტურა, რომ ამ წერილის გამგზავნია {sender}, ამიტომ ictMail მას არ დაიმახსოვრებს: გამგზავნის მისამართის გაყალბება შესაძლებელია."
 
 #. what a command says
 #: crates/engine/src/cmd/unsubscribe.rs
@@ -19976,12 +19976,12 @@ msgstr "თქვენი ორგანიზაცია ამ ანგა
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Your organisation doesn't let ictMail change your automatic replies. Ask your administrator."
-msgstr ""
+msgstr "თქვენი ორგანიზაცია ictMail-ს არ აძლევს თქვენი ავტომატური პასუხების შეცვლის ნებას. მიმართეთ ადმინისტრატორს."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "Your organisation doesn't let ictMail keep this mailbox in step with Outlook"
-msgstr ""
+msgstr "თქვენი ორგანიზაცია ictMail-ს არ აძლევს ამ საფოსტო ყუთის Outlook-თან სინქრონიზაციის ნებას"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs crates/ui-egui/src/shared_permission.rs
@@ -19991,32 +19991,32 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/approval.rs
 msgid "Your organisation has approved ictMail"
-msgstr ""
+msgstr "თქვენმა ორგანიზაციამ ictMail დაამტკიცა"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Your organisation has approved ictMail. Now sign in with your own account."
-msgstr ""
+msgstr "თქვენმა ორგანიზაციამ ictMail დაამტკიცა. ახლა შედით საკუთარი ანგარიშით."
 
 #. what a command says
 #: crates/mobile/src/sync_api.rs
 msgid "Your organisation has to approve ictMail before you can sign in. Ask an administrator."
-msgstr ""
+msgstr "შესვლამდე თქვენმა ორგანიზაციამ ictMail უნდა დაამტკიცოს. მიმართეთ ადმინისტრატორს."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Your organisation has to approve ictMail first"
-msgstr ""
+msgstr "ჯერ თქვენმა ორგანიზაციამ უნდა დაამტკიცოს ictMail"
 
 #. interface
 #: crates/ui-egui/src/nav.rs
 msgid "Your organisation keeps this permission for its administrators to give. Once one of them has approved it, choose it again here. Until then the Favorites kept in ictMail are shown."
-msgstr ""
+msgstr "ამ ნებართვის გაცემას თქვენი ორგანიზაცია მხოლოდ ადმინისტრატორებს ანდობს. როცა რომელიმე მათგანი დაამტკიცებს, აქ ხელახლა აირჩიეთ. მანამდე ნაჩვენებია ictMail-ში შენახული რჩეულები."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Your organisation lets only an administrator approve a new program, and none has approved ictMail yet. Nothing is wrong with your account or your password."
-msgstr ""
+msgstr "თქვენს ორგანიზაციაში ახალ პროგრამას მხოლოდ ადმინისტრატორი ამტკიცებს და ictMail ჯერ არცერთს დაუმტკიცებია. თქვენს ანგარიშსა და პაროლს არაფერი სჭირს."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -20033,7 +20033,7 @@ msgstr "თქვენს ორგანიზაციაში ეს ჯე
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "Your organisation needs to approve ictMail"
-msgstr ""
+msgstr "თქვენმა ორგანიზაციამ ictMail უნდა დაამტკიცოს"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -20044,7 +20044,7 @@ msgstr "მაშინ თქვენს ორგანიზაციაშ�
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "Your organisation's administrator has to approve ictMail keeping this mailbox in step with Outlook once: File › Info"
-msgstr ""
+msgstr "თქვენი ორგანიზაციის ადმინისტრატორმა ერთხელ უნდა დაამტკიცოს, რომ ictMail ამ საფოსტო ყუთს Outlook-თან სინქრონიზებდეს: ფაილი › ინფორმაცია"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -20060,17 +20060,17 @@ msgstr "თქვენი ორგანიზაციის ადმინ�
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "Your organisation's rules (Conditional Access) don't allow ictMail to sign you in on this phone. This is your organisation's policy, not a fault in ictMail or in your phone. Ask the people who run your organisation's mail whether sign-in from this kind of app can be allowed."
-msgstr ""
+msgstr "თქვენი ორგანიზაციის წესები (Conditional Access) ictMail-ს არ აძლევს უფლებას, ამ ტელეფონზე შეგიყვანოთ. ეს თქვენი ორგანიზაციის პოლიტიკაა და არა ictMail-ის ან თქვენი ტელეფონის ხარვეზი. ჰკითხეთ მათ, ვინც თქვენი ორგანიზაციის ფოსტას მართავს, შეიძლება თუ არა ამ ტიპის აპლიკაციიდან შესვლის დაშვება."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "Your organisation's rules don't allow this for your account. This is your organisation's policy, not a fault in ictMail."
-msgstr ""
+msgstr "თქვენი ორგანიზაციის წესები თქვენი ანგარიშისთვის ამას არ უშვებს. ეს თქვენი ორგანიზაციის პოლიტიკაა და არა ictMail-ის ხარვეზი."
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Your own certificates and keys are used by ictMail's desktop program: here Digital signatures are checked, and nothing is signed or decrypted."
-msgstr ""
+msgstr "თქვენს საკუთარ სერტიფიკატებსა და გასაღებებს ictMail-ის სამაგიდო პროგრამა იყენებს: აქ ციფრული ხელმოწერები მოწმდება, ხელმოწერა ან გაშიფვრა კი არ ხდება."
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -20207,7 +20207,7 @@ msgstr "JMAP ანგარიშის სერვერისა და მ�
 #. what a command says
 #: crates/engine/src/cmd/senders.rs
 msgid "a Microsoft or Exchange account sends from other addresses only as its server allows, which ictMail doesn't ask for yet"
-msgstr ""
+msgstr "Microsoft-ის ან Exchange-ის ანგარიში სხვა მისამართებიდან მხოლოდ მაშინ აგზავნის, როცა მისი სერვერი ამის საშუალებას იძლევა, და ictMail ამას ჯერ არ ითხოვს"
 
 #. why a mail server couldn't be used
 #: crates/net/src/sync.rs
@@ -20604,7 +20604,7 @@ msgstr "შეგროვებულია ფოსტიდან"
 #. why a command can't run
 #: crates/engine/src/gmail.rs
 msgid "comes once Google has reviewed ictMail"
-msgstr ""
+msgstr "ხელმისაწვდომი იქნება, როცა Google ictMail-ს განიხილავს"
 
 #. why a mail server couldn't be used
 #: crates/proto/src/lib.rs
@@ -20761,259 +20761,259 @@ msgstr "icloud.com, me.com და mac.com"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "ictMail can now keep {account} in step with Microsoft through Microsoft Graph, the way Outlook on the web does, instead of IMAP. Your folders, flags, categories and drafts then match what you see in Outlook, and your mail keeps coming even where your organisation has turned IMAP off."
-msgstr ""
+msgstr "ictMail-ს ახლა შეუძლია {account} Microsoft-თან სინქრონიზებული იყოს Microsoft Graph-ის მეშვეობით, ისე, როგორც Outlook-ის ვებვერსია აკეთებს, IMAP-ის ნაცვლად. მაშინ თქვენი საქაღალდეები, დროშები, კატეგორიები და მონახაზები დაემთხვევა იმას, რასაც Outlook-ში ხედავთ, ფოსტა კი მოსვლას განაგრძობს იქაც, სადაც თქვენმა ორგანიზაციამ IMAP გამორთო."
 
 #. name
 #: crates/engine/src/cmd/rules.rs
 msgid "ictMail can't keep this account's rules on its server"
-msgstr ""
+msgstr "ictMail ვერ ინახავს ამ ანგარიშის წესებს მის სერვერზე"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "ictMail can't sign in to this server this way yet (it wants Kerberos). Ask your administrator whether it can take a user name and password over an encrypted connection."
-msgstr ""
+msgstr "ictMail ამ სერვერზე ამ გზით შესვლას ჯერ ვერ ახერხებს (ის Kerberos-ს ითხოვს). ჰკითხეთ ადმინისტრატორს, შეუძლია თუ არა მომხმარებლის სახელისა და პაროლის მიღება დაშიფრული კავშირით."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "ictMail carries the software below. The Rust libraries of its core are listed with their versions in the source repository."
-msgstr ""
+msgstr "ictMail შეიცავს ქვემოთ ჩამოთვლილ პროგრამებს. მისი ბირთვის Rust ბიბლიოთეკები ვერსიებით ჩამოთვლილია წყაროს რეპოზიტორიაში."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail couldn't open a browser for Microsoft's page."
-msgstr ""
+msgstr "ictMail-მა Microsoft-ის გვერდისთვის ბრაუზერი ვერ გახსნა."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail couldn't open a browser for Microsoft's page. Install or enable a browser, then try again."
-msgstr ""
+msgstr "ictMail-მა Microsoft-ის გვერდისთვის ბრაუზერი ვერ გახსნა. დააინსტალირეთ ან ჩართეთ ბრაუზერი და კიდევ სცადეთ."
 
 #. interface
 #: crates/ui-egui/src/approval.rs
 msgid "ictMail couldn't open your browser for Microsoft's approval page. Copy the message instead: the link in it opens the same page."
-msgstr ""
+msgstr "ictMail-მა ვერ გახსნა თქვენი ბრაუზერი Microsoft-ის დამტკიცების გვერდისთვის. სანაცვლოდ დააკოპირეთ წერილი: მასში არსებული ბმული იმავე გვერდს ხსნის."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "ictMail couldn't save your latest changes yet. It will try again; if the app closes first they may be lost."
-msgstr ""
+msgstr "ictMail-მა თქვენი ბოლო ცვლილებები ჯერ ვერ შეინახა. ის კიდევ შეეცდება; თუ აპლიკაცია მანამდე დაიხურა, ისინი შეიძლება დაიკარგოს."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "ictMail couldn't set aside the saved mailbox it couldn't read, so changes aren't saved this time. Free up space and restart the app."
-msgstr ""
+msgstr "ictMail-მა გვერდზე ვერ გადადო შენახული საფოსტო ყუთი, რომლის წაკითხვაც ვერ შეძლო, ამიტომ ამჯერად ცვლილებები არ ინახება. გაათავისუფლეთ ადგილი და აპლიკაცია ხელახლა გაუშვით."
 
 #. what a command says
 #: crates/model/src/mailbox.rs
 msgid "ictMail doesn't delete a JMAP account's folders yet: the next Send/Receive would bring them back"
-msgstr ""
+msgstr "ictMail JMAP ანგარიშის საქაღალდეებს ჯერ არ შლის: შემდეგი გაგზავნა/მიღება მათ დააბრუნებდა"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "ictMail doesn't know the settings for this address. The servers below are only a guess made from its domain: check them with your provider or administrator before you connect."
-msgstr ""
+msgstr "ictMail-მა ამ მისამართის პარამეტრები არ იცის. ქვემოთ მოცემული სერვერები მხოლოდ მისი დომენიდან გამოცნობილია: დაკავშირებამდე გადაამოწმეთ ისინი თქვენს პროვაიდერთან ან ადმინისტრატორთან."
 
 #. what a command says
 #: crates/model/src/mailbox.rs
 msgid "ictMail doesn't rename or move a JMAP account's folders yet: its server wouldn't be told"
-msgstr ""
+msgstr "ictMail ჯერ ვერ შეუცვლის სახელს და ვერ გადაიტანს JMAP ანგარიშის საქაღალდეებს: მის სერვერს ეს არ ეცნობებოდა"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "ictMail doesn't support POP yet. Use your provider's IMAP server instead (usually imap.<your domain>, port 993)."
-msgstr ""
+msgstr "ictMail ჯერ არ უჭერს მხარს POP-ს. სანაცვლოდ გამოიყენეთ თქვენი პროვაიდერის IMAP სერვერი (ჩვეულებრივ imap.<your domain>, პორტი 993)."
 
 #. interface
 #: crates/ui-egui/src/software.rs
 msgid "ictMail is drawing without the graphics card, which uses a lot of processor time. Installing or updating the graphics driver usually fixes this."
-msgstr ""
+msgstr "ictMail ვიდეობარათის გარეშე ხატავს, რაც პროცესორის ბევრ დროს მოიხმარს. ამას ჩვეულებრივ გრაფიკული დრაივერის დაყენება ან განახლება ასწორებს."
 
 #. interface
 #: crates/ui-egui/src/ribbon.rs
 msgid "ictMail is open source (MIT or Apache-2.0). Every button here runs a command that scripts and agents can run too: see Search Commands."
-msgstr ""
+msgstr "ictMail ღია კოდისაა (MIT ან Apache-2.0). აქ ყოველი ღილაკი უშვებს ბრძანებას, რომლის გაშვებაც სკრიპტებსა და აგენტებსაც შეუძლიათ: იხილეთ „ბრძანებების ძიება“."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "ictMail is open source, under the MIT and Apache 2.0 licences."
-msgstr ""
+msgstr "ictMail ღია კოდისაა, MIT და Apache 2.0 ლიცენზიებით."
 
 #. interface
 #: crates/ui-egui/src/credits.rs
 msgid "ictMail is tested on real mail, by people who use it every day and tell us what goes wrong. Thank you."
-msgstr ""
+msgstr "ictMail-ს რეალურ ფოსტაზე ცდიან ადამიანები, რომლებიც მას ყოველდღე იყენებენ და გვეუბნებიან, რა არ მუშაობს. გმადლობთ."
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail is up to date ({version})."
-msgstr ""
+msgstr "ictMail განახლებულია ({version})."
 
 #. interface
 #: crates/ui-egui/src/open_shared.rs crates/ui-egui/src/shared_permission.rs
 msgid "ictMail isn't allowed to read other people's calendars yet."
-msgstr ""
+msgstr "ictMail-ს სხვა ადამიანების კალენდრების წაკითხვის უფლება ჯერ არ აქვს."
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "ictMail keeps at most {n} keys imported here, and has that many: remove one you don't use, then import this one."
-msgstr ""
+msgstr "ictMail აქ იმპორტირებულ მაქსიმუმ {n} გასაღებს ინახავს და ამდენი უკვე აქვს: წაშალეთ ერთი, რომელსაც არ იყენებთ, შემდეგ კი ეს იმპორტირეთ."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs crates/ui-egui/src/dialogs.rs
 msgid "ictMail keeps it in memory until you close the app. It is never written to disk."
-msgstr ""
+msgstr "ictMail მას მეხსიერებაში ინახავს, სანამ აპლიკაციას დახურავთ. დისკზე ის არასოდეს იწერება."
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "ictMail keeps the file, still protected by its passphrase, in the system's credential store. Only an ECDSA certificate (P-256 or P-384) is kept this way: an RSA one belongs on a smartcard or token (PKCS#11)."
-msgstr ""
+msgstr "ictMail ფაილს, ისევ საიდუმლო ფრაზით დაცულს, სისტემის ავტორიზაციის მონაცემების საცავში ინახავს. ასე მხოლოდ ECDSA სერტიფიკატი (P-256 ან P-384) ინახება: RSA სერტიფიკატის ადგილი სმარტბარათზე ან ტოკენზეა (PKCS#11)."
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "ictMail keeps this account's rules on this computer: the rule runs while ictMail is open."
-msgstr ""
+msgstr "ictMail ამ ანგარიშის წესებს ამ კომპიუტერზე ინახავს: წესი მუშაობს, სანამ ictMail ღიაა."
 
 #. what a command says
 #: crates/model/src/mailbox.rs crates/model/src/mailbox_bulk.rs
 msgid "ictMail moves a JMAP account's mail only between the folders its server has: the next Send/Receive would bring it back"
-msgstr ""
+msgstr "ictMail JMAP ანგარიშის ფოსტას მხოლოდ იმ საქაღალდეებს შორის გადაიტანს, რომლებიც მის სერვერზეა: შემდეგი გაგზავნა/მიღება მას დააბრუნებდა"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "ictMail needs you to sign in again to read your automatic replies: Microsoft's page opens in your browser. Mail and your calendar work as they are meanwhile."
-msgstr ""
+msgstr "თქვენი ავტომატური პასუხების წასაკითხად ictMail-ს თქვენი ხელახლა შესვლა სჭირდება: Microsoft-ის გვერდი ბრაუზერში გაიხსნება. მანამდე ფოსტა და კალენდარი ჩვეულებრივ მუშაობს."
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "ictMail needs your permission to change your automatic replies first: File › Info › Ask again."
-msgstr ""
+msgstr "ictMail-ს ჯერ თქვენი ნებართვა სჭირდება ავტომატური პასუხების შესაცვლელად: ფაილი › ინფორმაცია › ხელახლა მოთხოვნა."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "ictMail needs your system browser to sign in. You can also use a Google app password."
-msgstr ""
+msgstr "შესასვლელად ictMail-ს თქვენი სისტემური ბრაუზერი სჭირდება. ასევე შეგიძლიათ Google-ის აპლიკაციის პაროლი გამოიყენოთ."
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail now installs its updates itself. Turn this off in File › About."
-msgstr ""
+msgstr "ictMail ახლა განახლებებს თავად აინსტალირებს. ამის გამორთვა შეგიძლიათ: ფაილი › შესახებ."
 
 #. name
 #: crates/engine/src/cmd/rules.rs
 msgid "ictMail reaches this account's rules on the server once it switches to Microsoft Graph"
-msgstr ""
+msgstr "ictMail ამ ანგარიშის სერვერზე არსებულ წესებს მიწვდება, როგორც კი Microsoft Graph-ზე გადაერთვება"
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "ictMail reads the key without its passphrase and keeps the file, still protected by it, in the system's credential store. The key must have a passphrase and sign with Ed25519 or ECDSA; ictMail asks for the passphrase when you sign."
-msgstr ""
+msgstr "ictMail გასაღებს მისი საიდუმლო ფრაზის გარეშე კითხულობს და ფაილს, ისევ მისით დაცულს, სისტემის ავტორიზაციის მონაცემების საცავში ინახავს. გასაღებს უნდა ჰქონდეს საიდუმლო ფრაზა და ხელს აწერდეს Ed25519-ით ან ECDSA-თი; ხელმოწერისას ictMail საიდუმლო ფრაზას გკითხავთ."
 
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
 msgid "ictMail sends {host} the address this list gave for unsubscribing, which may identify you to it, and nothing else: no cookies, no sign-in. Like any connection, it also shows your internet address."
-msgstr ""
+msgstr "ictMail სერვერს {host} უგზავნის მხოლოდ იმ მისამართს, რომელიც ამ სიამ გამოწერის გასაუქმებლად მიუთითა და რომელმაც შეიძლება სიას თქვენი ვინაობა გაუმხილოს, სხვას არაფერს: არც ქუქი-ფაილებს, არც შესვლას. ნებისმიერი კავშირის მსგავსად, ის თქვენს ინტერნეტ-მისამართსაც აჩვენებს."
 
 #. interface
 #: crates/ui-egui/src/opening.rs
 msgid "ictMail starts with an empty mailbox and leaves the file as it is."
-msgstr ""
+msgstr "ictMail ცარიელი საფოსტო ყუთით იწყებს და ფაილს უცვლელად ტოვებს."
 
 #. interface
 #: crates/ui-egui/src/opening.rs
 msgid "ictMail stopped reading it before it was done."
-msgstr ""
+msgstr "ictMail-მა მისი კითხვა დასრულებამდე შეწყვიტა."
 
 #. what a command says
 #: crates/engine/src/import_pst.rs
 msgid "ictMail stopped reading the .pst file before it was done: what came in is kept"
-msgstr ""
+msgstr "ictMail-მა .pst ფაილის კითხვა დასრულებამდე შეწყვიტა: რაც შემოვიდა, შენარჩუნებულია"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "ictMail tries the usual places for your address."
-msgstr ""
+msgstr "ictMail თქვენი მისამართისთვის ჩვეულ ადგილებს ცდის."
 
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "ictMail was started with {n} thing that isn't a mail link or a file it opens: it was left alone"
 msgid_plural "ictMail was started with {n} things that aren't mail links or files it opens: they were left alone"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ictMail გაეშვა {n} ელემენტით, რომელიც არც საფოსტო ბმულია და არც მის მიერ გასახსნელი ფაილი: ის ხელუხლებლად დარჩა"
+msgstr[1] "ictMail გაეშვა {n} ელემენტით, რომლებიც არც საფოსტო ბმულებია და არც მის მიერ გასახსნელი ფაილები: ისინი ხელუხლებლად დარჩა"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "ictMail wasn't allowed to keep this mailbox in step with Outlook: {error}"
-msgstr ""
+msgstr "ictMail-ს ამ საფოსტო ყუთის Outlook-თან სინქრონიზაციის ნებართვა არ მიეცა: {error}"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "ictMail will have no account afterwards: File › Add Account sets one up again."
-msgstr ""
+msgstr "ამის შემდეგ ictMail-ს ანგარიში აღარ ექნება: „ფაილი › ანგარიშის დამატება“ ახალს დააყენებს."
 
 #. interface
 #: crates/ui-egui/src/close_to_tray.rs
 msgid "ictMail will keep running"
-msgstr ""
+msgstr "ictMail მუშაობას განაგრძობს"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "ictMail will make one appointment called \"ictMail connection check\" in the calendar of {account}, a year from today. It reads it back, changes its time twice (the second time said in this computer's time zone), reads it back each time, and deletes it again. Nothing else in your calendar is read or changed, nobody is invited or written to, and no reminder is set. Afterwards you see what the server answered at each step, and whether what was sent is what the server has."
-msgstr ""
+msgstr "ictMail ანგარიშის {account} კალენდარში შექმნის ერთ ჩანაწერს, სახელად „ictMail connection check“, დღეიდან ერთი წლის შემდეგ. ის მას უკან წაიკითხავს, დროს ორჯერ შეუცვლის (მეორედ ამ კომპიუტერის სასაათო სარტყლით მითითებულს), ყოველ ჯერზე უკან წაიკითხავს და ისევ წაშლის. თქვენს კალენდარში სხვა არაფერი იკითხება და არ იცვლება, არავინ იწვევა და არავის ეწერება, შეხსენება კი არ დგინდება. ბოლოს ნახავთ, რა უპასუხა სერვერმა ყოველ ნაბიჯზე და ემთხვევა თუ არა გაგზავნილი იმას, რაც სერვერზეა."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail will read and change the shared mailboxes you have access to. Microsoft's page opens in your browser to ask you."
-msgstr ""
+msgstr "ictMail წაიკითხავს და შეცვლის საერთო საფოსტო ყუთებს, რომლებზეც წვდომა გაქვთ. თქვენს დასაკითხად ბრაუზერში Microsoft-ის გვერდი გაიხსნება."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail will read and change your Microsoft To Do lists and tasks. Microsoft's page opens in your browser to ask you. Until you say yes, your tasks stay on this phone."
-msgstr ""
+msgstr "ictMail წაიკითხავს და შეცვლის თქვენს Microsoft To Do სიებსა და დავალებებს. თქვენს დასაკითხად ბრაუზერში Microsoft-ის გვერდი გაიხსნება. სანამ თანხმობას არ მისცემთ, თქვენი დავალებები ამ ტელეფონზე რჩება."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail will send mail from a shared mailbox, as it or on its behalf. Microsoft's page opens in your browser to ask you."
-msgstr ""
+msgstr "ictMail ფოსტას საერთო საფოსტო ყუთიდან გაგზავნის, როგორც თავად ყუთი ან მისი სახელით. თქვენს დასაკითხად ბრაუზერში Microsoft-ის გვერდი გაიხსნება."
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail {version} didn't start."
-msgstr ""
+msgstr "ictMail {version} არ გაეშვა."
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail {version} is available"
-msgstr ""
+msgstr "ხელმისაწვდომია ictMail {version}"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail {version} is available and fixes a security problem"
-msgstr ""
+msgstr "ხელმისაწვდომია ictMail {version}, რომელიც უსაფრთხოების პრობლემას ასწორებს"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail {version} wasn't installed: this version is still the one here."
-msgstr ""
+msgstr "ictMail {version} არ დაინსტალირდა: აქ ისევ ეს ვერსიაა."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "ictMail's Google Desktop registration is not yet configured for this build."
-msgstr ""
+msgstr "ictMail-ის Google Desktop რეგისტრაცია ამ ანაწყობში ჯერ არ არის კონფიგურირებული."
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "ictMail's data has been removed already"
-msgstr ""
+msgstr "ictMail-ის მონაცემები უკვე წაშლილია"
 
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "ictMail's data has been removed: nothing is sent or received"
-msgstr ""
+msgstr "ictMail-ის მონაცემები წაიშალა: არაფერი იგზავნება და არც მოდის"
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "ictMail's search for your keys stopped without an answer. Try again."
-msgstr ""
+msgstr "ictMail-მა თქვენი გასაღებების ძიება პასუხის გარეშე შეწყვიტა. კიდევ სცადეთ."
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -21060,12 +21060,12 @@ msgstr "გასასუფთავებელი საქაღალდ�
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "is part of a mailbox you opened from outside ictMail's own folder: it is yours and was not touched"
-msgstr ""
+msgstr "იმ საფოსტო ყუთის ნაწილია, რომელიც ictMail-ის საკუთარი საქაღალდის გარედან გახსენით: ის თქვენია და ხელი არ ხლებია"
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "isn't a folder ictMail keeps its data in: left alone"
-msgstr ""
+msgstr "ეს არ არის საქაღალდე, სადაც ictMail მონაცემებს ინახავს: ხელუხლებლად დარჩა"
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
@@ -21908,7 +21908,7 @@ msgstr "ეს ამ .pst ფაილის პაროლი არ არ�
 #. interface
 #: crates/ui-egui/src
 msgid "that mailbox is open in another ictMail window; close it there first"
-msgstr ""
+msgstr "ეს საფოსტო ყუთი ictMail-ის სხვა ფანჯარაშია გახსნილი; ჯერ იქ დახურეთ"
 
 #. what a command says
 #: crates/engine/src/cmd/compose.rs
@@ -22481,7 +22481,7 @@ msgstr "სერვერმა მიიღო პაროლი, რომ�
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
 msgid "the server and ictMail found no encryption in common; often the server offers only older encryption (CBC suites) that ictMail doesn't use, and its administrator can turn on the AES-GCM suites"
-msgstr ""
+msgstr "სერვერს და ictMail-ს საერთო დაშიფვრა ვერ ეპოვათ; ხშირად სერვერი მხოლოდ ძველ დაშიფვრას (CBC ნაკრებებს) გვთავაზობს, რომელსაც ictMail არ იყენებს, მისმა ადმინისტრატორმა კი შეუძლია AES-GCM ნაკრებების ჩართვა"
 
 #. why a mail server couldn't be used
 #: crates/proto/src/imap/idle.rs crates/proto/src/imap/mod.rs crates/proto/src/imap/status.rs
@@ -22648,7 +22648,7 @@ msgstr "სერვერი წვდომის ტოკენით შე
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
 msgid "the server offers only older encryption (CBC suites) that ictMail doesn't use; its administrator can turn on the AES-GCM suites"
-msgstr ""
+msgstr "სერვერი მხოლოდ ძველ დაშიფვრას (CBC ნაკრებებს) გვთავაზობს, რომელსაც ictMail არ იყენებს; მის ადმინისტრატორს შეუძლია AES-GCM ნაკრებების ჩართვა"
 
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
@@ -22725,12 +22725,12 @@ msgstr "სერვერმა ერთი ბრძანების პა
 #. why a mail server couldn't be used
 #: crates/proto/src/imap/mod.rs
 msgid "the server sent {claimed} bytes in one piece, more than the {mb} MB ictMail accepts"
-msgstr ""
+msgstr "სერვერმა ერთ ნაწილად {claimed} ბაიტი გამოგზავნა, იმ {mb} მბ-ზე მეტი, რასაც ictMail იღებს"
 
 #. why a mail server couldn't be used
 #: crates/proto/src/line.rs
 msgid "the server sent {n} bytes in one piece, more than ictMail accepts"
-msgstr ""
+msgstr "სერვერმა ერთ ნაწილად {n} ბაიტი გამოგზავნა, იმაზე მეტი, რასაც ictMail იღებს"
 
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
@@ -23281,19 +23281,19 @@ msgstr "Microsoft თქვენს შესვლას აღარ იღ�
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
 msgid "ictMail needs your permission first (File › Info › Ask again)."
-msgstr ""
+msgstr "ictMail-ს ჯერ თქვენი ნებართვა სჭირდება (ფაილი › ინფორმაცია › ხელახლა მოთხოვნა)."
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
 msgid "ictMail wasn't allowed to change them."
-msgstr ""
+msgstr "ictMail-ს მათი შეცვლის უფლება არ ჰქონდა."
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
 msgid "sign in again to let ictMail read them (File › Info)."
-msgstr ""
+msgstr "ხელახლა შედით, რომ ictMail-მა ისინი წაიკითხოს (ფაილი › ინფორმაცია)."
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -23306,7 +23306,7 @@ msgstr "ოფლაინ მუშაობთ."
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
 msgid "your organisation doesn't let ictMail change them."
-msgstr ""
+msgstr "თქვენი ორგანიზაცია ictMail-ს მათი შეცვლის ნებას არ აძლევს."
 
 #. interface
 #: crates/ui-egui/src/alerts.rs
@@ -23319,13 +23319,13 @@ msgstr "ამ სამუშაო მაგიდაზე შეტყობ
 #: crates/ui-egui/src/alerts.rs
 msgctxt "why desktop alerts can't be shown"
 msgid "this copy doesn't run from the ictMail app."
-msgstr ""
+msgstr "ეს ასლი ictMail აპლიკაციიდან არ ეშვება."
 
 #. interface
 #: crates/ui-egui/src/alerts.rs
 msgctxt "why desktop alerts can't be shown"
 msgid "this copy of ictMail wasn't installed with its installer (.msi), so Windows doesn't know it."
-msgstr ""
+msgstr "ictMail-ის ეს ასლი მისი ინსტალერით (.msi) არ დაყენებულა, ამიტომ Windows-მა მის შესახებ არ იცის."
 
 #. interface
 #: crates/ui-egui/src/send_later.rs
@@ -23365,7 +23365,7 @@ msgstr "{account} ვერ გადაერთო Microsoft Graph-ზე: {wh
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "{account} is switching to Microsoft Graph, but ictMail can't reach its IMAP server to send what is waiting there first."
-msgstr ""
+msgstr "{account} Microsoft Graph-ზე გადაერთვება, მაგრამ ictMail ვერ უკავშირდება მის IMAP სერვერს, რომ ჯერ იქ მომლოდინე გაგზავნოს."
 
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
@@ -23666,7 +23666,7 @@ msgstr "{line} · ბოლო გაშვებისას წაკითხ
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "{line} · ictMail may change them"
-msgstr ""
+msgstr "{line} · ictMail-ს შეუძლია მათი შეცვლა"
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -23851,7 +23851,7 @@ msgstr "{name} არ არის Microsoft ან Exchange სერვერ�
 #. what a command says
 #: crates/engine/src/cmd/file.rs
 msgid "{name} isn't a ictMail mailbox"
-msgstr ""
+msgstr "{name} ictMail-ის საფოსტო ყუთი არ არის"
 
 #. what a command says
 #: crates/engine/src/cmd/file.rs
@@ -23982,7 +23982,7 @@ msgstr "{name}: წერილის ფაილი არ არის"
 #. what a command says
 #: crates/engine/src/io.rs
 msgid "{name}: not a message, calendar or contact file ictMail reads"
-msgstr ""
+msgstr "{name}: არ არის წერილის, კალენდრის ან კონტაქტის ფაილი, რომელსაც ictMail კითხულობს"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -24831,8 +24831,8 @@ msgstr[1] "შედეგი: {n} ({scope})"
 #: crates/ui-egui/src/forms.rs
 msgid "{n} rule deleted here is still on the server until ictMail may change the server's rules (File › Info › Ask again)."
 msgid_plural "{n} rules deleted here are still on the server until ictMail may change the server's rules (File › Info › Ask again)."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "აქ წაშლილი წესები ({n}) სერვერზე რჩება, სანამ ictMail-ს სერვერის წესების შეცვლის უფლება არ ექნება (ფაილი › ინფორმაცია › ხელახლა მოთხოვნა)."
+msgstr[1] "აქ წაშლილი წესები ({n}) სერვერზე რჩება, სანამ ictMail-ს სერვერის წესების შეცვლის უფლება არ ექნება (ფაილი › ინფორმაცია › ხელახლა მოთხოვნა)."
 
 #. interface
 #: crates/ui-egui/src/sync_panel.rs
@@ -25047,7 +25047,7 @@ msgstr "{said}; {left}{more}"
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "{saving} · ictMail closes when it is done"
-msgstr ""
+msgstr "{saving} · ictMail დასრულებისას დაიხურება"
 
 #. interface
 #: crates/ui-egui/src/lib.rs
@@ -25146,7 +25146,7 @@ msgstr "{what} ({already})"
 #. what a command says
 #: crates/engine/src/cmd/account.rs
 msgid "{who} was added by a newer version of ictMail, {then}"
-msgstr ""
+msgstr "{who} ictMail-ის უფრო ახალმა ვერსიამ დაამატა, {then}"
 
 #. interface
 #: crates/ui-egui/src/import_pst.rs
@@ -25157,7 +25157,7 @@ msgstr "{why} რაც მანამდე შემოვიდა, რჩ�
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "{why}, so sign-ins aren't remembered: ictMail asks again each time it starts."
-msgstr ""
+msgstr "{why}, ამიტომ შესვლები არ ინახება: ictMail ყოველ გაშვებაზე ხელახლა გკითხავთ."
 
 #. interface
 #: crates/ui-egui/src/shared_mailboxes.rs

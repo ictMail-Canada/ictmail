@@ -37,6 +37,6 @@ fn bridge_finds_the_key_the_app_wrote() {
 fn settings_dir_is_the_apps_folder() {
     if let Some(d) = settings_dir() {
         let name = d.file_name().and_then(|n| n.to_str()).unwrap_or("");
-        assert!(name == "mailcraft" || name == "MailCraft", "{}", d.display());
+        assert!(name == "ictmail" || name == "ictMail", "{}", d.display());
     }
 }

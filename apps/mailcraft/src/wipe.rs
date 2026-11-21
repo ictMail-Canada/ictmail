@@ -5,12 +5,12 @@
 //! entries first (`mailcraft_ui_egui::data_removal`); this is the host's part, the folders.
 //!
 //! ```text
-//! <settings>/                   (mailcraft_control_key::settings_dir: %APPDATA%\MailCraft,
-//!                                ~/Library/Application Support/MailCraft, ~/.config/mailcraft)
+//! <settings>/                   (mailcraft_control_key::settings_dir: %APPDATA%\ictMail,
+//!                                ~/Library/Application Support/ictMail, ~/.config/ictmail)
 //!     mailbox.mailcraft…        the mailbox, its content folder, its word index
 //!     ui.json, logs/, pictures/ the settings, the logs, the downloaded pictures
 //!     updates/ …                the update's downloads and the version kept to go back to
-//! <cache>/MailCraft/Attachments/    the attachments opened (`opened_files::base`)
+//! <cache>/ictMail/Attachments/    the attachments opened (`opened_files::base`)
 //! ```
 //!
 //! An installed copy and a portable one keep their data in the same places, so one function
@@ -23,7 +23,7 @@
 //!   message, not a setting. A mailbox file the owner keeps elsewhere (File › Open, `--mailbox`)
 //!   is theirs: it is left, and said so.
 //! - **Each root is checked before anything in it goes:** absolute, called what it must be
-//!   called (`mailcraft`/`MailCraft`, `Attachments`), a real folder and not a link. A root that
+//!   called (`ictmail`/`ictMail`, `Attachments`), a real folder and not a link. A root that
 //!   fails any of this is reported and left entirely alone.
 //! - **Never through a link.** Every entry is looked at with `symlink_metadata`; a link (file or
 //!   folder) is itself unlinked and what it points at is never opened, listed or removed. Paths

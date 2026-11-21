@@ -284,10 +284,11 @@ fn constant(name: &str) -> Option<&'static str> {
         "DIRECTIONALITY" => crate::auth_results::DIRECTIONALITY,
         "RESULTS" => "Authentication-Results",
         "NOT_DOWNLOADED" => crate::NOT_DOWNLOADED,
-        "OPENED_FROM" | "OPENED_FILE_HEADER" => "X-MailCraft-Opened-File-SHA256",
-        "PST_ITEM_HEADER" => "X-MailCraft-Pst-Item",
-        "PLACE_HEADER" => "X-MailCraft-Place",
-        "ANSWER_HEADER" => "X-MailCraft-Meeting-Response",
+        "OPENED_FROM" | "OPENED_FILE_HEADER" => "X-ictMail-Opened-File-SHA256",
+        "PST_ITEM_HEADER" => "X-ictMail-Pst-Item",
+        "PLACE_HEADER" => "X-ictMail-Place",
+        "LEGACY_PLACE_HEADER" => "X-MailCraft-Place",
+        "ANSWER_HEADER" => "X-ictMail-Meeting-Response",
         _ => return None,
     })
 }

@@ -279,7 +279,7 @@ msgstr "2 Jahre"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "2. When they have approved ictMail, come back here and sign in again."
-msgstr ""
+msgstr "2. Sobald der Administrator ictMail genehmigt hat, kehren Sie hierher zurück und melden Sie sich erneut an."
 
 #. android, interface, name
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/SettingsModel.kt crates/model/src/offline.rs crates/ui-egui/src/keep_offline.rs
@@ -492,7 +492,7 @@ msgstr "Eine Nachricht mit der Bitte um Abmeldung geht von {from} an {to}, über
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "A new version is downloaded in the background, kept only when ictMail's own release signature says it is ours, and installed when you restart to update or quit."
-msgstr ""
+msgstr "Eine neue Version wird im Hintergrund heruntergeladen, nur behalten, wenn die Release-Signatur von ictMail sie als echt ausweist, und installiert, wenn Sie zum Aktualisieren neu starten oder das Programm beenden."
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs crates/ui-egui/src/meeting_dialogs.rs crates/ui-egui/src/reading/invitation.rs
@@ -521,7 +521,7 @@ msgstr "A oben"
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "A part of this key is RSA (a subkey for encryption, perhaps), which ictMail doesn't use by itself: keep the key in GnuPG, whose agent ictMail signs with, and leave it out of here."
-msgstr ""
+msgstr "Ein Teil dieses Schlüssels ist RSA (möglicherweise ein Unterschlüssel zur Verschlüsselung), den ictMail nicht eigenständig verwendet: Bewahren Sie den Schlüssel in GnuPG auf, dessen Agent ictMail zum Signieren verwendet, und lassen Sie ihn hier weg."
 
 #. interface
 #: crates/ui-egui/src/reading/remote.rs
@@ -589,7 +589,7 @@ msgstr "Eine Serie, die auf dem Server des Kontos liegt, kann von hier aus nicht
 #. what a command says
 #: crates/engine/src/cmd/auto_replies.rs
 msgid "A shared mailbox's automatic replies are set by whoever manages it; ictMail sets only your own account's"
-msgstr ""
+msgstr "Die automatischen Antworten eines freigegebenen Postfachs werden von der dafür zuständigen Person festgelegt. ictMail legt nur die automatischen Antworten Ihres eigenen Kontos fest"
 
 #. interface
 #: crates/ui-egui/src/ribbon.rs
@@ -610,7 +610,7 @@ msgstr "Ein freigegebenes Postfach, das mit der Anmeldung von {account} gelesen 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "A short note with the link to that page, to paste into mail or chat. ictMail sends nothing itself."
-msgstr ""
+msgstr "Eine kurze Notiz mit dem Link zu dieser Seite zum Einfügen in E-Mail oder Chat. ictMail sendet selbst nichts."
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
@@ -634,12 +634,12 @@ msgstr "Info"
 msgid ""
 "About\n"
 "ictMail"
-msgstr ""
+msgstr "Über\nictMail"
 
 #. interface, name
 #: crates/ui-egui/src/backstage.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/menubar.rs
 msgid "About ictMail"
-msgstr ""
+msgstr "Über ictMail"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
@@ -1023,7 +1023,7 @@ msgstr "Zum Kalender hinzufügen"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Added by a newer version of ictMail: send and receive with it there"
-msgstr ""
+msgstr "Von einer neueren Version von ictMail hinzugefügt: Senden und empfangen Sie damit dort"
 
 #. interface
 #: crates/ui-egui/src/address_book.rs
@@ -1233,12 +1233,12 @@ msgstr "Senden aus freigegebenen Postfächern zulassen"
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "Allow ictMail to keep this mailbox in step with Outlook on the page that opened in your browser…"
-msgstr ""
+msgstr "Erlauben Sie ictMail auf der Seite, die sich in Ihrem Browser geöffnet hat, dieses Postfach mit Outlook abzugleichen…"
 
 #. interface
 #: crates/ui-egui/src/shared_mailboxes.rs
 msgid "Allow ictMail to read shared mailboxes on the page that opened in your browser…"
-msgstr ""
+msgstr "Erlauben Sie ictMail auf der Seite, die sich in Ihrem Browser geöffnet hat, freigegebene Postfächer zu lesen…"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -1389,7 +1389,7 @@ msgstr "Eine Zertifizierungsstelle auf dem Weg zu einer vertrauenswürdigen Stel
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "An https:// or webcal:// address. Nothing is read until you press Subscribe. The calendar is listed under Other Calendars, read-only, and brought up to date from the web every hour and when you press Send/Receive; you can choose another time in File › Info. Its address is asked for over an encrypted connection, with nothing that says who you are. A private address holds a secret: it is kept like a password, in your system's credential store when you let ictMail remember sign-ins, and otherwise until you quit."
-msgstr ""
+msgstr "Eine https://- oder webcal://-Adresse. Es wird nichts gelesen, bevor Sie auf Abonnieren klicken. Der Kalender steht unter Weitere Kalender, schreibgeschützt, und wird jede Stunde und bei Senden/Empfangen aus dem Web aktualisiert; eine andere Zeit können Sie unter Datei › Info wählen. Seine Adresse wird über eine verschlüsselte Verbindung abgefragt, ohne etwas, das Sie verrät. Eine private Adresse enthält ein Geheimnis: Sie wird wie ein Kennwort behandelt, im Anmeldespeicher Ihres Systems, wenn Sie ictMail Anmeldungen merken lassen, und sonst bis zum Beenden."
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -1419,7 +1419,7 @@ msgstr[1] "Und {n} weitere Links dieser Art."
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "Android closed ictMail while Microsoft's page was open, so that sign-in could not be finished. Nothing was added."
-msgstr ""
+msgstr "Android hat ictMail geschlossen, während die Microsoft-Seite geöffnet war. Daher konnte die Anmeldung nicht abgeschlossen werden. Es wurde nichts hinzugefügt."
 
 #. command label, interface
 #: crates/ui-egui/src/backstage.rs crates/ui-egui/src/lib.rs
@@ -1482,7 +1482,7 @@ msgstr "Anderer Mailserver"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "Anything still waiting to go to the server goes first: mail in the Outbox, and flags and moves made while you were offline. If ictMail can't reach the server, the switch waits until it can."
-msgstr ""
+msgstr "Alles, was noch an den Server gehen soll, geht zuerst: E-Mails im Postausgang sowie Kennzeichnungen und Verschiebungen, die Sie offline vorgenommen haben. Erreicht ictMail den Server nicht, wartet der Wechsel, bis es so weit ist."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -1844,7 +1844,7 @@ msgstr "Den Server des Kontos jetzt nach dem Kalender rund um diese Besprechung 
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
 msgid "Ask the list to stop sending you its mail. ictMail asks first and says how."
-msgstr ""
+msgstr "Die Liste bitten, Ihnen keine E-Mails mehr zu senden. ictMail fragt vorher und sagt, wie."
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -2079,7 +2079,7 @@ msgstr "Für {address} werden automatische Antworten versendet"
 #. what a command says
 #: crates/engine/src/cmd/auto_replies.rs
 msgid "Automatic replies are kept on the mail server, and ictMail can set them only for accounts that sign in with Microsoft so far: IMAP has no standard way to set them (Sieve vacation replies may come later)"
-msgstr ""
+msgstr "Automatische Antworten werden auf dem Mailserver gespeichert. ictMail kann sie derzeit nur für Konten einrichten, bei denen die Anmeldung über Microsoft erfolgt: Für IMAP gibt es keine standardisierte Möglichkeit, sie einzurichten (Sieve-Abwesenheitsantworten könnten später hinzukommen)"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -2134,12 +2134,12 @@ msgstr "Automatische Antworten: von {start} bis {end}"
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Automatic replies: ictMail may change them"
-msgstr ""
+msgstr "Automatische Antworten: ictMail darf sie ändern"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Automatic replies: ictMail needs you to sign in again to read them"
-msgstr ""
+msgstr "Automatische Antworten: Sie müssen sich erneut anmelden, damit ictMail sie lesen kann"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -2164,7 +2164,7 @@ msgstr "Automatische Antworten: werden gelesen…"
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Automatic replies: your organisation doesn't let ictMail change them"
-msgstr ""
+msgstr "Automatische Antworten: Ihre Organisation erlaubt ictMail nicht, sie zu ändern"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -2174,7 +2174,7 @@ msgstr "Automatische Einrichtung (Autodiscover)"
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "Automatic setup can't sign in to this server. Type its address in Server settings and ictMail will sign in with NTLM."
-msgstr ""
+msgstr "Die automatische Einrichtung kann sich nicht an diesem Server anmelden. Geben Sie seine Adresse in den Servereinstellungen ein. ictMail meldet sich dann mit NTLM an."
 
 #. interface
 #: crates/ui-egui/src/meeting_dialogs/share.rs
@@ -2615,7 +2615,7 @@ msgstr "Kategorien vom Server von {address}. Sie werden um Ihre Erlaubnis gebete
 #. interface
 #: crates/ui-egui/src/category_sync.rs
 msgid "Categories from {address}'s server. Checking whether ictMail may change them…"
-msgstr ""
+msgstr "Kategorien vom Server von {address}. Es wird geprüft, ob ictMail sie ändern darf…"
 
 #. interface
 #: crates/ui-egui/src/category_sync.rs
@@ -2638,7 +2638,7 @@ msgstr "Kategorien vom Server von {address}. Keine Erlaubnis, sie zu ändern ({w
 #. interface
 #: crates/ui-egui/src/category_sync.rs
 msgid "Categories from {address}'s server. Read-only here until ictMail can check whether it may change them"
-msgstr ""
+msgstr "Kategorien vom Server von {address}. Hier schreibgeschützt, bis ictMail prüfen kann, ob es sie ändern darf"
 
 #. what a command says
 #: crates/engine/src/cmd/tasks/status.rs
@@ -2672,7 +2672,7 @@ msgstr "Kategorien: mit Outlook abgeglichen"
 #. interface
 #: crates/ui-egui/src/category_sync.rs
 msgid "Categories: read-only here (ictMail may not change them)"
-msgstr ""
+msgstr "Kategorien: hier schreibgeschützt (ictMail darf sie nicht ändern)"
 
 #. interface
 #: crates/ui-egui/src/category_sync.rs
@@ -2683,7 +2683,7 @@ msgstr "Kategorien: hier schreibgeschützt ({why})"
 #. interface
 #: crates/ui-egui/src/category_sync.rs
 msgid "Categories: read-only here until ictMail can check whether it may change them"
-msgstr ""
+msgstr "Kategorien: hier schreibgeschützt, bis ictMail prüfen kann, ob es sie ändern darf"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/RowActionsSheet.kt
@@ -2929,7 +2929,7 @@ msgstr "Überprüfen Sie beide Server, bevor Sie eine Verbindung herstellen."
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "Check daily for new versions of ictMail, and download and install them when you quit? Only GitHub is asked; nothing about you or your mail is sent."
-msgstr ""
+msgstr "Täglich nach neuen Versionen von ictMail suchen und diese beim Beenden herunterladen und installieren? Dabei wird nur GitHub abgefragt; es werden keine Informationen über Sie oder Ihre E-Mails übermittelt."
 
 #. command label
 #: crates/ui-egui/src/lib.rs
@@ -3215,7 +3215,7 @@ msgstr "Schließen und als Entwurf behalten"
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "Close ictMail, install the new version and start it again. Otherwise it is installed when you quit."
-msgstr ""
+msgstr "ictMail schließen, die neue Version installieren und neu starten. Andernfalls wird sie beim Beenden installiert."
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -3454,7 +3454,7 @@ msgstr "Kopiert. Fügen Sie den Text in eine E-Mail oder Chatnachricht an Ihren 
 #. name
 #: crates/engine/src/sync_driver/favorites.rs
 msgid "Copies a short message with the address of Microsoft's page where an administrator of your organisation approves ictMail, once for everybody. Nothing is sent: paste it into mail or chat yourself."
-msgstr ""
+msgstr "Kopiert eine kurze Nachricht mit der Adresse der Microsoft-Seite, auf der ein Administrator Ihrer Organisation ictMail einmal für alle genehmigt. Es wird nichts gesendet: Fügen Sie sie selbst in eine E-Mail oder einen Chat ein."
 
 #. command label, interface, name
 #: crates/engine/src/cmd/format.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/menubar.rs crates/ui-egui/src/view_source.rs
@@ -3552,7 +3552,7 @@ msgstr "Die ausgewählten Elemente in diesen Ordner kopieren:"
 #. interface
 #: crates/ui-egui/src/chrome.rs
 msgid "Copy the version, the platform and the end of ictMail's own record, to paste into a problem report. No message, address, password or token is in it, and nothing is sent."
-msgstr ""
+msgstr "Version, Plattform und das Ende des ictMail-eigenen Protokolls kopieren, um sie in einen Fehlerbericht einzufügen. Es enthält keine Nachricht, Adresse, Kennwort oder Token, und es wird nichts gesendet."
 
 #. command label, interface
 #: crates/engine/src/cmd/mail.rs crates/ui-egui/src/ribbon.rs
@@ -4187,7 +4187,7 @@ msgstr "Desktopbenachrichtigungen"
 #. interface
 #: crates/ui-egui/src/alerts.rs
 msgid "Desktop alerts are turned off for ictMail in System Settings."
-msgstr ""
+msgstr "Desktopbenachrichtigungen sind für ictMail in den Systemeinstellungen ausgeschaltet."
 
 #. interface
 #: crates/ui-egui/src/alerts.rs
@@ -4530,7 +4530,7 @@ msgstr "Automatisch heruntergeladen"
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "Downloaded pictures and opened attachments can't be told apart by account: File › Info › Remove ictMail's data from this computer clears them."
-msgstr ""
+msgstr "Heruntergeladene Bilder und geöffnete Anlagen lassen sich nicht nach Konto unterscheiden: Datei › Info › ictMail-Daten von diesem Computer entfernen löscht sie alle."
 
 #. interface
 #: crates/ui-egui/src/attachment_open.rs crates/ui-egui/src/files.rs
@@ -5065,7 +5065,7 @@ msgstr "Alles andere darin wird wie gewohnt geöffnet."
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Everything else is gone. ictMail quits when you close this."
-msgstr ""
+msgstr "Alles andere ist gelöscht. ictMail wird beendet, wenn Sie dieses Fenster schließen."
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -5340,7 +5340,7 @@ msgstr "Fingerabdruck:"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountDialogs.kt
 msgid "Finish on Microsoft's page in your browser. ictMail is waiting."
-msgstr ""
+msgstr "Schließen Sie den Vorgang auf der Microsoft-Seite in Ihrem Browser ab. ictMail wartet."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposeHost.kt
@@ -5356,7 +5356,7 @@ msgstr "Schließen Sie zuerst die Anmeldung ab (Ihr Browser wartet)"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "Finish signing in on Microsoft's page in your browser. ictMail is waiting."
-msgstr ""
+msgstr "Schließen Sie die Anmeldung auf der Microsoft-Seite in Ihrem Browser ab. ictMail wartet."
 
 #. interface
 #: crates/ui-egui/src/credits.rs
@@ -5558,7 +5558,7 @@ msgstr "Für IMAP-Konten. Bei Microsoft- und Exchange-Server-Konten legen Sie un
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "For a mail server your organisation runs itself. ictMail looks for the server from your address, or you can type its address in Server settings. Nothing is sent until you press Connect."
-msgstr ""
+msgstr "Für einen Mailserver, den Ihre Organisation selbst betreibt. ictMail sucht anhand Ihrer Adresse nach dem Server. Sie können seine Adresse auch in den Servereinstellungen eingeben. Es werden keine Daten gesendet, bevor Sie auf „Verbinden“ klicken."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -5569,7 +5569,7 @@ msgstr "Für ein Relay, das E-Mails ohne Kennwort annimmt: Ihr Kennwort wird nie
 #. interface
 #: crates/ui-egui/src/favorites_sync.rs
 msgid "For an account that signs in with Microsoft: the folders you keep under Favorites in Outlook, in the same order. They are read from the server and never changed there. Without this, the favourites you mark in ictMail are shown."
-msgstr ""
+msgstr "Für ein Konto mit Microsoft-Anmeldung: die Ordner, die Sie in Outlook unter Favoriten haben, in derselben Reihenfolge. Sie werden vom Server gelesen und dort nie geändert. Ohne dies werden die Favoriten angezeigt, die Sie in ictMail markieren."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -5898,12 +5898,12 @@ msgstr "Die GitHub-Seite enthält bereits so viele Informationen, wie ein Link �
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "GitHub's page is open: attach the diagnostics file there, then submit. ictMail sent nothing."
-msgstr ""
+msgstr "Die GitHub-Seite ist geöffnet: Hängen Sie dort die Diagnosedatei an und senden Sie den Beitrag ab. ictMail hat nichts gesendet."
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "GitHub's page is open: check it, then submit. ictMail sent nothing."
-msgstr ""
+msgstr "Die GitHub-Seite ist geöffnet: Überprüfen Sie Ihren Beitrag und senden Sie ihn anschließend ab. ictMail hat nichts gesendet."
 
 #. interface
 #: crates/ui-egui/src/forms.rs
@@ -6031,7 +6031,7 @@ msgstr "Führt zu {host}"
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "Going back to ictMail {version} didn't happen: this version is still the one here."
-msgstr ""
+msgstr "Die Rückkehr zu ictMail {version} hat nicht stattgefunden: Diese Version ist weiterhin installiert."
 
 #. interface
 #: crates/ui-egui/src/ribbon.rs
@@ -6064,12 +6064,12 @@ msgstr "Zugriffstoken für Google OAuth dürfen nur an die IMAP- und SMTP-Server
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Google blocked access to ictMail"
-msgstr ""
+msgstr "Google hat den Zugriff auf ictMail blockiert"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Google did not authorize ictMail. Your mailbox was not changed. You can retry or choose an app password."
-msgstr ""
+msgstr "Google hat ictMail nicht autorisiert. Ihr Postfach wurde nicht verändert. Sie können es erneut versuchen oder ein App-Passwort verwenden."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -6084,7 +6084,7 @@ msgstr "Google hat das unveränderte Konto nicht bestätigt. Die bisherige Anmel
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Google did not return to ictMail. If you saw Error 403 or Access blocked because the app is in testing, ask the developer to add you as a test user. If your organization blocked it, ask its Workspace administrator. Otherwise, retry. Mail and settings are unchanged."
-msgstr ""
+msgstr "Google hat nicht zu ictMail zurückgeleitet. Wenn Sie den Fehler 403 oder den Hinweis „Zugriff blockiert“ gesehen haben, weil sich die App im Testmodus befindet, bitten Sie den Entwickler, Sie als Testnutzer hinzuzufügen. Wenn Ihre Organisation den Zugriff blockiert hat, wenden Sie sich an den System-Administrator. Andernfalls versuchen Sie es erneut. E-Mails und Einstellungen sind unverändert."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -6227,7 +6227,7 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr ""
+msgstr "Hallo,\n\nich möchte ictMail mit meinem Arbeitskonto verwenden. ictMail ist ein quelloffenes E-Mail- und Kalenderprogramm, das auf meinem eigenen Computer läuft. In unserer Organisation darf nur ein Administrator ein neues Programm genehmigen; es braucht also einmal Ihre Genehmigung, für die ganze Organisation. Die Seite von Microsoft dafür ist hier:\n\n{link}\n\nNach der Genehmigung zeigt Ihr Browser vielleicht eine Seite, die nicht erreichbar ist. Das ist so gewollt: Es ist eine Adresse auf Ihrem eigenen Computer, an der nichts lauscht, und die Genehmigung ist dann bereits erteilt.\n\nVielen Dank"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -6241,7 +6241,7 @@ msgid ""
 "After you approve, your browser may show a page that can't be reached. That is expected: it is an address on your own computer, where nothing is listening, and the approval has been given by then.\n"
 "\n"
 "Thank you"
-msgstr ""
+msgstr "Hallo,\n\nich möchte ictMail mit meinem Arbeitskonto verwenden. ictMail ist ein Open-Source-Mail- und Kalenderprogramm, das auf meinem eigenen Smartphone läuft. In unserer Organisation dürfen nur Administratoren neue Programme genehmigen. Daher ist Ihre einmalige Genehmigung für die gesamte Organisation erforderlich. Die entsprechende Seite von Microsoft finden Sie hier:\n\n{link}\n\nNach der Genehmigung zeigt Ihr Browser möglicherweise eine Seite an, die nicht erreichbar ist. Das ist normal: Es handelt sich um eine Adresse auf Ihrem eigenen Computer, an der kein Dienst auf Anfragen wartet. Zu diesem Zeitpunkt wurde die Genehmigung bereits erteilt.\n\nVielen Dank"
 
 #. command label, interface, name, ribbon, ribbon location
 #: crates/engine/src/cmd/help.rs crates/ui-egui/src/lib.rs crates/ui-egui/src/menubar.rs crates/ui-egui/src/ribbon.rs
@@ -6279,7 +6279,7 @@ msgstr "Diese Kopie ausblenden"
 #. interface
 #: crates/ui-egui/src/menubar.rs
 msgid "Hide ictMail"
-msgstr ""
+msgstr "ictMail ausblenden"
 
 #. interface
 #: crates/ui-egui/src/secret_field.rs
@@ -6392,7 +6392,7 @@ msgstr "Wie viele Nachrichten jeder Ordner enthält und wie viel Speicherplatz s
 #. command label
 #: crates/ui-egui/src/lib.rs
 msgid "I'm an Administrator: Approve ictMail for My Organisation"
-msgstr ""
+msgstr "Ich bin Administrator: ictMail für meine Organisation genehmigen"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -6408,12 +6408,12 @@ msgstr "Piktogramme"
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "If Google says the app is in testing, ask the developer to add your email as a test user. If your organization blocks ictMail, ask its Workspace administrator. Those pages may not return here: cancel, then retry when access is granted or use an app password if allowed."
-msgstr ""
+msgstr "Wenn Google meldet, dass sich die App im Testmodus befindet, bitten Sie den Entwickler, Ihre E-Mail-Adresse als Testnutzer hinzuzufügen. Wenn Ihre Organisation ictMail blockiert, wenden Sie sich an den zuständigen Workspace-Administrator. Möglicherweise führen diese Seiten nicht zu ictMail zurück: Brechen Sie den Vorgang ab und versuchen Sie es erneut, sobald der Zugriff gewährt wurde, oder verwenden Sie ein App-Passwort, sofern dies erlaubt ist."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "If ictMail is still in Google's testing mode, ask its developer to add this address to the Test users list. If your organization blocked access, ask your Google Workspace administrator. Your mailbox was not changed."
-msgstr ""
+msgstr "Wenn sich ictMail noch im Testmodus von Google befindet, bitte den Entwickler, diese Adresse zur Liste der Testnutzer hinzuzufügen. Wenn Ihre Organisation den Zugriff blockiert hat, wenden Sie sich an Ihren Google-Workspace-Administrator. Ihr Postfach wurde nicht verändert."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -6652,7 +6652,7 @@ msgstr "{what} importiert; nach {count} abgebrochen: Die Datei enthält mehr als
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Imported: ictMail keeps it in the system's credential store, still protected by its passphrase."
-msgstr ""
+msgstr "Importiert: ictMail speichert ihn im Anmeldeinformationsspeicher des Systems, weiterhin durch seine Passphrase geschützt."
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -6930,7 +6930,7 @@ msgstr "Es wird beim nächsten Senden/Empfangen als E-Mail aus dem Postausgang g
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "It goes to the server once ictMail may change the server's rules (File › Info › Ask again); until then it runs on this computer, while ictMail is open."
-msgstr ""
+msgstr "Sie geht an den Server, sobald ictMail die Regeln des Servers ändern darf (Datei › Informationen › Erneut fragen); bis dahin läuft sie auf diesem Computer, solange ictMail geöffnet ist."
 
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
@@ -6941,7 +6941,7 @@ msgstr "Sie geht mit dem nächsten Senden/Empfangen hinaus; die Liste trägt Sie
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "It is an identifier, not a secret. ictMail keeps it in its settings (File › Options)."
-msgstr ""
+msgstr "Sie ist eine Kennung, kein Geheimnis. ictMail speichert sie in seinen Einstellungen (Datei › Optionen)."
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -6986,22 +6986,22 @@ msgstr "Er wird auch vom Mailserver entfernt, und das kann nicht rückgängig ge
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "It is the same for an installed and a portable copy. ictMail quits afterwards."
-msgstr ""
+msgstr "Das gilt gleichermaßen für eine installierte und eine portable Version. ictMail wird anschließend beendet."
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "It runs on this computer, while ictMail is open."
-msgstr ""
+msgstr "Sie läuft auf diesem Computer, solange ictMail geöffnet ist."
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "It runs there whether ictMail is open or not, and shows in Outlook on the web and on your phone."
-msgstr ""
+msgstr "Sie läuft dort, ob ictMail geöffnet ist oder nicht, und erscheint in Outlook im Web und auf Ihrem Telefon."
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
 msgid "It uses an algorithm ictMail doesn't know."
-msgstr ""
+msgstr "Es verwendet einen Algorithmus, den ictMail nicht kennt."
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
@@ -7238,7 +7238,7 @@ msgstr "Daten behalten"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Keep ictMail running for mail and reminders when you close its window. Click its icon beside the clock to show it again, or choose Quit from the icon's menu. If no system tray is available, closing exits ictMail."
-msgstr ""
+msgstr "ictMail für E-Mails und Erinnerungen weiterlaufen lassen, wenn Sie das Fenster schließen. Klicken Sie auf das Symbol neben der Uhr, um das Fenster wieder anzuzeigen, oder wählen Sie im Menü des Symbols „Beenden“. Wenn kein Infobereich verfügbar ist, wird ictMail beim Schließen beendet."
 
 #. command label, interface
 #: crates/ui-egui/src/lib.rs crates/ui-egui/src/server_sync.rs
@@ -7277,12 +7277,12 @@ msgstr "Diesen Kontakt behalten"
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Keep this rule on an account's server: choose which. It then runs there whether ictMail is open or not, for that account's mail"
-msgstr ""
+msgstr "Diese Regel auf dem Server eines Kontos speichern: Wählen Sie, welches. Sie läuft dann dort, ob ictMail geöffnet ist oder nicht, für die E-Mails dieses Kontos"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Keep this rule on the server of {address}: it then runs there whether ictMail is open or not, for that account's mail"
-msgstr ""
+msgstr "Diese Regel auf dem Server von {address} speichern: Sie läuft dann dort, ob ictMail geöffnet ist oder nicht, für die E-Mails dieses Kontos"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
@@ -7293,7 +7293,7 @@ msgstr "Diese Version behalten"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "Keep waiting, and the switch goes ahead by itself once ictMail can reach the server. Or switch without them, if the server can't be reached any more (for example, your organisation has turned IMAP off):"
-msgstr ""
+msgstr "Warten Sie weiter, dann erfolgt der Wechsel von selbst, sobald ictMail den Server erreicht. Oder wechseln Sie ohne sie, falls der Server nicht mehr erreichbar ist (zum Beispiel, weil Ihre Organisation IMAP abgeschaltet hat):"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -7330,7 +7330,7 @@ msgstr "Gespeichert in"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Kept in the system's credential store, never in the mailbox or its settings. Without it you sign in again each time ictMail starts."
-msgstr ""
+msgstr "Wird im Anmeldeinformationsspeicher des Systems aufbewahrt, nie im Postfach oder in dessen Einstellungen. Ohne dies melden Sie sich bei jedem Start von ictMail erneut an."
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -7741,7 +7741,7 @@ msgstr "Erstellt von seinen Mitwirkenden:"
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Made in another program or on the web, with parts ictMail can't show"
-msgstr ""
+msgstr "In einem anderen Programm oder im Web erstellt, mit Teilen, die ictMail nicht anzeigen kann"
 
 #. android, command label, interface, name, ribbon location
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/MainActivity.kt apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Navigation.kt crates/engine/src/cmd/compose.rs crates/engine/src/cmd/graph_send.rs crates/engine/src/cmd/mail.rs crates/engine/src/cmd/send_later.rs crates/engine/src/cmd/view.rs crates/engine/src/session.rs crates/ui-egui/src/backstage.rs crates/ui-egui/src/lib.rs
@@ -7758,7 +7758,7 @@ msgstr "Auf diesem Gerät gehaltene E-Mails"
 #. interface
 #: crates/ui-egui/src/close_to_tray.rs
 msgid "Mail and reminders will keep running. To bring the window back, click ictMail's system tray icon and choose Show ictMail. On Windows, the icon may be under the arrow for hidden icons beside the clock. On macOS, use the menu-bar icon or click ictMail in the Dock. Choose Quit ictMail from the icon's menu to exit."
-msgstr ""
+msgstr "E-Mails und Erinnerungen werden weiterhin verarbeitet. Um das Fenster wieder anzuzeigen, klicken Sie auf das Infobereichsymbol von ictMail und wählen Sie „ictMail anzeigen“. Unter Windows befindet sich das Symbol möglicherweise unter dem Pfeil für ausgeblendete Symbole neben der Uhr. Unter macOS verwenden Sie das Symbol in der Menüleiste oder klicken Sie im Dock auf ictMail. Wählen Sie im Menü des Symbols „ictMail beenden“, um das Programm zu beenden."
 
 #. what a command says
 #: crates/engine/src/io.rs
@@ -8215,7 +8215,7 @@ msgstr "Microsoft 365"
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "Microsoft 365 mail is added as a Microsoft account: you sign in on Microsoft's own page in your browser, and ictMail never sees your password."
-msgstr ""
+msgstr "Microsoft 365-E-Mail wird als Microsoft-Konto hinzugefügt: Sie melden sich auf der offiziellen Microsoft-Seite in Ihrem Browser an, und ictMail bekommt Ihr Passwort niemals zu sehen."
 
 #. command label
 #: crates/ui-egui/src/lib.rs
@@ -8271,7 +8271,7 @@ msgstr "Microsoft akzeptiert Ihre Anmeldung nicht mehr. Melden Sie sich erneut a
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "Microsoft only lets a registered application show its sign-in page, and this build of ictMail has no registration of its own yet."
-msgstr ""
+msgstr "Microsoft lässt nur eine registrierte Anwendung seine Anmeldeseite anzeigen, und dieser Build von ictMail hat noch keine eigene Registrierung."
 
 #. interface
 #: crates/ui-egui/src/shared_mailboxes.rs
@@ -8629,7 +8629,7 @@ msgstr "Meine Aufgaben"
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "My organisation has to approve ictMail first: what to do"
-msgstr ""
+msgstr "Meine Organisation muss ictMail zuerst genehmigen: Was ist zu tun?"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -9636,7 +9636,7 @@ msgstr "Nicht jetzt"
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "Not now: it is installed when you quit ictMail."
-msgstr ""
+msgstr "Nicht jetzt: Sie wird beim Beenden von ictMail installiert."
 
 #. interface
 #: crates/ui-egui/src/forms.rs
@@ -9904,7 +9904,7 @@ msgstr "Am"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "On Wayland, restart ictMail after enabling this option. A reachable X11/XWayland server and a system tray are required."
-msgstr ""
+msgstr "Starten Sie ictMail unter Wayland nach dem Aktivieren dieser Option neu. Ein erreichbarer X11-/XWayland-Server und ein Infobereich sind erforderlich."
 
 #. interface
 #: crates/ui-egui/src/forms.rs
@@ -10175,7 +10175,7 @@ msgstr "Nur auf Anforderung"
 #. interface
 #: crates/ui-egui/src/alerts.rs
 msgid "Only while ictMail isn't the window in front, and only for the Inboxes of your own accounts."
-msgstr ""
+msgstr "Nur, wenn ictMail nicht das vordere Fenster ist, und nur für die Posteingänge Ihrer eigenen Konten."
 
 #. android, interface, ribbon
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AttachmentsView.kt apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ReadingScreen.kt crates/ui-egui/src/attachment_open.rs crates/ui-egui/src/calendar_view.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/reading.rs crates/ui-egui/src/ribbon.rs
@@ -10282,7 +10282,7 @@ msgstr "Termin öffnen"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Open ictMail's data folder"
-msgstr ""
+msgstr "Datenordner von ictMail öffnen"
 
 #. interface
 #: crates/ui-egui/src/mail_view.rs
@@ -10388,7 +10388,7 @@ msgstr "Der Kalender von {name} wurde geöffnet. Er wird nur auf diesem Computer
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "Opened with {owner}'s sign-in. It needs Full Access to the mailbox, which your organisation's administrator gives. Microsoft asks you once to let ictMail read and change shared mailboxes. What you change in it goes to it. Mail you write in it is from its address, and sending as it needs Send As or Send on Behalf permission: Microsoft asks you once more at your first send."
-msgstr ""
+msgstr "Mit der Anmeldung von {owner} geöffnet. Dafür ist Vollzugriff auf das Postfach nötig, den der Administrator Ihrer Organisation erteilt. Microsoft fragt Sie einmal, ob ictMail freigegebene Postfächer lesen und ändern darf. Was Sie darin ändern, wird dorthin übertragen. E-Mails, die Sie darin schreiben, kommen von seiner Adresse, und das Senden in seinem Namen erfordert die Berechtigung „Senden als“ oder „Senden im Auftrag von“: Microsoft fragt Sie beim ersten Senden noch einmal."
 
 #. interface
 #: crates/ui-egui/src/attachment_open.rs
@@ -10430,7 +10430,7 @@ msgstr "Öffnet die bereits ausgefüllte GitHub-Seite in Ihrem Browser. Sie übe
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Opens Microsoft's approval page in your browser. Sign in there with an administrator account and accept; ictMail carries on by itself."
-msgstr ""
+msgstr "Öffnet die Genehmigungsseite von Microsoft in Ihrem Browser. Melden Sie sich dort mit einem Administratorkonto an und stimmen Sie zu; ictMail macht dann selbstständig weiter."
 
 #. interface
 #: crates/ui-egui/src/reading/sharing.rs
@@ -10561,7 +10561,7 @@ msgstr "Favoriten von Outlook"
 #. interface
 #: crates/ui-egui/src
 msgid "Outlook's Favorites are now read through Microsoft Graph. To show ictMail's own instead, turn them off in File › Options."
-msgstr ""
+msgstr "Die Favoriten von Outlook werden jetzt über Microsoft Graph gelesen. Um stattdessen die eigenen von ictMail zu zeigen, schalten Sie sie unter Datei › Optionen aus."
 
 #. interface
 #: crates/ui-egui/src/favorites_sync.rs
@@ -10572,7 +10572,7 @@ msgstr "Favoriten von Outlook sind unter Datei › Optionen ausgeschaltet"
 #. interface
 #: crates/ui-egui/src/nav.rs
 msgid "Outlook's Favorites can't be shown for this account, so the ones kept in ictMail are. File › Options can ask again."
-msgstr ""
+msgstr "Die Favoriten von Outlook können für dieses Konto nicht angezeigt werden, daher werden die in ictMail gespeicherten angezeigt. Unter Datei › Optionen kann erneut gefragt werden."
 
 #. name
 #: crates/ui-egui/src/account_setup.rs
@@ -10583,7 +10583,7 @@ msgstr "Outlook.com"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "Outlook.com, Hotmail, and Microsoft 365 work or school accounts. You sign in on Microsoft's own page in your browser, so ictMail never sees your password."
-msgstr ""
+msgstr "Outlook.com-, Hotmail- und Microsoft-365-Geschäfts- oder Schulkonten. Sie melden sich auf der eigenen Microsoft-Seite in Ihrem Browser an, sodass ictMail Ihr Passwort niemals zu sehen bekommt."
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -11185,7 +11185,7 @@ msgstr "Schnellzugriff"
 #. interface
 #: crates/ui-egui/src/menubar.rs
 msgid "Quit ictMail"
-msgstr ""
+msgstr "ictMail beenden"
 
 #. command label
 #: crates/engine/src/cmd/followup.rs
@@ -11235,7 +11235,7 @@ msgstr "Favoriten jetzt erneut aus Outlook lesen"
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "Read with {owner}'s sign-in, for as long as you keep it: the person has to have shared their calendar with you. It is kept on this computer only: it won't appear in Outlook or on your other devices. Microsoft asks you once to let ictMail read other people's calendars."
-msgstr ""
+msgstr "Mit der Anmeldung von {owner} lesen, solange Sie den Kalender geöffnet lassen: Die betreffende Person muss ihren Kalender für Sie freigegeben haben. Der Kalender wird nur auf diesem Computer gespeichert und erscheint weder in Outlook noch auf Ihren anderen Geräten. Microsoft fragt Sie einmalig, ob ictMail Kalender anderer Personen lesen darf."
 
 #. interface
 #: crates/ui-egui/src/people_view.rs
@@ -11647,17 +11647,17 @@ msgstr "Aus den sicheren oder blockierten Absendern entfernen"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Remove ictMail's Data"
-msgstr ""
+msgstr "ictMail-Daten entfernen"
 
 #. command label
 #: crates/ui-egui/src/lib.rs
 msgid "Remove ictMail's Data from This Computer"
-msgstr ""
+msgstr "ictMail-Daten von diesem Computer entfernen"
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Remove ictMail's data from this computer…"
-msgstr ""
+msgstr "ictMail-Daten von diesem Computer entfernen…"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposerScreen.kt
@@ -11709,7 +11709,7 @@ msgstr "Diese Bedingung entfernen"
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Remove your {format} key for {who} from this computer? It is deleted from the system's credential store, and ictMail can't sign with it any more. Keep a copy of the file if you may need it again."
-msgstr ""
+msgstr "Möchten Sie Ihren {format}-Schlüssel für {who} von diesem Computer entfernen? Er wird aus dem Anmeldeinformationsspeicher des Systems gelöscht, und ictMail kann nicht mehr damit signieren. Bewahren Sie eine Kopie der Datei auf, falls Sie den Schlüssel später wieder benötigen."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposerScreen.kt
@@ -11726,7 +11726,7 @@ msgstr "Entfernt die auf diesem Telefon gespeicherten E-Mails, Kalender, Kontakt
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Removing ictMail's data isn't available here"
-msgstr ""
+msgstr "Das Entfernen der ictMail-Daten ist hier nicht möglich"
 
 #. interface
 #: crates/ui-egui/src/signatures.rs
@@ -12170,12 +12170,12 @@ msgstr "Regeln jetzt ausführen"
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Run by ictMail as mail arrives, while it is open"
-msgstr ""
+msgstr "Von ictMail beim Eintreffen der E-Mails ausgeführt, solange es geöffnet ist"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Run by the server as mail arrives, whether ictMail is open or not"
-msgstr ""
+msgstr "Vom Server beim Eintreffen der E-Mails ausgeführt, ob ictMail geöffnet ist oder nicht"
 
 #. interface
 #: crates/ui-egui/src/forms.rs
@@ -12496,7 +12496,7 @@ msgstr "Beschreiben Sie, was schiefgelaufen ist. Es wird nichts gesendet, bis Si
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "Say what went wrong. ictMail sends nothing by itself: you check the report and send it."
-msgstr ""
+msgstr "Beschreiben, was schiefgelaufen ist. ictMail sendet nichts automatisch: Sie überprüfen den Bericht und versenden ihn selbst."
 
 #. interface
 #: crates/ui-egui/src/lib.rs
@@ -12531,7 +12531,7 @@ msgstr "Stimmen Sie nur zu, wenn Sie den Agenten darum gebeten haben. Text in ei
 #. name
 #: crates/engine/src/sync_driver/favorites.rs
 msgid "Says what you and your organisation's administrator can do, and lets an administrator approve ictMail on Microsoft's page from here."
-msgstr ""
+msgstr "Erklärt, was Sie und der Administrator Ihrer Organisation tun können, und lässt einen Administrator ictMail von hier aus auf der Microsoft-Seite genehmigen."
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -13184,7 +13184,7 @@ msgstr "Wird gesendet…"
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "Sends the report to the ictMail team, as this window shows it."
-msgstr ""
+msgstr "Sendet den Bericht so an das ictMail-Team, wie dieses Fenster ihn anzeigt."
 
 #. interface
 #: crates/ui-egui/src/lib.rs
@@ -13212,7 +13212,7 @@ msgstr "Gesendet an"
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "Sent to the ictMail team privately. If it's a real problem we may make it public on GitHub, with what you wrote and the diagnostics, so we can track it. Leave out anything private."
-msgstr ""
+msgstr "Der Bericht wurde vertraulich an das ictMail-Team gesendet. Wenn es sich um ein tatsächliches Problem handelt, veröffentlichen wir ihn möglicherweise zusammen mit Ihrer Beschreibung und den Diagnosedaten auf GitHub, damit wir den Vorgang verfolgen können. Lassen Sie vertrauliche Angaben weg."
 
 #. what a command says
 #: crates/model/src/sync/progress.rs
@@ -13536,7 +13536,7 @@ msgstr "Erledigte Aufgaben anzeigen"
 #. interface
 #: crates/ui-egui/src/menubar.rs
 msgid "Show ictMail"
-msgstr ""
+msgstr "ictMail anzeigen"
 
 #. command label
 #: crates/engine/src/cmd/calendar/invitation.rs
@@ -13706,7 +13706,7 @@ msgstr "Zeigt {path}, in dem sich das Postfach und die Einstellungen befinden, i
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Shows {path}, which holds the mailbox open now, in your file manager. ictMail's settings are in a folder of their own."
-msgstr ""
+msgstr "Zeigt {path}, in dem sich das aktuell geöffnete Postfach befindet, in Ihrem Dateimanager an. Die Einstellungen von ictMail befinden sich in einem eigenen Ordner."
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -13788,27 +13788,27 @@ msgstr "Melden Sie sich auf der Seite an, die sich in Ihrem Browser geöffnet ha
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Sign in once more to let ictMail read and change your mail, send, and show your calendar and contacts through Microsoft."
-msgstr ""
+msgstr "Melden Sie sich noch einmal an, damit ictMail über Microsoft Ihre E-Mails lesen und ändern, senden sowie Ihren Kalender und Ihre Kontakte anzeigen kann."
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Sign in once more to let ictMail send through Microsoft and show your calendar and contacts. Mail works without it."
-msgstr ""
+msgstr "Melden Sie sich noch einmal an, damit ictMail über Microsoft senden sowie Ihren Kalender und Ihre Kontakte anzeigen kann. E-Mail funktioniert auch ohne."
 
 #. interface
 #: crates/ui-egui/src/calendar_view.rs
 msgid "Sign in once more, so that ictMail may read the categories and the working hours your mailbox has. Your calendar works as it is."
-msgstr ""
+msgstr "Melden Sie sich noch einmal an, damit ictMail die Kategorien und Arbeitszeiten Ihres Postfachs lesen darf. Ihr Kalender funktioniert auch so."
 
 #. interface
 #: crates/ui-egui/src/calendar_view.rs
 msgid "Sign in once more, so that ictMail may show and change your calendar"
-msgstr ""
+msgstr "Melden Sie sich noch einmal an, damit ictMail Ihren Kalender anzeigen und ändern darf"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "Sign in securely with Google in your browser. Your Google password is never entered in ictMail."
-msgstr ""
+msgstr "Melden Sie sich sicher über Google in Ihrem Browser an. Ihr Google-Passwort wird niemals in ictMail eingegeben."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -13853,7 +13853,7 @@ msgstr "Mit Microsoft anmelden"
 #. interface
 #: crates/ui-egui/src/favorites_sync.rs crates/ui-egui/src/nav.rs
 msgid "Sign in with Microsoft once more to let ictMail read the folders you keep under Favorites in Outlook. They are only read, never changed, and everything else stays as it is."
-msgstr ""
+msgstr "Melden Sie sich noch einmal bei Microsoft an, damit ictMail die Ordner lesen kann, die Sie in Outlook unter Favoriten haben. Sie werden nur gelesen, nie geändert, und alles andere bleibt, wie es ist."
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -13914,7 +13914,7 @@ msgstr "Signiert von:"
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "Signed in, but Microsoft still won't let ictMail read the mail of {account}. Try Send/Receive again later."
-msgstr ""
+msgstr "Angemeldet, aber Microsoft lässt ictMail die E-Mails von {account} noch nicht lesen. Versuchen Sie es später erneut mit Senden/Empfangen."
 
 #. interface
 #: crates/ui-egui/src/lib.rs
@@ -14075,7 +14075,7 @@ msgstr "Einige Zeichen dieser Nachricht konnten nicht gelesen werden: Das Progra
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Some of it is still there, as listed above. ictMail quits when you close this."
-msgstr ""
+msgstr "Einige Daten sind noch vorhanden, wie oben aufgeführt. ictMail wird beendet, sobald Sie dieses Fenster schließen."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposerScreen.kt
@@ -14555,7 +14555,7 @@ msgstr "Ihre Verifizierung zurücknehmen"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "Take everything ictMail keeps here with you when you are done: for a shared or work computer, or before deleting a portable copy."
-msgstr ""
+msgstr "Nehmen Sie alle von ictMail hier gespeicherten Daten mit, wenn Sie fertig sind: bei einem gemeinsam genutzten oder dienstlichen Computer oder bevor Sie eine portable Version löschen."
 
 #. interface
 #: crates/ui-egui/src/reading/invitation.rs
@@ -14660,7 +14660,7 @@ msgstr "Teams-Besprechung"
 #. interface
 #: crates/ui-egui/src/chrome.rs
 msgid "Tell ictMail's makers what went wrong, on GitHub or by email. You check the report and send it yourself."
-msgstr ""
+msgstr "Teilen Sie den Entwicklern von ictMail auf GitHub oder per E-Mail mit, was schiefgelaufen ist. Sie können den Bericht überprüfen und selbst versenden."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -14733,7 +14733,7 @@ msgstr "Gesuchter Text"
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "Thank you. The ictMail team has it under this reference."
-msgstr ""
+msgstr "Vielen Dank. Das ictMail-Team hat den Bericht unter dieser Referenz erhalten."
 
 #. interface
 #: crates/ui-egui/src/signatures.rs
@@ -14979,7 +14979,7 @@ msgstr "Das Konto ist nicht mehr vorhanden"
 #. interface
 #: crates/ui-egui/src/approval.rs
 msgid "The account that signed in on Microsoft's page is not an administrator of your organisation, so it could not approve ictMail. Copy the message for an administrator instead."
-msgstr ""
+msgstr "Das Konto, das sich auf der Microsoft-Seite angemeldet hat, ist kein Administrator Ihrer Organisation und konnte ictMail daher nicht genehmigen. Kopieren Sie stattdessen die Nachricht für einen Administrator."
 
 #. what a command says
 #: crates/engine/src/cmd/calendar_opened.rs
@@ -15352,7 +15352,7 @@ msgstr "Die Diagnosedaten wurden nicht gespeichert, daher wurde die GitHub-Seite
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The domain {domain} names a server for Exchange's automatic setup (Autodiscover), so this looks like an Exchange server account. Type your password and press Connect: ictMail looks for the server and checks the account. Nothing is sent until then."
-msgstr ""
+msgstr "Die Domain {domain} nennt einen Server für die automatische Einrichtung von Exchange (Autodiscover); das sieht nach einem Exchange-Server-Konto aus. Geben Sie Ihr Passwort ein und klicken Sie auf Verbinden: ictMail sucht den Server und prüft das Konto. Bis dahin wird nichts gesendet."
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -15555,7 +15555,7 @@ msgstr "Die Liste der Absender ist voll: Entfernen Sie einige unter Datei › Op
 #. what a command says
 #: crates/mobile/src/core.rs
 msgid "The list of sign-ins kept on this phone was damaged, so some older sign-ins may still be kept on it. The phone's own settings for ictMail let you clear what it keeps."
-msgstr ""
+msgstr "Die Liste der auf diesem Telefon gespeicherten Anmeldungen war beschädigt, daher sind möglicherweise noch ältere Anmeldungen gespeichert. In den Einstellungen des Telefons für ictMail können Sie löschen, was gespeichert ist."
 
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
@@ -15674,12 +15674,12 @@ msgstr "Die Nachricht ist nicht mehr vorhanden"
 #. interface
 #: crates/ui-egui/src/send_later.rs
 msgid "The message waits in your Outbox, where you can change or cancel it. ictMail sends it at that time; if ictMail isn't running then, it goes the next time it runs."
-msgstr ""
+msgstr "Die Nachricht wartet in Ihrem Postausgang, wo Sie sie ändern oder abbrechen können. ictMail sendet sie zu dieser Zeit; läuft ictMail dann nicht, geht sie beim nächsten Start."
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
 msgid "The message was downloaded before ictMail kept the bytes it came as. Check Again downloads them."
-msgstr ""
+msgstr "Die Nachricht wurde heruntergeladen, bevor ictMail ihre ursprünglichen Datenbytes gespeichert hat. Mit „Erneut prüfen“ werden diese heruntergeladen."
 
 #. interface
 #: crates/ui-egui/src/opened_message.rs crates/ui-egui/src/windows.rs
@@ -15825,7 +15825,7 @@ msgstr "Der Port; leer lassen für den üblichen"
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "The private key in this file isn't encrypted, so ictMail doesn't keep it: export it again with its key encrypted (AES), protected by a passphrase."
-msgstr ""
+msgstr "Der private Schlüssel in dieser Datei ist nicht verschlüsselt und wird daher von ictMail nicht gespeichert: Exportieren Sie ihn erneut mit verschlüsseltem Schlüssel (AES), geschützt durch eine Passphrase."
 
 #. interface
 #: crates/ui-egui/src/meeting_dialogs.rs
@@ -15883,7 +15883,7 @@ msgstr "Der Meldedienst funktioniert derzeit nicht. Versuchen Sie es später ern
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "The report service's answer wasn't one ictMail understands, so the report may have arrived. Try again later, or open it on GitHub."
-msgstr ""
+msgstr "Die Antwort des Meldedienstes konnte von ictMail nicht verstanden werden, daher ist der Bericht möglicherweise eingegangen. Versuchen Sie es später erneut oder öffnen Sie ihn auf GitHub."
 
 #. interface
 #: crates/ui-egui/src/rule_sync.rs
@@ -15906,7 +15906,7 @@ msgstr "Die gesendeten Regeln konnten nicht vermerkt werden: {error}"
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "The same page asks to read and send from the shared mailboxes you have access to and to read the calendars shared with you, so that ictMail doesn't have to ask again."
-msgstr ""
+msgstr "Dieselbe Seite bittet darum, freigegebene Postfächer, auf die Sie Zugriff haben, zu lesen und aus ihnen zu senden und die für Sie freigegebenen Kalender zu lesen, damit ictMail nicht noch einmal fragen muss."
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -16057,7 +16057,7 @@ msgstr "Der Server oder die Organisation hat seine Einstellungen nicht bereitges
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The server sent the setup somewhere that isn't encrypted, which ictMail never follows. Type the server's address in Server settings."
-msgstr ""
+msgstr "Der Server hat die Einrichtungsanfrage an eine unverschlüsselte Adresse weitergeleitet. ictMail folgt solchen Weiterleitungen grundsätzlich nicht. Geben Sie die Serveradresse in den Servereinstellungen ein."
 
 #. interface
 #: crates/ui-egui/src/ews_setup.rs
@@ -16102,17 +16102,17 @@ msgstr "Das Serverzertifikat hat sich geändert"
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The server's certificate has expired, so ictMail won't connect to it. Ask your administrator to renew it."
-msgstr ""
+msgstr "Das Serverzertifikat ist abgelaufen. ictMail wird daher keine Verbindung zu diesem Server herstellen. Bitten Sie Ihren Administrator, das Zertifikat zu erneuern."
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The server's certificate is for another server's name, so ictMail won't connect to it. Check the address in Server settings."
-msgstr ""
+msgstr "Das Serverzertifikat gilt für den Namen eines anderen Servers. ictMail wird daher keine Verbindung zu diesem Server herstellen. Überprüfen Sie die Adresse in den Servereinstellungen."
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "The server's certificate isn't valid yet, so ictMail won't connect to it. Check this computer's date and time, or ask your administrator."
-msgstr ""
+msgstr "Das Serverzertifikat ist noch nicht gültig. ictMail wird daher keine Verbindung zu diesem Server herstellen. Überprüfen Sie Datum und Uhrzeit dieses Computers oder wenden Sie sich an deinen Administrator."
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
@@ -16281,7 +16281,7 @@ msgstr "Beginn und Ende brauchen eine Uhrzeit"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "The switch of {account} to Microsoft Graph waits until ictMail can reach the server."
-msgstr ""
+msgstr "Der Wechsel von {account} zu Microsoft Graph wartet, bis ictMail den Server erreichen kann."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
@@ -16314,7 +16314,7 @@ msgstr "Die Aufgaben konnten nicht gelesen werden."
 #. interface
 #: crates/ui-egui/src/calendar_sync.rs
 msgid "The test appointment (\"ictMail connection check\", a year from today) could not be deleted: please delete it in the calendar. Nothing else was read or changed."
-msgstr ""
+msgstr "Der Testtermin („ictMail connection check“, ein Jahr ab heute) konnte nicht gelöscht werden: Bitte löschen Sie ihn im Kalender. Sonst wurde nichts gelesen oder geändert."
 
 #. interface
 #: crates/ui-egui/src/calendar_sync.rs
@@ -16420,7 +16420,7 @@ msgstr "Dieses Konto gibt es nicht"
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
 msgid "There's more in this Digital signature than ictMail checks for one message."
-msgstr ""
+msgstr "Diese digitale Signatur enthält mehr, als ictMail für eine einzelne Nachricht überprüft."
 
 #. interface
 #: crates/ui-egui/src/open_shared.rs
@@ -16513,7 +16513,7 @@ msgstr "Dieses Konto verwendet keine Google-Anmeldung."
 #. what a command says
 #: crates/engine/src/cmd/unsubscribe.rs
 msgid "This account doesn't send mail from ictMail, so it can't unsubscribe by mail."
-msgstr ""
+msgstr "Dieses Konto sendet keine E-Mails aus ictMail und kann sich daher nicht per E-Mail abmelden."
 
 #. interface
 #: crates/ui-egui/src/approval.rs crates/ui-egui/src/calendar_sync.rs crates/ui-egui/src/favorites_sync.rs crates/ui-egui/src/lib.rs
@@ -16568,7 +16568,7 @@ msgstr "Dieses Konto verwendet kein App-Passwort mehr"
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "This account was added by a newer version of ictMail. This version keeps it as it is and doesn't send or receive with it: use the newer version for that, and to change its settings."
-msgstr ""
+msgstr "Dieses Konto wurde von einer neueren Version von ictMail hinzugefügt. Diese Version lässt es unverändert und sendet oder empfängt nicht damit: Verwenden Sie dafür und zum Ändern seiner Einstellungen die neuere Version."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -16583,7 +16583,7 @@ msgstr "Dieses Konto wurde entfernt, während die Google-Anmeldung geöffnet war
 #. what a command says
 #: crates/engine/src/cmd/folder.rs
 msgid "This account's Favorites come from Outlook and are changed there (File › Options can show the ones kept in ictMail instead)"
-msgstr ""
+msgstr "Die Favoriten dieses Kontos stammen aus Outlook und werden dort geändert (unter Datei › Optionen können stattdessen die in ictMail gespeicherten angezeigt werden)"
 
 #. interface
 #: crates/ui-egui/src/calendar_sync.rs
@@ -16745,7 +16745,7 @@ msgstr "Diese Kategorie ist auf mehr Terminen in Kalendern auf einem Server, als
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This certificate's key is of a kind ictMail doesn't use: only ECDSA on P-256 or P-384 is imported here."
-msgstr ""
+msgstr "Der Schlüssel dieses Zertifikats ist von einem Typ, den ictMail nicht verwendet: Hier werden nur ECDSA-Schlüssel auf P-256 oder P-384 importiert."
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -16778,7 +16778,7 @@ msgstr "Dieser Kontakt wird endgültig gelöscht."
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "This copy of ictMail doesn't update itself."
-msgstr ""
+msgstr "Diese Kopie von ictMail aktualisiert sich nicht selbst."
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
@@ -16909,12 +16909,12 @@ msgstr "Es geht nur um das Vorkommen am {day}."
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This is an RSA certificate, which ictMail doesn't use by itself on this system: put it on a smartcard or token (PKCS#11), where ictMail finds it."
-msgstr ""
+msgstr "Dies ist ein RSA-Zertifikat, das ictMail auf diesem System nicht eigenständig verwendet: Legen Sie es auf einer Smartcard oder einem Token (PKCS#11) ab, wo ictMail es findet."
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This is an RSA key, which ictMail doesn't use by itself: keep it in GnuPG, whose agent ictMail signs with, and leave it out of here."
-msgstr ""
+msgstr "Dies ist ein RSA-Schlüssel, den ictMail nicht eigenständig verwendet: Bewahren Sie ihn in GnuPG auf, dessen Agent ictMail zum Signieren verwendet, und lassen Sie ihn hier weg."
 
 #. what a command says
 #: crates/engine/src/cmd/calendar/invitation.rs
@@ -16972,12 +16972,12 @@ msgstr "Dieser Schlüssel kann keine digitalen Signaturen erstellen: Keiner sein
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This key has no passphrase, so ictMail doesn't keep it. Add one in GnuPG (gpg --edit-key <key>, then passwd) and import it again."
-msgstr ""
+msgstr "Dieser Schlüssel hat keine Passphrase und wird daher von ictMail nicht gespeichert. Fügen Sie in GnuPG eine hinzu (gpg --edit-key <key>, dann passwd) und importieren Sie ihn erneut."
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
 msgid "This key signs with an algorithm ictMail doesn't use: only Ed25519 and ECDSA keys are imported here."
-msgstr ""
+msgstr "Dieser Schlüssel signiert mit einem Algorithmus, den ictMail nicht verwendet: Hier werden nur Ed25519- und ECDSA-Schlüssel importiert."
 
 #. what a command says
 #: crates/mobile/src/sync.rs
@@ -17152,8 +17152,8 @@ msgstr "Diese Nachricht hat eine Warnung zu ihrem Absender: Verschieben Sie sie 
 #: crates/ui-egui/src/send_warnings.rs
 msgid "This message has more recipients than ictMail checks: only the first one was looked at."
 msgid_plural "This message has more recipients than ictMail checks: only the first {n} were looked at."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Diese Nachricht hat mehr Empfänger, als ictMail prüft: Nur der erste wurde geprüft."
+msgstr[1] "Diese Nachricht hat mehr Empfänger, als ictMail prüft: Nur die ersten {n} wurden geprüft."
 
 #. interface
 #: crates/ui-egui/src/reading/view.rs
@@ -17210,7 +17210,7 @@ msgstr "Diese Nachricht ist noch nicht auf diesem Computer. Sie wird heruntergel
 #. interface
 #: crates/ui-egui/src/reading/warnings.rs
 msgid "This message lays itself out in more ways than ictMail could check, so a link in one of them may go somewhere other than its text says."
-msgstr ""
+msgstr "Diese Nachricht kann sich auf mehr Arten darstellen, als ictMail prüfen konnte, daher kann ein Link in einer davon woandershin führen, als sein Text sagt."
 
 #. interface
 #: crates/ui-egui/src/reading/warnings.rs
@@ -17297,7 +17297,7 @@ msgstr "Dieses Bild wurde heruntergeladen, kann aber nicht angezeigt werden."
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "This removes everything ictMail keeps on this computer: every account's mail, attachments, contacts, calendar and settings, the sign-ins remembered in the system's credential store, downloaded pictures, opened attachments and logs."
-msgstr ""
+msgstr "Dadurch wird alles entfernt, was ictMail auf diesem Computer speichert: die E-Mails, Anlagen, Kontakte, Kalender und Einstellungen aller Konten, die im Anmeldeinformationsspeicher des Systems gespeicherten Anmeldedaten, heruntergeladene Bilder, geöffnete Anlagen und Protokolle."
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
@@ -17307,7 +17307,7 @@ msgstr "Dieser Bericht ist zu lang zum Senden: Kürzen Sie Ihre Beschreibung ode
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "This rule can't be kept on the server: {why}. It runs on this computer, while ictMail is open."
-msgstr ""
+msgstr "Diese Regel kann nicht auf dem Server gespeichert werden: {why}. Sie läuft auf diesem Computer, solange ictMail geöffnet ist."
 
 #. what a command says
 #: crates/engine/src/cmd/calendar.rs
@@ -17336,12 +17336,12 @@ msgstr "Diese Signatur enthält ein Bild oder ein eigenes Layout. Ändern Sie si
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "This sync needs about {needed}. This phone has {free} free, and ictMail keeps some room for the phone to go on working. Sync anyway?"
-msgstr ""
+msgstr "Diese Synchronisierung benötigt etwa {needed}. Auf diesem Telefon sind {free} frei, und ictMail lässt etwas Platz, damit das Telefon weiterarbeiten kann. Trotzdem synchronisieren?"
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "This system has no place ictMail knows for S/MIME certificates with a private key."
-msgstr ""
+msgstr "Auf diesem System gibt es keinen Speicherort für S/MIME-Zertifikate mit privatem Schlüssel, den ictMail kennt."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/TaskDraft.kt
@@ -17352,7 +17352,7 @@ msgstr "Diese Aufgabe konnte nicht gelesen werden."
 #. interface
 #: crates/ui-egui/src/address_book.rs
 msgid "This version of ictMail can't search an address list"
-msgstr ""
+msgstr "Diese Version von ictMail kann keine Adressliste durchsuchen"
 
 #. what a command says
 #: crates/engine/src/cmd/remote.rs
@@ -17498,7 +17498,7 @@ msgid ""
 "To keep the automatic replies of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, your automatic replies aren't changed."
-msgstr ""
+msgstr "Um die automatischen Antworten von {address} mit Outlook abzugleichen, braucht ictMail Ihre Erlaubnis, Ihre Postfacheinstellungen zu ändern. Die Seite von Microsoft öffnet sich in Ihrem Browser, um Sie einmal zu fragen.\n\nBis Sie es erlauben, werden Ihre automatischen Antworten nicht geändert."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -17506,7 +17506,7 @@ msgid ""
 "To keep the rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr ""
+msgstr "Um die Regeln, automatischen Antworten und Kategorien von {address} mit Outlook abzugleichen, braucht ictMail Ihre Erlaubnis, Ihre Postfacheinstellungen zu ändern. Die Seite von Microsoft öffnet sich in Ihrem Browser, um Sie einmal zu fragen.\n\nBis Sie es erlauben, bleiben Regeln auf diesem Computer, nichts davon wird an Microsoft gesendet, Ihre automatischen Antworten werden nicht geändert, und die Kategorien dieses Postfachs können hier nicht geändert werden."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -17514,7 +17514,7 @@ msgid ""
 "To keep the tasks and automatic replies of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft, and your automatic replies aren't changed."
-msgstr ""
+msgstr "Um die Aufgaben und automatischen Antworten von {address} mit Outlook abzugleichen, braucht ictMail Ihre Erlaubnis, Ihre To Do-Listen und Ihre Postfacheinstellungen zu ändern. Die Seite von Microsoft öffnet sich in Ihrem Browser, um Sie einmal zu fragen.\n\nBis Sie es erlauben, bleiben Aufgaben auf diesem Computer, nichts davon wird an Microsoft gesendet, und Ihre automatischen Antworten werden nicht geändert."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -17522,7 +17522,7 @@ msgid ""
 "To keep the tasks of {address} in step with Microsoft To Do, ictMail needs your permission to read and change your To Do lists and tasks. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft."
-msgstr ""
+msgstr "Um die Aufgaben von {address} mit Microsoft To Do synchron zu halten, benötigt ictMail Ihre Zustimmung, Ihre To-Do-Listen und Aufgaben zu lesen und zu ändern. Dazu wird einmalig eine Microsoft-Seite in Ihrem Browser geöffnet, auf der Sie um Erlaubnis gebeten werden.\n\nBis Sie dies erlauben, bleiben die Aufgaben auf diesem Computer. Es werden keine Aufgaben an Microsoft gesendet."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
@@ -17530,7 +17530,7 @@ msgid ""
 "To keep the tasks, rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks and rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
-msgstr ""
+msgstr "Um die Aufgaben, Regeln, automatischen Antworten und Kategorien von {address} mit Outlook abzugleichen, braucht ictMail Ihre Erlaubnis, Ihre To Do-Listen und Ihre Postfacheinstellungen zu ändern. Die Seite von Microsoft öffnet sich in Ihrem Browser, um Sie einmal zu fragen.\n\nBis Sie es erlauben, bleiben Aufgaben und Regeln auf diesem Computer, nichts davon wird an Microsoft gesendet, Ihre automatischen Antworten werden nicht geändert, und die Kategorien dieses Postfachs können hier nicht geändert werden."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/MailListModel.kt
@@ -17543,7 +17543,7 @@ msgid ""
 "To read and send from the shared mailboxes you open with {address}, and to show the calendars shared with you, ictMail needs your permission. Microsoft's page opens in your browser to ask you, once, for everything ictMail uses that you haven't allowed yet.\n"
 "\n"
 "Until you allow it, nothing of those mailboxes and calendars is read, mail and meeting answers from a shared mailbox wait on this computer, and nothing is sent from your own address in their place."
-msgstr ""
+msgstr "Um aus den freigegebenen Postfächern, die Sie mit {address} öffnen, zu lesen und zu senden und die für Sie freigegebenen Kalender anzuzeigen, braucht ictMail Ihre Erlaubnis. Die Seite von Microsoft öffnet sich in Ihrem Browser und fragt Sie einmal nach allem, was ictMail nutzt und Sie noch nicht erlaubt haben.\n\nBis Sie es erlauben, wird nichts aus diesen Postfächern und Kalendern gelesen, E-Mails und Antworten auf Besprechungen aus einem freigegebenen Postfach warten auf diesem Computer, und nichts wird stattdessen von Ihrer eigenen Adresse gesendet."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -17763,12 +17763,12 @@ msgstr "Was möchten Sie tun?"
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "Type your address. ictMail finds your mail servers and how you sign in."
-msgstr ""
+msgstr "Geben Sie Ihre Adresse ein. ictMail findet Ihre Mailserver und die Art der Anmeldung."
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Type your e-mail address and ictMail finds the rest: Microsoft 365, Outlook.com, Google and other providers, or a mailbox on this device only"
-msgstr ""
+msgstr "Geben Sie Ihre E-Mail-Adresse ein, und ictMail findet den Rest: Microsoft 365, Outlook.com, Google und andere Anbieter, oder ein Postfach nur auf diesem Gerät"
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -18060,7 +18060,7 @@ msgstr "Systemeinstellung verwenden"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Use system setting follows Animation effects in Windows' settings. Where ictMail can't read the system's setting yet, animations play until you choose Never play."
-msgstr ""
+msgstr "Systemeinstellung verwenden folgt den Animationseffekten in den Windows-Einstellungen. Wo ictMail die Systemeinstellung noch nicht lesen kann, laufen Animationen, bis Sie Nie abspielen wählen."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
@@ -18204,7 +18204,7 @@ msgstr "Wartet"
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Waiting for ictMail's Google registration"
-msgstr ""
+msgstr "Warten auf die Google-Registrierung von ictMail"
 
 #. interface
 #: crates/ui-egui/src/approval.rs
@@ -18279,7 +18279,7 @@ msgstr "Was mit eingehenden E-Mails geschieht"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "What ictMail sends, and to whom"
-msgstr ""
+msgstr "Was ictMail sendet und an wen"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
@@ -18308,7 +18308,7 @@ msgstr "Worum die Eingeladenen gebeten werden, entscheidet der Organisator."
 #. command label
 #: crates/ui-egui/src/lib.rs
 msgid "What to Do When Your Organisation Has to Approve ictMail"
-msgstr ""
+msgstr "Was tun, wenn Ihre Organisation ictMail genehmigen muss"
 
 #. android, interface, name
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt crates/engine/src/sync_driver/favorites.rs crates/ui-egui/src/account_setup/help.rs
@@ -18394,7 +18394,7 @@ msgstr "Wo"
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Where the card says the key is: ictMail doesn't fetch it."
-msgstr ""
+msgstr "Dort, wo die Kontaktkarte den Schlüssel angibt: ictMail ruft ihn nicht ab."
 
 #. interface
 #: crates/ui-egui/src/merge_contacts.rs
@@ -18410,7 +18410,7 @@ msgstr "Ob sie online stattfindet, entscheidet der Organisator."
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Which keys your GnuPG trusts fully, last read: {when}. It is read again when ictMail comes back to the front, and by Refresh."
-msgstr ""
+msgstr "Welchen Schlüssel Ihr GnuPG vollständig vertraut, zuletzt ausgelesen: {when}. Die Informationen werden erneut ausgelesen, wenn ictMail wieder in den Vordergrund kommt und wenn Sie auf „Aktualisieren“ klicken."
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -18448,12 +18448,12 @@ msgstr "Windows-Zertifikatspeicher"
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Windows keeps the certificate and its private key in your certificate store, and asks you before ictMail uses it."
-msgstr ""
+msgstr "Windows speichert das Zertifikat und seinen privaten Schlüssel in Ihrem Zertifikatspeicher und fragt Sie, bevor ictMail ihn verwendet."
 
 #. interface
 #: crates/ui-egui/src/calendar_view.rs
 msgid "Without this, the calendar uses the working hours your Microsoft 365 mailbox has, once ictMail may read them. The ones above are used until then."
-msgstr ""
+msgstr "Ohne diese Option verwendet der Kalender die Arbeitszeiten Ihres Microsoft 365-Postfachs, sobald ictMail sie lesen darf. Bis dahin werden die obigen verwendet."
 
 #. ribbon
 #: crates/ui-egui/src/ribbon.rs
@@ -18703,7 +18703,7 @@ msgstr "Sie haben diesen Schlüssel als verifiziert gekennzeichnet."
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "You may be asked to sign in with Microsoft again, to let ictMail read and change your mail there."
-msgstr ""
+msgstr "Möglicherweise werden Sie erneut zur Anmeldung bei Microsoft aufgefordert, damit ictMail Ihre E-Mails dort lesen und ändern kann."
 
 #. interface
 #: crates/ui-egui/src/meeting_dialogs.rs
@@ -18791,7 +18791,7 @@ msgstr "Das DNS Ihrer Domain konnte nicht gefragt werden. Prüfen Sie die Netzwe
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "Your domain's DNS names no server for automatic setup. ictMail still tries the usual places for your address."
-msgstr ""
+msgstr "Das DNS Ihrer Domain nennt keinen Server für die automatische Einrichtung. ictMail versucht trotzdem die üblichen Stellen für Ihre Adresse."
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
@@ -18801,7 +18801,7 @@ msgstr "Das DNS Ihrer Domain leitet den Namen autodiscover auf {host} weiter, ne
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Your keychain keeps the certificate and its private key, and macOS asks you before ictMail uses it."
-msgstr ""
+msgstr "Ihr Schlüsselbund speichert das Zertifikat und seinen privaten Schlüssel, und macOS fragt Sie, bevor ictMail ihn verwendet."
 
 #. what a command says
 #: crates/mobile/src/sync.rs
@@ -18829,7 +18829,7 @@ msgstr "Ihr Mailserver hat geprüft, woher diese Nachricht stammt, und die Prüf
 #. interface
 #: crates/ui-egui/src/reading/remote.rs
 msgid "Your mail server didn't confirm that this message came from {sender}, so ictMail won't remember them: a sender's address can be faked."
-msgstr ""
+msgstr "Ihr Mailserver hat nicht bestätigt, dass diese Nachricht von {sender} stammt. Daher merkt sich ictMail den Absender nicht: Eine Absenderadresse kann gefälscht werden."
 
 #. what a command says
 #: crates/engine/src/cmd/unsubscribe.rs
@@ -18878,47 +18878,47 @@ msgstr "Ihre Organisation erlaubt Exchange Web Services für dieses Konto nicht.
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Your organisation doesn't let ictMail change your automatic replies. Ask your administrator."
-msgstr ""
+msgstr "Ihre Organisation erlaubt ictMail nicht, Ihre automatischen Antworten zu ändern. Wenden Sie sich an Ihren Administrator."
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "Your organisation doesn't let ictMail keep this mailbox in step with Outlook"
-msgstr ""
+msgstr "Ihre Organisation erlaubt ictMail nicht, dieses Postfach mit Outlook abzugleichen"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs crates/ui-egui/src/shared_permission.rs
 msgid "Your organisation doesn't let ictMail read shared mailboxes and the calendars shared with you"
-msgstr ""
+msgstr "Ihre Organisation erlaubt ictMail nicht, freigegebene Postfächer und die für Sie freigegebenen Kalender zu lesen"
 
 #. interface
 #: crates/ui-egui/src/approval.rs
 msgid "Your organisation has approved ictMail"
-msgstr ""
+msgstr "Ihre Organisation hat ictMail genehmigt"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Your organisation has approved ictMail. Now sign in with your own account."
-msgstr ""
+msgstr "Ihre Organisation hat ictMail genehmigt. Melden Sie sich jetzt mit Ihrem eigenen Konto an."
 
 #. what a command says
 #: crates/mobile/src/sync_api.rs
 msgid "Your organisation has to approve ictMail before you can sign in. Ask an administrator."
-msgstr ""
+msgstr "Ihre Organisation muss ictMail genehmigen, bevor Sie sich anmelden können. Wenden Sie sich an einen Administrator."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Your organisation has to approve ictMail first"
-msgstr ""
+msgstr "Ihre Organisation muss ictMail zuerst genehmigen"
 
 #. interface
 #: crates/ui-egui/src/nav.rs
 msgid "Your organisation keeps this permission for its administrators to give. Once one of them has approved it, choose it again here. Until then the Favorites kept in ictMail are shown."
-msgstr ""
+msgstr "Ihre Organisation behält das Erteilen dieser Berechtigung Ihren Administratoren vor. Sobald einer von ihnen sie genehmigt hat, wählen Sie sie hier erneut. Bis dahin werden die in ictMail gespeicherten Favoriten angezeigt."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Your organisation lets only an administrator approve a new program, and none has approved ictMail yet. Nothing is wrong with your account or your password."
-msgstr ""
+msgstr "In Ihrer Organisation darf nur ein Administrator ein neues Programm genehmigen, und noch keiner hat ictMail genehmigt. Mit Ihrem Konto und Ihrem Kennwort ist alles in Ordnung."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -18934,7 +18934,7 @@ msgstr "Ihre Organisation muss dies zunächst von einem Administrator genehmigen
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "Your organisation needs to approve ictMail"
-msgstr ""
+msgstr "Ihre Organisation muss ictMail genehmigen"
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
@@ -18945,12 +18945,12 @@ msgstr "In Ihrer Organisation darf dann nur ein Administrator ein neues Programm
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "Your organisation's administrator has to approve ictMail keeping this mailbox in step with Outlook once: File › Info"
-msgstr ""
+msgstr "Der Administrator Ihrer Organisation muss einmal zustimmen, dass ictMail dieses Postfach mit Outlook abgleicht: Datei › Informationen"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "Your organisation's administrator has to approve ictMail reading shared mailboxes and calendars once: File › Info"
-msgstr ""
+msgstr "Der Administrator Ihrer Organisation muss einmal zustimmen, dass ictMail freigegebene Postfächer und Kalender liest: Datei › Informationen"
 
 #. interface
 #: crates/ui-egui/src
@@ -18961,17 +18961,17 @@ msgstr "Der Administrator Ihrer Organisation muss das einmal genehmigen"
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "Your organisation's rules (Conditional Access) don't allow ictMail to sign you in on this phone. This is your organisation's policy, not a fault in ictMail or in your phone. Ask the people who run your organisation's mail whether sign-in from this kind of app can be allowed."
-msgstr ""
+msgstr "Die Regeln Ihrer Organisation (Conditional Access) erlauben es ictMail nicht, Sie auf diesem Smartphone anzumelden. Dies ist eine Richtlinie Ihrer Organisation und kein Fehler von ictMail oder Ihrem Smartphone. Fragen Sie die Verantwortlichen für die E-Mail-Dienste Ihrer Organisation, ob eine Anmeldung über diese Art von App zugelassen werden kann."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "Your organisation's rules don't allow this for your account. This is your organisation's policy, not a fault in ictMail."
-msgstr ""
+msgstr "Die Regeln Ihrer Organisation erlauben dies für Ihr Konto nicht. Dies ist eine Richtlinie Ihrer Organisation und kein Fehler von ictMail."
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "Your own certificates and keys are used by ictMail's desktop program: here Digital signatures are checked, and nothing is signed or decrypted."
-msgstr ""
+msgstr "Ihre eigenen Zertifikate und Schlüssel werden vom Desktop-Programm von ictMail verwendet: Hier werden digitale Signaturen überprüft, und es wird nichts signiert oder entschlüsselt."
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -19098,7 +19098,7 @@ msgstr "Server und Adresse eines JMAP-Kontos können nicht mehr geändert werden
 #. what a command says
 #: crates/engine/src/cmd/senders.rs
 msgid "a Microsoft or Exchange account sends from other addresses only as its server allows, which ictMail doesn't ask for yet"
-msgstr ""
+msgstr "ein Microsoft- oder Exchange-Konto sendet von anderen Adressen nur, wenn sein Server es erlaubt, und das fragt ictMail noch nicht an"
 
 #. why a mail server couldn't be used
 #: crates/net/src/sync.rs
@@ -19475,7 +19475,7 @@ msgstr "aus E-Mails gesammelt"
 #. why a command can't run
 #: crates/engine/src/gmail.rs
 msgid "comes once Google has reviewed ictMail"
-msgstr ""
+msgstr "ist verfügbar, sobald Google ictMail überprüft hat"
 
 #. why a mail server couldn't be used
 #: crates/proto/src/lib.rs
@@ -19624,259 +19624,259 @@ msgstr "icloud.com, me.com und mac.com"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "ictMail can now keep {account} in step with Microsoft through Microsoft Graph, the way Outlook on the web does, instead of IMAP. Your folders, flags, categories and drafts then match what you see in Outlook, and your mail keeps coming even where your organisation has turned IMAP off."
-msgstr ""
+msgstr "ictMail kann {account} jetzt statt über IMAP über Microsoft Graph mit Microsoft abgleichen, wie es Outlook im Web tut. Ihre Ordner, Kennzeichnungen, Kategorien und Entwürfe entsprechen dann dem, was Sie in Outlook sehen, und Ihre E-Mails kommen weiterhin an, auch wenn Ihre Organisation IMAP abgeschaltet hat."
 
 #. name
 #: crates/engine/src/cmd/rules.rs
 msgid "ictMail can't keep this account's rules on its server"
-msgstr ""
+msgstr "ictMail kann die Regeln dieses Kontos nicht auf seinem Server speichern"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "ictMail can't sign in to this server this way yet (it wants Kerberos). Ask your administrator whether it can take a user name and password over an encrypted connection."
-msgstr ""
+msgstr "ictMail kann sich derzeit auf diesem Weg noch nicht bei diesem Server anmelden (er verlangt Kerberos). Fragen Sie Ihren Administrator, ob eine Anmeldung mit Benutzername und Passwort über eine verschlüsselte Verbindung möglich ist."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "ictMail carries the software below. The Rust libraries of its core are listed with their versions in the source repository."
-msgstr ""
+msgstr "ictMail enthält die unten aufgeführte Software. Die Rust-Bibliotheken des Kerns sind mit ihren Versionen im Quellcode-Repository aufgelistet."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail couldn't open a browser for Microsoft's page."
-msgstr ""
+msgstr "ictMail konnte keinen Browser für die Microsoft-Seite öffnen."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail couldn't open a browser for Microsoft's page. Install or enable a browser, then try again."
-msgstr ""
+msgstr "ictMail konnte keinen Browser für die Microsoft-Seite öffnen. Installieren oder aktivieren Sie einen Browser und versuchen Sie es erneut."
 
 #. interface
 #: crates/ui-egui/src/approval.rs
 msgid "ictMail couldn't open your browser for Microsoft's approval page. Copy the message instead: the link in it opens the same page."
-msgstr ""
+msgstr "ictMail konnte Ihren Browser für die Genehmigungsseite von Microsoft nicht öffnen. Kopieren Sie stattdessen die Nachricht: Der Link darin öffnet dieselbe Seite."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "ictMail couldn't save your latest changes yet. It will try again; if the app closes first they may be lost."
-msgstr ""
+msgstr "ictMail konnte Ihre letzten Änderungen noch nicht speichern. Die App wird es erneut versuchen. Falls sie vorher geschlossen wird, gehen die Änderungen möglicherweise verloren."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
 msgid "ictMail couldn't set aside the saved mailbox it couldn't read, so changes aren't saved this time. Free up space and restart the app."
-msgstr ""
+msgstr "ictMail konnte das gespeicherte Postfach, das nicht gelesen werden konnte, nicht beiseiteschieben. Daher werden die Änderungen diesmal nicht gespeichert. Geben Sie Speicherplatz frei und starten Sie die App neu."
 
 #. what a command says
 #: crates/model/src/mailbox.rs
 msgid "ictMail doesn't delete a JMAP account's folders yet: the next Send/Receive would bring them back"
-msgstr ""
+msgstr "ictMail löscht die Ordner eines JMAP-Kontos noch nicht: Beim nächsten Senden/Empfangen würden sie wiederhergestellt"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "ictMail doesn't know the settings for this address. The servers below are only a guess made from its domain: check them with your provider or administrator before you connect."
-msgstr ""
+msgstr "ictMail kennt die Einstellungen für diese Adresse nicht. Die Server unten sind nur anhand ihrer Domain geraten: Prüfen Sie sie bei Ihrem Anbieter oder Ihrem Administrator, bevor Sie eine Verbindung herstellen."
 
 #. what a command says
 #: crates/model/src/mailbox.rs
 msgid "ictMail doesn't rename or move a JMAP account's folders yet: its server wouldn't be told"
-msgstr ""
+msgstr "ictMail benennt Ordner eines JMAP-Kontos noch nicht um und verschiebt sie auch nicht: Der Server würde darüber nicht informiert"
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "ictMail doesn't support POP yet. Use your provider's IMAP server instead (usually imap.<your domain>, port 993)."
-msgstr ""
+msgstr "ictMail unterstützt POP noch nicht. Verwenden Sie stattdessen den IMAP-Server Ihres Anbieters (meist imap.<Ihre Domäne>, Port 993)."
 
 #. interface
 #: crates/ui-egui/src/software.rs
 msgid "ictMail is drawing without the graphics card, which uses a lot of processor time. Installing or updating the graphics driver usually fixes this."
-msgstr ""
+msgstr "ictMail verwendet zum Rendern nicht die Grafikkarte, wodurch viel Prozessorleistung beansprucht wird. Durch die Installation oder Aktualisierung des Grafiktreibers lässt sich dieses Problem normalerweise beheben."
 
 #. interface
 #: crates/ui-egui/src/ribbon.rs
 msgid "ictMail is open source (MIT or Apache-2.0). Every button here runs a command that scripts and agents can run too: see Search Commands."
-msgstr ""
+msgstr "ictMail ist Open Source (MIT oder Apache-2.0). Jede Schaltfläche hier führt einen Befehl aus, den auch Skripte und Agenten ausführen können: siehe „Befehle suchen“."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "ictMail is open source, under the MIT and Apache 2.0 licences."
-msgstr ""
+msgstr "ictMail ist Open Source, unter der MIT- und der Apache-2.0-Lizenz."
 
 #. interface
 #: crates/ui-egui/src/credits.rs
 msgid "ictMail is tested on real mail, by people who use it every day and tell us what goes wrong. Thank you."
-msgstr ""
+msgstr "ictMail wird mit echten E-Mails getestet, von Menschen, die es täglich nutzen und uns sagen, was schiefgeht. Vielen Dank."
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail is up to date ({version})."
-msgstr ""
+msgstr "ictMail ist auf dem neuesten Stand ({version})."
 
 #. interface
 #: crates/ui-egui/src/open_shared.rs crates/ui-egui/src/shared_permission.rs
 msgid "ictMail isn't allowed to read other people's calendars yet."
-msgstr ""
+msgstr "ictMail darf noch nicht auf die Kalender anderer Personen zugreifen."
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "ictMail keeps at most {n} keys imported here, and has that many: remove one you don't use, then import this one."
-msgstr ""
+msgstr "ictMail speichert höchstens {n} hier importierte Schlüssel und hat diese Anzahl bereits erreicht: Entfernen Sie einen Schlüssel, den Sie nicht verwenden, und importieren Sie dann diesen."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs crates/ui-egui/src/dialogs.rs
 msgid "ictMail keeps it in memory until you close the app. It is never written to disk."
-msgstr ""
+msgstr "ictMail hält es im Arbeitsspeicher, bis Sie die App schließen. Es wird nie auf den Datenträger geschrieben."
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "ictMail keeps the file, still protected by its passphrase, in the system's credential store. Only an ECDSA certificate (P-256 or P-384) is kept this way: an RSA one belongs on a smartcard or token (PKCS#11)."
-msgstr ""
+msgstr "ictMail speichert die Datei, weiterhin durch ihre Passphrase geschützt, im Anmeldeinformationsspeicher des Systems. Auf diese Weise wird nur ein ECDSA-Zertifikat (P-256 oder P-384) gespeichert: Ein RSA-Zertifikat gehört auf eine Smartcard oder ein Token (PKCS#11)."
 
 #. interface
 #: crates/ui-egui/src/forms.rs
 msgid "ictMail keeps this account's rules on this computer: the rule runs while ictMail is open."
-msgstr ""
+msgstr "ictMail speichert die Regeln dieses Kontos auf diesem Computer: Die Regel läuft, solange ictMail geöffnet ist."
 
 #. what a command says
 #: crates/model/src/mailbox.rs crates/model/src/mailbox_bulk.rs
 msgid "ictMail moves a JMAP account's mail only between the folders its server has: the next Send/Receive would bring it back"
-msgstr ""
+msgstr "ictMail verschiebt E-Mails eines JMAP-Kontos nur zwischen den Ordnern, die auf seinem Server vorhanden sind: Beim nächsten Senden/Empfangen würden sie wiederhergestellt"
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "ictMail needs you to sign in again to read your automatic replies: Microsoft's page opens in your browser. Mail and your calendar work as they are meanwhile."
-msgstr ""
+msgstr "ictMail benötigt eine erneute Anmeldung, um Ihre automatischen Antworten abzurufen: Die Microsoft-Seite wird in Ihrem Browser geöffnet. E-Mails und Kalender funktionieren währenddessen wie gewohnt."
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "ictMail needs your permission to change your automatic replies first: File › Info › Ask again."
-msgstr ""
+msgstr "ictMail benötigt zunächst Ihre Erlaubnis, um Ihre automatischen Antworten zu ändern: Datei › Informationen › Erneut fragen."
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "ictMail needs your system browser to sign in. You can also use a Google app password."
-msgstr ""
+msgstr "ictMail benötigt Ihren Systembrowser für die Anmeldung. Sie können auch ein Google-App-Passwort verwenden."
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail now installs its updates itself. Turn this off in File › About."
-msgstr ""
+msgstr "ictMail installiert seine Updates jetzt selbst. Unter Datei › Info können Sie das ausschalten."
 
 #. name
 #: crates/engine/src/cmd/rules.rs
 msgid "ictMail reaches this account's rules on the server once it switches to Microsoft Graph"
-msgstr ""
+msgstr "ictMail erreicht die Regeln dieses Kontos auf dem Server, sobald es zu Microsoft Graph wechselt"
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "ictMail reads the key without its passphrase and keeps the file, still protected by it, in the system's credential store. The key must have a passphrase and sign with Ed25519 or ECDSA; ictMail asks for the passphrase when you sign."
-msgstr ""
+msgstr "ictMail liest den Schlüssel ohne seine Passphrase ein und speichert die Datei, weiterhin durch diese geschützt, im Anmeldeinformationsspeicher des Systems. Der Schlüssel muss durch eine Passphrase geschützt sein und mit Ed25519 oder ECDSA signieren; ictMail fragt beim Signieren nach der Passphrase."
 
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
 msgid "ictMail sends {host} the address this list gave for unsubscribing, which may identify you to it, and nothing else: no cookies, no sign-in. Like any connection, it also shows your internet address."
-msgstr ""
+msgstr "ictMail sendet {host} die Adresse, die diese Liste zum Abmelden angegeben hat und die Sie ihr gegenüber erkennbar machen kann, und sonst nichts: keine Cookies, keine Anmeldung. Wie jede Verbindung zeigt sie außerdem Ihre Internetadresse."
 
 #. interface
 #: crates/ui-egui/src/opening.rs
 msgid "ictMail starts with an empty mailbox and leaves the file as it is."
-msgstr ""
+msgstr "ictMail startet mit einem leeren Postfach und lässt die Datei unverändert."
 
 #. interface
 #: crates/ui-egui/src/opening.rs
 msgid "ictMail stopped reading it before it was done."
-msgstr ""
+msgstr "ictMail hat den Lesevorgang vorzeitig abgebrochen."
 
 #. what a command says
 #: crates/engine/src/import_pst.rs
 msgid "ictMail stopped reading the .pst file before it was done: what came in is kept"
-msgstr ""
+msgstr "ictMail hat das Einlesen der .pst-Datei vorzeitig beendet: Bereits importierte Daten bleiben erhalten"
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
 msgid "ictMail tries the usual places for your address."
-msgstr ""
+msgstr "ictMail versucht die üblichen Stellen für Ihre Adresse."
 
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "ictMail was started with {n} thing that isn't a mail link or a file it opens: it was left alone"
 msgid_plural "ictMail was started with {n} things that aren't mail links or files it opens: they were left alone"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ictMail wurde mit {n} Element gestartet, das weder ein E-Mail-Link noch eine Datei ist, die es öffnen kann: Es wurde ignoriert"
+msgstr[1] "ictMail wurde mit {n} Elementen gestartet, die weder E-Mail-Links noch Dateien sind, die es öffnen kann: Sie wurden ignoriert"
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "ictMail wasn't allowed to keep this mailbox in step with Outlook: {error}"
-msgstr ""
+msgstr "ictMail durfte dieses Postfach nicht mit Outlook abgleichen: {error}"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "ictMail will have no account afterwards: File › Add Account sets one up again."
-msgstr ""
+msgstr "ictMail hat danach kein Konto mehr: Mit Datei › Konto hinzufügen richten Sie wieder eines ein."
 
 #. interface
 #: crates/ui-egui/src/close_to_tray.rs
 msgid "ictMail will keep running"
-msgstr ""
+msgstr "ictMail wird weiterhin ausgeführt"
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
 msgid "ictMail will make one appointment called \"ictMail connection check\" in the calendar of {account}, a year from today. It reads it back, changes its time twice (the second time said in this computer's time zone), reads it back each time, and deletes it again. Nothing else in your calendar is read or changed, nobody is invited or written to, and no reminder is set. Afterwards you see what the server answered at each step, and whether what was sent is what the server has."
-msgstr ""
+msgstr "ictMail legt im Kalender von {account} einen Termin namens „ictMail connection check“ an, ein Jahr ab heute. Es liest ihn zurück, ändert seine Zeit zweimal (beim zweiten Mal in der Zeitzone dieses Computers angegeben), liest ihn jedes Mal zurück und löscht ihn wieder. Sonst wird nichts in Ihrem Kalender gelesen oder geändert, niemand wird eingeladen oder angeschrieben, und keine Erinnerung wird gesetzt. Danach sehen Sie, was der Server bei jedem Schritt geantwortet hat und ob das Gesendete dem entspricht, was der Server hat."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail will read and change the shared mailboxes you have access to. Microsoft's page opens in your browser to ask you."
-msgstr ""
+msgstr "ictMail wird die freigegebenen Postfächer lesen und ändern, auf die Sie Zugriff haben. Die Microsoft-Seite wird in Ihrem Browser geöffnet, um Sie um Erlaubnis zu bitten."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail will read and change your Microsoft To Do lists and tasks. Microsoft's page opens in your browser to ask you. Until you say yes, your tasks stay on this phone."
-msgstr ""
+msgstr "ictMail wird Ihre Microsoft-To-Do-Listen und -Aufgaben lesen und ändern. Die Microsoft-Seite wird in Ihrem Browser geöffnet, um Sie um Erlaubnis zu bitten. Bis Sie zustimmen, bleiben Ihre Aufgaben auf diesem Smartphone."
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
 msgid "ictMail will send mail from a shared mailbox, as it or on its behalf. Microsoft's page opens in your browser to ask you."
-msgstr ""
+msgstr "ictMail wird E-Mails von einem freigegebenen Postfach senden, entweder als dieses Postfach oder in dessen Namen. Die Microsoft-Seite wird in Ihrem Browser geöffnet, um Sie um Erlaubnis zu bitten."
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail {version} didn't start."
-msgstr ""
+msgstr "ictMail {version} ist nicht gestartet."
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail {version} is available"
-msgstr ""
+msgstr "ictMail {version} ist verfügbar"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail {version} is available and fixes a security problem"
-msgstr ""
+msgstr "ictMail {version} ist verfügbar und behebt ein Sicherheitsproblem"
 
 #. interface
 #: crates/ui-egui/src/updates.rs
 msgid "ictMail {version} wasn't installed: this version is still the one here."
-msgstr ""
+msgstr "ictMail {version} wurde nicht installiert: Diese Version ist weiterhin installiert."
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "ictMail's Google Desktop registration is not yet configured for this build."
-msgstr ""
+msgstr "Die Google-Desktop-Registrierung von ictMail ist für diesen Build noch nicht eingerichtet."
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "ictMail's data has been removed already"
-msgstr ""
+msgstr "Die Daten von ictMail wurden bereits entfernt"
 
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "ictMail's data has been removed: nothing is sent or received"
-msgstr ""
+msgstr "Die Daten von ictMail wurden entfernt: Es werden keine E-Mails mehr gesendet oder empfangen"
 
 #. interface
 #: crates/ui-egui/src/security.rs
 msgid "ictMail's search for your keys stopped without an answer. Try again."
-msgstr ""
+msgstr "Die Suche von ictMail nach Ihren Schlüsseln wurde ohne Ergebnis abgebrochen. Versuchen Sie es erneut."
 
 #. interface
 #: crates/ui-egui/src/security.rs
@@ -19916,12 +19916,12 @@ msgstr "liegt außerhalb des zu leerenden Ordners: bleibt unverändert"
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "is part of a mailbox you opened from outside ictMail's own folder: it is yours and was not touched"
-msgstr ""
+msgstr "gehört zu einem Postfach, das Sie von außerhalb des ictMail-Ordners geöffnet haben: Es gehört Ihnen und wurde nicht verändert"
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
 msgid "isn't a folder ictMail keeps its data in: left alone"
-msgstr ""
+msgstr "ist kein Ordner, in dem ictMail seine Daten speichert: bleibt unverändert"
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
@@ -20718,7 +20718,7 @@ msgstr "das ist nicht das Passwort dieser .pst-Datei: Es wurde nichts importiert
 #. interface
 #: crates/ui-egui/src
 msgid "that mailbox is open in another ictMail window; close it there first"
-msgstr ""
+msgstr "dieses Postfach ist in einem anderen ictMail-Fenster geöffnet. Schließen Sie es zuerst dort"
 
 #. what a command says
 #: crates/engine/src/cmd/compose.rs
@@ -20952,7 +20952,7 @@ msgstr "der Download wurde vor dem Ende abgebrochen"
 #. why a mail server couldn't be used
 #: crates/proto/src/line.rs
 msgid "the encrypted connection was damaged on the way (this is usually antivirus or firewall software that scans mail connections: turn off its mail or SSL scanning for ictMail, or ask the mail provider)"
-msgstr ""
+msgstr "die verschlüsselte Verbindung wurde unterwegs beschädigt (meist liegt das an Antiviren- oder Firewall-Software, die Mailverbindungen prüft: schalten Sie deren Mail- oder SSL-Prüfung für ictMail aus oder fragen Sie den Mailanbieter)"
 
 #. what a command says
 #: crates/engine/src/cmd/calendar.rs crates/engine/src/cmd/calendar_extra.rs crates/engine/src/cmd/zones.rs
@@ -21253,7 +21253,7 @@ msgstr "Der Server hat ein Passwort angenommen, das nicht gesendet wurde"
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
 msgid "the server and ictMail found no encryption in common; often the server offers only older encryption (CBC suites) that ictMail doesn't use, and its administrator can turn on the AES-GCM suites"
-msgstr ""
+msgstr "der Server und ictMail haben keine gemeinsame Verschlüsselungsmethode gefunden; häufig bietet der Server nur ältere Verschlüsselungsverfahren (CBC-Suites) an, die ictMail nicht verwendet. Sein Administrator kann die AES-GCM-Suites aktivieren"
 
 #. why a mail server couldn't be used
 #: crates/proto/src/imap/idle.rs crates/proto/src/imap/mod.rs crates/proto/src/imap/status.rs
@@ -21417,7 +21417,7 @@ msgstr "Der Server bietet keine Möglichkeit, sich mit einem Zugriffstoken anzum
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
 msgid "the server offers only older encryption (CBC suites) that ictMail doesn't use; its administrator can turn on the AES-GCM suites"
-msgstr ""
+msgstr "der Server bietet nur ältere Verschlüsselungsverfahren (CBC-Suites) an, die ictMail nicht verwendet; sein Administrator kann die AES-GCM-Suites aktivieren"
 
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
@@ -21492,12 +21492,12 @@ msgstr "Der Server hat als Antwort auf einen Befehl zu viel gesendet"
 #. why a mail server couldn't be used
 #: crates/proto/src/imap/mod.rs
 msgid "the server sent {claimed} bytes in one piece, more than the {mb} MB ictMail accepts"
-msgstr ""
+msgstr "Der Server hat {claimed} Byte in einem Stück gesendet, mehr als die {mb} MB, die ictMail annimmt"
 
 #. why a mail server couldn't be used
 #: crates/proto/src/line.rs
 msgid "the server sent {n} bytes in one piece, more than ictMail accepts"
-msgstr ""
+msgstr "Der Server hat {n} Byte in einem Stück gesendet, mehr als ictMail annimmt"
 
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
@@ -22022,19 +22022,19 @@ msgstr "Microsoft akzeptiert Ihre Anmeldung nicht mehr."
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
 msgid "ictMail needs your permission first (File › Info › Ask again)."
-msgstr ""
+msgstr "ictMail benötigt zunächst Ihre Zustimmung (Datei › Informationen › Erneut fragen)."
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
 msgid "ictMail wasn't allowed to change them."
-msgstr ""
+msgstr "ictMail durfte sie nicht ändern."
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
 msgid "sign in again to let ictMail read them (File › Info)."
-msgstr ""
+msgstr "melden Sie sich erneut an, damit ictMail sie lesen kann (Datei › Informationen)."
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
@@ -22046,7 +22046,7 @@ msgstr "Sie arbeiten offline."
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
 msgid "your organisation doesn't let ictMail change them."
-msgstr ""
+msgstr "Ihre Organisation erlaubt ictMail nicht, sie zu ändern."
 
 #. interface
 #: crates/ui-egui/src/alerts.rs
@@ -22059,13 +22059,13 @@ msgstr "Auf diesem Desktop antwortet kein Benachrichtigungsdienst."
 #: crates/ui-egui/src/alerts.rs
 msgctxt "why desktop alerts can't be shown"
 msgid "this copy doesn't run from the ictMail app."
-msgstr ""
+msgstr "Diese Kopie läuft nicht aus der ictMail-App."
 
 #. interface
 #: crates/ui-egui/src/alerts.rs
 msgctxt "why desktop alerts can't be shown"
 msgid "this copy of ictMail wasn't installed with its installer (.msi), so Windows doesn't know it."
-msgstr ""
+msgstr "Diese Kopie von ictMail wurde nicht mit ihrem Installationsprogramm (.msi) installiert, daher kennt Windows sie nicht."
 
 #. interface
 #: crates/ui-egui/src/send_later.rs
@@ -22104,7 +22104,7 @@ msgstr "{account} konnte nicht zu Microsoft Graph wechseln: {why}"
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
 msgid "{account} is switching to Microsoft Graph, but ictMail can't reach its IMAP server to send what is waiting there first."
-msgstr ""
+msgstr "{account} wechselt zu Microsoft Graph, aber ictMail erreicht seinen IMAP-Server nicht, um zuerst zu senden, was dort wartet."
 
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
@@ -22390,7 +22390,7 @@ msgstr "{line} · konnte beim letzten Durchlauf nicht gelesen werden: {folders}"
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "{line} · ictMail may change them"
-msgstr ""
+msgstr "{line} · ictMail kann sie ändern"
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
@@ -22567,7 +22567,7 @@ msgstr "{name} ist kein Microsoft- oder Exchange-Server-Konto"
 #. what a command says
 #: crates/engine/src/cmd/file.rs
 msgid "{name} isn't a ictMail mailbox"
-msgstr ""
+msgstr "{name} ist kein ictMail-Postfach"
 
 #. what a command says
 #: crates/engine/src/cmd/file.rs
@@ -22687,7 +22687,7 @@ msgstr "{name}: keine Nachrichtendatei"
 #. what a command says
 #: crates/engine/src/io.rs
 msgid "{name}: not a message, calendar or contact file ictMail reads"
-msgstr ""
+msgstr "{name}: keine Nachrichten-, Kalender- oder Kontaktdatei, die ictMail lesen kann"
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
@@ -23491,8 +23491,8 @@ msgstr[1] "{n} Ergebnisse in {scope}"
 #: crates/ui-egui/src/forms.rs
 msgid "{n} rule deleted here is still on the server until ictMail may change the server's rules (File › Info › Ask again)."
 msgid_plural "{n} rules deleted here are still on the server until ictMail may change the server's rules (File › Info › Ask again)."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{n} hier gelöschte Regel ist weiterhin auf dem Server vorhanden, bis ictMail die Serverregeln ändern darf (Datei › Informationen › Erneut fragen)."
+msgstr[1] "{n} hier gelöschte Regeln sind weiterhin auf dem Server vorhanden, bis ictMail die Serverregeln ändern darf (Datei › Informationen › Erneut fragen)."
 
 #. interface
 #: crates/ui-egui/src/sync_panel.rs
@@ -23697,7 +23697,7 @@ msgstr "{said}; {left}{more}"
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "{saving} · ictMail closes when it is done"
-msgstr ""
+msgstr "{saving} · ictMail wird danach beendet"
 
 #. interface
 #: crates/ui-egui/src/lib.rs
@@ -23787,7 +23787,7 @@ msgstr "{what} ({already})"
 #. what a command says
 #: crates/engine/src/cmd/account.rs
 msgid "{who} was added by a newer version of ictMail, {then}"
-msgstr ""
+msgstr "{who} wurde von einer neueren Version von ictMail hinzugefügt, {then}"
 
 #. interface
 #: crates/ui-egui/src/import_pst.rs
@@ -23797,7 +23797,7 @@ msgstr "{why} Was bereits importiert wurde, bleibt erhalten; importieren Sie die
 #. interface
 #: crates/ui-egui/src/lib.rs
 msgid "{why}, so sign-ins aren't remembered: ictMail asks again each time it starts."
-msgstr ""
+msgstr "{why}, daher werden Anmeldungen nicht gespeichert: ictMail fragt bei jedem Start erneut."
 
 #. interface
 #: crates/ui-egui/src/shared_mailboxes.rs
