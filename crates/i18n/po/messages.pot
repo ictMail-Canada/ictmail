@@ -255,7 +255,7 @@ msgstr ""
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
-msgid "2. When they have approved MailCraft, come back here and sign in again."
+msgid "2. When they have approved ictMail, come back here and sign in again."
 msgstr ""
 
 #. android, interface, name
@@ -311,6 +311,11 @@ msgstr ""
 #. what a command says
 #: crates/engine/src/sync_driver/calendar_plan.rs
 msgid "A calendar change couldn't be sent yet and will be tried again: {error}"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "A certificate is trusted for this account besides the system's."
 msgstr ""
 
 #. what a command says
@@ -445,7 +450,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/updates.rs
-msgid "A new version is downloaded in the background, kept only when MailCraft's own release signature says it is ours, and installed when you restart to update or quit."
+msgid "A new version is downloaded in the background, kept only when ictMail's own release signature says it is ours, and installed when you restart to update or quit."
 msgstr ""
 
 #. interface
@@ -470,7 +475,7 @@ msgstr ""
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
-msgid "A part of this key is RSA (a subkey for encryption, perhaps), which MailCraft doesn't use by itself: keep the key in GnuPG, whose agent MailCraft signs with, and leave it out of here."
+msgid "A part of this key is RSA (a subkey for encryption, perhaps), which ictMail doesn't use by itself: keep the key in GnuPG, whose agent ictMail signs with, and leave it out of here."
 msgstr ""
 
 #. interface
@@ -530,7 +535,7 @@ msgstr ""
 
 #. what a command says
 #: crates/engine/src/cmd/auto_replies.rs
-msgid "A shared mailbox's automatic replies are set by whoever manages it; MailCraft sets only your own account's"
+msgid "A shared mailbox's automatic replies are set by whoever manages it; ictMail sets only your own account's"
 msgstr ""
 
 #. interface
@@ -550,7 +555,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
-msgid "A short note with the link to that page, to paste into mail or chat. MailCraft sends nothing itself."
+msgid "A short note with the link to that page, to paste into mail or chat. ictMail sends nothing itself."
 msgstr ""
 
 #. interface
@@ -572,12 +577,12 @@ msgstr ""
 #: crates/ui-egui/src/ribbon.rs
 msgid ""
 "About\n"
-"MailCraft"
+"ictMail"
 msgstr ""
 
 #. interface, name
 #: crates/ui-egui/src/backstage.rs crates/ui-egui/src/dialogs.rs crates/ui-egui/src/menubar.rs
-msgid "About MailCraft"
+msgid "About ictMail"
 msgstr ""
 
 #. interface
@@ -903,7 +908,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
-msgid "Added by a newer version of MailCraft: send and receive with it there"
+msgid "Added by a newer version of ictMail: send and receive with it there"
 msgstr ""
 
 #. interface
@@ -1069,16 +1074,6 @@ msgid "Allow Keeping Tasks in Step with Microsoft To Do"
 msgstr ""
 
 #. interface
-#: crates/ui-egui/src/server_sync.rs
-msgid "Allow MailCraft to keep this mailbox in step with Outlook on the page that opened in your browser…"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/shared_mailboxes.rs
-msgid "Allow MailCraft to read shared mailboxes on the page that opened in your browser…"
-msgstr ""
-
-#. interface
 #: crates/ui-egui/src/forms.rs
 msgid "Allow New Time Proposals"
 msgstr ""
@@ -1091,6 +1086,16 @@ msgstr ""
 #. command label
 #: crates/ui-egui/src/lib.rs
 msgid "Allow Sending from Shared Mailboxes"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/server_sync.rs
+msgid "Allow ictMail to keep this mailbox in step with Outlook on the page that opened in your browser…"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/shared_mailboxes.rs
+msgid "Allow ictMail to read shared mailboxes on the page that opened in your browser…"
 msgstr ""
 
 #. android
@@ -1225,7 +1230,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
-msgid "An https:// or webcal:// address. Nothing is read until you press Subscribe. The calendar is listed under Other Calendars, read-only, and brought up to date from the web every hour and when you press Send/Receive; you can choose another time in File › Info. Its address is asked for over an encrypted connection, with nothing that says who you are. A private address holds a secret: it is kept like a password, in your system's credential store when you let MailCraft remember sign-ins, and otherwise until you quit."
+msgid "An https:// or webcal:// address. Nothing is read until you press Subscribe. The calendar is listed under Other Calendars, read-only, and brought up to date from the web every hour and when you press Send/Receive; you can choose another time in File › Info. Its address is asked for over an encrypted connection, with nothing that says who you are. A private address holds a secret: it is kept like a password, in your system's credential store when you let ictMail remember sign-ins, and otherwise until you quit."
 msgstr ""
 
 #. interface
@@ -1252,7 +1257,7 @@ msgstr[1] ""
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
-msgid "Android closed MailCraft while Microsoft's page was open, so that sign-in could not be finished. Nothing was added."
+msgid "Android closed ictMail while Microsoft's page was open, so that sign-in could not be finished. Nothing was added."
 msgstr ""
 
 #. command label, interface
@@ -1307,7 +1312,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
-msgid "Anything still waiting to go to the server goes first: mail in the Outbox, and flags and moves made while you were offline. If MailCraft can't reach the server, the switch waits until it can."
+msgid "Anything still waiting to go to the server goes first: mail in the Outbox, and flags and moves made while you were offline. If ictMail can't reach the server, the switch waits until it can."
 msgstr ""
 
 #. interface
@@ -1418,6 +1423,11 @@ msgstr ""
 #. command label
 #: crates/engine/src/cmd/categories_remote.rs
 msgid "Apply Sent Category Changes"
+msgstr ""
+
+#. command label
+#: crates/engine/src/cmd/remote.rs
+msgid "Apply Sent Contact Changes"
 msgstr ""
 
 #. command label
@@ -1614,7 +1624,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/reading/unsubscribe.rs
-msgid "Ask the list to stop sending you its mail. MailCraft asks first and says how."
+msgid "Ask the list to stop sending you its mail. ictMail asks first and says how."
 msgstr ""
 
 #. ribbon
@@ -1823,7 +1833,7 @@ msgstr ""
 
 #. what a command says
 #: crates/engine/src/cmd/auto_replies.rs
-msgid "Automatic replies are kept on the mail server, and MailCraft can set them only for accounts that sign in with Microsoft so far: IMAP has no standard way to set them (Sieve vacation replies may come later)"
+msgid "Automatic replies are kept on the mail server, and ictMail can set them only for accounts that sign in with Microsoft so far: IMAP has no standard way to set them (Sieve vacation replies may come later)"
 msgstr ""
 
 #. interface
@@ -1839,16 +1849,6 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgid "Automatic replies are set for the time range you chose"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/auto_replies.rs
-msgid "Automatic replies: MailCraft may change them"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/auto_replies.rs
-msgid "Automatic replies: MailCraft needs you to sign in again to read them"
 msgstr ""
 
 #. interface
@@ -1888,6 +1888,16 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
+msgid "Automatic replies: ictMail may change them"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/auto_replies.rs
+msgid "Automatic replies: ictMail needs you to sign in again to read them"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/auto_replies.rs
 msgid "Automatic replies: not read yet"
 msgstr ""
 
@@ -1908,7 +1918,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
-msgid "Automatic replies: your organisation doesn't let MailCraft change them"
+msgid "Automatic replies: your organisation doesn't let ictMail change them"
 msgstr ""
 
 #. interface
@@ -1918,7 +1928,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
-msgid "Automatic setup can't sign in to this server. Type its address in Server settings and MailCraft will sign in with NTLM."
+msgid "Automatic setup can't sign in to this server. Type its address in Server settings and ictMail will sign in with NTLM."
 msgstr ""
 
 #. interface
@@ -2161,6 +2171,11 @@ msgstr ""
 msgid "Calendar and contacts need your permission: File › Info › Connect calendar and contacts"
 msgstr ""
 
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Calendars and contacts"
+msgstr ""
+
 #. what a command says
 #: crates/engine/src/cmd/dav_sync.rs
 msgid "Calendars and contacts on a server are not read or written yet in this version."
@@ -2300,7 +2315,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/category_sync.rs
-msgid "Categories from {address}'s server. Checking whether MailCraft may change them…"
+msgid "Categories from {address}'s server. Checking whether ictMail may change them…"
 msgstr ""
 
 #. interface
@@ -2320,7 +2335,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/category_sync.rs
-msgid "Categories from {address}'s server. Read-only here until MailCraft can check whether it may change them"
+msgid "Categories from {address}'s server. Read-only here until ictMail can check whether it may change them"
 msgstr ""
 
 #. what a command says
@@ -2350,7 +2365,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/category_sync.rs
-msgid "Categories: read-only here (MailCraft may not change them)"
+msgid "Categories: read-only here (ictMail may not change them)"
 msgstr ""
 
 #. interface
@@ -2360,7 +2375,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/category_sync.rs
-msgid "Categories: read-only here until MailCraft can check whether it may change them"
+msgid "Categories: read-only here until ictMail can check whether it may change them"
 msgstr ""
 
 #. android
@@ -2579,7 +2594,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/updates.rs
-msgid "Check daily for new versions of MailCraft, and download and install them when you quit? Only GitHub is asked; nothing about you or your mail is sent."
+msgid "Check daily for new versions of ictMail, and download and install them when you quit? Only GitHub is asked; nothing about you or your mail is sent."
 msgstr ""
 
 #. command label
@@ -2797,11 +2812,6 @@ msgstr ""
 msgid "Close Dialog"
 msgstr ""
 
-#. interface
-#: crates/ui-egui/src/updates.rs
-msgid "Close MailCraft, install the new version and start it again. Otherwise it is installed when you quit."
-msgstr ""
-
 #. command label
 #: crates/engine/src/cmd/compose.rs
 msgid "Close Message"
@@ -2825,6 +2835,11 @@ msgstr ""
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposerScreen.kt
 msgid "Close and keep as draft"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/updates.rs
+msgid "Close ictMail, install the new version and start it again. Otherwise it is installed when you quit."
 msgstr ""
 
 #. interface
@@ -2984,6 +2999,11 @@ msgstr ""
 msgid "Contact Card"
 msgstr ""
 
+#. command label
+#: crates/engine/src/cmd/remote.rs
+msgid "Contact Changes to Send"
+msgstr ""
+
 #. interface
 #: crates/ui-egui/src/address_book.rs crates/ui-egui/src/check_names.rs
 msgid "Contacts"
@@ -3036,7 +3056,7 @@ msgstr ""
 
 #. name
 #: crates/engine/src/sync_driver/favorites.rs
-msgid "Copies a short message with the address of Microsoft's page where an administrator of your organisation approves MailCraft, once for everybody. Nothing is sent: paste it into mail or chat yourself."
+msgid "Copies a short message with the address of Microsoft's page where an administrator of your organisation approves ictMail, once for everybody. Nothing is sent: paste it into mail or chat yourself."
 msgstr ""
 
 #. command label, interface, name
@@ -3118,7 +3138,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/chrome.rs
-msgid "Copy the version, the platform and the end of MailCraft's own record, to paste into a problem report. No message, address, password or token is in it, and nothing is sent."
+msgid "Copy the version, the platform and the end of ictMail's own record, to paste into a problem report. No message, address, password or token is in it, and nothing is sent."
 msgstr ""
 
 #. command label, interface
@@ -3364,6 +3384,16 @@ msgstr ""
 #. command label, name
 #: crates/engine/src/cmd/format.rs crates/ui-egui/src/menubar.rs
 msgid "Cut"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "DAV address"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "DAV user name"
 msgstr ""
 
 #. interface
@@ -3669,7 +3699,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/alerts.rs
-msgid "Desktop alerts are turned off for MailCraft in System Settings."
+msgid "Desktop alerts are turned off for ictMail in System Settings."
 msgstr ""
 
 #. interface
@@ -3974,7 +4004,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
-msgid "Downloaded pictures and opened attachments can't be told apart by account: File › Info › Remove MailCraft's data from this computer clears them."
+msgid "Downloaded pictures and opened attachments can't be told apart by account: File › Info › Remove ictMail's data from this computer clears them."
 msgstr ""
 
 #. interface
@@ -4262,6 +4292,21 @@ msgstr ""
 msgid "Empty Mailbox"
 msgstr ""
 
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Empty uses {url}"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Empty: the account's user name"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Empty: the address the incoming mail server suggests"
+msgstr ""
+
 #. command label
 #: crates/engine/src/cmd/rules.rs
 msgid "Enable Rule"
@@ -4443,7 +4488,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
-msgid "Everything else is gone. MailCraft quits when you close this."
+msgid "Everything else is gone. ictMail quits when you close this."
 msgstr ""
 
 #. interface
@@ -4694,7 +4739,7 @@ msgstr ""
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountDialogs.kt
-msgid "Finish on Microsoft's page in your browser. MailCraft is waiting."
+msgid "Finish on Microsoft's page in your browser. ictMail is waiting."
 msgstr ""
 
 #. android
@@ -4709,7 +4754,7 @@ msgstr ""
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
-msgid "Finish signing in on Microsoft's page in your browser. MailCraft is waiting."
+msgid "Finish signing in on Microsoft's page in your browser. ictMail is waiting."
 msgstr ""
 
 #. interface
@@ -4880,7 +4925,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
-msgid "For a mail server your organisation runs itself. MailCraft looks for the server from your address, or you can type its address in Server settings. Nothing is sent until you press Connect."
+msgid "For a mail server your organisation runs itself. ictMail looks for the server from your address, or you can type its address in Server settings. Nothing is sent until you press Connect."
 msgstr ""
 
 #. interface
@@ -4890,7 +4935,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/favorites_sync.rs
-msgid "For an account that signs in with Microsoft: the folders you keep under Favorites in Outlook, in the same order. They are read from the server and never changed there. Without this, the favourites you mark in MailCraft are shown."
+msgid "For an account that signs in with Microsoft: the folders you keep under Favorites in Outlook, in the same order. They are read from the server and never changed there. Without this, the favourites you mark in ictMail are shown."
 msgstr ""
 
 #. interface
@@ -4936,6 +4981,11 @@ msgstr ""
 #. android, interface
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/PicturesSettings.kt crates/ui-egui/src/reading/remote.rs
 msgid "Forget the pictures that are kept; they are downloaded again when you ask."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Forget trusted certificate"
 msgstr ""
 
 #. ribbon, ribbon location
@@ -5178,12 +5228,12 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
-msgid "GitHub's page is open: attach the diagnostics file there, then submit. MailCraft sent nothing."
+msgid "GitHub's page is open: attach the diagnostics file there, then submit. ictMail sent nothing."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
-msgid "GitHub's page is open: check it, then submit. MailCraft sent nothing."
+msgid "GitHub's page is open: check it, then submit. ictMail sent nothing."
 msgstr ""
 
 #. interface
@@ -5299,7 +5349,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/updates.rs
-msgid "Going back to MailCraft {version} didn't happen: this version is still the one here."
+msgid "Going back to ictMail {version} didn't happen: this version is still the one here."
 msgstr ""
 
 #. interface
@@ -5329,12 +5379,12 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
-msgid "Google blocked access to MailCraft"
+msgid "Google blocked access to ictMail"
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
-msgid "Google did not authorize MailCraft. Your mailbox was not changed. You can retry or choose an app password."
+msgid "Google did not authorize ictMail. Your mailbox was not changed. You can retry or choose an app password."
 msgstr ""
 
 #. interface
@@ -5349,7 +5399,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
-msgid "Google did not return to MailCraft. If you saw Error 403 or Access blocked because the app is in testing, ask the developer to add you as a test user. If your organization blocked it, ask its Workspace administrator. Otherwise, retry. Mail and settings are unchanged."
+msgid "Google did not return to ictMail. If you saw Error 403 or Access blocked because the app is in testing, ask the developer to add you as a test user. If your organization blocked it, ask its Workspace administrator. Otherwise, retry. Mail and settings are unchanged."
 msgstr ""
 
 #. interface
@@ -5384,7 +5434,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
-msgid "Google sign-in is open only to invited testers while Google reviews MailCraft."
+msgid "Google sign-in is open only to invited testers while Google reviews ictMail. To join, email systems@ucscaregroup.co.uk."
 msgstr ""
 
 #. interface
@@ -5477,7 +5527,7 @@ msgstr ""
 msgid ""
 "Hello,\n"
 "\n"
-"I would like to use MailCraft with my work account. MailCraft is an open-source mail and calendar program that runs on my own computer. Our organisation lets only an administrator approve a new program, so it needs your approval once, for the whole organisation. Microsoft's page for that is here:\n"
+"I would like to use ictMail with my work account. ictMail is an open-source mail and calendar program that runs on my own computer. Our organisation lets only an administrator approve a new program, so it needs your approval once, for the whole organisation. Microsoft's page for that is here:\n"
 "\n"
 "{link}\n"
 "\n"
@@ -5491,7 +5541,7 @@ msgstr ""
 msgid ""
 "Hello,\n"
 "\n"
-"I would like to use MailCraft with my work account. MailCraft is an open-source mail and calendar program that runs on my own phone. Our organisation lets only an administrator approve a new program, so it needs your approval once, for the whole organisation. Microsoft's page for that is here:\n"
+"I would like to use ictMail with my work account. ictMail is an open-source mail and calendar program that runs on my own phone. Our organisation lets only an administrator approve a new program, so it needs your approval once, for the whole organisation. Microsoft's page for that is here:\n"
 "\n"
 "{link}\n"
 "\n"
@@ -5526,13 +5576,13 @@ msgid "Hide Details"
 msgstr ""
 
 #. interface
-#: crates/ui-egui/src/menubar.rs
-msgid "Hide MailCraft"
+#: crates/ui-egui/src/calendar_view.rs
+msgid "Hide This Copy"
 msgstr ""
 
 #. interface
-#: crates/ui-egui/src/calendar_view.rs
-msgid "Hide This Copy"
+#: crates/ui-egui/src/menubar.rs
+msgid "Hide ictMail"
 msgstr ""
 
 #. interface
@@ -5632,7 +5682,7 @@ msgstr ""
 
 #. command label
 #: crates/ui-egui/src/lib.rs
-msgid "I'm an Administrator: Approve MailCraft for My Organisation"
+msgid "I'm an Administrator: Approve ictMail for My Organisation"
 msgstr ""
 
 #. interface
@@ -5647,12 +5697,12 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
-msgid "If Google says the app is in testing, ask the developer to add your email as a test user. If your organization blocks MailCraft, ask its Workspace administrator. Those pages may not return here: cancel, then retry when access is granted or use an app password if allowed."
+msgid "If Google says the app is in testing, ask the developer to add your email as a test user. If your organization blocks ictMail, ask its Workspace administrator. Those pages may not return here: cancel, then retry when access is granted or use an app password if allowed."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
-msgid "If MailCraft is still in Google's testing mode, ask its developer to add this address to the Test users list. If your organization blocked access, ask your Google Workspace administrator. Your mailbox was not changed."
+msgid "If ictMail is still in Google's testing mode, ask its developer to add this address to the Test users list. If your organization blocked access, ask your Google Workspace administrator. Your mailbox was not changed."
 msgstr ""
 
 #. interface
@@ -5884,7 +5934,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/security.rs
-msgid "Imported: MailCraft keeps it in the system's credential store, still protected by its passphrase."
+msgid "Imported: ictMail keeps it in the system's credential store, still protected by its passphrase."
 msgstr ""
 
 #. interface
@@ -6139,7 +6189,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/forms.rs
-msgid "It goes to the server once MailCraft may change the server's rules (File › Info › Ask again); until then it runs on this computer, while MailCraft is open."
+msgid "It goes to the server once ictMail may change the server's rules (File › Info › Ask again); until then it runs on this computer, while ictMail is open."
 msgstr ""
 
 #. interface
@@ -6149,7 +6199,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
-msgid "It is an identifier, not a secret. MailCraft keeps it in its settings (File › Options)."
+msgid "It is an identifier, not a secret. ictMail keeps it in its settings (File › Options)."
 msgstr ""
 
 #. interface
@@ -6189,22 +6239,22 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
-msgid "It is the same for an installed and a portable copy. MailCraft quits afterwards."
+msgid "It is the same for an installed and a portable copy. ictMail quits afterwards."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/forms.rs
-msgid "It runs on this computer, while MailCraft is open."
+msgid "It runs on this computer, while ictMail is open."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/forms.rs
-msgid "It runs there whether MailCraft is open or not, and shows in Outlook on the web and on your phone."
+msgid "It runs there whether ictMail is open or not, and shows in Outlook on the web and on your phone."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
-msgid "It uses an algorithm MailCraft doesn't know."
+msgid "It uses an algorithm ictMail doesn't know."
 msgstr ""
 
 #. interface
@@ -6384,11 +6434,6 @@ msgstr ""
 msgid "Keep Mail Within This Device's Limits"
 msgstr ""
 
-#. interface
-#: crates/ui-egui/src/backstage.rs
-msgid "Keep MailCraft running for mail and reminders when you close its window. Click its icon beside the clock to show it again, or choose Quit from the icon's menu. If no system tray is available, closing exits MailCraft."
-msgstr ""
-
 #. command label
 #: crates/engine/src/cmd/rules.rs
 msgid "Keep Rule on Server"
@@ -6412,6 +6457,11 @@ msgstr ""
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
 msgid "Keep data"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/backstage.rs
+msgid "Keep ictMail running for mail and reminders when you close its window. Click its icon beside the clock to show it again, or choose Quit from the icon's menu. If no system tray is available, closing exits ictMail."
 msgstr ""
 
 #. command label, interface
@@ -6446,12 +6496,12 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/forms.rs
-msgid "Keep this rule on an account's server: choose which. It then runs there whether MailCraft is open or not, for that account's mail"
+msgid "Keep this rule on an account's server: choose which. It then runs there whether ictMail is open or not, for that account's mail"
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/forms.rs
-msgid "Keep this rule on the server of {address}: it then runs there whether MailCraft is open or not, for that account's mail"
+msgid "Keep this rule on the server of {address}: it then runs there whether ictMail is open or not, for that account's mail"
 msgstr ""
 
 #. interface
@@ -6461,7 +6511,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
-msgid "Keep waiting, and the switch goes ahead by itself once MailCraft can reach the server. Or switch without them, if the server can't be reached any more (for example, your organisation has turned IMAP off):"
+msgid "Keep waiting, and the switch goes ahead by itself once ictMail can reach the server. Or switch without them, if the server can't be reached any more (for example, your organisation has turned IMAP off):"
 msgstr ""
 
 #. android
@@ -6480,6 +6530,11 @@ msgid "Keeping a copy of what was sent"
 msgstr ""
 
 #. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Keeps the calendars and contacts the account's DAV server has in step both ways."
+msgstr ""
+
+#. interface
 #: crates/ui-egui/src/security.rs
 msgid "Kept Public key"
 msgstr ""
@@ -6491,7 +6546,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
-msgid "Kept in the system's credential store, never in the mailbox or its settings. Without it you sign in again each time MailCraft starts."
+msgid "Kept in the system's credential store, never in the mailbox or its settings. Without it you sign in again each time ictMail starts."
 msgstr ""
 
 #. interface
@@ -6856,7 +6911,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/forms.rs
-msgid "Made in another program or on the web, with parts MailCraft can't show"
+msgid "Made in another program or on the web, with parts ictMail can't show"
 msgstr ""
 
 #. android, command label, interface, name, ribbon location
@@ -6871,7 +6926,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/close_to_tray.rs
-msgid "Mail and reminders will keep running. To bring the window back, click MailCraft's system tray icon and choose Show MailCraft. On Windows, the icon may be under the arrow for hidden icons beside the clock. On macOS, use the menu-bar icon or click MailCraft in the Dock. Choose Quit MailCraft from the icon's menu to exit."
+msgid "Mail and reminders will keep running. To bring the window back, click ictMail's system tray icon and choose Show ictMail. On Windows, the icon may be under the arrow for hidden icons beside the clock. On macOS, use the menu-bar icon or click ictMail in the Dock. Choose Quit ictMail from the icon's menu to exit."
 msgstr ""
 
 #. what a command says
@@ -6967,263 +7022,6 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "Mail, calendar, people and tasks, written from scratch in Rust. It runs natively on macOS, Windows, Linux and BSD, and in the browser."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/graph_switch.rs
-msgid "MailCraft can now keep {account} in step with Microsoft through Microsoft Graph, the way Outlook on the web does, instead of IMAP. Your folders, flags, categories and drafts then match what you see in Outlook, and your mail keeps coming even where your organisation has turned IMAP off."
-msgstr ""
-
-#. name
-#: crates/engine/src/cmd/rules.rs
-msgid "MailCraft can't keep this account's rules on its server"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/account_setup/exchange.rs
-msgid "MailCraft can't sign in to this server this way yet (it wants Kerberos). Ask your administrator whether it can take a user name and password over an encrypted connection."
-msgstr ""
-
-#. android
-#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
-msgid "MailCraft carries the software below. The Rust libraries of its core are listed with their versions in the source repository."
-msgstr ""
-
-#. android
-#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
-msgid "MailCraft couldn't open a browser for Microsoft's page."
-msgstr ""
-
-#. android
-#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
-msgid "MailCraft couldn't open a browser for Microsoft's page. Install or enable a browser, then try again."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/approval.rs
-msgid "MailCraft couldn't open your browser for Microsoft's approval page. Copy the message instead: the link in it opens the same page."
-msgstr ""
-
-#. android
-#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
-msgid "MailCraft couldn't save your latest changes yet. It will try again; if the app closes first they may be lost."
-msgstr ""
-
-#. android
-#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
-msgid "MailCraft couldn't set aside the saved mailbox it couldn't read, so changes aren't saved this time. Free up space and restart the app."
-msgstr ""
-
-#. what a command says
-#: crates/model/src/mailbox.rs
-msgid "MailCraft doesn't delete a JMAP account's folders yet: the next Send/Receive would bring them back"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/account_setup.rs
-msgid "MailCraft doesn't know the settings for this address. The servers below are only a guess made from its domain: check them with your provider or administrator before you connect."
-msgstr ""
-
-#. what a command says
-#: crates/model/src/mailbox.rs
-msgid "MailCraft doesn't rename or move a JMAP account's folders yet: its server wouldn't be told"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/account_setup.rs
-msgid "MailCraft doesn't support POP yet. Use your provider's IMAP server instead (usually imap.<your domain>, port 993)."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/software.rs
-msgid "MailCraft is drawing without the graphics card, which uses a lot of processor time. Installing or updating the graphics driver usually fixes this."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/ribbon.rs
-msgid "MailCraft is open source (MIT or Apache-2.0). Every button here runs a command that scripts and agents can run too: see Search Commands."
-msgstr ""
-
-#. android
-#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
-msgid "MailCraft is open source, under the MIT and Apache 2.0 licences."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/credits.rs
-msgid "MailCraft is tested on real mail, by people who use it every day and tell us what goes wrong. Thank you."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/updates.rs
-msgid "MailCraft is up to date ({version})."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/open_shared.rs crates/ui-egui/src/shared_permission.rs
-msgid "MailCraft isn't allowed to read other people's calendars yet."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/security.rs
-msgid "MailCraft keeps at most {n} keys imported here, and has that many: remove one you don't use, then import this one."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/account_setup.rs crates/ui-egui/src/dialogs.rs
-msgid "MailCraft keeps it in memory until you close the app. It is never written to disk."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/security.rs
-msgid "MailCraft keeps the file, still protected by its passphrase, in the system's credential store. Only an ECDSA certificate (P-256 or P-384) is kept this way: an RSA one belongs on a smartcard or token (PKCS#11)."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/forms.rs
-msgid "MailCraft keeps this account's rules on this computer: the rule runs while MailCraft is open."
-msgstr ""
-
-#. what a command says
-#: crates/model/src/mailbox.rs crates/model/src/mailbox_bulk.rs
-msgid "MailCraft moves a JMAP account's mail only between the folders its server has: the next Send/Receive would bring it back"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/auto_replies.rs
-msgid "MailCraft needs you to sign in again to read your automatic replies: Microsoft's page opens in your browser. Mail and your calendar work as they are meanwhile."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/auto_replies.rs
-msgid "MailCraft needs your permission to change your automatic replies first: File › Info › Ask again."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/account_setup/help.rs
-msgid "MailCraft needs your system browser to sign in. You can also use a Google app password."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/updates.rs
-msgid "MailCraft now installs its updates itself. Turn this off in File › About."
-msgstr ""
-
-#. name
-#: crates/engine/src/cmd/rules.rs
-msgid "MailCraft reaches this account's rules on the server once it switches to Microsoft Graph"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/security.rs
-msgid "MailCraft reads the key without its passphrase and keeps the file, still protected by it, in the system's credential store. The key must have a passphrase and sign with Ed25519 or ECDSA; MailCraft asks for the passphrase when you sign."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/reading/unsubscribe.rs
-msgid "MailCraft sends {host} the address this list gave for unsubscribing, which may identify you to it, and nothing else: no cookies, no sign-in. Like any connection, it also shows your internet address."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/opening.rs
-msgid "MailCraft starts with an empty mailbox and leaves the file as it is."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/opening.rs
-msgid "MailCraft stopped reading it before it was done."
-msgstr ""
-
-#. what a command says
-#: crates/engine/src/import_pst.rs
-msgid "MailCraft stopped reading the .pst file before it was done: what came in is kept"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/account_setup/exchange.rs
-msgid "MailCraft tries the usual places for your address."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/lib.rs
-msgid "MailCraft was started with {n} thing that isn't a mail link or a file it opens: it was left alone"
-msgid_plural "MailCraft was started with {n} things that aren't mail links or files it opens: they were left alone"
-msgstr[0] ""
-msgstr[1] ""
-
-#. interface
-#: crates/ui-egui/src/server_sync.rs
-msgid "MailCraft wasn't allowed to keep this mailbox in step with Outlook: {error}"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/dialogs.rs
-msgid "MailCraft will have no account afterwards: File › Add Account sets one up again."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/close_to_tray.rs
-msgid "MailCraft will keep running"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/dialogs.rs
-msgid "MailCraft will make one appointment called \"MailCraft connection check\" in the calendar of {account}, a year from today. It reads it back, changes its time twice (the second time said in this computer's time zone), reads it back each time, and deletes it again. Nothing else in your calendar is read or changed, nobody is invited or written to, and no reminder is set. Afterwards you see what the server answered at each step, and whether what was sent is what the server has."
-msgstr ""
-
-#. android
-#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
-msgid "MailCraft will read and change the shared mailboxes you have access to. Microsoft's page opens in your browser to ask you."
-msgstr ""
-
-#. android
-#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
-msgid "MailCraft will read and change your Microsoft To Do lists and tasks. Microsoft's page opens in your browser to ask you. Until you say yes, your tasks stay on this phone."
-msgstr ""
-
-#. android
-#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
-msgid "MailCraft will send mail from a shared mailbox, as it or on its behalf. Microsoft's page opens in your browser to ask you."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/updates.rs
-msgid "MailCraft {version} didn't start."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/updates.rs
-msgid "MailCraft {version} is available"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/updates.rs
-msgid "MailCraft {version} is available and fixes a security problem"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/updates.rs
-msgid "MailCraft {version} wasn't installed: this version is still the one here."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/account_setup.rs
-msgid "MailCraft's Google Desktop registration is not yet configured for this build."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/data_removal.rs
-msgid "MailCraft's data has been removed already"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/lib.rs
-msgid "MailCraft's data has been removed: nothing is sent or received"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/security.rs
-msgid "MailCraft's search for your keys stopped without an answer. Try again."
 msgstr ""
 
 #. interface
@@ -7523,7 +7321,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
-msgid "Microsoft 365 mail is added as a Microsoft account: you sign in on Microsoft's own page in your browser, and MailCraft never sees your password."
+msgid "Microsoft 365 mail is added as a Microsoft account: you sign in on Microsoft's own page in your browser, and ictMail never sees your password."
 msgstr ""
 
 #. command label
@@ -7573,7 +7371,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
-msgid "Microsoft only lets a registered application show its sign-in page, and this build of MailCraft has no registration of its own yet."
+msgid "Microsoft only lets a registered application show its sign-in page, and this build of ictMail has no registration of its own yet."
 msgstr ""
 
 #. interface
@@ -7880,7 +7678,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
-msgid "My organisation has to approve MailCraft first: what to do"
+msgid "My organisation has to approve ictMail first: what to do"
 msgstr ""
 
 #. interface
@@ -8773,7 +8571,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/updates.rs
-msgid "Not now: it is installed when you quit MailCraft."
+msgid "Not now: it is installed when you quit ictMail."
 msgstr ""
 
 #. interface
@@ -9018,7 +8816,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
-msgid "On Wayland, restart MailCraft after enabling this option. A reachable X11/XWayland server and a system tray are required."
+msgid "On Wayland, restart ictMail after enabling this option. A reachable X11/XWayland server and a system tray are required."
 msgstr ""
 
 #. interface
@@ -9258,7 +9056,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/alerts.rs
-msgid "Only while MailCraft isn't the window in front, and only for the Inboxes of your own accounts."
+msgid "Only while ictMail isn't the window in front, and only for the Inboxes of your own accounts."
 msgstr ""
 
 #. android, interface, ribbon
@@ -9301,11 +9099,6 @@ msgstr ""
 #. command label, interface
 #: crates/engine/src/cmd/compose.rs crates/ui-egui/src/mail_view.rs
 msgid "Open Draft"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/data_removal.rs
-msgid "Open MailCraft's data folder"
 msgstr ""
 
 #. command label
@@ -9356,6 +9149,11 @@ msgstr ""
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/TodayScreen.kt
 msgid "Open event"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/data_removal.rs
+msgid "Open ictMail's data folder"
 msgstr ""
 
 #. interface
@@ -9450,7 +9248,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
-msgid "Opened with {owner}'s sign-in. It needs Full Access to the mailbox, which your organisation's administrator gives. Microsoft asks you once to let MailCraft read and change shared mailboxes. What you change in it goes to it. Mail you write in it is from its address, and sending as it needs Send As or Send on Behalf permission: Microsoft asks you once more at your first send."
+msgid "Opened with {owner}'s sign-in. It needs Full Access to the mailbox, which your organisation's administrator gives. Microsoft asks you once to let ictMail read and change shared mailboxes. What you change in it goes to it. Mail you write in it is from its address, and sending as it needs Send As or Send on Behalf permission: Microsoft asks you once more at your first send."
 msgstr ""
 
 #. interface
@@ -9490,7 +9288,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
-msgid "Opens Microsoft's approval page in your browser. Sign in there with an administrator account and accept; MailCraft carries on by itself."
+msgid "Opens Microsoft's approval page in your browser. Sign in there with an administrator account and accept; ictMail carries on by itself."
 msgstr ""
 
 #. interface
@@ -9610,7 +9408,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src
-msgid "Outlook's Favorites are now read through Microsoft Graph. To show MailCraft's own instead, turn them off in File › Options."
+msgid "Outlook's Favorites are now read through Microsoft Graph. To show ictMail's own instead, turn them off in File › Options."
 msgstr ""
 
 #. interface
@@ -9620,7 +9418,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/nav.rs
-msgid "Outlook's Favorites can't be shown for this account, so the ones kept in MailCraft are. File › Options can ask again."
+msgid "Outlook's Favorites can't be shown for this account, so the ones kept in ictMail are. File › Options can ask again."
 msgstr ""
 
 #. name
@@ -9630,7 +9428,7 @@ msgstr ""
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
-msgid "Outlook.com, Hotmail, and Microsoft 365 work or school accounts. You sign in on Microsoft's own page in your browser, so MailCraft never sees your password."
+msgid "Outlook.com, Hotmail, and Microsoft 365 work or school accounts. You sign in on Microsoft's own page in your browser, so ictMail never sees your password."
 msgstr ""
 
 #. interface
@@ -10179,7 +9977,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/menubar.rs
-msgid "Quit MailCraft"
+msgid "Quit ictMail"
 msgstr ""
 
 #. command label
@@ -10224,7 +10022,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/dialogs.rs
-msgid "Read with {owner}'s sign-in, for as long as you keep it: the person has to have shared their calendar with you. It is kept on this computer only: it won't appear in Outlook or on your other devices. Microsoft asks you once to let MailCraft read other people's calendars."
+msgid "Read with {owner}'s sign-in, for as long as you keep it: the person has to have shared their calendar with you. It is kept on this computer only: it won't appear in Outlook or on your other devices. Microsoft asks you once to let ictMail read other people's calendars."
 msgstr ""
 
 #. interface
@@ -10487,21 +10285,6 @@ msgstr ""
 msgid "Remove Link"
 msgstr ""
 
-#. interface
-#: crates/ui-egui/src/data_removal.rs
-msgid "Remove MailCraft's Data"
-msgstr ""
-
-#. command label
-#: crates/ui-egui/src/lib.rs
-msgid "Remove MailCraft's Data from This Computer"
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/data_removal.rs
-msgid "Remove MailCraft's data from this computer…"
-msgstr ""
-
 #. command label
 #: crates/engine/src/cmd/offline.rs
 msgid "Remove Older Mail from This Computer"
@@ -10589,6 +10372,21 @@ msgstr ""
 msgid "Remove from Safe or Blocked Senders"
 msgstr ""
 
+#. interface
+#: crates/ui-egui/src/data_removal.rs
+msgid "Remove ictMail's Data"
+msgstr ""
+
+#. command label
+#: crates/ui-egui/src/lib.rs
+msgid "Remove ictMail's Data from This Computer"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/data_removal.rs
+msgid "Remove ictMail's data from this computer…"
+msgstr ""
+
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/ComposerScreen.kt
 msgid "Remove link"
@@ -10631,7 +10429,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/security.rs
-msgid "Remove your {format} key for {who} from this computer? It is deleted from the system's credential store, and MailCraft can't sign with it any more. Keep a copy of the file if you may need it again."
+msgid "Remove your {format} key for {who} from this computer? It is deleted from the system's credential store, and ictMail can't sign with it any more. Keep a copy of the file if you may need it again."
 msgstr ""
 
 #. android
@@ -10646,7 +10444,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
-msgid "Removing MailCraft's data isn't available here"
+msgid "Removing ictMail's data isn't available here"
 msgstr ""
 
 #. interface
@@ -11025,12 +10823,12 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/forms.rs
-msgid "Run by MailCraft as mail arrives, while it is open"
+msgid "Run by ictMail as mail arrives, while it is open"
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/forms.rs
-msgid "Run by the server as mail arrives, whether MailCraft is open or not"
+msgid "Run by the server as mail arrives, whether ictMail is open or not"
 msgstr ""
 
 #. interface
@@ -11305,12 +11103,12 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
-msgid "Say what went wrong. MailCraft sends nothing by itself: you check the report and send it."
+msgid "Say what went wrong. Nothing is sent until you press Send report, and then only what this window shows."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
-msgid "Say what went wrong. Nothing is sent until you press Send report, and then only what this window shows."
+msgid "Say what went wrong. ictMail sends nothing by itself: you check the report and send it."
 msgstr ""
 
 #. interface
@@ -11340,7 +11138,7 @@ msgstr ""
 
 #. name
 #: crates/engine/src/sync_driver/favorites.rs
-msgid "Says what you and your organisation's administrator can do, and lets an administrator approve MailCraft on Microsoft's page from here."
+msgid "Says what you and your organisation's administrator can do, and lets an administrator approve ictMail on Microsoft's page from here."
 msgstr ""
 
 #. ribbon
@@ -11907,7 +11705,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
-msgid "Sends the report to the MailCraft team, as this window shows it."
+msgid "Sends the report to the ictMail team, as this window shows it."
 msgstr ""
 
 #. interface
@@ -11932,7 +11730,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
-msgid "Sent to the MailCraft team privately. If it's a real problem we may make it public on GitHub, with what you wrote and the diagnostics, so we can track it. Leave out anything private."
+msgid "Sent to the ictMail team privately. If it's a real problem we may make it public on GitHub, with what you wrote and the diagnostics, so we can track it. Leave out anything private."
 msgstr ""
 
 #. what a command says
@@ -12121,11 +11919,6 @@ msgstr ""
 msgid "Show Gmail's categories under the Inbox"
 msgstr ""
 
-#. interface
-#: crates/ui-egui/src/menubar.rs
-msgid "Show MailCraft"
-msgstr ""
-
 #. command label
 #: crates/ui-egui/src/lib.rs
 msgid "Show Message"
@@ -12211,6 +12004,11 @@ msgstr ""
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/TasksScreen.kt
 msgid "Show completed tasks"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/menubar.rs
+msgid "Show ictMail"
 msgstr ""
 
 #. command label
@@ -12360,7 +12158,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
-msgid "Shows {path}, which holds the mailbox open now, in your file manager. MailCraft's settings are in a folder of their own."
+msgid "Shows {path}, which holds the mailbox open now, in your file manager. ictMail's settings are in a folder of their own."
 msgstr ""
 
 #. ribbon
@@ -12432,27 +12230,27 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
-msgid "Sign in once more to let MailCraft read and change your mail, send, and show your calendar and contacts through Microsoft."
+msgid "Sign in once more to let ictMail read and change your mail, send, and show your calendar and contacts through Microsoft."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
-msgid "Sign in once more to let MailCraft send through Microsoft and show your calendar and contacts. Mail works without it."
+msgid "Sign in once more to let ictMail send through Microsoft and show your calendar and contacts. Mail works without it."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/calendar_view.rs
-msgid "Sign in once more, so that MailCraft may read the categories and the working hours your mailbox has. Your calendar works as it is."
+msgid "Sign in once more, so that ictMail may read the categories and the working hours your mailbox has. Your calendar works as it is."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/calendar_view.rs
-msgid "Sign in once more, so that MailCraft may show and change your calendar"
+msgid "Sign in once more, so that ictMail may show and change your calendar"
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
-msgid "Sign in securely with Google in your browser. Your Google password is never entered in MailCraft."
+msgid "Sign in securely with Google in your browser. Your Google password is never entered in ictMail."
 msgstr ""
 
 #. interface
@@ -12492,7 +12290,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/favorites_sync.rs crates/ui-egui/src/nav.rs
-msgid "Sign in with Microsoft once more to let MailCraft read the folders you keep under Favorites in Outlook. They are only read, never changed, and everything else stays as it is."
+msgid "Sign in with Microsoft once more to let ictMail read the folders you keep under Favorites in Outlook. They are only read, never changed, and everything else stays as it is."
 msgstr ""
 
 #. interface
@@ -12547,7 +12345,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/lib.rs
-msgid "Signed in, but Microsoft still won't let MailCraft read the mail of {account}. Try Send/Receive again later."
+msgid "Signed in, but Microsoft still won't let ictMail read the mail of {account}. Try Send/Receive again later."
 msgstr ""
 
 #. interface
@@ -12687,7 +12485,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
-msgid "Some of it is still there, as listed above. MailCraft quits when you close this."
+msgid "Some of it is still there, as listed above. ictMail quits when you close this."
 msgstr ""
 
 #. android
@@ -13051,6 +12849,11 @@ msgid "Sync anyway"
 msgstr ""
 
 #. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Sync calendars and address books (CalDAV/CardDAV)"
+msgstr ""
+
+#. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid "Sync with Outlook: asking for your permission…"
 msgstr ""
@@ -13107,7 +12910,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
-msgid "Take everything MailCraft keeps here with you when you are done: for a shared or work computer, or before deleting a portable copy."
+msgid "Take everything ictMail keeps here with you when you are done: for a shared or work computer, or before deleting a portable copy."
 msgstr ""
 
 #. interface
@@ -13207,7 +13010,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/chrome.rs
-msgid "Tell MailCraft's makers what went wrong, on GitHub or by email. You check the report and send it yourself."
+msgid "Tell ictMail's makers what went wrong, on GitHub or by email. You check the report and send it yourself."
 msgstr ""
 
 #. interface
@@ -13272,7 +13075,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
-msgid "Thank you. The MailCraft team has it under this reference."
+msgid "Thank you. The ictMail team has it under this reference."
 msgstr ""
 
 #. interface
@@ -13431,6 +13234,16 @@ msgid "The .pst file has {what} to import; nothing was imported"
 msgstr ""
 
 #. interface
+#: crates/ui-egui/src/calendar_sync.rs
+msgid "The DAV server's certificate isn't trusted ({fingerprint}); it can be trusted for this account in its settings"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "The DAV server's certificate isn't trusted ({fingerprint}); trust it only if you know it is the server's"
+msgstr ""
+
+#. interface
 #: crates/ui-egui/src/account_setup.rs
 msgid "The DNS records of {domain} name {hosts} as its mail server, which isn't in your address's own domain."
 msgstr ""
@@ -13487,7 +13300,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/approval.rs
-msgid "The account that signed in on Microsoft's page is not an administrator of your organisation, so it could not approve MailCraft. Copy the message for an administrator instead."
+msgid "The account that signed in on Microsoft's page is not an administrator of your organisation, so it could not approve ictMail. Copy the message for an administrator instead."
 msgstr ""
 
 #. what a command says
@@ -13818,7 +13631,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
-msgid "The domain {domain} names a server for Exchange's automatic setup (Autodiscover), so this looks like an Exchange server account. Type your password and press Connect: MailCraft looks for the server and checks the account. Nothing is sent until then."
+msgid "The domain {domain} names a server for Exchange's automatic setup (Autodiscover), so this looks like an Exchange server account. Type your password and press Connect: ictMail looks for the server and checks the account. Nothing is sent until then."
 msgstr ""
 
 #. interface
@@ -14005,7 +13818,7 @@ msgstr ""
 
 #. what a command says
 #: crates/mobile/src/core.rs
-msgid "The list of sign-ins kept on this phone was damaged, so some older sign-ins may still be kept on it. The phone's own settings for MailCraft let you clear what it keeps."
+msgid "The list of sign-ins kept on this phone was damaged, so some older sign-ins may still be kept on it. The phone's own settings for ictMail let you clear what it keeps."
 msgstr ""
 
 #. interface
@@ -14110,12 +13923,12 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/send_later.rs
-msgid "The message waits in your Outbox, where you can change or cancel it. MailCraft sends it at that time; if MailCraft isn't running then, it goes the next time it runs."
+msgid "The message waits in your Outbox, where you can change or cancel it. ictMail sends it at that time; if ictMail isn't running then, it goes the next time it runs."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
-msgid "The message was downloaded before MailCraft kept the bytes it came as. Check Again downloads them."
+msgid "The message was downloaded before ictMail kept the bytes it came as. Check Again downloads them."
 msgstr ""
 
 #. interface
@@ -14240,7 +14053,7 @@ msgstr ""
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
-msgid "The private key in this file isn't encrypted, so MailCraft doesn't keep it: export it again with its key encrypted (AES), protected by a passphrase."
+msgid "The private key in this file isn't encrypted, so ictMail doesn't keep it: export it again with its key encrypted (AES), protected by a passphrase."
 msgstr ""
 
 #. interface
@@ -14295,7 +14108,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/report_problem.rs
-msgid "The report service's answer wasn't one MailCraft understands, so the report may have arrived. Try again later, or open it on GitHub."
+msgid "The report service's answer wasn't one ictMail understands, so the report may have arrived. Try again later, or open it on GitHub."
 msgstr ""
 
 #. interface
@@ -14315,7 +14128,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
-msgid "The same page asks to read and send from the shared mailboxes you have access to and to read the calendars shared with you, so that MailCraft doesn't have to ask again."
+msgid "The same page asks to read and send from the shared mailboxes you have access to and to read the calendars shared with you, so that ictMail doesn't have to ask again."
 msgstr ""
 
 #. interface
@@ -14450,7 +14263,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
-msgid "The server sent the setup somewhere that isn't encrypted, which MailCraft never follows. Type the server's address in Server settings."
+msgid "The server sent the setup somewhere that isn't encrypted, which ictMail never follows. Type the server's address in Server settings."
 msgstr ""
 
 #. interface
@@ -14495,17 +14308,17 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
-msgid "The server's certificate has expired, so MailCraft won't connect to it. Ask your administrator to renew it."
+msgid "The server's certificate has expired, so ictMail won't connect to it. Ask your administrator to renew it."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
-msgid "The server's certificate is for another server's name, so MailCraft won't connect to it. Check the address in Server settings."
+msgid "The server's certificate is for another server's name, so ictMail won't connect to it. Check the address in Server settings."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
-msgid "The server's certificate isn't valid yet, so MailCraft won't connect to it. Check this computer's date and time, or ask your administrator."
+msgid "The server's certificate isn't valid yet, so ictMail won't connect to it. Check this computer's date and time, or ask your administrator."
 msgstr ""
 
 #. interface
@@ -14665,7 +14478,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
-msgid "The switch of {account} to Microsoft Graph waits until MailCraft can reach the server."
+msgid "The switch of {account} to Microsoft Graph waits until ictMail can reach the server."
 msgstr ""
 
 #. android
@@ -14695,7 +14508,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/calendar_sync.rs
-msgid "The test appointment (\"MailCraft connection check\", a year from today) could not be deleted: please delete it in the calendar. Nothing else was read or changed."
+msgid "The test appointment (\"ictMail connection check\", a year from today) could not be deleted: please delete it in the calendar. Nothing else was read or changed."
 msgstr ""
 
 #. interface
@@ -14790,7 +14603,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/reading/signature.rs
-msgid "There's more in this Digital signature than MailCraft checks for one message."
+msgid "There's more in this Digital signature than ictMail checks for one message."
 msgstr ""
 
 #. interface
@@ -14875,7 +14688,7 @@ msgstr ""
 
 #. what a command says
 #: crates/engine/src/cmd/unsubscribe.rs
-msgid "This account doesn't send mail from MailCraft, so it can't unsubscribe by mail."
+msgid "This account doesn't send mail from ictMail, so it can't unsubscribe by mail."
 msgstr ""
 
 #. interface
@@ -14925,7 +14738,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
-msgid "This account was added by a newer version of MailCraft. This version keeps it as it is and doesn't send or receive with it: use the newer version for that, and to change its settings."
+msgid "This account was added by a newer version of ictMail. This version keeps it as it is and doesn't send or receive with it: use the newer version for that, and to change its settings."
 msgstr ""
 
 #. interface
@@ -14940,7 +14753,7 @@ msgstr ""
 
 #. what a command says
 #: crates/engine/src/cmd/folder.rs
-msgid "This account's Favorites come from Outlook and are changed there (File › Options can show the ones kept in MailCraft instead)"
+msgid "This account's Favorites come from Outlook and are changed there (File › Options can show the ones kept in ictMail instead)"
 msgstr ""
 
 #. interface
@@ -15080,7 +14893,7 @@ msgstr ""
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
-msgid "This certificate's key is of a kind MailCraft doesn't use: only ECDSA on P-256 or P-384 is imported here."
+msgid "This certificate's key is of a kind ictMail doesn't use: only ECDSA on P-256 or P-384 is imported here."
 msgstr ""
 
 #. interface
@@ -15110,7 +14923,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/updates.rs
-msgid "This copy of MailCraft doesn't update itself."
+msgid "This copy of ictMail doesn't update itself."
 msgstr ""
 
 #. interface
@@ -15227,12 +15040,12 @@ msgstr ""
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
-msgid "This is an RSA certificate, which MailCraft doesn't use by itself on this system: put it on a smartcard or token (PKCS#11), where MailCraft finds it."
+msgid "This is an RSA certificate, which ictMail doesn't use by itself on this system: put it on a smartcard or token (PKCS#11), where ictMail finds it."
 msgstr ""
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
-msgid "This is an RSA key, which MailCraft doesn't use by itself: keep it in GnuPG, whose agent MailCraft signs with, and leave it out of here."
+msgid "This is an RSA key, which ictMail doesn't use by itself: keep it in GnuPG, whose agent ictMail signs with, and leave it out of here."
 msgstr ""
 
 #. what a command says
@@ -15282,12 +15095,12 @@ msgstr ""
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
-msgid "This key has no passphrase, so MailCraft doesn't keep it. Add one in GnuPG (gpg --edit-key <key>, then passwd) and import it again."
+msgid "This key has no passphrase, so ictMail doesn't keep it. Add one in GnuPG (gpg --edit-key <key>, then passwd) and import it again."
 msgstr ""
 
 #. what a command says
 #: crates/engine/src/private_keys.rs
-msgid "This key signs with an algorithm MailCraft doesn't use: only Ed25519 and ECDSA keys are imported here."
+msgid "This key signs with an algorithm ictMail doesn't use: only Ed25519 and ECDSA keys are imported here."
 msgstr ""
 
 #. what a command says
@@ -15437,8 +15250,8 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/send_warnings.rs
-msgid "This message has more recipients than MailCraft checks: only the first one was looked at."
-msgid_plural "This message has more recipients than MailCraft checks: only the first {n} were looked at."
+msgid "This message has more recipients than ictMail checks: only the first one was looked at."
+msgid_plural "This message has more recipients than ictMail checks: only the first {n} were looked at."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -15489,7 +15302,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/reading/warnings.rs
-msgid "This message lays itself out in more ways than MailCraft could check, so a link in one of them may go somewhere other than its text says."
+msgid "This message lays itself out in more ways than ictMail could check, so a link in one of them may go somewhere other than its text says."
 msgstr ""
 
 #. interface
@@ -15564,7 +15377,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
-msgid "This removes everything MailCraft keeps on this computer: every account's mail, attachments, contacts, calendar and settings, the sign-ins remembered in the system's credential store, downloaded pictures, opened attachments and logs."
+msgid "This removes everything ictMail keeps on this computer: every account's mail, attachments, contacts, calendar and settings, the sign-ins remembered in the system's credential store, downloaded pictures, opened attachments and logs."
 msgstr ""
 
 #. interface
@@ -15574,7 +15387,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/forms.rs
-msgid "This rule can't be kept on the server: {why}. It runs on this computer, while MailCraft is open."
+msgid "This rule can't be kept on the server: {why}. It runs on this computer, while ictMail is open."
 msgstr ""
 
 #. what a command says
@@ -15599,12 +15412,12 @@ msgstr ""
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
-msgid "This sync needs about {needed}. This phone has {free} free, and MailCraft keeps some room for the phone to go on working. Sync anyway?"
+msgid "This sync needs about {needed}. This phone has {free} free, and ictMail keeps some room for the phone to go on working. Sync anyway?"
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/security.rs
-msgid "This system has no place MailCraft knows for S/MIME certificates with a private key."
+msgid "This system has no place ictMail knows for S/MIME certificates with a private key."
 msgstr ""
 
 #. android
@@ -15614,7 +15427,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/address_book.rs
-msgid "This version of MailCraft can't search an address list"
+msgid "This version of ictMail can't search an address list"
 msgstr ""
 
 #. what a command says
@@ -15744,7 +15557,7 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid ""
-"To keep the automatic replies of {address} in step with Outlook, MailCraft needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
+"To keep the automatic replies of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, your automatic replies aren't changed."
 msgstr ""
@@ -15752,7 +15565,7 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid ""
-"To keep the rules, automatic replies and categories of {address} in step with Outlook, MailCraft needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
+"To keep the rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
 msgstr ""
@@ -15760,7 +15573,7 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid ""
-"To keep the tasks and automatic replies of {address} in step with Outlook, MailCraft needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
+"To keep the tasks and automatic replies of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft, and your automatic replies aren't changed."
 msgstr ""
@@ -15768,7 +15581,7 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid ""
-"To keep the tasks of {address} in step with Microsoft To Do, MailCraft needs your permission to read and change your To Do lists and tasks. Microsoft's page opens in your browser to ask you, once.\n"
+"To keep the tasks of {address} in step with Microsoft To Do, ictMail needs your permission to read and change your To Do lists and tasks. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks stay on this computer and nothing of them is sent to Microsoft."
 msgstr ""
@@ -15776,7 +15589,7 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid ""
-"To keep the tasks, rules, automatic replies and categories of {address} in step with Outlook, MailCraft needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
+"To keep the tasks, rules, automatic replies and categories of {address} in step with Outlook, ictMail needs your permission to change your To Do lists and your mailbox settings. Microsoft's page opens in your browser to ask you, once.\n"
 "\n"
 "Until you allow it, tasks and rules stay on this computer and nothing of them is sent to Microsoft, your automatic replies aren't changed, and the categories of this mailbox can't be changed here."
 msgstr ""
@@ -15789,7 +15602,7 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/server_sync.rs
 msgid ""
-"To read and send from the shared mailboxes you open with {address}, and to show the calendars shared with you, MailCraft needs your permission. Microsoft's page opens in your browser to ask you, once, for everything MailCraft uses that you haven't allowed yet.\n"
+"To read and send from the shared mailboxes you open with {address}, and to show the calendars shared with you, ictMail needs your permission. Microsoft's page opens in your browser to ask you, once, for everything ictMail uses that you haven't allowed yet.\n"
 "\n"
 "Until you allow it, nothing of those mailboxes and calendars is read, mail and meeting answers from a shared mailbox wait on this computer, and nothing is sent from your own address in their place."
 msgstr ""
@@ -15882,6 +15695,11 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
 msgid "Trouble on that page? Sign in for mail only"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "Trust it for this account"
 msgstr ""
 
 #. interface
@@ -15981,12 +15799,12 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup.rs
-msgid "Type your address. MailCraft finds your mail servers and how you sign in."
+msgid "Type your address. ictMail finds your mail servers and how you sign in."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
-msgid "Type your e-mail address and MailCraft finds the rest: Microsoft 365, Outlook.com, Google and other providers, or a mailbox on this device only"
+msgid "Type your e-mail address and ictMail finds the rest: Microsoft 365, Outlook.com, Google and other providers, or a mailbox on this device only"
 msgstr ""
 
 #. interface
@@ -16239,7 +16057,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
-msgid "Use system setting follows Animation effects in Windows' settings. Where MailCraft can't read the system's setting yet, animations play until you choose Never play."
+msgid "Use system setting follows Animation effects in Windows' settings. Where ictMail can't read the system's setting yet, animations play until you choose Never play."
 msgstr ""
 
 #. interface
@@ -16369,7 +16187,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/backstage.rs
-msgid "Waiting for MailCraft's Google registration"
+msgid "Waiting for ictMail's Google registration"
 msgstr ""
 
 #. interface
@@ -16417,11 +16235,6 @@ msgstr ""
 msgid "Week starts on"
 msgstr ""
 
-#. android
-#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
-msgid "What MailCraft sends, and to whom"
-msgstr ""
-
 #. interface
 #: crates/ui-egui/src/report_problem.rs
 msgid "What happened"
@@ -16435,6 +16248,11 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/backstage.rs
 msgid "What happens to mail as it arrives"
+msgstr ""
+
+#. android
+#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
+msgid "What ictMail sends, and to whom"
 msgstr ""
 
 #. android
@@ -16459,7 +16277,7 @@ msgstr ""
 
 #. command label
 #: crates/ui-egui/src/lib.rs
-msgid "What to Do When Your Organisation Has to Approve MailCraft"
+msgid "What to Do When Your Organisation Has to Approve ictMail"
 msgstr ""
 
 #. android, interface, name
@@ -16536,7 +16354,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/security.rs
-msgid "Where the card says the key is: MailCraft doesn't fetch it."
+msgid "Where the card says the key is: ictMail doesn't fetch it."
 msgstr ""
 
 #. interface
@@ -16551,7 +16369,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/security.rs
-msgid "Which keys your GnuPG trusts fully, last read: {when}. It is read again when MailCraft comes back to the front, and by Refresh."
+msgid "Which keys your GnuPG trusts fully, last read: {when}. It is read again when ictMail comes back to the front, and by Refresh."
 msgstr ""
 
 #. ribbon
@@ -16586,12 +16404,12 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/security.rs
-msgid "Windows keeps the certificate and its private key in your certificate store, and asks you before MailCraft uses it."
+msgid "Windows keeps the certificate and its private key in your certificate store, and asks you before ictMail uses it."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/calendar_view.rs
-msgid "Without this, the calendar uses the working hours your Microsoft 365 mailbox has, once MailCraft may read them. The ones above are used until then."
+msgid "Without this, the calendar uses the working hours your Microsoft 365 mailbox has, once ictMail may read them. The ones above are used until then."
 msgstr ""
 
 #. ribbon
@@ -16807,7 +16625,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
-msgid "You may be asked to sign in with Microsoft again, to let MailCraft read and change your mail there."
+msgid "You may be asked to sign in with Microsoft again, to let ictMail read and change your mail there."
 msgstr ""
 
 #. interface
@@ -16887,7 +16705,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/exchange.rs
-msgid "Your domain's DNS names no server for automatic setup. MailCraft still tries the usual places for your address."
+msgid "Your domain's DNS names no server for automatic setup. ictMail still tries the usual places for your address."
 msgstr ""
 
 #. interface
@@ -16897,7 +16715,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/security.rs
-msgid "Your keychain keeps the certificate and its private key, and macOS asks you before MailCraft uses it."
+msgid "Your keychain keeps the certificate and its private key, and macOS asks you before ictMail uses it."
 msgstr ""
 
 #. what a command says
@@ -16922,7 +16740,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/reading/remote.rs
-msgid "Your mail server didn't confirm that this message came from {sender}, so MailCraft won't remember them: a sender's address can be faked."
+msgid "Your mail server didn't confirm that this message came from {sender}, so ictMail won't remember them: a sender's address can be faked."
 msgstr ""
 
 #. what a command says
@@ -16967,47 +16785,47 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
-msgid "Your organisation doesn't let MailCraft change your automatic replies. Ask your administrator."
+msgid "Your organisation doesn't let ictMail change your automatic replies. Ask your administrator."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
-msgid "Your organisation doesn't let MailCraft keep this mailbox in step with Outlook"
+msgid "Your organisation doesn't let ictMail keep this mailbox in step with Outlook"
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs crates/ui-egui/src/shared_permission.rs
-msgid "Your organisation doesn't let MailCraft read shared mailboxes and the calendars shared with you"
+msgid "Your organisation doesn't let ictMail read shared mailboxes and the calendars shared with you"
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/approval.rs
-msgid "Your organisation has approved MailCraft"
+msgid "Your organisation has approved ictMail"
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
-msgid "Your organisation has approved MailCraft. Now sign in with your own account."
+msgid "Your organisation has approved ictMail. Now sign in with your own account."
 msgstr ""
 
 #. what a command says
 #: crates/mobile/src/sync_api.rs
-msgid "Your organisation has to approve MailCraft before you can sign in. Ask an administrator."
+msgid "Your organisation has to approve ictMail before you can sign in. Ask an administrator."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
-msgid "Your organisation has to approve MailCraft first"
+msgid "Your organisation has to approve ictMail first"
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/nav.rs
-msgid "Your organisation keeps this permission for its administrators to give. Once one of them has approved it, choose it again here. Until then the Favorites kept in MailCraft are shown."
+msgid "Your organisation keeps this permission for its administrators to give. Once one of them has approved it, choose it again here. Until then the Favorites kept in ictMail are shown."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/account_setup/help.rs
-msgid "Your organisation lets only an administrator approve a new program, and none has approved MailCraft yet. Nothing is wrong with your account or your password."
+msgid "Your organisation lets only an administrator approve a new program, and none has approved ictMail yet. Nothing is wrong with your account or your password."
 msgstr ""
 
 #. interface
@@ -17022,7 +16840,7 @@ msgstr ""
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
-msgid "Your organisation needs to approve MailCraft"
+msgid "Your organisation needs to approve ictMail"
 msgstr ""
 
 #. interface
@@ -17032,12 +16850,12 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
-msgid "Your organisation's administrator has to approve MailCraft keeping this mailbox in step with Outlook once: File › Info"
+msgid "Your organisation's administrator has to approve ictMail keeping this mailbox in step with Outlook once: File › Info"
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/server_sync.rs
-msgid "Your organisation's administrator has to approve MailCraft reading shared mailboxes and calendars once: File › Info"
+msgid "Your organisation's administrator has to approve ictMail reading shared mailboxes and calendars once: File › Info"
 msgstr ""
 
 #. interface
@@ -17047,17 +16865,17 @@ msgstr ""
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
-msgid "Your organisation's rules (Conditional Access) don't allow MailCraft to sign you in on this phone. This is your organisation's policy, not a fault in MailCraft or in your phone. Ask the people who run your organisation's mail whether sign-in from this kind of app can be allowed."
+msgid "Your organisation's rules (Conditional Access) don't allow ictMail to sign you in on this phone. This is your organisation's policy, not a fault in ictMail or in your phone. Ask the people who run your organisation's mail whether sign-in from this kind of app can be allowed."
 msgstr ""
 
 #. android
 #: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
-msgid "Your organisation's rules don't allow this for your account. This is your organisation's policy, not a fault in MailCraft."
+msgid "Your organisation's rules don't allow this for your account. This is your organisation's policy, not a fault in ictMail."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/security.rs
-msgid "Your own certificates and keys are used by MailCraft's desktop program: here Digital signatures are checked, and nothing is signed or decrypted."
+msgid "Your own certificates and keys are used by ictMail's desktop program: here Digital signatures are checked, and nothing is signed or decrypted."
 msgstr ""
 
 #. interface
@@ -17172,7 +16990,7 @@ msgstr ""
 
 #. what a command says
 #: crates/engine/src/cmd/senders.rs
-msgid "a Microsoft or Exchange account sends from other addresses only as its server allows, which MailCraft doesn't ask for yet"
+msgid "a Microsoft or Exchange account sends from other addresses only as its server allows, which ictMail doesn't ask for yet"
 msgstr ""
 
 #. why a mail server couldn't be used
@@ -17508,7 +17326,7 @@ msgstr ""
 
 #. why a command can't run
 #: crates/engine/src/gmail.rs
-msgid "comes once Google has reviewed MailCraft"
+msgid "comes once Google has reviewed ictMail"
 msgstr ""
 
 #. why a mail server couldn't be used
@@ -17640,6 +17458,263 @@ msgid "icloud.com, me.com and mac.com"
 msgstr ""
 
 #. interface
+#: crates/ui-egui/src/graph_switch.rs
+msgid "ictMail can now keep {account} in step with Microsoft through Microsoft Graph, the way Outlook on the web does, instead of IMAP. Your folders, flags, categories and drafts then match what you see in Outlook, and your mail keeps coming even where your organisation has turned IMAP off."
+msgstr ""
+
+#. name
+#: crates/engine/src/cmd/rules.rs
+msgid "ictMail can't keep this account's rules on its server"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup/exchange.rs
+msgid "ictMail can't sign in to this server this way yet (it wants Kerberos). Ask your administrator whether it can take a user name and password over an encrypted connection."
+msgstr ""
+
+#. android
+#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
+msgid "ictMail carries the software below. The Rust libraries of its core are listed with their versions in the source repository."
+msgstr ""
+
+#. android
+#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
+msgid "ictMail couldn't open a browser for Microsoft's page."
+msgstr ""
+
+#. android
+#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
+msgid "ictMail couldn't open a browser for Microsoft's page. Install or enable a browser, then try again."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/approval.rs
+msgid "ictMail couldn't open your browser for Microsoft's approval page. Copy the message instead: the link in it opens the same page."
+msgstr ""
+
+#. android
+#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
+msgid "ictMail couldn't save your latest changes yet. It will try again; if the app closes first they may be lost."
+msgstr ""
+
+#. android
+#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AccountScreens.kt
+msgid "ictMail couldn't set aside the saved mailbox it couldn't read, so changes aren't saved this time. Free up space and restart the app."
+msgstr ""
+
+#. what a command says
+#: crates/model/src/mailbox.rs
+msgid "ictMail doesn't delete a JMAP account's folders yet: the next Send/Receive would bring them back"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "ictMail doesn't know the settings for this address. The servers below are only a guess made from its domain: check them with your provider or administrator before you connect."
+msgstr ""
+
+#. what a command says
+#: crates/model/src/mailbox.rs
+msgid "ictMail doesn't rename or move a JMAP account's folders yet: its server wouldn't be told"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "ictMail doesn't support POP yet. Use your provider's IMAP server instead (usually imap.<your domain>, port 993)."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/software.rs
+msgid "ictMail is drawing without the graphics card, which uses a lot of processor time. Installing or updating the graphics driver usually fixes this."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/ribbon.rs
+msgid "ictMail is open source (MIT or Apache-2.0). Every button here runs a command that scripts and agents can run too: see Search Commands."
+msgstr ""
+
+#. android
+#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/AboutPages.kt
+msgid "ictMail is open source, under the MIT and Apache 2.0 licences."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/credits.rs
+msgid "ictMail is tested on real mail, by people who use it every day and tell us what goes wrong. Thank you."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/updates.rs
+msgid "ictMail is up to date ({version})."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/open_shared.rs crates/ui-egui/src/shared_permission.rs
+msgid "ictMail isn't allowed to read other people's calendars yet."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/security.rs
+msgid "ictMail keeps at most {n} keys imported here, and has that many: remove one you don't use, then import this one."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs crates/ui-egui/src/dialogs.rs
+msgid "ictMail keeps it in memory until you close the app. It is never written to disk."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/security.rs
+msgid "ictMail keeps the file, still protected by its passphrase, in the system's credential store. Only an ECDSA certificate (P-256 or P-384) is kept this way: an RSA one belongs on a smartcard or token (PKCS#11)."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/forms.rs
+msgid "ictMail keeps this account's rules on this computer: the rule runs while ictMail is open."
+msgstr ""
+
+#. what a command says
+#: crates/model/src/mailbox.rs crates/model/src/mailbox_bulk.rs
+msgid "ictMail moves a JMAP account's mail only between the folders its server has: the next Send/Receive would bring it back"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/auto_replies.rs
+msgid "ictMail needs you to sign in again to read your automatic replies: Microsoft's page opens in your browser. Mail and your calendar work as they are meanwhile."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/auto_replies.rs
+msgid "ictMail needs your permission to change your automatic replies first: File › Info › Ask again."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup/help.rs
+msgid "ictMail needs your system browser to sign in. You can also use a Google app password."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/updates.rs
+msgid "ictMail now installs its updates itself. Turn this off in File › About."
+msgstr ""
+
+#. name
+#: crates/engine/src/cmd/rules.rs
+msgid "ictMail reaches this account's rules on the server once it switches to Microsoft Graph"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/security.rs
+msgid "ictMail reads the key without its passphrase and keeps the file, still protected by it, in the system's credential store. The key must have a passphrase and sign with Ed25519 or ECDSA; ictMail asks for the passphrase when you sign."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/reading/unsubscribe.rs
+msgid "ictMail sends {host} the address this list gave for unsubscribing, which may identify you to it, and nothing else: no cookies, no sign-in. Like any connection, it also shows your internet address."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/opening.rs
+msgid "ictMail starts with an empty mailbox and leaves the file as it is."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/opening.rs
+msgid "ictMail stopped reading it before it was done."
+msgstr ""
+
+#. what a command says
+#: crates/engine/src/import_pst.rs
+msgid "ictMail stopped reading the .pst file before it was done: what came in is kept"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup/exchange.rs
+msgid "ictMail tries the usual places for your address."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/lib.rs
+msgid "ictMail was started with {n} thing that isn't a mail link or a file it opens: it was left alone"
+msgid_plural "ictMail was started with {n} things that aren't mail links or files it opens: they were left alone"
+msgstr[0] ""
+msgstr[1] ""
+
+#. interface
+#: crates/ui-egui/src/server_sync.rs
+msgid "ictMail wasn't allowed to keep this mailbox in step with Outlook: {error}"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/dialogs.rs
+msgid "ictMail will have no account afterwards: File › Add Account sets one up again."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/close_to_tray.rs
+msgid "ictMail will keep running"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/dialogs.rs
+msgid "ictMail will make one appointment called \"ictMail connection check\" in the calendar of {account}, a year from today. It reads it back, changes its time twice (the second time said in this computer's time zone), reads it back each time, and deletes it again. Nothing else in your calendar is read or changed, nobody is invited or written to, and no reminder is set. Afterwards you see what the server answered at each step, and whether what was sent is what the server has."
+msgstr ""
+
+#. android
+#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
+msgid "ictMail will read and change the shared mailboxes you have access to. Microsoft's page opens in your browser to ask you."
+msgstr ""
+
+#. android
+#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
+msgid "ictMail will read and change your Microsoft To Do lists and tasks. Microsoft's page opens in your browser to ask you. Until you say yes, your tasks stay on this phone."
+msgstr ""
+
+#. android
+#: apps/mailcraft-android/app/src/main/kotlin/work/mailcraft/android/Accounts.kt
+msgid "ictMail will send mail from a shared mailbox, as it or on its behalf. Microsoft's page opens in your browser to ask you."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/updates.rs
+msgid "ictMail {version} didn't start."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/updates.rs
+msgid "ictMail {version} is available"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/updates.rs
+msgid "ictMail {version} is available and fixes a security problem"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/updates.rs
+msgid "ictMail {version} wasn't installed: this version is still the one here."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/account_setup.rs
+msgid "ictMail's Google Desktop registration is not yet configured for this build."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/data_removal.rs
+msgid "ictMail's data has been removed already"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/lib.rs
+msgid "ictMail's data has been removed: nothing is sent or received"
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/security.rs
+msgid "ictMail's search for your keys stopped without an answer. Try again."
+msgstr ""
+
+#. interface
 #: crates/ui-egui/src/security.rs
 msgid "imported"
 msgstr ""
@@ -17676,12 +17751,12 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
-msgid "is part of a mailbox you opened from outside MailCraft's own folder: it is yours and was not touched"
+msgid "is part of a mailbox you opened from outside ictMail's own folder: it is yours and was not touched"
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/data_removal.rs
-msgid "isn't a folder MailCraft keeps its data in: left alone"
+msgid "isn't a folder ictMail keeps its data in: left alone"
 msgstr ""
 
 #. interface
@@ -18386,7 +18461,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src
-msgid "that mailbox is open in another MailCraft window; close it there first"
+msgid "that mailbox is open in another ictMail window; close it there first"
 msgstr ""
 
 #. what a command says
@@ -18596,7 +18671,7 @@ msgstr ""
 
 #. why a mail server couldn't be used
 #: crates/proto/src/line.rs
-msgid "the encrypted connection was damaged on the way (this is usually antivirus or firewall software that scans mail connections: turn off its mail or SSL scanning for MailCraft, or ask the mail provider)"
+msgid "the encrypted connection was damaged on the way (this is usually antivirus or firewall software that scans mail connections: turn off its mail or SSL scanning for ictMail, or ask the mail provider)"
 msgstr ""
 
 #. what a command says
@@ -18866,7 +18941,7 @@ msgstr ""
 
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
-msgid "the server and MailCraft found no encryption in common; often the server offers only older encryption (CBC suites) that MailCraft doesn't use, and its administrator can turn on the AES-GCM suites"
+msgid "the server and ictMail found no encryption in common; often the server offers only older encryption (CBC suites) that ictMail doesn't use, and its administrator can turn on the AES-GCM suites"
 msgstr ""
 
 #. why a mail server couldn't be used
@@ -19006,7 +19081,7 @@ msgstr ""
 
 #. why a mail server couldn't be used
 #: crates/net/src/transport.rs
-msgid "the server offers only older encryption (CBC suites) that MailCraft doesn't use; its administrator can turn on the AES-GCM suites"
+msgid "the server offers only older encryption (CBC suites) that ictMail doesn't use; its administrator can turn on the AES-GCM suites"
 msgstr ""
 
 #. why a mail server couldn't be used
@@ -19071,12 +19146,12 @@ msgstr ""
 
 #. why a mail server couldn't be used
 #: crates/proto/src/imap/mod.rs
-msgid "the server sent {claimed} bytes in one piece, more than the {mb} MB MailCraft accepts"
+msgid "the server sent {claimed} bytes in one piece, more than the {mb} MB ictMail accepts"
 msgstr ""
 
 #. why a mail server couldn't be used
 #: crates/proto/src/line.rs
-msgid "the server sent {n} bytes in one piece, more than MailCraft accepts"
+msgid "the server sent {n} bytes in one piece, more than ictMail accepts"
 msgstr ""
 
 #. why a mail server couldn't be used
@@ -19535,25 +19610,25 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
-msgid "MailCraft needs your permission first (File › Info › Ask again)."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/auto_replies.rs
-msgctxt "why automatic replies weren't changed"
-msgid "MailCraft wasn't allowed to change them."
-msgstr ""
-
-#. interface
-#: crates/ui-egui/src/auto_replies.rs
-msgctxt "why automatic replies weren't changed"
 msgid "Microsoft no longer takes your sign-in."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
-msgid "sign in again to let MailCraft read them (File › Info)."
+msgid "ictMail needs your permission first (File › Info › Ask again)."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/auto_replies.rs
+msgctxt "why automatic replies weren't changed"
+msgid "ictMail wasn't allowed to change them."
+msgstr ""
+
+#. interface
+#: crates/ui-egui/src/auto_replies.rs
+msgctxt "why automatic replies weren't changed"
+msgid "sign in again to let ictMail read them (File › Info)."
 msgstr ""
 
 #. interface
@@ -19565,7 +19640,7 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/auto_replies.rs
 msgctxt "why automatic replies weren't changed"
-msgid "your organisation doesn't let MailCraft change them."
+msgid "your organisation doesn't let ictMail change them."
 msgstr ""
 
 #. interface
@@ -19577,13 +19652,13 @@ msgstr ""
 #. interface
 #: crates/ui-egui/src/alerts.rs
 msgctxt "why desktop alerts can't be shown"
-msgid "this copy doesn't run from the MailCraft app."
+msgid "this copy doesn't run from the ictMail app."
 msgstr ""
 
 #. interface
 #: crates/ui-egui/src/alerts.rs
 msgctxt "why desktop alerts can't be shown"
-msgid "this copy of MailCraft wasn't installed with its installer (.msi), so Windows doesn't know it."
+msgid "this copy of ictMail wasn't installed with its installer (.msi), so Windows doesn't know it."
 msgstr ""
 
 #. interface
@@ -19618,7 +19693,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/graph_switch.rs
-msgid "{account} is switching to Microsoft Graph, but MailCraft can't reach its IMAP server to send what is waiting there first."
+msgid "{account} is switching to Microsoft Graph, but ictMail can't reach its IMAP server to send what is waiting there first."
 msgstr ""
 
 #. interface
@@ -19864,13 +19939,13 @@ msgid "{large} large messages download when opened"
 msgstr ""
 
 #. interface
-#: crates/ui-egui/src/auto_replies.rs
-msgid "{line} · MailCraft may change them"
+#: crates/ui-egui/src/backstage.rs
+msgid "{line} · couldn't be read in the last run: {folders}"
 msgstr ""
 
 #. interface
-#: crates/ui-egui/src/backstage.rs
-msgid "{line} · couldn't be read in the last run: {folders}"
+#: crates/ui-egui/src/auto_replies.rs
+msgid "{line} · ictMail may change them"
 msgstr ""
 
 #. interface
@@ -20014,11 +20089,6 @@ msgid "{name} is the name of someone you know, but this message came from {real}
 msgstr ""
 
 #. what a command says
-#: crates/engine/src/cmd/file.rs
-msgid "{name} isn't a MailCraft mailbox"
-msgstr ""
-
-#. what a command says
 #: crates/engine/src/cmd/graph_switch.rs
 msgid "{name} isn't a Microsoft account kept in step by IMAP"
 msgstr ""
@@ -20026,6 +20096,11 @@ msgstr ""
 #. what a command says
 #: crates/engine/src/cmd/offline.rs
 msgid "{name} isn't a Microsoft or Exchange server account"
+msgstr ""
+
+#. what a command says
+#: crates/engine/src/cmd/file.rs
+msgid "{name} isn't a ictMail mailbox"
 msgstr ""
 
 #. what a command says
@@ -20135,7 +20210,7 @@ msgstr ""
 
 #. what a command says
 #: crates/engine/src/io.rs
-msgid "{name}: not a message, calendar or contact file MailCraft reads"
+msgid "{name}: not a message, calendar or contact file ictMail reads"
 msgstr ""
 
 #. android
@@ -20243,6 +20318,11 @@ msgid "{n} change waiting for the IMAP server won't reach it; it stays in the ba
 msgid_plural "{n} changes waiting for the IMAP server won't reach it; they stay in the backup copy."
 msgstr[0] ""
 msgstr[1] ""
+
+#. what a command says
+#: crates/engine/src/cmd/remote.rs
+msgid "{n} changes to contacts were already waiting to be sent"
+msgstr ""
 
 #. what a command says
 #: crates/engine/src/sync_driver/calendar_plan.rs
@@ -20873,8 +20953,8 @@ msgstr[1] ""
 
 #. interface
 #: crates/ui-egui/src/forms.rs
-msgid "{n} rule deleted here is still on the server until MailCraft may change the server's rules (File › Info › Ask again)."
-msgid_plural "{n} rules deleted here are still on the server until MailCraft may change the server's rules (File › Info › Ask again)."
+msgid "{n} rule deleted here is still on the server until ictMail may change the server's rules (File › Info › Ask again)."
+msgid_plural "{n} rules deleted here are still on the server until ictMail may change the server's rules (File › Info › Ask again)."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -21060,7 +21140,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/lib.rs
-msgid "{saving} · MailCraft closes when it is done"
+msgid "{saving} · ictMail closes when it is done"
 msgstr ""
 
 #. interface
@@ -21144,7 +21224,7 @@ msgstr ""
 
 #. what a command says
 #: crates/engine/src/cmd/account.rs
-msgid "{who} was added by a newer version of MailCraft, {then}"
+msgid "{who} was added by a newer version of ictMail, {then}"
 msgstr ""
 
 #. interface
@@ -21154,7 +21234,7 @@ msgstr ""
 
 #. interface
 #: crates/ui-egui/src/lib.rs
-msgid "{why}, so sign-ins aren't remembered: MailCraft asks again each time it starts."
+msgid "{why}, so sign-ins aren't remembered: ictMail asks again each time it starts."
 msgstr ""
 
 #. interface
