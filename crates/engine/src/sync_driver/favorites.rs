@@ -27,7 +27,7 @@ pub const REFUSED_FOR_ACCOUNT: &str = "Not available for this account";
 /// What the owner is told, once, of a mailbox whose file had them read another way
 /// (`Mailbox::take_retired_favorites_choices`): Exchange Web Services, or not at all.
 pub const FAVORITES_NOW_GRAPH: &str =
-    "Outlook's Favorites are now read through Microsoft Graph. To show MailCraft's own instead, turn them off in File › Options.";
+    "Outlook's Favorites are now read through Microsoft Graph. To show ictMail's own instead, turn them off in File › Options.";
 
 /// What the pane says under the Favorites heading, when there is something to say.
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -72,10 +72,10 @@ impl Step {
     pub fn about(self) -> &'static str {
         match self {
             Step::CopyMessage => {
-                "Copies a short message with the address of Microsoft's page where an administrator of your organisation approves MailCraft, once for everybody. Nothing is sent: paste it into mail or chat yourself."
+                "Copies a short message with the address of Microsoft's page where an administrator of your organisation approves ictMail, once for everybody. Nothing is sent: paste it into mail or chat yourself."
             }
             Step::Help => {
-                "Says what you and your organisation's administrator can do, and lets an administrator approve MailCraft on Microsoft's page from here."
+                "Says what you and your organisation's administrator can do, and lets an administrator approve ictMail on Microsoft's page from here."
             }
         }
     }

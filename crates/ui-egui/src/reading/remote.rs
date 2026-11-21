@@ -486,7 +486,7 @@ pub fn line(app: &mut MailApp, ui: &mut Ui, m: &Message, doc: &Doc, access: Acce
                 }
                 let label = crate::i18n::fmt(tl!("Always download pictures from {sender}"), &[("sender", &short(&from, 60))]);
                 let why = crate::i18n::fmt(
-                    tl!("Your mail server didn't confirm that this message came from {sender}, so MailCraft won't remember them: a sender's address can be faked."),
+                    tl!("Your mail server didn't confirm that this message came from {sender}, so ictMail won't remember them: a sender's address can be faked."),
                     &[("sender", &short(&from, 60))],
                 );
                 // Not registered with `app.hit`: there is nothing to click. Greyed, with a few
@@ -640,7 +640,11 @@ pub(crate) fn ui_command(app: &mut MailApp, id: &str, p: &Value) -> Option<Resul
         "ui.clearPictureCache" => clear(app),
         // The other commands of a message that is being read: its selected text, and the
         // meeting it carries.
-        _ => return super::select::ui_command(app, id, p).or_else(|| super::invitation::ui_command(app, id, p)),
+        _ => {
+            return super::select::ui_command(app, id, p)
+                .or_else(|| super::invitation::ui_command(app, id, p))
+                .or_else(|| super::unsubscribe::ui_command(app, id, p));
+        }
     })
 }
 

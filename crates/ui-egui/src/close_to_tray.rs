@@ -42,9 +42,9 @@ pub(crate) fn show(ctx: &Context, app: &mut MailApp) {
     let mut cancel = false;
     let modal = egui::Modal::new(pending()).show(ctx, |ui| {
         ui.set_max_width(420.0);
-        ui.heading(tl!("MailCraft will keep running"));
+        ui.heading(tl!("ictMail will keep running"));
         ui.label(tl!(
-            "Mail and reminders will keep running. To bring the window back, click MailCraft's system tray icon and choose Show MailCraft. On Windows, the icon may be under the arrow for hidden icons beside the clock. On macOS, use the menu-bar icon or click MailCraft in the Dock. Choose Quit MailCraft from the icon's menu to exit."
+            "Mail and reminders will keep running. To bring the window back, click ictMail's system tray icon and choose Show ictMail. On Windows, the icon may be under the arrow for hidden icons beside the clock. On macOS, use the menu-bar icon or click ictMail in the Dock. Choose Quit ictMail from the icon's menu to exit."
         ));
         ui.add_space(8.0);
         ui.horizontal(|ui| {

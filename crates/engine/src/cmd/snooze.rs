@@ -48,7 +48,7 @@ pub fn specs() -> Vec<CommandSpec> {
             .params(r#"{"ids"?: [number]} (default: the selected messages) — snoozed messages come back now, as at their Return time. Refused when none is snoozed"#)
             .selection(needs_message),
         CommandSpec::new("mail.returnDue", "Return Snoozed Mail", "Send / Receive", return_due).pure().params(
-            r#"{} — brings back every snoozed message whose Return time has come (at most 1,000 at a time), also those that came due while MailCraft was closed, and calls off the snooze of mail moved out of the Snoozed folder. Answers `returned` (the messages, to alert about) and `calledOff`"#,
+            r#"{} — brings back every snoozed message whose Return time has come (at most 1,000 at a time), also those that came due while ictMail was closed, and calls off the snooze of mail moved out of the Snoozed folder. Answers `returned` (the messages, to alert about) and `calledOff`"#,
         ),
     ]
 }

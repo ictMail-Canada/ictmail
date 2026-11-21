@@ -42,7 +42,7 @@ fn the_first_close_explains_where_to_find_mailcraft_and_can_be_cancelled() {
         let ctx = harness.ctx.clone();
         assert!(!crate::close_to_tray::confirm_hide(&ctx, harness.state()));
         harness.run_steps(4);
-        harness.get_by_label("MailCraft will keep running");
+        harness.get_by_label("ictMail will keep running");
         if let Ok(dir) = std::env::var("MAILCRAFT_SHOTS_DIR") {
             harness.render().unwrap().save(std::path::Path::new(&dir).join(format!("tray-first-close-{theme}.png"))).unwrap();
         }

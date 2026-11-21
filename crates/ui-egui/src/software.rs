@@ -79,7 +79,7 @@ pub(crate) fn bar(app: &mut MailApp, ui: &mut Ui) {
         return;
     }
     let said = tl!(
-        "MailCraft is drawing without the graphics card, which uses a lot of processor time. Installing or updating the graphics driver usually fixes this."
+        "ictMail is drawing without the graphics card, which uses a lot of processor time. Installing or updating the graphics driver usually fixes this."
     );
     crate::updates::bar(app, ui, "software_drawing", said, &[("softwareNoticeOk", tl!("OK"), false)], |app, _| {
         let _ = app.run("ui.dismissSoftwareNotice", json!({}));

@@ -34,7 +34,7 @@ pub enum InitError {
 impl fmt::Display for InitError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            InitError::NoMemory => f.write_str("the platform has no memory to spare for MailCraft"),
+            InitError::NoMemory => f.write_str("the platform has no memory to spare for ictMail"),
         }
     }
 }

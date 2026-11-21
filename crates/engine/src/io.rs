@@ -532,7 +532,7 @@ pub fn lands_in(mb: &mailcraft_model::Mailbox, aimed: Id) -> Lands {
 /// Bring a file's contents into the mailbox: messages go to `folder` (default: the folder in
 /// view, or the Inbox), events to a calendar on this computer (#1050), contacts and to-dos to their lists.
 pub fn import(s: &mut Session, name: &str, bytes: &[u8], folder: Option<Id>) -> Result<Value, CmdError> {
-    let format = Format::detect(name, bytes).ok_or_else(|| failed!("{name}: not a message, calendar or contact file MailCraft reads", name))?;
+    let format = Format::detect(name, bytes).ok_or_else(|| failed!("{name}: not a message, calendar or contact file ictMail reads", name))?;
     let folder = mail_aimed_at(&s.mailbox, s.view.folder, folder, matches!(format, Format::Eml | Format::Mbox))?;
     let now = s.now();
     match format {
@@ -631,7 +631,8 @@ pub fn import(s: &mut Session, name: &str, bytes: &[u8], folder: Option<Id>) -> 
             // The events of this computer's own, by UID: looked up once, not once for every event.
             let mut own_uids: std::collections::HashMap<String, (mailcraft_model::Id, mailcraft_model::Id)> = std::collections::HashMap::new();
             for x in s.mailbox.events.values() {
-                if !x.uid.is_empty() && x.origin.is_local() {
+                // (Not a copy of a calendar on the web: the next refresh would take the import away.)
+                if !x.uid.is_empty() && x.origin.is_local() && s.mailbox.calendar(x.calendar).is_none_or(|c| !c.is_subscribed()) {
                     own_uids.entry(x.uid.clone()).or_insert((x.id, x.calendar));
                 }
             }
