@@ -44,11 +44,11 @@ fn build_then_sign_in_one_job_fails() {
     assert!(p.iter().any(|p| p.contains("without -SkipBuild -NoRun")), "{p:#?}");
 
     let macos = job(
-        "      - run: bash packaging/macos/package.sh --arch universal --build-only\n      - run: bash packaging/macos/import-cert.sh\n      - run: bash packaging/macos/package.sh --arch universal --skip-build\n      - run: |\n          \"$app/Contents/MacOS/MailCraft\" --version",
+        "      - run: bash packaging/macos/package.sh --arch universal --build-only\n      - run: bash packaging/macos/import-cert.sh\n      - run: bash packaging/macos/package.sh --arch universal --skip-build\n      - run: |\n          \"$app/Contents/MacOS/ictmail\" --version",
     );
     let p = problems(&macos);
     assert!(p.iter().filter(|p| p.contains("without --skip-build --no-run")).count() == 2, "{p:#?}");
-    assert!(p.iter().any(|p| p.contains("MacOS/MailCraft")), "{p:#?}");
+    assert!(p.iter().any(|p| p.contains("MacOS/ictmail")), "{p:#?}");
 }
 
 #[test]

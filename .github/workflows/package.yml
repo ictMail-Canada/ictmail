@@ -428,7 +428,7 @@ jobs:
           dmg=$(ls dist/release/*-macos-universal.dmg)
           mnt=$(mktemp -d)
           hdiutil attach "$dmg" -nobrowse -readonly -mountpoint "$mnt"
-          app="$mnt/MailCraft.app"
+          app="$mnt/ictMail.app"
           # The app as somebody gets it: the signature holds for the copy in the image too. When
           # it doesn't, say what the image attached to which file.
           if ! codesign --verify --deep --strict --verbose=4 "$app"; then
@@ -440,8 +440,8 @@ jobs:
             exit 1
           fi
           plutil -p "$app/Contents/Info.plist" | grep -E "CFBundleIdentifier|CFBundleIconFile|CFBundleShortVersionString"
-          lipo -info "$app/Contents/MacOS/MailCraft"
-          "$app/Contents/MacOS/MailCraft" --version
+          lipo -info "$app/Contents/MacOS/ictmail"
+          "$app/Contents/MacOS/ictmail" --version
           hdiutil detach "$mnt"
       - name: Run the CLI from its zip
         run: |

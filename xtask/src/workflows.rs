@@ -63,7 +63,7 @@ const BUILT: &[&str] = &[
     "ictmail-cli",
     "ictmail.exe",
     "/release/ictmail",
-    "MacOS/MailCraft",
+    "MacOS/ictmail",
     "xvfb-run",
     "actions/cache",
 ];

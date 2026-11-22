@@ -11,7 +11,7 @@
   <key>CFBundleName</key>
   <string>ictMail</string>
   <key>CFBundleExecutable</key>
-  <string>MailCraft</string>
+  <string>ictmail</string>
   <key>CFBundleIdentifier</key>
   <string>io.github.billsecond.mailcraft</string>
   <key>CFBundleInfoDictionaryVersion</key>
