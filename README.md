@@ -8,7 +8,7 @@
 
 **A branded mail, calendar and contacts desktop app for ictMail mailboxes, built on [MailCraft](https://github.com/UCS-Care-Group/mailcraft).**
 
-ictMail is developed by ictTech as the desktop client for [ictMail](https://ictmail.ca) business mailboxes: the same mail, calendar and contacts experience as SOGo webmail and ActiveSync on phones, without needing Microsoft 365 or Outlook. This repository is a downstream branding of MailCraft: `main` carries the ictMail branding and ictMail-specific integration, with upstream MailCraft reachable as the `upstream` remote.
+ictMail is developed by ictTech as the desktop client for [ictMail](https://ictmail.ca/ictmail-app/) business mailboxes: the same mail, calendar and contacts experience as SOGo webmail and ActiveSync on phones, without needing Microsoft 365 or Outlook. This repository is a downstream branding of MailCraft: `main` carries the ictMail branding and ictMail-specific integration, with upstream MailCraft reachable as the `upstream` remote.
 
 [![Licence: MIT OR Apache-2.0](https://img.shields.io/badge/licence-MIT%20OR%20Apache--2.0-blue)](#license)
 [![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20macOS%20%7C%20Linux%20%7C%20FreeBSD%20%7C%20web-lightgrey)](#platforms)
