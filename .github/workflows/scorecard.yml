@@ -6,8 +6,6 @@ name: Scorecard supply-chain security
 on:
   # For the Branch-Protection check; only the default branch is supported.
   branch_protection_rule:
-  schedule:
-    - cron: '27 4 * * 1'
   push:
     branches: [main]
   workflow_dispatch:

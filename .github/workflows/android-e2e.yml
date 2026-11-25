@@ -12,8 +12,6 @@
 name: Android end to end
 
 on:
-  schedule:
-    - cron: '41 3 * * 2'
   workflow_dispatch:
   workflow_call:
 

@@ -6,8 +6,6 @@
 name: Bench
 
 on:
-  schedule:
-    - cron: '41 4 * * 2'
   workflow_dispatch:
 
 permissions:

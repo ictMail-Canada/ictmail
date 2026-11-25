@@ -4,8 +4,6 @@
 name: Reproducible build
 
 on:
-  schedule:
-    - cron: '41 5 * * 2'
   workflow_dispatch:
 
 permissions:

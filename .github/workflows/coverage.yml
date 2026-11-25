@@ -9,8 +9,6 @@ on:
   push:
     branches: [main]
     paths-ignore: ['docs/**', '**/*.md', '.github/**', '!.github/workflows/coverage.yml']
-  schedule:
-    - cron: '41 3 * * *'
   workflow_dispatch:
 
 permissions:
