@@ -6,8 +6,6 @@ name: Audit
 # checked for advisories and sources (its harness crates carry licences the shipping tree does
 # not). A failure here is a red scheduled run: look at it, update the lock, and release.
 on:
-  schedule:
-    - cron: "17 5 * * *"
   workflow_dispatch:
 
 permissions:
